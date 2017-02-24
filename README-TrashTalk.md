@@ -1,4 +1,4 @@
-# TrashTalk
+ # TrashTalk
 Repo for artifacts of the Trash Talk app for organizing cleanups and graffiti abatement.
 
 Goal -- Develop code that finds anyone interested in a specified geographical area, with the ability to communicate "scheduled cleanups".
@@ -14,7 +14,7 @@ In order to act as an integrator, TrashTalk will need to manage a datastore of c
 
 Information on the Seeclickfix API is available here:
 
-http://dev.seeclickfix.com/
+http://dev.seeclickfix.com/ & https://github.com/SeeClickFix/dev.seeclickfix.com
 
 
 Other areas that will need to inherently be developed are:
