@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+
+{%block content%} 
+<div align="center">
+    <h3>Congratulations! You made a clean up!</h3>
+    <h4>It is posted to SeeClickFix:<a href ="{{url}}">{{url}}</a></h4>
+    <h4>Volunteers should find it and join soon!</h4>
+    <p>Your Clean Up Information</p>
+    <img src = "{{cleanup.image}}" 
+                 alt="Insert Image"
+                 style = "width:150px;height:150px;">
+    <ul>
+        <li>Date: {{cleanup.date}}</li>
+        <li>Time: {{cleanup.time}}</li>
+        <li>Address: {{cleanup.street}}
+            <br>Oakland, CA {{cleanup.zipcode}}
+        </li>
+    </ul>
+    <nav>
+        <a href="\cleanup\{{cleanup.id}}">View This Cleanup's Page</a>
+        <a href="/active_clean_ups">View All Clean Ups</a>
+    </nav>
+</div>
+{%endblock%}
