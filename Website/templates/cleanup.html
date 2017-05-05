@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+
+{%block content%}
+    <h3>{{clean.street_number}} {{clean.street_name}}</h3>
+    <img src = "{{clean.image}}" 
+             alt="Photograph"
+             style = "width:150px;height:150px;">
+
+    <ul>
+        <li>Organizer: {{clean.host.username}}</li>
+        <li>Date: {{clean.date}}</li>
+        <li>Start Time: {{clean.start_time}}</li>        
+        <li>End Time: {{clean.end_time}}</li>        
+        <li>Address: {{clean.address}}</li>
+        <li>Coordinates [{{clean.lat}},{{clean.lng}}]</li>
+        <li>Hours: {{clean.hours}}</li>
+        <li>Public Works Notified: Yes/No</li>
+    </ul>
+    <p>Participants</p>
+    {% for participant in clean.participants %}
+    <p>Username: {{participant.username}}</p>
+    {% endfor %}
+    <nav>
+        {%if clean.host.username==current_user.username%}
+            {%if clean.html_url%}
+                <a href ='{{clean.html_url}}'>SeeClickFix Link</a>
+                {%else%}
+                <a href='\advertise\{{clean.id}}'>Advertise on SeeClickFix</a>
+            {%endif%}            
+            <a href="#">Submit to Public Works</a>
+            <form action='/delete_cleanup' method="post">
+                <input type="hidden" name="delete_cleanup_id" value="{{clean.id}}">
+                <input type="submit" name="Delete" value="Delete Cleanup">                
+            </form>
+<!--        {%if clean.submit_pub_works%}
+            Public Works has been notified
+            {%else%}-->
+            <!--{%endif%}-->
+        {%endif%}
+        {%if clean.host.username!=current_user.username%}
+            <form action = '/join_cleanup' method='post'>
+                <input type="hidden" name="join_cleanup_id" value="{{clean.id}}">
+                <input type ="submit" name="Join" value="Join Cleanup">
+            </form>
+        {%endif%}
+    </nav>
+{%endblock%}
