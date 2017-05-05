@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Trash Talk: {{section}}</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+            <h1>Welcome to Trash Talk</h1>
+            <h2>An Open Oakland Initiative</h2>
+            <img src="https://lh3.ggpht.com/_WRns5rfxrqtNZuulPBMnz_jMNEeq1M5N18eZNqc7qsj6WiIxmn80ACvBGFY82vxBtw=w300" 
+                  alt="Trash Talk Logo" 
+                  style="width:300px;height:300px;">
+            {%if current_user.authenticated%}
+            <nav>
+<!--                <a href="'/enter_cleanup_data">Create Clean up</a>-->
+<!--                <a href='/active_clean_ups'>Enter</a><br/>-->
+                <a href="/profile/{{current_user.username}}">Enter</a>
+                <a href="/logout">Log out</a>
+            </nav>
+
+            {%else%}
+            <form action ="/login" method ="POST">
+                <input type="text" name="username" placeholder="Username"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+                <input type="submit" value="Log in">
+                <a href='/signup'>Sign Up</a>
+            </form>
+            <nav>
+                or:<a href='/active_clean_ups'>Continue as Guest</a>
+            </nav>
+            {%endif%}           
+        </div>
+    </body>
+</html>
