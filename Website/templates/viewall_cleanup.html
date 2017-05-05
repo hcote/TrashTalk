@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+
+{%block content%} 
+    <h3>Active Oakland Cleanups</h3>
+    {% for clean in cleans %}
+
+        <p><img src = "{{clean.image}}" 
+             alt="Photograph"
+             style = "width:150px;height:150px;"><br>
+            Organizer: {{clean.host.username}}<br>
+            Address: {{ clean.address}}<br>
+            Date: {{ clean.date }}, {{clean.start_time}}<br>
+            <a href = '\cleanup\{{clean.id}}'>View Clean Up</a><br>
+        </p><br>
+        
+    {% endfor %}      
+{%endblock%}
