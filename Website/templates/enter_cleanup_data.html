@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+
+{%block content%} 
+
+<div align="center">
+    <h3>Enter Clean Up Information Below:</h3>
+    <form action = "/create_cleanup" method='post'>
+    <!--Date-->    
+    <label for = "event_date">Date:</label>
+    <input type = "date" name="event_date"/><br/>
+    <!--Start Time-->
+    <label for = "event_time">Start Time</label>
+    <input type = "time" name ="event_time"/><br/>
+    <!--End Time-->
+    <label for ="end_time">End Time</label>
+    <input type ="time" name ='end_time'/><br/>
+    <!--Street Number-->
+    <label for = "street_number">Street Number:</label>
+    <input type = "number" name ="street_number" min="1" max="10000"/><br/>
+    <!--Street Name-->
+    <label for = "street_name">Street Name:</label>
+    <input type = "text" name="street_name"/><br/>
+    <!--image-->
+    <label for = "event_image">Image: (optional)</label>
+    <input type ="text" name="event_image"/><br/>
+    <input type = "submit" value="Create Clean up" name = "createevent"/>
+    <a href='/active_clean_ups'>Cancel</a>
+    </form>
+</div>
+
+{%endblock%}
