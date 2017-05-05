@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Outline for rest of the webpage
+-->
+<html>
+    <head>
+        <style>
+            div.container{
+                width: 100%;
+                border: 1px solid gray;
+            }
+            
+            header, footer{
+                padding:1em;
+                color: white;
+                background-color: black;
+                clear:left;
+                text-align: center;
+            }
+            
+            nav.one{
+                float:top;
+            }
+            
+            nav.two{
+                float:left;
+                max-width: 240px;
+                margin:0;
+                padding: 1em;                
+            }
+            
+            nav ul a {
+                text-decoration: none;
+            }
+            
+            article{
+                margin-left: 250px;
+                border-left: 1px solid gray;
+                padding: 1em;
+                overflow: hidden;
+            }
+        </style>
+        <title>Trash Talk: {{section}}</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <header>
+            <h1>Trash Talk</h1>
+        </header>
+        <div class="container">
+            <nav class="one">
+                <a href="/">Home</a>
+                {%if current_user.authenticated%}
+                <a href="/logout">Log out</a>
+                {%else%}
+                <a href='/'>Log in</a>
+                {%endif%}
+            </nav>
+        </div>
+        
+        <div class ="container">
+            <nav class='two'>                
+                <a href='/active_clean_ups'>Active Cleanups</a></br>
+                {%if current_user.authenticated%}
+                    <a href="/profile/{{current_user.username}}">View Profile</a><br/>
+                    <a href="/enter_cleanup_data">Create Clean up</a><br/>
+                    <a href="/hosted_cleanups">Hosted Clean ups</a><br/>
+                    <a href="/participated_cleanups">Participated Clean ups</a></br>
+                {%else%}
+                    Want to create or join clean ups?</br>
+                    <a href='/'>Log in</a></br>
+                    or 
+                    <a href='/signup'>Sign up</a>                                   
+                {%endif%}
+            </nav>
+        </div>
+        <article>
+        {%block content%}{%endblock%}
+        </article>
+        <footer>An Open Oakland Initiative</footer>
+    </body>
+</html>
