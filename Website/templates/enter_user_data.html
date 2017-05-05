@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends 'base.html'%}
+{%block content%}
+
+<form action ="/create_account" method ="POST">
+    <div align ="center">
+        <h2>Join Trash Talk</h2>
+        <p>Enter your information below</p>
+        <input type="text" name="username" placeholder="Username"/><br/>
+        <input type="password" name="password" placeholder="Password"/><br/>
+        <input type="password" name="confirm_password" placeholder="Confirm Password"/><br/>
+        <input type ='email' name='email' placeholder='Email (optional)'/><br/>
+        <label for = "rec_vol_hours">Record Volunteer Hours (optional)</label>
+        <input type="checkbox" name='track_vol_hours'/><br/>
+        <input type="submit" name="signup" value="Sign Up"/>
+    <a href='/'>Cancel</a>
+    </div>
+</form>
+
+{%endblock%}
