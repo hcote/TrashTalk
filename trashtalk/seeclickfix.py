@@ -26,7 +26,7 @@ def postSCFix(location):
         "request_type":"other",
         "answers":{
             "summary":"Meet-Up to Clean-Up",
-            "description":"Test of Website"
+            "description":"Test of trashtalk"
         }        
     }
     #Make post to SeeClickFix
@@ -48,4 +48,4 @@ def getLocation(street_number, street_name, city):
     
     address = "%s %s %s" % (street_number, street_name, city)
     
-return GEOLOCATOR.geocode(address)
+    return GEOLOCATOR.geocode(address)

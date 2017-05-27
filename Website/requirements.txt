@@ -1,6 +1,0 @@
-flask
-sqlalchemy
-json
-geopy
-requests
-pymysql
