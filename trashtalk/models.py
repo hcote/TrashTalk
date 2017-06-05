@@ -103,3 +103,7 @@ class User(Base):
     def is_annoymous(self):
         return False
 
+    def save(self):
+        db_session.add(self)
+        db_session.commit()
+
