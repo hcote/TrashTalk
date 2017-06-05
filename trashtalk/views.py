@@ -1,5 +1,5 @@
 from flask import render_template, request
-from flask import session, redirect, url_for
+from flask import redirect, url_for
 from flask_login import LoginManager, login_user, login_required
 from flask_login import logout_user, current_user
 
@@ -36,6 +36,8 @@ def unauthorized_handler():
 @login_manager.user_loader
 def user_loader(username):
     user = db_session.query(User).filter(User.username == username).first()
+
+    app.logger.info("Loading user %s", user.get_id())
     return user
 
 
@@ -50,7 +52,7 @@ def login():
         user = db_session.query(User).filter(User.username == username).first()
         # Check password against database
         if user.check_password(request.form['password']):
-            user.authenticated = True
+            user.authenticated = True  # FIXME: Do we still need this?
             db_session.add(user)  # Reflect user authorization in SQL
             db_session.commit()
             login_user(user, remember=True)  # Reflect user authorization in Flask
@@ -78,6 +80,7 @@ def logout():
                            section="Log out")
 
 
+# PUBLIC ROUTES
 @app.route('/signup')
 def signup():
     return render_template("enter_user_data.html",
