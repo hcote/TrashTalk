@@ -1,4 +1,4 @@
-from sqlalchemy import (create_engine,
+from sqlalchemy import (create_engine, func, DateTime,
                         Column, Date, Time, Integer,
                         Numeric, ForeignKey, String,
                         Text, Boolean, Table)
@@ -34,7 +34,14 @@ def init_db():
 
 association_table = Table('participants', Base.metadata,
                           Column('cleanups_id', Integer, ForeignKey('cleanups.id')),
-                          Column('users_id', String(250), ForeignKey('users.username')))
+                          Column('users_id', String(250), ForeignKey('users.id')))
+
+
+class ModelBase(object):
+    # TODO: Add to current models to inherit these properties
+    id = Column(Integer, primary_key=True)
+    modified = Column(DateTime, default=func.now(), onupdate=func.now())
+    created = Column(DateTime, default=func.now())
 
 
 class Cleanup(Base):
@@ -44,7 +51,9 @@ class Cleanup(Base):
 
     __tablename__ = 'cleanups'
 
-    id = Column(Integer, primary_key=True)  # Computer Generated
+    id = Column(Integer, primary_key=True)
+    modified = Column(DateTime, default=func.now(), onupdate=func.now())
+    created = Column(DateTime, default=func.now())
 
     # Input at creation by user
     date = Column(Date, nullable=False)
@@ -74,9 +83,12 @@ class User(Base):
     """
 
     __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    modified = Column(DateTime, default=func.now(), onupdate=func.now())
+    created = Column(DateTime, default=func.now())
 
     # required parameters to establish an account
-    username = Column(String(250), primary_key=True)
+    username = Column(String(250))
     password = Column(String(250))
     authenticated = Column(Boolean, default=False)
 
@@ -91,11 +103,14 @@ class User(Base):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def update_password(self, password):
+        self.password = generate_password_hash(password)
+
     def is_active(self):
         return True
 
     def get_id(self):
-        return self.username
+        return self.id
 
     def is_authenticated(self):
         return self.authenticated

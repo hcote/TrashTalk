@@ -1,6 +1,7 @@
 import pytest
 
 from trashtalk import app
+from .factories import *
 
 
 @pytest.fixture(scope='module')
@@ -41,3 +42,92 @@ class TestTrashTalkView:
     def test_view_cleanups(self, client):
         response = client.get('/active_clean_ups')
         assert response.status_code == 200
+
+
+@pytest.mark.usefixture('client')
+class TestUserLogin:
+    """
+    Tests that require database access.
+    TODO: Setup test database.
+    """
+
+    def test_login(self, client):
+        user = UserFactory(username='bigjoe', password='password')
+        response = client.post('/login',
+                               data={'username': user.username,
+                                     'password': user.password})
+        assert response.status_code == 200
+        client.get('/logout')
+
+    def test_unauthorized_user(self, client):
+        response = client.get('/users')
+        assert response.status_code == 403
+
+    def test_signup_registration(self, client):
+        response = client.post('/create_account', data={'username': 'test',
+                                                        'password': 'password',
+                                                        'confirm_password': 'password'})
+        assert response.status_code == 201
+
+
+@pytest.mark.usefixture('client')
+class TestUserView:
+    """
+    Authenticated views for logged in users.
+    """
+    def test_get_user_profile(self, client):
+        user = UserFactory(username='bigjoe', password='password')
+        url = '/profile/{}'.format(user.id)
+
+        client.post('/login',
+                    data={'username': user.username, 'password': user.password})
+        response = client.get(url)
+        assert response.status_code == 200
+        # client.get('/logout')
+
+    @pytest.mark.skip("Fix me.")
+    def test_post_user_edit(self, client):
+        user = UserFactory(username='bigjoe', password='password',
+                           email='current_email@eample.com')
+        login = client.post('/login',
+                    data={'username': user.username,
+                          'password': user.password})
+        assert login.status_code == 200
+
+        url = '/users/{}'.format(user.id)
+        response = client.post(url, data={'method': 'PUT',
+                                          'email': 'new_email@example.com'})
+        assert response.status_code == 200
+        assert user.email == 'new_email@example.com'
+
+    def test_view_hosted_cleanups(self):
+        pass
+
+    def test_view_cleanups(self):
+        pass
+
+    def test_view_participating(self):
+        pass
+
+
+class CleanupViews:
+    def test_view_cleanups(self):
+        pass
+
+    def test_view_cleanup_detail(self):
+        pass
+
+    def test_view_cleanup_delete(self):
+        pass
+
+    def test_view_cleanup_join(self):
+        pass
+
+    def test_view_cleanup_edit(self):
+        pass
+
+
+class SeeClickFix:
+    """Separate into a test_seeclickfix.py"""
+    pass
+

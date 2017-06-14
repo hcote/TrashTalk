@@ -1,5 +1,6 @@
-from flask import render_template, request
+from flask import render_template, request, make_response
 from flask import redirect, url_for
+from flask.views import MethodView
 from flask_login import LoginManager, login_user, login_required
 from flask_login import logout_user, current_user
 
@@ -11,6 +12,8 @@ from trashtalk.settings import CITY
 # Manage Login Feature
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+# TODO: All status codes should be made constants.
 
 
 @app.route('/')
@@ -27,15 +30,69 @@ def error():
                            section="Error")
 
 
+class UserView(MethodView):
+    """
+    Authenticated views.
+
+    http://flask.pocoo.org/docs/0.12/views/#decorating-views
+
+    Method reference:
+        - url_for(view_function, kwargs): Directs to view.
+    """
+
+    decorators = [login_required]
+    methods = ['GET', 'POST', 'PUT', 'DELETE']
+
+    def get(self, user_id):
+        """Edit profile form."""
+        return render_template("user/edit.html",
+                               user=db_session.query(User).get(user_id))
+
+    def post(self, user_id):
+        """
+        Change profile.
+
+        NOTE: HTML *forms* only allow get and post methods. Views using put or delete
+        must manually handle those form requests.
+        """
+        user = db_session.query(User).get(user_id)
+        method = request.form['method']
+        app.logger.info("Request method: %s", method)
+        if method == 'PUT':
+            app.logger.info("Process PUT")
+            if request.form['password']:
+                user.update_password(request.form['password'])
+            if request.form['email']:
+                user.email = request.form['email']
+            db_session.add(user)
+            db_session.commit()
+        if method == 'POST':
+            # create user
+            app.logger.info("Create a user ...")
+        if method == 'DELETE':
+            self.delete(user_id)
+        return render_template("user/show.html",
+                               user=db_session.query(User).get(user_id))
+
+    def delete(self, user_id):
+        """Delete account."""
+        user = db_session.query(User).get(user_id)
+        db_session.remove(user)
+        db_session.commit()
+        return render_template("login.html")
+
+user_view = UserView.as_view('user_view')
+
+
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     """Handle unauthorized access for non-logged in users."""
-    return render_template("unauthorized.html")
+    return make_response(render_template("unauthorized.html"), 403)
 
 
 @login_manager.user_loader
-def user_loader(username):
-    user = db_session.query(User).filter(User.username == username).first()
+def user_loader(user_id):
+    user = db_session.query(User).get(user_id)
 
     app.logger.info("Loading user %s", user.get_id())
     return user
@@ -56,13 +113,13 @@ def login():
             db_session.add(user)  # Reflect user authorization in SQL
             db_session.commit()
             login_user(user, remember=True)  # Reflect user authorization in Flask
-            return redirect(url_for('profile', username=username))
+            return redirect(url_for('user_view', user_id=user.id))
         else:
             # Next step: require user feedback password or username incorrect
-            return redirect(url_for("welcome"))
+            return redirect(url_for("welcome"), code=200)
     else:
         # Next Step: require user feedback password or username incorrect
-        return redirect(url_for("welcome"))
+        return redirect(url_for("welcome"), code=400)
 
 
 @app.route('/logout', methods=["GET"])
@@ -71,8 +128,7 @@ def logout():
     # Danger of keeping users logged in that don't logout properly
     user = current_user
     user.authenticated = False  # SQL update
-    db_session.add(user)
-    db_session.commit()
+    user.save()
     logout_user()  # Flask Update
 
     # Next Step: May be better to return to homepage
@@ -127,10 +183,10 @@ def create_account():
         db_session.add(new_user)
         db_session.commit()
         login_user(new_user, remember=True)  # Login user to Flask
-        return redirect(url_for('profile', username=new_name))  # Send to profile page
+        return redirect(url_for('user_view', user_id=new_user.id), code=201)  # Send to profile page
     else:
         # Next Step: feedback that passwords do not match
-        return (redirect(url_for("signup")))
+        return redirect(url_for("signup"), code=403)
 
 
 @app.route('/cleanup/<id>')
