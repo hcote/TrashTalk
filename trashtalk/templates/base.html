@@ -62,13 +62,12 @@ Outline for rest of the webpage
         
         <div class ="container">
             <nav class='two'>                
-                <a href='/active_clean_ups'>Active Cleanups</a></br>
+                <a href='/cleanups'>Active Cleanups</a></br>
                 {%if current_user.authenticated%}
-                    <a href="/profile/{{ current_user.id }}">View Profile</a><br/>
-                    <a href="/users/{{current_user.id}}">Edit Profile</a><br/>
-                    <a href="/enter_cleanup_data">Create Clean up</a><br/>
-                    <a href="/hosted_cleanups">Hosted Clean ups</a><br/>
-                    <a href="/participated_cleanups">Participated Clean ups</a></br>
+                    <a href="/users/{{ current_user.id }}">View Profile</a><br/>
+                    <a href="/users/{{current_user.id}}/edit">Edit Profile</a><br/>
+                    <a href="/cleanups/new">Create Clean up</a><br/>
+                    <a href="/users/{{ current_user.id }}/cleanups">My Clean-ups</a><br/>
                 {%else%}
                     Want to create or join clean ups?</br>
                     <a href='/'>Log in</a></br>

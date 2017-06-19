@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+
+{%block content%} 
+    <h3>My Oakland Cleanups</h3>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Location</th>
+        </tr>
+
+        {% for cleanup in my_cleanups %}
+
+        <tr>
+            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.date }}</a></th>
+            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.address }}</a></th>
+        </tr>
+        
+        {% endfor %}
+    </table>
+    <h3>My Clean-up Participation</h3>
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Date</th>#}
+{#            <th>Location</th>#}
+{#        </tr>#}
+{##}
+{#        {% for clean in cleanups %}#}
+{##}
+{#        <tr>#}
+{#            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.date }}</a></th>#}
+{#            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.address }}</a></th>#}
+{#        </tr>#}
+{#        #}
+{#        {% endfor %}#}
+{#    </table>#}
+    <h3>Clean Ups {{current_user.username}} is participating in: </h3>
+    {%for cleanup in current_user.cleanups_participated%}
+        <a href = '/cleanups/{{cleanup.id}}'>{{cleanup.street_number}} {{cleanup.street_name}} {{cleanup.date}}</a><br>
+    {%endfor%}
+{%endblock%}

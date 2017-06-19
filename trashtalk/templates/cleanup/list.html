@@ -8,7 +8,7 @@ and open the template in the editor.
 
 {%block content%} 
     <h3>Active Oakland Cleanups</h3>
-    {% for clean in cleans %}
+    {% for clean in cleanups %}
 
         <p><img src = "{{clean.image}}" 
              alt="Photograph"
@@ -16,7 +16,7 @@ and open the template in the editor.
             Organizer: {{clean.host.username}}<br>
             Address: {{ clean.address}}<br>
             Date: {{ clean.date }}, {{clean.start_time}}<br>
-            <a href = '\cleanup\{{clean.id}}'>View Clean Up</a><br>
+            <a href = '/cleanups/{{clean.id}}'>View Clean Up</a><br>
         </p><br>
         
     {% endfor %}      

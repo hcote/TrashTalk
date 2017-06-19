@@ -22,7 +22,7 @@ and open the template in the editor.
             <nav>
 <!--                <a href="'/enter_cleanup_data">Create Clean up</a>-->
 <!--                <a href='/active_clean_ups'>Enter</a><br/>-->
-                <a href="/profile/{{current_user.username}}">Enter</a>
+                <a href="/users/{{current_user.id}}">Enter</a>
                 <a href="/logout">Log out</a>
             </nav>
 
@@ -34,7 +34,7 @@ and open the template in the editor.
                 <a href='/signup'>Sign Up</a>
             </form>
             <nav>
-                or:<a href='/active_clean_ups'>Continue as Guest</a>
+                or:<a href='/cleanups'>Continue as Guest</a>
             </nav>
             {%endif%}           
         </div>
