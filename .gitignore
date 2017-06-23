@@ -5,6 +5,8 @@ __pycache__/
 
 *.pyc
 .idea
+ttshell.py
+exceptions.py
 
 # C extensions
 *.so

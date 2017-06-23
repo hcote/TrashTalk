@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+
+{%block content%} 
+
+<div align="center">
+    <h3>Enter Clean Up Information Below:</h3>
+    <form action = "/cleanups/create" method='post'>
+    <input type="hidden" name="host_id" value="{{ user_id }}"/><br/>
+    <input type="hidden" name="method" value="POST"/><br/>
+    <!--Date-->
+    <label for="date">Date:</label>
+    <input type="date" name="date"/><br/>
+    <!--Start Time-->
+    <label for="start_time">Start Time</label>
+    <input type="time" name="start_time"/><br/>
+    <!--End Time-->
+    <label for="end_time">End Time</label>
+    <input type="time" name="end_time"/><br/>
+    <!--Street Number-->
+    <label for="street_number">Street Number:</label>
+    <input type="number" name="street_number" min="1" max="10000"/><br/>
+    <!--Street Name-->
+    <label for="street_name">Street Name:</label>
+    <input type="text" name="street_name"/><br/>
+    <!--image-->
+    <label for = "image">Image: (optional)</label>
+    <input type ="text" name="image"/><br/>
+    <input type = "submit" value="Create Clean up" name = "createevent"/>
+    <a href='/cleanups'>Cancel</a>
+    </form>
+</div>
+
+{%endblock%}
