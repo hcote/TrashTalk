@@ -57,7 +57,7 @@ def post(cleanup_id):
             cleanups.update(request.form)
         except:
             app.logger.exception("Clean-up update failed.")
-    # TODO: Add handling for DELETE Cleanup
+    # TODO: Issue #11 -- Add handling for DELETE Cleanup
 
 
 @cleanup.route('/create', methods=["POST"])
@@ -101,24 +101,6 @@ def create():
     return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
-@cleanup.route('/join', methods=["POST"])
-@login_required
-def join():
-    """
-    Users can join currently listed clean-up event.
-
-    :return:
-    """
-    # TODO: Rename form item to cleanup_id
-    cleanup_id = request.form['cleanup_id']
-    cleanups = db_session.query(Cleanup).get(cleanup_id)
-    cleanups.participants.append(current_user)
-    cleanups.save()
-    # db_session.add(cleanup)
-    # db_session.commit()
-    return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
-
-
 @cleanup.route('/<int:cleanup_id>/edit')
 @login_required
 def edit(cleanup_id):
@@ -156,6 +138,24 @@ def delete(cleanup_id):
     db_session.delete(cleanups)
     db_session.commit()
     return redirect(url_for('cleanups'))
+
+
+@cleanup.route('/join', methods=["POST"])
+@login_required
+def join():
+    """
+    Users can join currently listed clean-up event.
+
+    :return:
+    """
+    # TODO: Rename form item to cleanup_id
+    cleanup_id = request.form['cleanup_id']
+    cleanups = db_session.query(Cleanup).get(cleanup_id)
+    cleanups.participants.append(current_user)
+    cleanups.save()
+    # db_session.add(cleanup)
+    # db_session.commit()
+    return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
 
 
 # RENAME: send_to_scf (seeclickfix)
