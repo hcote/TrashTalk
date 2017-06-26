@@ -10,23 +10,24 @@
     <input type = "hidden" name="host" value="{{ current_user }}"/>
     <!--Date-->
     <label for = "date">Date:</label>
-    <input type = "date" name="date"/><br/>
+    <input type = "date" name="date" value="{{ cleanup.date }}" /><br/>
     <!--Start Time-->
     <label for = "start_time">Start Time</label>
-    <input type = "time" name ="start_time"/><br/>
+    <input type = "time" name ="start_time" value="{{ cleanup.start_time }}" /><br/>
     <!--End Time-->
     <label for ="end_time">End Time</label>
-    <input type ="time" name ='end_time'/><br/>
+    <input type ="time" name ="end_time" value="{{ cleanup.end_time }}" /><br/>
     <!--Street Number-->
     <label for = "street_number">Street Number:</label>
-    <input type = "number" name ="street_number" min="1" max="10000"/><br/>
+    <input type = "number" name ="street_number" min="1" max="10000" value="{{ cleanup
+    .street_number }}"/><br/>
     <!--Street Name-->
     <label for = "street_name">Street Name:</label>
-    <input type = "text" name="street_name"/><br/>
+    <input type = "text" name="street_name"  value="{{ cleanup.street_name }}" /><br/>
     <!--image-->
     <label for = "image">Image: (optional)</label>
     <input type ="text" name="image"/><br/>
-    <input type = "submit" value="Create Clean up" name = "createevent"/>
+    <input type = "submit" value="Update" name = "update"/>
     <a href='/cleanups/{{ cleanup.id }}'>Cancel</a>
     </form>
 </div>
