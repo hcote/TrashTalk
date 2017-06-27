@@ -5,9 +5,8 @@
 
 <div align="center">
     <h3>Update Clean Up Information Below:</h3>
-    <form action = "/cleanup/{{ cleanup.id }}" method='post'>
+    <form action = "/cleanups/{{ cleanup.id }}" method='post'>
     <input type = "hidden" name="method" value="PUT"/>
-    <input type = "hidden" name="host" value="{{ current_user }}"/>
     <!--Date-->
     <label for = "date">Date:</label>
     <input type = "date" name="date" value="{{ cleanup.date }}" /><br/>
@@ -19,15 +18,18 @@
     <input type ="time" name ="end_time" value="{{ cleanup.end_time }}" /><br/>
     <!--Street Number-->
     <label for = "street_number">Street Number:</label>
-    <input type = "number" name ="street_number" min="1" max="10000" value="{{ cleanup
+    <input type = "number" name ="street_number" value="{{ cleanup
     .street_number }}"/><br/>
     <!--Street Name-->
     <label for = "street_name">Street Name:</label>
     <input type = "text" name="street_name"  value="{{ cleanup.street_name }}" /><br/>
+    <label for="street_name">Cross Street Name:</label>
+    <input type="text" name="cross_street_name" value="{{ cleanup.cross_street_name
+            }}"/><br/>
     <!--image-->
     <label for = "image">Image: (optional)</label>
     <input type ="text" name="image"/><br/>
-    <input type = "submit" value="Update" name = "update"/>
+    <input type="submit" value="Update"/>
     <a href='/cleanups/{{ cleanup.id }}'>Cancel</a>
     </form>
 </div>

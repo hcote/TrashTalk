@@ -8,10 +8,15 @@ and open the template in the editor.
 
 {%block content%}
     <h3>{{cleanup.street_number}} {{cleanup.street_name}}</h3>
-    <img src = "{{cleanup.image}}"
-             alt="Photograph"
-             style = "width:150px;height:150px;">
-
+{#    <img src = "{{cleanup.image}}"#}
+{#             alt="Photograph"#}
+{#             style = "width:150px;height:150px;">#}
+    <iframe
+          width="600"
+          height="450"
+          frameborder="0" style="border:0"
+          src="{{ gmap }}{{ cleanup.gmap_query }}" allowfullscreen>
+    </iframe>
     <ul>
         <li>Organizer: {{cleanup.host.username}}</li>
         <li>Date: {{cleanup.date}}</li>

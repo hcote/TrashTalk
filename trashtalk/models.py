@@ -1,13 +1,17 @@
+from psycopg2 import DataError as Psyco_Data_Error
 from sqlalchemy import (create_engine, func, DateTime,
                         Column, Date, Time, Integer,
                         Numeric, ForeignKey, String,
                         Text, Boolean, Table)
+from sqlalchemy.exc import DataError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, scoped_session
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from trashtalk.constants import (DEFAULT_CITY, DEFAULT_STATE,
+                                 STATE_CODE_MAP, COUNTRY_CODE_MAP)
 from trashtalk.settings import app
-
+from trashtalk.utils import Point
 
 # DATABASE CONFIGURATION
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo=False)
@@ -59,14 +63,43 @@ class Model(Base):
     created = Column(DateTime, default=func.now())
 
     def save(self):
-        db_session.add(self)
-        db_session.commit()
+        """
+        Stores model instances. If any errors occur, rollback the change.
 
-    def update(self, data):
-        for k, v in data.items():
-            if k in self.fields:
-                setattr(self, k, v)
-        self.save()
+        :return:
+        """
+        try:
+            db_session.add(self)
+            db_session.commit()
+        except (DataError, Psyco_Data_Error):
+            app.logger.exception("Failed to save.")
+            db_session.rollback()
+
+    def update(self, **attrs):
+        """
+        Updates a model instance by checking for changes in attributes. Will only
+        update changes.
+
+        :param attrs: `dict`, updated attributes
+        :return:
+        """
+        app.logger.info("Updating model: %s | %s", self.id, attrs)
+        try:
+            for k, v in attrs.items():
+                app.logger.info("Model attr: %s\nval: %s", k, v)
+                if hasattr(self, k) and not v == getattr(self, k):
+                    if v == '':
+                        setattr(self, k, None)
+                    else:
+                        setattr(self, k, v)
+                else:
+                    app.logger.info("Skipping attr: %s", k)
+                    continue
+        except:
+            app.logger.exception("Could not update Cleanup.")
+            db_session.rollback()
+        else:
+            self.save()
 
 
 class Cleanup(Model):
@@ -75,30 +108,56 @@ class Cleanup(Model):
     """
 
     __tablename__ = 'cleanups'
-    fields = ['date', 'start_time', 'end_time',
-              'street_number', 'street_name', 'image',
-              'city', 'lat', 'lng', 'address', 'html_url', 'participants']
 
     # Input at creation by user
+    name = Column(String(250))  # Optional; defaults to location address
+    description = Column(Text)
     date = Column(Date, nullable=False)
     start_time = Column(Time, nullable=False)
     end_time = Column(Time, nullable=False)
-    street_number = Column(Integer, nullable=False)
+    street_number = Column(Integer)
+    # Issue #11 -- Should users always input the cross streets?
     street_name = Column(String(250), nullable=False)
+    cross_street_name = Column(String(250), nullable=False)
     image = Column(Text, default='default_broom.png')  # Optional input
 
     # Program Assigned
     host_id = Column(Integer, ForeignKey('users.id'))
-    city = Column(String(250))
+    location_id = Column(Integer, ForeignKey('locations.id'))
+    # TODO: Issue #14 - Move all location data to the Location model
+    city = Column(String(250), default=DEFAULT_CITY)
+    state = Column(String(250), default='California')
+    zipcode = Column(String(10))
+    county = Column(String(250))
+    district = Column(String(250))
+    country = Column(String(250))
     lat = Column(Numeric(10, 7))
     lng = Column(Numeric(10, 7))
-    address = Column(Text)  # Set after geopy call
     html_url = Column(Text)  # Set after seeclickfix call
 
     # Many to Many: Cleanup and Participants, part 2 of 3
     participants = relationship('User',
                                 secondary=participants_table,
                                 backref='cleanups_participated')
+
+    def __str__(self):
+        return "Cleanup at {0}".format(self.location)
+
+    @property
+    def gmap_query(self):
+        """For cross street queries."""
+        if self.cross_street_name:
+            return "{0}:{1}, {2}".format(self.street_name, self.cross_street_name, self.city)
+
+    @property
+    def address(self):
+        # TODO: Issue #14 - Change to self.location.attr_name
+        return "{0} {1}, {2} {3} {4}".format(self.street_name, self.cross_street_name,
+                                             self.city, self.state, self.zipcode)
+
+    def check_name(self):
+        if not self.name:
+            self.name = self.location
 
 
 class User(Model):
@@ -140,11 +199,62 @@ class User(Model):
         return False
 
 
+class Location(Model):
+    __tablename__ = 'locations'
+
+    street = Column(String(250))
+    cross_street = Column(String(250))
+    city = Column(String(250), default=DEFAULT_CITY)
+    state = Column(String(250), default=DEFAULT_STATE)
+    zipcode = Column(String(10))
+    county = Column(String(250))
+    district = Column(String(250))
+    country = Column(String(250))
+    latitude = Column(Numeric(10, 7))
+    longitude = Column(Numeric(10, 7))
+
+    cleanups = relationship('Cleanup', backref='location')
+
+    def __str__(self):
+        return "{0} {1}, {2}".format(self.street, self.cross_street, self.city)
+
+    @property
+    def coordinates(self):
+        return Point(self.latitude, self.longitude)
+
+    @property
+    def state_code(self):
+        if not self.has_state_code():
+            return STATE_CODE_MAP[self.state]
+        return self.state
+
+    @property
+    def country_code(self):
+        if not self.has_country_code():
+            self.country = COUNTRY_CODE_MAP[self.country]
+        return self.country
+
+    def has_country_code(self):
+        return len(self.country) < 3
+
+    def has_state_code(self):
+        return len(self.state) < 3
+
+
 # Migration utilities
 # Use to update current database entries to reflect model changes.
 def add_default_images(img):
-    cleanups = db_session.query(Cleanup).filter(Cleanup.image == None)
+    """Add default images to cleanups for which no image was provided."""
+    cleanups = db_session.query(Cleanup).filter(Cleanup.image == '')
     for cleanup in cleanups:
         cleanup.image = img
-    db_session.add_all(cleanups)
+        db_session.add(cleanup)
+    db_session.commit()
+
+
+def add_default_city(city):
+    objs = db_session.query(Cleanup).filter(Cleanup.city == '')
+    for o in objs:
+        o.city = city
+        db_session.add(o)
     db_session.commit()
