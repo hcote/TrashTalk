@@ -1,9 +1,8 @@
-from psycopg2 import DataError as Psyco_Data_Error
 from sqlalchemy import (create_engine, func, DateTime,
                         Column, Date, Time, Integer,
                         Numeric, ForeignKey, String,
                         Text, Boolean, Table)
-from sqlalchemy.exc import DataError
+from sqlalchemy.exc import DataError, DatabaseError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, scoped_session
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -71,7 +70,7 @@ class Model(Base):
         try:
             db_session.add(self)
             db_session.commit()
-        except (DataError, Psyco_Data_Error):
+        except (DataError, DatabaseError):
             app.logger.exception("Failed to save.")
             db_session.rollback()
 
@@ -95,11 +94,20 @@ class Model(Base):
                 else:
                     app.logger.info("Skipping attr: %s", k)
                     continue
-        except:
+        except (DataError, DatabaseError):
             app.logger.exception("Could not update Cleanup.")
             db_session.rollback()
         else:
             self.save()
+
+    def delete(self):
+        try:
+            db_session.delete(self)
+            db_session.commit()
+        except DatabaseError:
+            app.logger.exception("Delete Cleanup failed: %s", self.id)
+        else:
+            app.logger.info("Cleanup deleted successfully")
 
 
 class Cleanup(Model):
@@ -115,24 +123,11 @@ class Cleanup(Model):
     date = Column(Date, nullable=False)
     start_time = Column(Time, nullable=False)
     end_time = Column(Time, nullable=False)
-    street_number = Column(Integer)
-    # Issue #11 -- Should users always input the cross streets?
-    street_name = Column(String(250), nullable=False)
-    cross_street_name = Column(String(250), nullable=False)
     image = Column(Text, default='default_broom.png')  # Optional input
 
     # Program Assigned
     host_id = Column(Integer, ForeignKey('users.id'))
     location_id = Column(Integer, ForeignKey('locations.id'))
-    # TODO: Issue #14 - Move all location data to the Location model
-    city = Column(String(250), default=DEFAULT_CITY)
-    state = Column(String(250), default='California')
-    zipcode = Column(String(10))
-    county = Column(String(250))
-    district = Column(String(250))
-    country = Column(String(250))
-    lat = Column(Numeric(10, 7))
-    lng = Column(Numeric(10, 7))
     html_url = Column(Text)  # Set after seeclickfix call
 
     # Many to Many: Cleanup and Participants, part 2 of 3
@@ -146,14 +141,17 @@ class Cleanup(Model):
     @property
     def gmap_query(self):
         """For cross street queries."""
-        if self.cross_street_name:
-            return "{0}:{1}, {2}".format(self.street_name, self.cross_street_name, self.city)
+        if self.location and self.location.cross_street:
+            return "{0}:{1}, {2}".format(self.location.street,
+                                         self.location.cross_street, self.city)
+        else:
+            return self.address
 
     @property
     def address(self):
-        # TODO: Issue #14 - Change to self.location.attr_name
-        return "{0} {1}, {2} {3} {4}".format(self.street_name, self.cross_street_name,
-                                             self.city, self.state, self.zipcode)
+        return "{0} {1}, {2} {3}".format(self.location.street,
+                                         self.location.city, self.location.state,
+                                         self.location.zipcode)
 
     def check_name(self):
         if not self.name:
@@ -202,6 +200,7 @@ class User(Model):
 class Location(Model):
     __tablename__ = 'locations'
 
+    number = Column(String)
     street = Column(String(250))
     cross_street = Column(String(250))
     city = Column(String(250), default=DEFAULT_CITY)
@@ -217,6 +216,10 @@ class Location(Model):
 
     def __str__(self):
         return "{0} {1}, {2}".format(self.street, self.cross_street, self.city)
+
+    @property
+    def address(self):
+        return "{} {}".format(self.number, self.street)
 
     @property
     def coordinates(self):

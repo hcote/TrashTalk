@@ -20,7 +20,6 @@ def client():
     return app.test_client()
 
 
-@pytest.mark.skip
 @pytest.mark.usefixture('client')
 class TestTrashTalkView:
     """
@@ -39,10 +38,9 @@ class TestTrashTalkView:
         response = client.get('/signup')
         assert response.status_code == 200
 
-    @pytest.mark.skip('FIXME: Database connection issues on test.')
     def test_view_cleanups(self, client):
         response = client.get('/cleanups')
-        assert response.status_code == 200
+        assert response.status_code == 200 or 301
 
 
 @pytest.mark.skip

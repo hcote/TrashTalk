@@ -1,5 +1,6 @@
 from collections import namedtuple
 
+from geopy.exc import GeopyError, GeocoderQueryError, GeocoderParseError
 from geopy.geocoders import Nominatim, GoogleV3
 
 from flask import Flask
@@ -27,7 +28,7 @@ def drop_db():
     app.logger.info("Database tables dropped.")
 
 
-def get_location(street_number, street_name, city):
+def get_location(address):
     """
     Return full location data for given address. Requires a full address.
 
@@ -38,16 +39,23 @@ def get_location(street_number, street_name, city):
     :param city: `str`, Defaults to Oakland
     :return: `namedtuple`, `Place` with full location data
     """
-    address = "%s %s %s" % (street_number, street_name, city)
-
-    res = geolocator.geocode(address)
-    app.logger.info("Geolocator successful!")
-    location = res.address.split(',')
-    app.logger.info("Location: %s", location)
-    return Place(name=location[0], number=location[1], street=location[2],
-                 district=location[3], city=location[4], county=location[5],
-                 state=location[6], zipcode=location[7], country=location[8],
-                 latitude=res.latitude, longitude=res.longitude)
+    try:
+        res = geolocator.geocode(' '.join(address))
+    except (GeocoderQueryError, GeopyError):
+        app.logger.exception("Geopy error.")
+        raise
+    else:
+        app.logger.info("Geolocator successful!: %s", address)
+        location = res.address.split(',')
+        if len(location) == 7:
+            # Locations should only be of length 7 or 9
+            # Handle for missing name and building number
+            location.insert(0, None) * 2
+        app.logger.info("Location: %s", location)
+        return Place(name=location[0], number=location[1], street=location[2],
+                     district=location[3], city=location[4], county=location[5],
+                     state=location[6], zipcode=location[7], country=location[8],
+                     latitude=res.latitude, longitude=res.longitude)
 
 
 def get_area(street_name, cross_street, city):

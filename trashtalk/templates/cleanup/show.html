@@ -8,9 +8,13 @@ and open the template in the editor.
 
 {%block content%}
     <h3>{{cleanup.street_number}} {{cleanup.street_name}}</h3>
+{# TODO: Block image to the left of description and below Google Map   #}
 {#    <img src = "{{cleanup.image}}"#}
 {#             alt="Photograph"#}
 {#             style = "width:150px;height:150px;">#}
+
+{#  GOOGLE MAPS IFRAME  #}
+{#  The map will only display from designated IP addresses.   #}
     <iframe
           width="600"
           height="450"
