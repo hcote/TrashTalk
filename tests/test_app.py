@@ -1,11 +1,11 @@
 import pytest
 
-from trashtalk import app
+from trashtalk.factories import app_factory
 from .factories import *
 
 
 @pytest.fixture(scope='module')
-def client():
+def client(request):
     """
     `Fixture`_ to configure testing client for view requests.
     .. _link: https://docs.pytest.org/en/latest/builtin.html#fixtures-and-requests
@@ -15,8 +15,15 @@ def client():
     
     http://flask.pocoo.org/docs/0.12/config
     """
+    app = app_factory('trashtalk.settings.Testing')
     app.testing = True
-    app.config.from_object('trashtalk.settings.Testing')
+    # app.config.from_object('trashtalk.settings.Testing')
+
+    def teardown():
+        db_session.remove()
+        db_session.drop_all()
+
+    request.addfinalizer(teardown)
     return app.test_client()
 
 
@@ -60,13 +67,13 @@ class TestUserLogin:
         client.get('/logout')
 
     def test_unauthorized_user(self, client):
-        response = client.get('/users')
+        response = client.get('/users/1')
         assert response.status_code == 403
 
     def test_signup_registration(self, client):
         response = client.post('/register', data={'username': 'test',
-                                                        'password': 'password',
-                                                        'confirm_password': 'password'})
+                                                  'password': 'password',
+                                                  'confirm_password': 'password'})
         assert response.status_code == 201
 
 

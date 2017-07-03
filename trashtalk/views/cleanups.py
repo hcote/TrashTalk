@@ -14,16 +14,15 @@ from trashtalk.input_handling import *
 from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
 from trashtalk.utils import get_location#, get_area
 
-
 html_constants = HtmlConstants()
 
-cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
-                    template_folder='templates', static_folder='../static')
+bp = Blueprint('cleanups', __name__, url_prefix='/cleanups',
+               template_folder='templates', static_folder='../static')
 
 # TODO: Issue #16 - Test refactor with DB connection
 
 
-@cleanup.route('/')
+@bp.route('/')
 def get_all():
     """
     Display full list of cleanups.
@@ -43,7 +42,7 @@ def get_all():
                                 default_image_path = html_constants.default_image_path)
 
 
-@cleanup.route('/<int:cleanup_id>')
+@bp.route('/<int:cleanup_id>')
 def get(cleanup_id):
     """
     Render current clean-up template.
@@ -70,7 +69,7 @@ def get(cleanup_id):
                            google_maps_key = '')
 
 
-@cleanup.route('/new')
+@bp.route('/new')
 def new():
     """
     Render template form for creating a new `Cleanup`. POSTs to cleanups/create
@@ -87,7 +86,7 @@ def new():
                            text_pattern = html_constants.text_pattern)
 
 
-@cleanup.route('/<int:cleanup_id>/edit')
+@bp.route('/<int:cleanup_id>/edit')
 @login_required
 def edit(cleanup_id):
     """
@@ -113,7 +112,7 @@ def edit(cleanup_id):
                            time_placeholder = html_constants.time_placeholder)
 
 
-@cleanup.route('/<int:cleanup_id>', methods=['POST']) #PUT, 'DELETE'
+@bp.route('/<int:cleanup_id>', methods=['PUT', 'DELETE'])
 def update(cleanup_id):
     """
     Create, update or delete a `Cleanup`
@@ -151,7 +150,7 @@ def update(cleanup_id):
         return redirect(url_for('cleanups.get_all'))
 
 
-@cleanup.route('/create', methods=["POST"])
+@bp.route('/create', methods=["POST"])
 @login_required
 def create():
     """
@@ -191,7 +190,7 @@ def create():
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
-@cleanup.route('/join', methods=["POST"])
+@bp.route('/<int:cleanup_id>/delete', methods=["POST"])
 @login_required
 def join():
     """
@@ -205,7 +204,7 @@ def join():
     return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@cleanup.route('/leave', methods=["POST"])
+@bp.route('/join', methods=["POST"])
 @login_required
 def leave():
     """
@@ -219,7 +218,7 @@ def leave():
     return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@cleanup.route('/advertise/<id>')
+@bp.route('/advertise/<id>')
 @login_required
 def send_to_scf(id):
     """

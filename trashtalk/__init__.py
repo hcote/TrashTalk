@@ -1,5 +1,15 @@
-import os
+"""
+Trashtalk App
+-------------
 
+For more information, see README.md for the application. Default configuration is
+Development.
+
+Create Instance: See factories.py `app_factory` which contains init processes
+Configuration: See settings.py for all configuration options and env variables
+Running App: See run.py for all runtime options
+
+"""
 from flask import Flask
 from flask_login import LoginManager
 
@@ -13,8 +23,7 @@ login_manager.init_app(app)
 # Default configuration is development!
 # Override with config.from_envvar('APP_ENV_VAR')
 # http://flask.pocoo.org/docs/0.12/config/#configuring-from-files
-config = os.getenv('APP_ENV', 'trashtalk.settings.Development')
-app.config.from_object(config)
+app.config.from_object('trashtalk.settings.Development')
 
 # Must import for views to load!
 from trashtalk import views

@@ -10,3 +10,5 @@ class UserFactory(factory.alchemy.SQLAlchemyModelFactory):
 
     username = factory.Sequence(lambda n: 'TestUser %s' % n)
     password = 'password'
+    authenticated = True
+    email = factory.Sequence(lambda n: 'useremail%s' % n)

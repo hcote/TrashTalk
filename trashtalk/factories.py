@@ -1,4 +1,52 @@
+from flask import Flask
+from werkzeug.utils import find_modules, import_string
+
+from trashtalk import login_manager
 from trashtalk.models import *
+
+
+def app_factory(config_obj):
+    """
+    Create a new application instance.
+    :param config_obj: `str` with dot notation (ex. 'app.settings.Production')
+    :return: `Flask` app object
+    """
+    app = Flask(__name__)
+    app.config.from_object(config_obj)
+
+    # Initialize modules
+    init_db(app)
+    login_manager.init_app(app)
+
+    # Register all blueprints
+    register_all_blueprints(app)
+
+    # Return application process
+    return app
+
+
+def register_all_blueprints(app):
+    """
+    Searches the Views directory for blueprints and registers them.
+
+    All views must have a `bp` attribute whose value is a Blueprint(). Ex.:
+        `bp = Blueprint('my_view', __name__)`
+
+    It will not be registered with the current application unless it has
+    this attribute!
+
+    :param app: The application for registration
+    :return:
+    """
+    for view in find_modules('trashtalk.views'):
+        mod = import_string(view)
+        uniq = set()
+        if hasattr(mod, 'bp'):
+            # Avoid duplicate imports
+            if mod not in uniq:
+                uniq.add(mod)
+                app.register_blueprint(mod.bp)
+    app.logger.info("Blueprints registered.")
 
 
 def location_factory(data):
@@ -6,15 +54,6 @@ def location_factory(data):
         number=data.get('address'),
         latitude=data.get('latitude'),
         longitude=data.get('longitude')
-        # number=data.get('number'),
-        # street=data.get('street'),
-        # cross_street=data.get('cross_street'),
-        # city=data.get('city'),
-        # state=data.get('state'),
-        # zipcode=data.get('zipcode'),
-        # county=data.get('county'),
-        # district=data.get('district'),
-        # country=data.get('country')
     )
     location.save()
     return location
@@ -31,17 +70,8 @@ def cleanup_factory(data):
         date=data.get('date'),
         start_time=data.get('start_time'),
         end_time=data.get('end_time'),
-        #street_name=data.get('street_name'),
-        #street_number=data.get('street_number'),
-        #cross_street_name=data.get('cross_street_name'),
         image=data.get('image'),
-        host=data.get('host')#, added variable
-        #city=data.get('city'),
-        #state=data.get('state'),
-        #zipcode=data.get('zipcode'),
-        #county=data.get('county'),
-        #district=data.get('district'),
-        #country=data.get('country'),
+        host=data.get('host')
     )
     print("Image: ",data.get('image'))
     cleanup.save()
