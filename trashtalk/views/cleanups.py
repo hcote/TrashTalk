@@ -206,7 +206,7 @@ def send_to_pw(id):
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
     host = db_session.query(User).filter(User.id == cleanup.host_id).first()
 
-    num_participants = len(cleanup.participants))
+    num_participants = len(cleanup.participants)
     data = [str(host.username), str(host.email), str(cleanup.start_time), num_participants]
     print(data) #Sanity Check
     send_to_sheet(data) #Very slow function
