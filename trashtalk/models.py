@@ -200,7 +200,7 @@ class User(Model):
 class Location(Model):
     __tablename__ = 'locations'
 
-    number = Column(String)
+    number = Column(String(250))
     street = Column(String(250))
     cross_street = Column(String(250))
     city = Column(String(250), default=DEFAULT_CITY)
