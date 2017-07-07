@@ -42,7 +42,7 @@ and open the template in the editor.
                 {%else%}
                 <a href='/advertise/{{cleanup.id}}'>Advertise on SeeClickFix</a>
             {%endif%}
-            <a href="#">Submit to Public Works</a>
+            <a href="/cleanups/send_to_pw/{{cleanup.id}}">Submit to Public Works</a>
             <a href="/cleanups/{{ cleanup.id }}/edit">Edit Cleanup</a>
             <form action='/cleanups/{{ cleanup.id }}/delete' method="post">
                 <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
