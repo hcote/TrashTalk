@@ -6,8 +6,13 @@
 <div align="center">
     <h3>Enter Clean Up Information Below:</h3>
     <form action = "/cleanups/create" method='post'>
-    <input type="hidden" name="host_id" value="{{ user_id }}"/><br/>
     <input type="hidden" name="method" value="POST"/><br/>
+    {#    Event Name    #}
+    <label for="name">Event Title:</label>
+    <input type="text" name="name"><br/>
+    {#    Description   #}
+    <label for="description">Description:</label>
+    <textarea name="description" cols="50" rows="4"></textarea><br/>
     <!--Date-->
     <label for="date">Date:</label>
     <input type="date" name="date"/><br/>
@@ -23,6 +28,8 @@
     <!--Street Name-->
     <label for="street_name">Street Name:</label>
     <input type="text" name="street_name"/><br/>
+    <label for="street_name">Cross Street Name:</label>
+    <input type="text" name="cross_street_name"/><br/>
     <!--image-->
     <label for = "image">Image: (optional)</label>
     <input type ="text" name="image"/><br/>

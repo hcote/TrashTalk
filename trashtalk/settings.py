@@ -3,10 +3,6 @@ import os
 
 from trashtalk import app  # Shortcut to get around circular import
 
-# Constants
-
-CITY = "Oakland, Ca"  # Oakland hard coded as city used later in geopy
-
 
 class Config(object):
     """
@@ -43,6 +39,9 @@ class Config(object):
                                                                             DB_PORT,
                                                                             DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
+    GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
+                           "&q=".format(GOOGLE_MAPS_KEY)
 
 
 class Development(Config):
