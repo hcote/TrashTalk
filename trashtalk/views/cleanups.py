@@ -9,7 +9,7 @@ from trashtalk.seeclickfix import postSCFix
 from trashtalk.google_sheets import send_to_sheet
 from trashtalk.constants import DEFAULT_GEOLOC
 from trashtalk.factories import cleanup_factory, location_factory
-from trashtalk.models import Cleanup, db_session
+from trashtalk.models import Cleanup, User, Location, db_session
 from trashtalk.utils import get_location
 
 
@@ -205,12 +205,16 @@ def send_to_pw(id):
     """
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
     host = db_session.query(User).filter(User.id == cleanup.host_id).first()
-
-    num_participants = len(cleanup.participants)
-    data = [str(host.username), str(host.email), str(cleanup.start_time), num_participants]
-    print(data) #Sanity Check
+    location = db_session.query(Location).filter(Location.id == cleanup.location_id).first()
+    
+    num_participants = len(cleanup.participants)+1#Add, Addition of Host
+    start_end_times = '%s - %s' % (cleanup.start_time, cleanup.end_time)
+    data = [host.username, "User Address", host.email, "phone number", location.address, "Illegal Dumping",
+                num_participants, cleanup.date, start_end_times, "Debris Plan","Tool pickup date and time",
+                "Tool drop off date and time", "Staff Contact"]
+    
     send_to_sheet(data) #Very slow function
-
+    
     return render_template("cleanup/send_to_pw.html",
                            section = 'Send to Public Works')
 
