@@ -6,10 +6,12 @@ from flask_login import current_user
 from geopy.exc import GeopyError
 
 from trashtalk.seeclickfix import postSCFix
+from trashtalk.google_sheets import send_to_sheet
 from trashtalk.constants import DEFAULT_GEOLOC
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session
 from trashtalk.utils import get_location
+
 
 cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                     template_folder='templates', static_folder='../static')
@@ -192,3 +194,25 @@ def send_to_scf(id):
     db_session.add(cleanup)
     db_session.commit()
     return redirect(url_for('cleanup', id=id))
+  
+@cleanup.route('/send_to_pw/<id>')
+@login_required
+def send_to_pw(id):
+    """
+    send clean-up data to Public Works google sheet
+    :param id:
+    :return:
+    """
+    cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
+    host = db_session.query(User).filter(User.id == cleanup.host_id).first()
+
+    num_participants = len(cleanup.participants))
+    data = [str(host.username), str(host.email), str(cleanup.start_time), num_participants]
+    print(data) #Sanity Check
+    send_to_sheet(data) #Very slow function
+
+    return render_template("cleanup/send_to_pw.html",
+                           section = 'Send to Public Works')
+
+  
+  
