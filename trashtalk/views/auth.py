@@ -57,9 +57,9 @@ def logout():
     user.authenticated = False  # SQL update
     user.save()
     logout_user()  # Flask Update
-
-    # Next Step: May be better to return to homepage
-    return render_template("logout.html", section="Log out")
+    
+    #Return to Homepage
+    return redirect(url_for("welcome"), code=200)
 
 
 @auth.route('/register', methods=['POST'])
