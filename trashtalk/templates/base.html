@@ -5,40 +5,83 @@ Outline for rest of the webpage
 <html>
     <head>
         <style>
+            body{
+                background-color: #ffffff;
+                font-family: "Georgia", Georgia, serif;
+            }
             div.container{
                 width: 100%;
                 border: 1px solid gray;
+                background-color: #918888;
             }
-            
+            input{
+                padding:5px;
+                border:2px solid #ccc;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
+
+            input:focus {
+                border-color:#333;
+            }
+
+            input[type=submit] {
+                padding:5px 15px;
+                background:#ccc;
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
             header, footer{
                 padding:1em;
-                color: white;
-                background-color: black;
+                color: #ffffff;
+                background-color: #514B4B;
                 clear:left;
                 text-align: center;
+
             }
-            
+
             nav.one{
                 float:top;
+                background-color: #918888;
             }
-            
+
+            a.base:link, a.base:visited{
+                color: #ffffff;
+                background-color: #514B4B;
+                margin: 1px 1px 1px 1px;
+                position: relative;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                padding: 14px 14px;
+                border-radius: 5px;
+            }
+
+            a.base:hover, a.base:active{
+                background-color: #cecaca;
+                border-radius: 5px;
+            }
+
             nav.two{
                 float:left;
+                background-color: #918888;
                 max-width: 240px;
                 margin:0;
-                padding: 1em;                
+                padding: 1em;
             }
-            
+
             nav ul a {
                 text-decoration: none;
             }
-            
+
             article{
                 margin-left: 250px;
                 border-left: 1px solid gray;
                 padding: 1em;
                 overflow: hidden;
-            }
+            }            
         </style>
         <title>Trash Talk: {{section}}</title>
         <meta charset="windows-1252">
@@ -52,11 +95,11 @@ Outline for rest of the webpage
         <div class="container">
             <nav class="one">
                 <a href="/">Home</a>
-                {%if current_user.authenticated%}
+<!--                 {%if current_user.authenticated%}
                 <a href="/logout">Log out</a>
                 {%else%}
                 <a href='/'>Log in</a>
-                {%endif%}
+                {%endif%} -->
             </nav>
         </div>
         
