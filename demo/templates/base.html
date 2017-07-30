@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+Outline for rest of the webpage
+-->
+<html>
+    <head>
+        <style>
+            .display_tool > div {
+                display: none
+            }
+            .display_tool > div:first-child {
+                display: block
+
+            }
+            .display_tool > div:hover + div {
+                position:fixed;
+                border: 5px solid black;
+                right:50px;
+                bottom:300px;
+                display: block;
+
+            }
+
+            img.image_tool{
+                <!--width:300px;-->
+                <!--height:300px;-->
+            }
+
+            body{
+                <!--background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.1) 50%),-->
+                        <!--url("/static/images/defaults/lost_places.jpg");-->
+                opacity: 0.8;
+                <!--&lt;!&ndash;background-color: #d9d9d9;&ndash;&gt;-->
+                font-family: "Georgia", Georgia, serif;
+            }
+
+            p.single_cleanup{
+                color: black;
+                text-align: left;
+            }
+
+            div.container{
+                width: 100%;
+                border: 1px solid gray;
+                background-color: #918888;
+                border-radius: 5px;
+            }
+            input{
+                padding:5px;
+                border:2px solid #ccc;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+                 margin: 2px, 2px, 2px, 2px
+            }
+
+            input:focus, input:hover {
+                border-color:#333;
+            }
+
+            input[type=submit] {
+                padding:5px 15px;
+                background:#ccc;
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
+
+            input[type=submit]:hover{
+                background:#fff
+            }
+
+            input.tool_count{
+                padding:1px;
+                border-radius: 2px;
+                margin: 1px, 1px, 1px, 1px;
+                width: 40px;
+            }
+            header, footer{
+                padding:1em;
+                color: #ffffff;
+                background-color: #002266;
+                clear:left;
+                border-radius: 5px;
+            }
+
+
+
+            a.base:link, a.base:visited{
+                color: #ffffff;
+                background-color: #514B4B;
+                margin: 1px 1px 1px 1px;
+                position: relative;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                padding: 14px 14px;
+                border-radius: 5px;
+            }
+
+            a.base:hover, a.base:active{
+                background-color: #cecaca;
+                border-radius: 5px;
+            }
+
+            a.support:link, a.support:visited{
+                color: #514b4b;
+                margin: 1px 1px 1px 1px;
+
+            }
+
+            a.support:hover, a.support:active{
+                text-decoration: none;
+            }
+            nav.one{
+                float:top;
+                background-color: #ff5c33;
+                border-radius: 5px;
+                height: 100%;
+                width: 80%;
+            }
+            nav.two{
+                float:left;
+                background-color: #ff5c33;
+                <!--max-width: 240px;-->
+                margin:0;
+                padding: 1em;
+                border-radius: 5px;
+                height: 100%;
+                width: 20%;
+            }
+
+            nav ul a {
+                text-decoration: none;
+            }
+
+            article{
+                background-color: #ffffff;
+                margin-left: 250px;
+                border-left: 1px solid grey;
+                padding: 1em;
+                overflow: hidden;
+                height: 100%;
+            }
+        </style>
+        <title>Trash Talk: {{section}}</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <header style="text-align: center;">
+            <h1>Trash Talk</h1>
+        </header>
+
+        <div class ="container">
+            <nav class='two'>
+                <a href='/cleanups' class="base">All Oakland Cleanups</a></br>
+                {%if current_user.authenticated%}
+                    <a href="/users/{{ current_user.id }}/cleanups" class="base">My Cleanups</a><br/>
+                    <a href="/cleanups/new" class="base">Create New Cleanup</a><br/>
+                    <!--<a href="/users/{{ current_user.id }}" class="base">Notifications</a><br/>-->
+                <!--Change #2-->
+                    <a href="/users/{{current_user.id}}/edit" class="base">Edit Profile</a><br/>
+                    <a href="/logout" class="base">Log out</a>
+                {%else%}
+                    Want to create or join clean ups?</br>
+                    <form action ="/login" method ="POST">
+                        <input type="text" name="username" placeholder="Username"><br>
+                        <input type="password" name="password" placeholder="Password"><br>
+                        <input type="submit" value="Log in">
+                        <a href='/signup' class="support">Sign Up</a>
+                    </form>
+                {%endif%}
+            </nav>
+        </div>
+        <article>
+        {%block content%}{%endblock%}
+        </article>
+        <footer>
+            An Open Oakland Initiative
+            <img src="https://www.openoakland.org/wp-content/uploads/2017/01/OpenOakland-logo-inverted-1000.png"
+            alt="Open Oakland Logo" style="width 100px; height:25px; float:right;">
+        </footer>
+    </body>
+</html>

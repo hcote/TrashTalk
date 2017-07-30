@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, chotoolsools | Templates
+and open the template in the editor.
+-->
+{%extends 'base.html'%}
+{%block content%}
+<form action="/users/{{ current_user.id }}" method="post">
+    <input type="hidden" name="method" value="PUT">
+    <input type="email" name="email" placeholder="Update Email"><br />
+    <input type="password" name="password" placeholder="Update Password"><br />
+    <input type="submit" value="Update">
+    <a href='/cleanups' class="support">Cancel</a>
+</form>
+{%endblock%}

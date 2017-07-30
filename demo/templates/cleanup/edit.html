@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+
+{%block content%} 
+
+<div align="center">
+    <h3>Update Clean Up Information Below:</h3>
+    <form action = "/cleanups/{{ cleanup.id }}" method='post'>
+        <input type = "hidden" name="method" value="PUT"/>
+        <!--Date-->
+        <label for = "date">Date:</label>
+        <input type = "date" name="date" value="{{ cleanup.date }}"
+               pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+               placeholder="yyyy-mm-dd"/><br/>
+        <!--Start Time-->
+        <label for = "start_time">Start Time</label>
+        <input type = "time" name ="start_time" value="{{ cleanup.start_time }}"
+                pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])"
+                placeholder="hh:mm"/>
+        <select name="start_time_of_day">
+            <option value="am">am</option>
+            <option value="pm">pm</option>
+        </select><br/>
+        <!--End Time-->
+        <label for ="end_time">End Time</label>
+        <input type ="time" name ="end_time" value="{{ cleanup.end_time }}"
+               pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])"
+               placeholder="hh:mm"/>
+        <select name="start_time_of_day">
+            <option value="am">am</option>
+            <option value="pm">pm</option>
+        </select><br/>
+        <!--Street Number-->
+        <label for = "street_number">Street Number:</label>
+        <input type = "number" name ="street_number" min="1" value="{{ cleanup.street_number }}"
+                pattern="[0-9]{1,}"/><br/>
+        <!--Street Name-->
+        <label for = "street_name">Street Name:</label>
+        <input type = "text" name="street_name"  value="{{ cleanup.street_name }}" /><br/>
+        <label for="street_name">Cross Street Name:</label>
+        <input type="text" name="cross_street_name" value="{{ cleanup.cross_street_name
+                }}"/><br/>
+        <!--image hidden until functional-->
+        <!--<label for = "image">Image: (optional)</label>-->
+        <input type ="hidden" name="image"/><br/>
+        <input type="submit" value="Update"/>
+        <a href='/cleanups/{{ cleanup.id }}' class="support">Cancel</a>
+    </form>
+</div>
+
+{%endblock%}
