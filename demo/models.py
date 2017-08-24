@@ -86,7 +86,11 @@ class Model(Base):
         try:
             for k, v in attrs.items():
                 app.logger.info("Model attr: %s\nval: %s", k, v)
+                # print("outside v: s%" % v)
+                # print("outside k: s%" % k)
                 if hasattr(self, k) and not v == getattr(self, k):
+                    # print("inside v: s%" % v)
+                    # print("inside k: s%" % k)
                     if v == '':
                         setattr(self, k, None)
                     else:
@@ -129,6 +133,7 @@ class Cleanup(Model):
     host_id = Column(Integer, ForeignKey('users.id'))
     location_id = Column(Integer, ForeignKey('locations.id'))
     html_url = Column(Text)  # Set after seeclickfix call
+    notified_pw = Column(Boolean, default=False)
 
     # Many to Many: Cleanup and Participants, part 2 of 3
     participants = relationship('User',
