@@ -1,4 +1,6 @@
 from trashtalk.models import *
+from input_handling import twenty_four_time
+
 
 
 def location_factory(data):
@@ -21,15 +23,19 @@ def location_factory(data):
 
 
 def cleanup_factory(data):
+    #TDO-DO: Move to more appropriate location
+    twenty_four_start = twenty_four_time(data.get("start_time"), data.get("start_time_of_day"))
+    twenty_four_end = twenty_four_time(data.get("end_time"), data.get("end_time_of_day"))
 
     cleanup = Cleanup(
         #SQL does not currently handle the commented out values
+
         name=data.get('name'),
         description=data.get('description'),
         location=data.get('location'),
         date=data.get('date'),
-        start_time=data.get('start_time'),
-        end_time=data.get('end_time'),
+        start_time=twenty_four_start,
+        end_time=twenty_four_end,
         #street_name=data.get('street_name'),
         #street_number=data.get('street_number'),
         #cross_street_name=data.get('cross_street_name'),
