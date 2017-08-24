@@ -4,150 +4,12 @@ Outline for rest of the webpage
 -->
 <html>
     <head>
-        <style>
-            .display_tool > div {
-                display: none
-            }
-            .display_tool > div:first-child {
-                display: block
-
-            }
-            .display_tool > div:hover + div {
-                position:fixed;
-                border: 5px solid black;
-                right:50px;
-                bottom:300px;
-                display: block;
-
-            }
-
-            img.image_tool{
-                <!--width:300px;-->
-                <!--height:300px;-->
-            }
-
-            body{
-                <!--background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.1) 50%),-->
-                        <!--url("/static/images/defaults/lost_places.jpg");-->
-                opacity: 0.8;
-                <!--&lt;!&ndash;background-color: #d9d9d9;&ndash;&gt;-->
-                font-family: "Georgia", Georgia, serif;
-            }
-
-            p.single_cleanup{
-                color: black;
-                text-align: left;
-            }
-
-            div.container{
-                width: 100%;
-                border: 1px solid gray;
-                background-color: #918888;
-                border-radius: 5px;
-            }
-            input{
-                padding:5px;
-                border:2px solid #ccc;
-                -webkit-border-radius: 5px;
-                border-radius: 5px;
-                 margin: 2px, 2px, 2px, 2px
-            }
-
-            input:focus, input:hover {
-                border-color:#333;
-            }
-
-            input[type=submit] {
-                padding:5px 15px;
-                background:#ccc;
-                border:0 none;
-                cursor:pointer;
-                -webkit-border-radius: 5px;
-                border-radius: 5px;
-            }
-
-            input[type=submit]:hover{
-                background:#fff
-            }
-
-            input.tool_count{
-                padding:1px;
-                border-radius: 2px;
-                margin: 1px, 1px, 1px, 1px;
-                width: 40px;
-            }
-            header, footer{
-                padding:1em;
-                color: #ffffff;
-                background-color: #002266;
-                clear:left;
-                border-radius: 5px;
-            }
-
-
-
-            a.base:link, a.base:visited{
-                color: #ffffff;
-                background-color: #514B4B;
-                margin: 1px 1px 1px 1px;
-                position: relative;
-                text-align: center;
-                display: inline-block;
-                text-decoration: none;
-                padding: 14px 14px;
-                border-radius: 5px;
-            }
-
-            a.base:hover, a.base:active{
-                background-color: #cecaca;
-                border-radius: 5px;
-            }
-
-            a.support:link, a.support:visited{
-                color: #514b4b;
-                margin: 1px 1px 1px 1px;
-
-            }
-
-            a.support:hover, a.support:active{
-                text-decoration: none;
-            }
-            nav.one{
-                float:top;
-                background-color: #ff5c33;
-                border-radius: 5px;
-                height: 100%;
-                width: 80%;
-            }
-            nav.two{
-                float:left;
-                background-color: #ff5c33;
-                <!--max-width: 240px;-->
-                margin:0;
-                padding: 1em;
-                border-radius: 5px;
-                height: 100%;
-                width: 20%;
-            }
-
-            nav ul a {
-                text-decoration: none;
-            }
-
-            article{
-                background-color: #ffffff;
-                margin-left: 250px;
-                border-left: 1px solid grey;
-                padding: 1em;
-                overflow: hidden;
-                height: 100%;
-            }
-        </style>
-        <title>Trash Talk: {{section}}</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/static/stylesheets/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <title>Trash Talk: {{section}}</title>
     </head>
-    
+
     <body>
         <header style="text-align: center;">
             <h1>Trash Talk</h1>
@@ -175,6 +37,15 @@ Outline for rest of the webpage
             </nav>
         </div>
         <article>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message | safe }}</li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
         {%block content%}{%endblock%}
         </article>
         <footer>
