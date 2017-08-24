@@ -39,8 +39,8 @@ class Config(object):
                                                                             DB_PORT,
                                                                             DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    # GOOGLE_MAPS_KEY = os.getenv('AIzaSyDMeold0GdXPnkMODnsLfOox_VCpKGqS80')
-    GOOGLE_MAPS_KEY = os.getenv('AIzaSyAEdAvtIce7lgJwgRnL9FJbihvkDXO0nYI')
+    # GOOGLE_MAPS_KEY = os.getenv()
+    GOOGLE_MAPS_KEY = os.getenv('')
     GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
                            "&q=".format(GOOGLE_MAPS_KEY)
 
