@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, current_app, render_template, request, flash
 from flask import redirect, url_for
 from flask_login import login_required
 from flask_login import current_user
@@ -9,9 +9,13 @@ from trashtalk.seeclickfix import postSCFix
 from trashtalk.google_sheets import send_to_sheet
 from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
 from trashtalk.factories import cleanup_factory, location_factory
-from trashtalk.models import Cleanup, db_session
+from trashtalk.models import Cleanup, User, db_session
 from trashtalk.utils import get_location#, get_area
+from trashtalk.html_constants import HtmlConstants
 
+from trashtalk.input_handling import *
+
+html_constants = HtmlConstants()
 
 cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                     template_folder='templates', static_folder='../static')
@@ -46,11 +50,21 @@ def get(cleanup_id):
     :param cleanup_id:
     :return: show template
     """
+    # tf = db_session.query(Cleanup).filter(Cleanup.participants.id == current_user.id)
+    # tf_two= db_session.query(tf.exists())
+    # print("direct_check:", tf_two)
+
     cleanups = db_session.query(Cleanup).get(cleanup_id)
+    bool_participated =check_participants(current_user.id, cleanups.participants)
+
+
     return render_template("cleanup/show.html",
                            section="Cleanup",
                            cleanup=cleanups,
-                           gmap=current_app.config['GOOGLE_MAPS_ENDPOINT'])
+                           gmap=current_app.config['GOOGLE_MAPS_ENDPOINT'],
+                           start_time = twelve_hour_time(cleanups.start_time),
+                           end_time = twelve_hour_time(cleanups.end_time),
+                           bool_participated=bool_participated)
 
 
 @cleanup.route('/new')
@@ -76,11 +90,22 @@ def edit(cleanup_id):
     # TODO: Update form to include current values for current cleanup
     cleanups = db_session.query(Cleanup).get(cleanup_id)
     return render_template('cleanup/edit.html',
-                           cleanup=cleanups,
-                           section='Create Cleanup')
+                           section='Edit Cleanup',
+                           id=cleanups.id,
+                           date=cleanups.date,
+                           current_address=cleanups.location.number,
+                           start_time= hour_min_value(cleanups.start_time),
+                           start_time_of_day = am_pm_value(cleanups.start_time),
+                           end_time = hour_min_value(cleanups.end_time),
+                           end_time_of_day = am_pm_value(cleanups.end_time),
+                           description=cleanups.description,
+                           date_pattern = html_constants.date_pattern,
+                           date_placeholder = html_constants.date_placeholder,
+                           time_pattern = html_constants.time_pattern,
+                           time_placeholder = html_constants.time_placeholder)
 
 
-@cleanup.route('/<int:cleanup_id>', methods=['PUT', 'DELETE'])
+@cleanup.route('/<int:cleanup_id>', methods=['POST']) #PUT, 'DELETE'
 def update(cleanup_id):
     """
     Create, update or delete a `Cleanup`
@@ -88,13 +113,33 @@ def update(cleanup_id):
     :param cleanup_id:
     :return: redirects user to cleanups/ or cleanups/:id
     """
-    method = request.form['method']
+    cleanup_dict = request.form.to_dict()
+    method = cleanup_dict['method']
     cleanups = db_session.query(Cleanup).get(cleanup_id)
-    if method == 'PUT':
+    if method == 'POST': #PUT
         current_app.logger.debug("REQUEST FORM: %s", request.form)
-        cleanups.update(**request.form.to_dict())  # Exceptions handled by models.py
-        return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
+
+        start_time = twenty_four_time(cleanup_dict['start_time'],cleanup_dict['start_time_of_day'])
+        end_time = twenty_four_time(cleanup_dict['end_time'],cleanup_dict['end_time_of_day'])
+        cleanup_dict.update({"start_time": start_time, "end_time": end_time})
+
+        full_address=get_full_address(cleanup_dict)
+        try:
+            geoloc = get_location(full_address)
+        except:
+            current_app.logger.exception("There was an error finding location.")
+            flash("s%: Address not found" % full_address)
+            return redirect(url_for('cleanups.edit', cleanup_id=cleanup_id))
+        else:
+            location_dict = {"number": geoloc.address, "latitude": geoloc.latitude, "longitude": geoloc.longitude}
+            # edited_dict = edit_dict(request.form.to_dict())
+            cleanup_dict.pop("location",None)#Hack- location should be renamed, coming from HTML
+            cleanups.update(**cleanup_dict)
+            cleanups.location.update(**location_dict)
+            return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
+
     elif method == 'DELETE':
+        print("now deleting")
         cleanups.delete()
         return redirect(url_for('cleanups.get_all'))
 
@@ -116,77 +161,20 @@ def create():
     :return: redirect to cleanup/:id if successful, to cleanup/new if not
     """
     # TODO: Issue #9 - Prevent multiple accidental submissions (ex., when errors occur)
-    if request.form['location']=='cross_street':
-        full_address=("%s at %s, %s, %s") % (request.form['street_one'],request.form['street_two'],DEFAULT_CITY, DEFAULT_STATE)
-        print(full_address)
-
-    if request.form['location']=='address':
-        full_address = ("%s %s, %s, %s") % (request.form['street_number'], request.form['street_name'], DEFAULT_CITY, DEFAULT_STATE)
-        print(full_address)
-    geoloc=get_location(full_address)
-
-    location=location_factory(geoloc._asdict())
-    cleanup_data = request.form.copy()
-    cleanup_data['location']=location
-    cleanup_data['host']=current_user
-    new_cleanup=cleanup_factory(cleanup_data)
-    return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
-
-        # current_app.logger.debug("Address: %s", full_address)
-        # try:
-        #     geoloc = get_location(full_address)
-        #     location = location_factory(geoloc._asdict())
-        # except GeopyError:
-        #     db_session.rollback()
-        #     current_app.logger.exception("There was an error finding location.")
-        # else:
-        #     current_app.logger.debug("Cleanup data: %s", request.form.to_dict())
-        #     cleanup_data = request.form.copy()  # Copy immutable object for editing
-        #     cleanup_data['location'] = location
-        #     cleanup_data['host'] = current_user
-        #     new_cleanup = cleanup_factory(cleanup_data)
-        # # TODO: Issue #8 - Add condition for using cross street and Google geocoder
-        # return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
-
-        # try:
-        #     geoloc = get_area(request.form['street_one'],request.form['street_two'],DEFAULT_GEOLOC)
-        #
-        #     location = location_factory(geoloc._asdict())
-        # except GeopyError:
-        #     db_session.rollback()
-        #     current_app.logger.exception("There was an error finding location")
-        # else:
-        #     current_app.logger.debug("Cleanup data: %s", request.form.to_dict())
-        #     cleanup_data = request.form.copy()  # Copy immutable object for editing
-        #     cleanup_data['location'] = location
-        #     cleanup_data['host'] = current_user
-        #     new_cleanup = cleanup_factory(cleanup_data)
-        # return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
-    # return redirect(url_for('cleanups.new'))
-
-
-@cleanup.route('/<int:cleanup_id>/delete', methods=["POST"])
-@login_required
-def delete(cleanup_id):
-    """
-    Remove a clean-up. This requires:
-        - Remove the relation from the User (`User.cleanups`)
-        - Remove all participants from the Cleanup (`Cleanup.participants`)
-        - Remove the `Cleanup`
-
-    :param cleanup_id:
-    :return:
-    """
-    # TODO: Notify participants that clean-up was cancelled!
-    cleanups = db_session.query(Cleanup).get(cleanup_id)
-    # First delete the cleanup from the user's hosting roster
-    current_user.cleanups.remove(cleanups)
-    # Then, remove all participants from cleanup
-    cleanups.participants = []
-    # Finally remove the cleanup from SQL
-    db_session.delete(cleanups)
-    db_session.commit()
-    return redirect(url_for('cleanups.get_all'))
+    full_address= get_full_address(request.form.to_dict())
+    try:
+        geoloc = get_location(full_address)
+    except:
+        current_app.logger.exception("There was an error finding location.")
+        flash("s%: Address not found" % full_address)
+        return redirect(url_for('cleanups.new'))
+    else:
+        location=location_factory(geoloc._asdict())
+        cleanup_data = request.form.copy()
+        cleanup_data['location']=location
+        cleanup_data['host']=current_user
+        new_cleanup=cleanup_factory(cleanup_data)
+        return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
 @cleanup.route('/join', methods=["POST"])
@@ -194,12 +182,25 @@ def delete(cleanup_id):
 def join():
     """
     Users can join currently listed clean-up event.
-
     :return:
     """
     cleanup_id = request.form['cleanup_id']
     cleanups = db_session.query(Cleanup).get(cleanup_id)
     cleanups.participants.append(current_user)
+    cleanups.save()
+    return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
+
+
+@cleanup.route('/leave', methods=["POST"])
+@login_required
+def leave():
+    """
+    Users can join currently listed clean-up event.
+    :return:
+    """
+    cleanup_id = request.form['cleanup_id']
+    cleanups = db_session.query(Cleanup).get(cleanup_id)
+    cleanups.participants.remove(current_user)
     cleanups.save()
     return redirect(url_for('cleanups.get', cleanup_id=cleanups.id))
 
@@ -214,14 +215,14 @@ def send_to_scf(id):
     """
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
     print("Lat: %f, Address: %s" % (cleanup.lat, cleanup.address))  # Sanity Check
-    api_request = postSCFix(
-        cleanup)  # Function in SeeClickFix Module,interacts with SeeClickFix API
+    api_request = postSCFix(cleanup)  # Function in SeeClickFix Module,interacts with SeeClickFix API
     response = api_request.json()  # Contains Response from SeeClickFix
     issue_url = response['html_url']  # Important to distinguish site from api urls
     cleanup.html_url = issue_url  # Add to SQL database
     db_session.add(cleanup)
     db_session.commit()
     return redirect(url_for('cleanup', id=id))
+
 
 #  Start Coordination with Public Works
 @cleanup.route('/send_to_pw/<id>')
@@ -233,10 +234,10 @@ def send_to_pw(id):
                            section="Public Works",
                            id=id)
 
+
 #   Fill out and submit data to Public Works
 @cleanup.route('/send_to_pw_really/<id>', methods=["POST"])
 @login_required
-
 #Rename to emphasize actually coordination data
 def send_to_pw_really(id):
     """
@@ -246,6 +247,10 @@ def send_to_pw_really(id):
     """
     tool_data=request.form.copy()
     send_to_sheet(id, tool_data)  # Very slow function
+    cleanup = db_session.query(Cleanup).get(id)
+    cleanup.notified_pw=True
+    db_session.add(cleanup)
+    db_session.commit()
 
     return redirect(url_for('cleanups.get', cleanup_id=id))
     # return render_template("cleanup/show.html",
