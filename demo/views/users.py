@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
 
 from trashtalk import app
+from trashtalk.utils import status
 from trashtalk.models import User, db_session
 
 userbp = Blueprint('users', __name__,
@@ -16,8 +17,9 @@ def edit(user_id):
     :param user_id:
     :return:
     """
+    user = db_session.query(User).get(user_id)
     return render_template("user/edit.html",
-                           user=db_session.query(User).get(user_id))
+                           user_id=user.id)
 
 
 @userbp.route('/<int:user_id>', methods=['GET'])
@@ -28,8 +30,10 @@ def get(user_id):
     :param user_id:
     :return:
     """
-    return render_template('user/show.html',
-                           user=db_session.query(User).get(user_id))
+    user = db_session.query(User).get(user_id)
+    return render_template("user/show.html",
+                           username=user.username,
+                           email=user.email)
 
 
 @userbp.route('/<int:user_id>', methods=['POST', 'PUT', 'DELETE'])
@@ -52,27 +56,41 @@ def post(user_id):
     app.logger.info("Request method: %s", method)
     if method == 'PUT':
         app.logger.info("Process PUT")
-        if request.form['password']:
-            user.update_password(request.form['password'])
-        if request.form['email']:
-            user.email = request.form['email']
+        password = request.form['password']
+        if  password and (password == request.form['confirm_password']):
+            user.update_password(password)
+            flash("Password updated")
+        email = request.form['email']
+        if email:
+            user.email = email
+            flash("Email updated")
+        flash("No other values updated")
         db_session.add(user)
         db_session.commit()
-    if method == 'POST':
+        user = db_session.query(User).get(user_id)
+        return render_template("user/show.html",
+                               username= user.username,
+                               email = user.email)
+
+    elif method == 'POST':
         # create user
         app.logger.info("Create a user ...")
-    if method == 'DELETE':
+        user = db_session.query(User).get(user_id)
+        return render_template("user/show.html",
+                               username=user.username,
+                               email=user.email)
+    elif method == 'DELETE':
         delete(user_id)
-    return render_template("user/show.html",
-                           user=db_session.query(User).get(user_id))
+        return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
+    else:
+        return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
 
 
 def delete(user_id):
     """Delete account."""
-    user = db_session.query(User).get(user_id)
-    db_session.remove(user)
+    user = db_session.query(User).get(user_id).delete()
     db_session.commit()
-    return render_template("login.html")
+
 
 
 @userbp.route('/<int:user_id>/cleanups')
