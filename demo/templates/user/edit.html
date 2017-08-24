@@ -7,11 +7,21 @@ and open the template in the editor.
 -->
 {%extends 'base.html'%}
 {%block content%}
-<form action="/users/{{ current_user.id }}" method="post">
+<form action="/users/{{ user_id }}" method="post">
     <input type="hidden" name="method" value="PUT">
     <input type="email" name="email" placeholder="Update Email"><br />
-    <input type="password" name="password" placeholder="Update Password"><br />
+    <input type="password" name="password"
+           placeholder="Update Password"
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+           title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"><br />
+    <input type="password" name="confirm_password"
+           placeholder="Confirm Password"
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"/><br/>
     <input type="submit" value="Update">
     <a href='/cleanups' class="support">Cancel</a>
+</form>
+<form action="/users/{{ user_id }}" method="post">
+    <input type="hidden" name="method" value="DELETE">
+    <input type="submit" value="Delete">
 </form>
 {%endblock%}
