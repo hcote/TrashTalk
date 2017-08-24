@@ -1,6 +1,7 @@
 from flask import render_template
 
 from trashtalk import app
+from trashtalk.html_constants import HtmlConstants
 
 from .auth import auth
 from .cleanups import cleanup
@@ -18,6 +19,8 @@ app.register_blueprint(userbp)
 app.register_blueprint(cleanup)
 app.register_blueprint(auth)
 
+html_constants = HtmlConstants()
+
 
 # Public routes (no auth required)
 @app.route('/')
@@ -27,14 +30,11 @@ def welcome():
                            section='Home')
 
 
-@app.route('/error')
-def error():
-    """Error handling. HTML was never fully built."""
-    return render_template('error.html',
-                           section="Error")
-
-
 @app.route('/signup')
 def signup():
     return render_template("register.html",
-                           section="Sign up")
+                           section="Sign up",
+                           password_pattern = html_constants.password_pattern,
+                           password_title = html_constants.password_title,
+                           username_pattern = html_constants.username_pattern,
+                           username_title = html_constants.username_title)
