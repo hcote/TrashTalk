@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
+To change this template file, chotoolsools | Templates
 and open the template in the editor.
 -->
 {%extends "base.html"%}
 
-{%block content%} 
-    <h3>My Oakland Cleanups</h3>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Location</th>
-        </tr>
+{%block content%}
+    <h3>Hosted Clean-Ups</h3>
+    <div class="scroll">
+    {% for cleanup in my_cleanups %}
+        <div class="list_cleanups">
+            <img src = {{default_image_path}}{{cleanup.image}}
+                alt="Pretend this is a cool photo"
+                style = "width:150px;height:150px; "><br>
 
-        {% for cleanup in my_cleanups %}
+            <a href = '/cleanups/{{cleanup.id}}'class="support">{{cleanup.name}}: {{ cleanup.location.number }} {{cleanup.location.street}}</a></br>
 
-        <tr>
-            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.date }}</a></th>
-            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.address }}</a></th>
-        </tr>
-        
-        {% endfor %}
-    </table>
-    <h3>My Clean-up Participation</h3>
-{#    <table>#}
-{#        <tr>#}
-{#            <th>Date</th>#}
-{#            <th>Location</th>#}
-{#        </tr>#}
-{##}
-{#        {% for clean in cleanups %}#}
-{##}
-{#        <tr>#}
-{#            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.date }}</a></th>#}
-{#            <th><a href = '/cleanups/{{cleanup.id}}'>{{ cleanup.address }}</a></th>#}
-{#        </tr>#}
-{#        #}
-{#        {% endfor %}#}
-{#    </table>#}
-    <h3>Clean Ups {{current_user.username}} is participating in: </h3>
-    {%for cleanup in current_user.cleanups_participated%}
-        <a href = '/cleanups/{{cleanup.id}}'>{{cleanup.street_number}} {{cleanup.street_name}} {{cleanup.date}}</a><br>
-    {%endfor%}
+        </div>
+    {% endfor %}
+    </div>
+
+    <h3>Joined Cleanups</h3>
+    <div class="scroll">
+    {% for cleanup in current_user.cleanups_participated %}
+    <div class="list_cleanups">
+                <img src = {{default_image_path}}{{cleanup.image}}
+                    alt="Pretend this is a cool photo"
+                     style = "width:150px;height:150px; align:left;"></br>
+
+        <a href = '/cleanups/{{cleanup.id}}'class="support">{{cleanup.name}}: {{ cleanup.location.number }} {{cleanup.location.street}}</a></br>
+
+    </div>
+    {% endfor %}
+    </div>
 {%endblock%}

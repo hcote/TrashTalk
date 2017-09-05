@@ -4,124 +4,54 @@ Outline for rest of the webpage
 -->
 <html>
     <head>
-        <style>
-            body{
-                background-color: #ffffff;
-                font-family: "Georgia", Georgia, serif;
-            }
-            div.container{
-                width: 100%;
-                border: 1px solid gray;
-                background-color: #918888;
-            }
-            input{
-                padding:5px;
-                border:2px solid #ccc;
-                -webkit-border-radius: 5px;
-                border-radius: 5px;
-            }
-
-            input:focus {
-                border-color:#333;
-            }
-
-            input[type=submit] {
-                padding:5px 15px;
-                background:#ccc;
-                border:0 none;
-                cursor:pointer;
-                -webkit-border-radius: 5px;
-                border-radius: 5px;
-            }
-            header, footer{
-                padding:1em;
-                color: #ffffff;
-                background-color: #514B4B;
-                clear:left;
-                text-align: center;
-
-            }
-
-            nav.one{
-                float:top;
-                background-color: #918888;
-            }
-
-            a.base:link, a.base:visited{
-                color: #ffffff;
-                background-color: #514B4B;
-                margin: 1px 1px 1px 1px;
-                position: relative;
-                text-align: center;
-                display: inline-block;
-                text-decoration: none;
-                padding: 14px 14px;
-                border-radius: 5px;
-            }
-
-            a.base:hover, a.base:active{
-                background-color: #cecaca;
-                border-radius: 5px;
-            }
-
-            nav.two{
-                float:left;
-                background-color: #918888;
-                max-width: 240px;
-                margin:0;
-                padding: 1em;
-            }
-
-            nav ul a {
-                text-decoration: none;
-            }
-
-            article{
-                margin-left: 250px;
-                border-left: 1px solid gray;
-                padding: 1em;
-                overflow: hidden;
-            }            
-        </style>
-        <title>Trash Talk: {{section}}</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/static/stylesheets/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <title>Trash Talk: {{section}}</title>
     </head>
-    
+
     <body>
-        <header>
+        <header style="text-align: center;">
             <h1>Trash Talk</h1>
         </header>
-        <div class="container">
-            <nav class="one">
-                <a href="/">Home</a>
-<!--                 {%if current_user.authenticated%}
-                <a href="/logout">Log out</a>
-                {%else%}
-                <a href='/'>Log in</a>
-                {%endif%} -->
-            </nav>
-        </div>
-        
-        <div class ="container">
-            <nav class='two'>                
-                <a href='/cleanups'>Active Cleanups</a></br>
+
+        <div class ="main_menu">
+            <nav>
+                <a href='/cleanups'>All Oakland Cleanups</a>
                 {%if current_user.authenticated%}
-                    <a href="/users/{{ current_user.id }}">View Profile</a><br/>
-                    <a href="/users/{{current_user.id}}/edit">Edit Profile</a><br/>
-                    <a href="/cleanups/new">Create Clean up</a><br/>
-                    <a href="/users/{{ current_user.id }}/cleanups">My Clean-ups</a><br/>
+                    <a href="/users/{{ current_user.id }}/cleanups">My Cleanups</a>
+                    <a href="/cleanups/new">Create New Cleanup</a>
+                    <!--<a href="/users/{{ current_user.id }}" class="base">Notifications</a><br/>-->
+                <!--Change #2-->
+                    <a href="/users/{{current_user.id}}/edit">Edit Profile</a>
+                    <a href="/logout">Log out</a>
                 {%else%}
-                    Want to create or join clean ups?</br>
-                    <a href='/'>Log in</a></br>
-                    or 
-                    <a href='/signup'>Sign up</a>                                   
+                    Want to create or join clean ups?
+                    <form action ="/login" method ="POST">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="submit" value="Log in">
+                        <a href='/signup' class="support">Sign Up</a>
+                    </form>
                 {%endif%}
             </nav>
         </div>
         <article>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message | safe }}</li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
         {%block content%}{%endblock%}
         </article>
-        <footer>An Open Oakland Initiative</footer>
+        <footer>
+            An Open Oakland Initiative
+            <img src="https://www.openoakland.org/wp-content/uploads/2017/01/OpenOakland-logo-inverted-1000.png"
+            alt="Open Oakland Logo" style="width 100px; height:25px; float:right;">
+        </footer>
     </body>
 </html>
