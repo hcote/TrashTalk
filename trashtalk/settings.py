@@ -8,12 +8,12 @@ class Config(object):
     """
     Common configuration for all app instances and environments.
     Only add settings here which can be used in any environment.
-    
+
     NEVER ADD SECRETS OR KEYS TO THIS SECTION.
-    
+
     To use any Config object with Flask:
         - app.config.from_obj(path.to.config.Object)
-    
+
     Configurations can further be over written by applying another config on top:
         - app.config.from_envvar(NAME_OF_ENV_VAR)
         - The ENV_VAR should be a path to a .cfg or .py file
@@ -39,7 +39,7 @@ class Config(object):
                                                                             DB_PORT,
                                                                             DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
+    GOOGLE_MAPS_KEY = os.getenv('')
     GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
                            "&q=".format(GOOGLE_MAPS_KEY)
 
@@ -48,11 +48,19 @@ class Development(Config):
     """
     Settings specific to local development. You can use whatever database, settings and
     other tools and configure them here!
-    
+
     It's OK to add keys or secrets which are only used for your local environment.
     """
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
+
+    SQL_HOST = ""
+    SQL_PASSWORD = ""
+    SQL_IP_ADDRESS = ""
+    SQL_DATABASE = ""
+
+    # Access SQL
+    SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (SQL_HOST, SQL_PASSWORD, SQL_IP_ADDRESS, SQL_DATABASE))
 
 
 class Testing(Config):
@@ -77,7 +85,7 @@ class Testing(Config):
 class Production(Config):
     """
     Any settings should be set in the environment and requested  in this section.
-    
+
     Example:
         SECRET_KEY = os.getenv('SECRET_KEY')
     """

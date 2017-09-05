@@ -25,14 +25,15 @@ Base.query = db_session.query_property()
 def init_db():
     """
     Used to instantiate a new database. Must run from interpreter upon app setup!
-    
+
     Import all modules here that might define models so that
     they will be registered properly on the metadata.  Otherwise
     you will have to import them first before calling init_db()
-    
-    :return: 
+
+    :return:
     """
     Base.metadata.create_all(bind=engine)
+
 
 """
 About SQLAlchemy Models and Relationships
@@ -85,7 +86,7 @@ class Model(Base):
         app.logger.info("Updating model: %s | %s", self.id, attrs)
         try:
             for k, v in attrs.items():
-                app.logger.info("Model attr: %s\nval: %s", k, v)
+                # app.logger.info("Model attr: %s\nval: %s", k, v)
                 if hasattr(self, k) and not v == getattr(self, k):
                     if v == '':
                         setattr(self, k, None)
@@ -129,6 +130,7 @@ class Cleanup(Model):
     host_id = Column(Integer, ForeignKey('users.id'))
     location_id = Column(Integer, ForeignKey('locations.id'))
     html_url = Column(Text)  # Set after seeclickfix call
+    notified_pw = Column(Boolean, default=False)
 
     # Many to Many: Cleanup and Participants, part 2 of 3
     participants = relationship('User',
@@ -141,11 +143,13 @@ class Cleanup(Model):
     @property
     def gmap_query(self):
         """For cross street queries."""
-        if self.location and self.location.cross_street:
-            return "{0}:{1}, {2}".format(self.location.street,
-                                         self.location.cross_street, self.city)
-        else:
-            return self.address
+        # if self.location and self.location.cross_street:
+        #     return "{0}:{1}, {2}".format(self.location.street,
+        #                                  self.location.cross_street, self.city)
+        # else:
+        #     return self.address
+
+        return "{0},{1}".format(self.location.latitude, self.location.longitude)
 
     @property
     def address(self):
@@ -261,3 +265,6 @@ def add_default_city(city):
         o.city = city
         db_session.add(o)
     db_session.commit()
+
+    # Base.metadata.create_all(bind=engine)
+    # init_db()

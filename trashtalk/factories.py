@@ -3,24 +3,28 @@ from trashtalk.models import *
 
 def location_factory(data):
     location = Location(
-        number=data.get('number'),
-        street=data.get('street'),
-        cross_street=data.get('cross_street'),
-        city=data.get('city'),
-        state=data.get('state'),
-        zipcode=data.get('zipcode'),
-        county=data.get('county'),
-        district=data.get('district'),
-        country=data.get('country'),
+        number=data.get('address'),
         latitude=data.get('latitude'),
         longitude=data.get('longitude')
+        # number=data.get('number'),
+        # street=data.get('street'),
+        # cross_street=data.get('cross_street'),
+        # city=data.get('city'),
+        # state=data.get('state'),
+        # zipcode=data.get('zipcode'),
+        # county=data.get('county'),
+        # district=data.get('district'),
+        # country=data.get('country')
     )
     location.save()
     return location
 
 
 def cleanup_factory(data):
+
     cleanup = Cleanup(
+        # SQL cannot currently handle the commented out values
+
         name=data.get('name'),
         description=data.get('description'),
         location=data.get('location'),
@@ -39,6 +43,7 @@ def cleanup_factory(data):
         #district=data.get('district'),
         #country=data.get('country'),
     )
+    print("Image: ",data.get('image'))
     cleanup.save()
     return cleanup
 
