@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, make_response, redirect, url_for,flash
+from flask import Blueprint, render_template, request, make_response, redirect, url_for, flash
 from flask_login import login_user, login_required
 from flask_login import logout_user, current_user
 
@@ -13,7 +13,8 @@ html_constants=HtmlConstants()
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     """Handle unauthorized access for non-logged in users."""
-    return make_response(render_template("unauthorized.html"), status.HTTP_403_FORBIDDEN)
+    flash("Oops! That option is only for registered users")
+    return redirect(url_for("signup"), status.HTTP_403_FORBIDDEN)
 
 
 @login_manager.user_loader
