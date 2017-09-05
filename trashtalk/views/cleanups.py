@@ -3,7 +3,7 @@ from flask import redirect, url_for
 from flask_login import login_required
 from flask_login import current_user
 
-# from geopy.exc import GeopyError
+from geopy.exc import GeopyError
 
 from trashtalk.seeclickfix import postSCFix
 from trashtalk.google_sheets import send_to_sheet
@@ -12,8 +12,8 @@ from trashtalk.models import Cleanup, db_session  # User
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
 from trashtalk.master_keys import MasterKeys
-# from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
-# from trashtalk.utils import get_location#, get_area
+from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
+from trashtalk.utils import get_location#, get_area
 
 
 html_constants = HtmlConstants()
