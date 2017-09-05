@@ -2,15 +2,18 @@
 #Instructions are found in this link
 #http://gspread.readthedocs.io/en/latest/oauth2.html
 
+
 import gspread
 import datetime
 from oauth2client.service_account import ServiceAccountCredentials
 
 from trashtalk.models import Cleanup, db_session
+from trashtalk.master_keys import MasterKeys
+key_chain = MasterKeys()
 
 scope = ['https://spreadsheets.google.com/feeds/'] #Sheet must be shared with Cloud account in order to find it
-validation ="" #Validation pulls from JSON account information file
-sheet_key = "" #Key from sheet URL
+validation =key_chain.validation #Validation pulls from JSON account information file
+sheet_key = key_chain.sheet_key #Key from sheet URL
 top_row = 2 #First Row is header #Limited ability to find the end of the data. Easier just to put data at the top and find it later
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(validation, scope)

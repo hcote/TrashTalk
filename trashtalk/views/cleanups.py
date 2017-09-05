@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash  # current_app
+from flask import Blueprint, render_template, request, flash, current_app
 from flask import redirect, url_for
 from flask_login import login_required
 from flask_login import current_user
@@ -11,11 +11,13 @@ from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session  # User
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
+from trashtalk.master_keys import MasterKeys
 # from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
 # from trashtalk.utils import get_location#, get_area
 
 
 html_constants = HtmlConstants()
+key_chain=MasterKeys()
 
 cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                     template_folder='templates', static_folder='../static')
@@ -67,7 +69,8 @@ def get(cleanup_id):
                            start_time = twelve_hour_time(cleanups.start_time),
                            end_time = twelve_hour_time(cleanups.end_time),
                            bool_participated=bool_participated,
-                           default_image_path = html_constants.default_image_path)
+                           default_image_path = html_constants.default_image_path,
+                           google_maps_key = key_chain.GOOGLE_MAPS_KEY)
 
 
 @cleanup.route('/new')

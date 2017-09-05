@@ -2,6 +2,8 @@ import logging
 import os
 
 from trashtalk import app  # Shortcut to get around circular import
+from trashtalk.master_keys import MasterKeys
+key_chain=MasterKeys()
 
 
 class Config(object):
@@ -39,7 +41,7 @@ class Config(object):
                                                                             DB_PORT,
                                                                             DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    GOOGLE_MAPS_KEY = os.getenv('')
+    GOOGLE_MAPS_KEY = os.getenv(key_chain.GOOGLE_MAPS_KEY)
     GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
                            "&q=".format(GOOGLE_MAPS_KEY)
 
@@ -54,10 +56,10 @@ class Development(Config):
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
 
-    SQL_HOST = ""
-    SQL_PASSWORD = ""
-    SQL_IP_ADDRESS = ""
-    SQL_DATABASE = ""
+    SQL_HOST = key_chain.SQL_HOST
+    SQL_PASSWORD = key_chain.SQL_PASSWORD
+    SQL_IP_ADDRESS = key_chain.SQL_IP_ADDRESS
+    SQL_DATABASE = key_chain.SQL_DATABASE
 
     # Access SQL
     SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (SQL_HOST, SQL_PASSWORD, SQL_IP_ADDRESS, SQL_DATABASE))
