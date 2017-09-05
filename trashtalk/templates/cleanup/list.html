@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
+To change this template file, chotoolsools | Templates
 and open the template in the editor.
 -->
 {%extends "base.html"%}
 
-{%block content%} 
+{%block content%}
     <h3>Active Oakland Cleanups</h3>
+    <div class="scroll_all">
     {% for clean in cleanups %}
+    <div class="list_cleanups">
+            <img src = "{{default_image_path}}{{clean.image}}"
+                alt="Pretend this is a cool picture"
+                style = "width:150px;height:150px; align:center;"></br>
 
-        <p><img src = "{{clean.image}}" 
-             alt="Photograph"
-             style = "width:150px;height:150px;"><br>
-            Organizer: {{clean.host.username}}<br>
-            Address: {{ clean.address}}<br>
-            Date: {{ clean.date }}, {{clean.start_time}}<br>
-            <a href = '/cleanups/{{clean.id}}'>View Clean Up</a><br>
-        </p><br>
-        
-    {% endfor %}      
+            <b>{{clean.name}}</b></br>
+
+            Hosted By: {{clean.host.username}}</br>
+
+            <date>{{ clean.date }}</date>, <time>{{clean.start_time}}</time></br>
+
+            <a href = '/cleanups/{{clean.id}}' class="support">{{ clean.location.number}} {{clean.location.street}}</a></br>
+    </div>
+    {% endfor %}
+    </div>
+
 {%endblock%}

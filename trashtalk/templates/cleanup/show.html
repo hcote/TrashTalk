@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
+To change this template file, chotoolsools | Templates
 and open the template in the editor.
 -->
 {%extends "base.html"%}
@@ -9,56 +9,63 @@ and open the template in the editor.
 {%block content%}
     <h3>{{cleanup.street_number}} {{cleanup.street_name}}</h3>
 {# TODO: Block image to the left of description and below Google Map   #}
-{#    <img src = "{{cleanup.image}}"#}
-{#             alt="Photograph"#}
-{#             style = "width:150px;height:150px;">#}
-
+    <!--<img src = "{{default_image_path}}{{cleanup.image}}"-->
+            <!--alt="Photograph"-->
+            <!--style = "width:150px;height:150px;"></br>-->
 {#  GOOGLE MAPS IFRAME  #}
 {#  The map will only display from designated IP addresses.   #}
     <iframe
-          width="600"
-          height="450"
-          frameborder="0" style="border:0"
-          src="{{ gmap }}{{ cleanup.gmap_query }}" allowfullscreen>
-    </iframe>
-    <ul>
-        <li>Organizer: {{cleanup.host.username}}</li>
-        <li>Date: {{cleanup.date}}</li>
-        <li>Start Time: {{cleanup.start_time}}</li>
-        <li>End Time: {{cleanup.end_time}}</li>
-        <li>Address: {{cleanup.address}}</li>
-        <li>Coordinates [{{cleanup.lat}},{{cleanup.lng}}]</li>
-        <li>Hours: {{cleanup.hours}}</li>
-        <li>Public Works Notified: Yes/No</li>
-    </ul>
-    <p>Participants</p>
+        width="450";
+        height="400";
+        frameborder="0";
+        src="https://www.google.com/maps/embed/v1/place?q={{cleanup.location.latitude}},{{cleanup.location.longitude}}&zoom=17&key=">
+
+          <!--src="{{ gmap }}{{ cleanup.gmap_query }}" allowfullscreen>-->
+    </iframe></br>
+
+
+    <p class="single_cleanup">
+        <b>{{cleanup.name}}</b>
+        <br>hosted by: {{cleanup.host.username}}
+    </p>
+    <p class="single_cleanup">
+        <i> {{cleanup.description}}</i>
+        <br>    {{cleanup.date}}, {{start_time}}-{{end_time}}
+        <br>    {{cleanup.location.number}}
+        <!--<br>    {{cleanup.location.latitude}}, {{cleanup.location.longitude}}-->
+    </p>
+
+    <p class="single_cleanup">Participants:
     {% for participant in cleanup.participants %}
-    <p>Username: {{participant.username}}</p>
+        <br/>-{{participant.username}}
+    </p>
     {% endfor %}
     <nav>
         {%if cleanup.host.username==current_user.username%}
             {%if cleanup.html_url%}
-                <a href ='{{cleanup.html_url}}'>SeeClickFix Link</a>
+                <a href ='{{cleanup.html_url}}' class="support">SeeClickFix Link</a>
                 {%else%}
-                <a href='/advertise/{{cleanup.id}}'>Advertise on SeeClickFix</a>
+                <a href='/cleanups/advertise/{{cleanup.id}}' class="support">Advertise on SeeClickFix</a>
             {%endif%}
-            <a href="/cleanups/send_to_pw/{{cleanup.id}}">Submit to Public Works</a>
-            <a href="/cleanups/{{ cleanup.id }}/edit">Edit Cleanup</a>
-            <form action='/cleanups/{{ cleanup.id }}/delete' method="post">
-                <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
-                <input type="hidden" name="method" value="DELETE">
-                <input type="submit" name="Delete" value="Delete Cleanup">
-            </form>
-<!--        {%if cleanup.submit_pub_works%}
-            Public Works has been notified
-            {%else%}-->
-            <!--{%endif%}-->
-        {%endif%}
-        {%if cleanup.host.username!=current_user.username%}
-            <form action = '/cleanups/join' method='post'>
-                <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
-                <input type ="submit" name="Join" value="Join Cleanup">
-            </form>
+            {%if not cleanup.notified_pw%}
+                <a href="/cleanups/send_to_pw/{{cleanup.id}}"  class="support">Submit to Public Works</a>
+                {%else%}
+                Public Works has been notified
+            {%endif%}
+            <a href="/cleanups/{{ cleanup.id }}/edit" class="support">Edit Cleanup</a>
+
+        {%else%}
+            {%if not bool_participated%}
+                <form action = '/cleanups/join' method='POST'>
+                    <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
+                    <input type ="submit" name="Join" value="Join Cleanup">
+                </form>
+            {%else%}
+                    <form action = '/cleanups/leave' method='POST'>
+                    <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
+                    <input type ="submit" name="Leave" value="Leave Cleanup">
+                </form>
+            {%endif%}
         {%endif%}
     </nav>
 {%endblock%}

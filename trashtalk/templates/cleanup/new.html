@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 {%extends "base.html"%}
 
-{%block content%} 
-
-<div align="center">
+{%block content%}
+<div>
+    <p><h3>How to Host a Cleanup</h3><br>
+        1) Fill out and submit the form below<br>
+        2) To raise awareness, on the next form click:<br>
+        <i>Advertise on SeeClickFix</i><br>
+        3) To Coordinate with Public Works, on the next form click:<br>
+        <i>Submit to Public Works</i><br>
+        Public Works lends tools and picks up the collected trash<br>
+    </p>
+</div>
+<div>
     <h3>Enter Clean Up Information Below:</h3>
     <form action = "/cleanups/create" method='post'>
-    <input type="hidden" name="method" value="POST"/><br/>
-    {#    Event Name    #}
-    <label for="name">Event Title:</label>
-    <input type="text" name="name"><br/>
-    {#    Description   #}
-    <label for="description">Description:</label>
-    <textarea name="description" cols="50" rows="4"></textarea><br/>
-    <!--Date-->
-    <label for="date">Date:</label>
-    <input type="date" name="date"/><br/>
-    <!--Start Time-->
-    <label for="start_time">Start Time</label>
-    <input type="time" name="start_time"/><br/>
-    <!--End Time-->
-    <label for="end_time">End Time</label>
-    <input type="time" name="end_time"/><br/>
-    <!--Street Number-->
-    <label for="street_number">Street Number:</label>
-    <input type="number" name="street_number" min="1" max="10000"/><br/>
-    <!--Street Name-->
-    <label for="street_name">Street Name:</label>
-    <input type="text" name="street_name"/><br/>
-    <label for="street_name">Cross Street Name:</label>
-    <input type="text" name="cross_street_name"/><br/>
-    <!--image-->
-    <label for = "image">Image: (optional)</label>
-    <input type ="text" name="image"/><br/>
-    <input type = "submit" value="Create Clean up" name = "createevent"/>
-    <a href='/cleanups'>Cancel</a>
+        <input type="hidden" name="method" value="POST"/><br/>
+        {#    Event Name    #}
+        <label for="name">Event Title:</label>
+        <input type="text" name="name"
+               required pattern="{{text_pattern}}"
+               placeholder="Talking Trash"><br/>
+        <!--Date-->
+        <label for="date">Date:</label>
+        <input type="date" name="date"
+               required pattern="{{date_pattern}}"
+               placeholder="{{date_placeholder}}"/><br/>
+        <!--Start Time-->
+        <label for="start_time">Start Time</label>
+        <input class="input_time" type="time" name="start_time"
+               required pattern="{{time_pattern}}"
+               placeholder="{{time_placeholder}}"/>
+        <select name="start_time_of_day">
+            <option value="am">am</option>
+            <option value="pm">pm</option>
+        </select><br/>
+        <!--End Time-->
+        <label for="end_time">End Time</label>
+        <input type="time" name="end_time"
+               required pattern="{{time_pattern}}"
+               placeholder="{{time_placeholder}}"/>
+        <select name="end_time_of_day">
+            <option value="am">am</option>
+            <option value="pm">pm</option>
+        </select><br/>
+        <!--Street Number-->
+        <!--<label for="street_number">Street Number:</label>-->
+        <input class="type_address" type="radio" name="location" value="address">Address
+        <input type="number" name="street_number" min="1" pattern="[0-9]{1,}" placeholder="Street Number"/>
+        <input type="text" name="street_name" placeholder="Street Name"/><br/>
+        <!--Street Name-->
+        <!--<label for="street_name">Street Name:</label>-->
+        <input type="radio" name="location" value="cross_street">Cross Street
+        <!--<label for="street_name">Cross Street Name:</label>-->
+        <input type="text" name="street_one" placeholder="Street One"/>
+        <input type="text" name="street_two" placeholder="Street Two"/><br/>
+        <!--image-->
+        <!--<label for = "image">Image: (optional)</label>-->
+        {#Picture input hidden and given default value until referencing can be fixed#}
+        <input type ="hidden" name="image" placeholder="Picture" value=""/><br/>
+                    {#    Description   #}
+        <!--<label for="description">Description:</label>-->
+        <textarea name="description" cols="50" rows="4" placeholder="Description"></textarea><br/>
+        <input type = "submit" value="Create Clean up" name = "createevent"/>
+        <a href='/cleanups' class="support">Cancel</a>
+        <span class="validity"></span>
     </form>
 </div>
-
 {%endblock%}
