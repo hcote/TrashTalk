@@ -5,25 +5,14 @@ from flask_login import current_user
 
 from geopy.exc import GeopyError
 
-<<<<<<< 2930ddeeae159bfeafaebd5626876ebc5975ba8e
 from trashtalk.seeclickfix import postSCFix
-from trashtalk.google_sheets import send_to_sheet
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session  # User
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
-from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
-from trashtalk.utils import get_location#, get_area
+from trashtalk.utils import get_location
 
 html_constants = HtmlConstants()
-=======
-from trashtalk.constants import DEFAULT_GEOLOC
-from trashtalk.factories import cleanup_factory, location_factory
-from trashtalk.google_sheets import send_to_sheet
-from trashtalk.models import Cleanup, db_session
-from trashtalk.seeclickfix import postSCFix
-from trashtalk.utils import get_location
->>>>>>> Add alembic migrations manager.
 
 bp = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                template_folder='templates', static_folder='../static')
