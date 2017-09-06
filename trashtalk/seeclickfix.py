@@ -1,21 +1,16 @@
-__author__ = "miller.tim"
-__date__ = "$Apr 1, 2017 7:52:39 PM$"
-
 import json
 
 import requests
 from input_handling import twelve_hour_time
-from trashtalk.master_keys import MasterKeys
-key_chain = MasterKeys()
 
 # Variables for API call to test.seeclickfix.com (the developer's page)
 # developer page has own set of user accounts
 # Switching to live page requires removing 'test' from url and creating account for live page
-ADMIN_USERNAME = key_chain.ADMIN_USERNAME  # SeeClickFix Username and password
-ADMIN_PASSWORD = key_chain.ADMIN_PASSWORD
+# ADMIN_USERNAME = key_chain.ADMIN_USERNAME  # SeeClickFix Username and password
+# ADMIN_PASSWORD = key_chain.ADMIN_PASSWORD
 HEADER = {"Content-type": "application/json"}
 BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
-CLEANUP_BASE_URL = key_chain.CLEANUP_BASE_URL
+# CLEANUP_BASE_URL = key_chain.CLEANUP_BASE_URL
 
 
 # Create an initial post to SeeClickFix.com

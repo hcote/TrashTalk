@@ -5,8 +5,10 @@ __pycache__/
 
 *.pyc
 .idea
+*.json
 ttshell.py
 exceptions.py
+app.yaml
 
 # C extensions
 *.so

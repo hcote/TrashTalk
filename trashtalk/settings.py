@@ -2,8 +2,6 @@ import logging
 import os
 
 from trashtalk import app  # Shortcut to get around circular import
-from trashtalk.master_keys import MasterKeys
-key_chain=MasterKeys()
 
 
 class Config(object):
@@ -23,27 +21,32 @@ class Config(object):
 
     DEBUG = False
     TESTING = False
-    SECRET_KEY = 'do not add secret key'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'Not set')
     SESSION_COOKIE_NAME = 'trashtalk_session'
 
+    # Logger Settings
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     LOGGING_LOCATION = 'trashtalk.log'
     LOGGING_LEVEL = logging.ERROR
 
+    # Database Settings
     DB_HOST = os.getenv('DB_HOST', 'localhost')
-    DB_USER = os.getenv('DB_USER', 'postgres')
-    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_USER = os.getenv('DB_USER', 'root')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', 'admin')
     DB_PORT = os.getenv('DB_PORT', '5432')
     DB_NAME = os.getenv('DB_NAME', 'trashtalk')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(DB_USER,
-                                                                            DB_PASSWORD,
-                                                                            DB_HOST,
-                                                                            DB_PORT,
-                                                                            DB_NAME)
+    SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (DB_USER, DB_PASSWORD,
+                                                                DB_HOST, DB_NAME))
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    GOOGLE_MAPS_KEY = os.getenv(key_chain.GOOGLE_MAPS_KEY)
+
+    # Google
+    GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
     GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
                            "&q=".format(GOOGLE_MAPS_KEY)
+    GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')
+
+    # See Click Fix
+    SCF_USER = os.getenv('SCF_USER')
 
 
 class Development(Config):
@@ -56,13 +59,14 @@ class Development(Config):
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
 
-    SQL_HOST = key_chain.SQL_HOST
-    SQL_PASSWORD = key_chain.SQL_PASSWORD
-    SQL_IP_ADDRESS = key_chain.SQL_IP_ADDRESS
-    SQL_DATABASE = key_chain.SQL_DATABASE
+    DB_HOST = os.getenv('DB_HOST', 'localhost')
+    DB_USER = os.getenv('DB_USER', 'root')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', 'admin')
+    DB_NAME = "trashtalk"
 
     # Access SQL
-    SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (SQL_HOST, SQL_PASSWORD, SQL_IP_ADDRESS, SQL_DATABASE))
+    SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (DB_USER, DB_PASSWORD,
+                                                                DB_HOST, DB_NAME))
 
 
 class Testing(Config):
@@ -72,16 +76,16 @@ class Testing(Config):
     TESTING = True
     LOGGING_LEVEL = logging.DEBUG
 
-    DB_HOST = os.getenv('DB_HOST', 'localhost')
-    DB_USER = os.getenv('DB_USER', 'postgres')
-    DB_PASSWORD = os.getenv('DB_PASSWORD', '')
+    DB_HOST = os.getenv('DB_HOST')
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
     DB_PORT = os.getenv('DB_PORT', '5432')
     DB_NAME = os.getenv('DB_NAME', 'trashtalk_test')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(DB_USER,
-                                                                            DB_PASSWORD,
-                                                                            DB_HOST,
-                                                                            DB_PORT,
-                                                                            DB_NAME)
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}:{}/{}'.format(DB_USER,
+                                                                      DB_PASSWORD,
+                                                                      DB_HOST,
+                                                                      DB_PORT,
+                                                                      DB_NAME)
 
 
 class Production(Config):
@@ -91,4 +95,11 @@ class Production(Config):
     Example:
         SECRET_KEY = os.getenv('SECRET_KEY')
     """
-    pass
+    DB_HOST = os.getenv('DB_HOST')
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_NAME = "trashtalk"
+
+    # Access SQL
+    SQLALCHEMY_DATABASE_URI = ('mysql+pymysql://%s:%s@%s/%s' % (DB_USER, DB_PASSWORD,
+                                                                DB_HOST, DB_NAME))

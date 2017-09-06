@@ -11,13 +11,11 @@ from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session  # User
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
-from trashtalk.master_keys import MasterKeys
 from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
 from trashtalk.utils import get_location#, get_area
 
 
 html_constants = HtmlConstants()
-key_chain=MasterKeys()
 
 cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                     template_folder='templates', static_folder='../static')
@@ -61,16 +59,15 @@ def get(cleanup_id):
     else:
         bool_participated = False #Default to anonymous users not being participants
 
-
     return render_template("cleanup/show.html",
                            section="Cleanup",
                            cleanup=cleanups,
                            gmap=current_app.config['GOOGLE_MAPS_ENDPOINT'],
-                           start_time = twelve_hour_time(cleanups.start_time),
-                           end_time = twelve_hour_time(cleanups.end_time),
+                           start_time = cleanups.start_time,
+                           end_time = cleanups.end_time,
                            bool_participated=bool_participated,
                            default_image_path = html_constants.default_image_path,
-                           google_maps_key = key_chain.GOOGLE_MAPS_KEY)
+                           google_maps_key = '')
 
 
 @cleanup.route('/new')
@@ -186,11 +183,11 @@ def create():
             cleanup_data['image'] = "crossed_rakes.png"
         else:
             current_app.logger.info("Image found: ", cleanup_data['image'])
-        cleanup_data['start_time']=twenty_four_time(request.form["start_time"], request.form["start_time_of_day"])
-        cleanup_data['end_time'] = twenty_four_time(request.form["end_time"], request.form["end_time_of_day"])
-        cleanup_data['location']=location
-        cleanup_data['host']=current_user
-        new_cleanup=cleanup_factory(cleanup_data)
+        cleanup_data['start_time'] = request.form["start_time"]
+        cleanup_data['end_time'] = request.form["end_time"]
+        cleanup_data['location'] = location
+        cleanup_data['host'] = current_user
+        new_cleanup = cleanup_factory(cleanup_data)
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
