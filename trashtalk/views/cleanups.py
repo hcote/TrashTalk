@@ -5,6 +5,7 @@ from flask_login import current_user
 
 from geopy.exc import GeopyError
 
+<<<<<<< 2930ddeeae159bfeafaebd5626876ebc5975ba8e
 from trashtalk.seeclickfix import postSCFix
 from trashtalk.google_sheets import send_to_sheet
 from trashtalk.factories import cleanup_factory, location_factory
@@ -15,6 +16,14 @@ from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
 from trashtalk.utils import get_location#, get_area
 
 html_constants = HtmlConstants()
+=======
+from trashtalk.constants import DEFAULT_GEOLOC
+from trashtalk.factories import cleanup_factory, location_factory
+from trashtalk.google_sheets import send_to_sheet
+from trashtalk.models import Cleanup, db_session
+from trashtalk.seeclickfix import postSCFix
+from trashtalk.utils import get_location
+>>>>>>> Add alembic migrations manager.
 
 bp = Blueprint('cleanups', __name__, url_prefix='/cleanups',
                template_folder='templates', static_folder='../static')
@@ -233,39 +242,4 @@ def send_to_scf(id):
     cleanup.html_url = response['html_url']  # Add to SQL Database
     db_session.add(cleanup)
     db_session.commit()
-    return redirect(url_for('cleanups.get', cleanup_id=id))
-
-
-#  Start Coordination with Public Works
-@cleanup.route('/send_to_pw/<id>')
-@login_required
-# Rename to show only starting process
-def send_to_pw(id):
-
-    return render_template("cleanup/send_to_pw_really.html",
-                           section="Public Works",
-                           time_placeholder = html_constants.time_placeholder,
-                           time_pattern = html_constants.time_pattern,
-                           date_placeholder = html_constants.date_placeholder,
-                           date_pattern = html_constants.date_pattern,
-                           id=id)
-
-
-#  Fill out and submit data to Public Works
-@cleanup.route('/send_to_pw_really/<id>', methods=["POST"])
-@login_required
-# Rename to emphasize actually coordination data
-def send_to_pw_really(id):
-    """
-    send clean-up data to Public Works google sheet
-    :param id:
-    :return:
-    """
-    tool_data=request.form.copy()
-    send_to_sheet(id, tool_data)  # Very slow function
-    cleanup = db_session.query(Cleanup).get(id)
-    cleanup.notified_pw=True
-    db_session.add(cleanup)
-    db_session.commit()
-
     return redirect(url_for('cleanups.get', cleanup_id=id))

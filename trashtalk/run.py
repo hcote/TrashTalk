@@ -1,8 +1,6 @@
 import argparse
 # Add trashtalk to the sys.path for loading
 import sys
-sys.path.append('../')
-
 from trashtalk.factories import app_factory
 
 parser = argparse.ArgumentParser("Trashtalk", description="A demonstration.")
