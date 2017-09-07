@@ -1,3 +1,14 @@
+# Google Cloud App Config
+#
+# Environment variables must be added to this file when deploying
+#
+# Documentation
+# -------------
+# Reference:
+# https://cloud.google.com/appengine/docs/standard/python/config/appref
+#
+# Builtins:
+# https://cloud.google.com/appengine/docs/standard/python/tools/using-libraries-python-27
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -9,3 +20,17 @@ handlers:
 libraries:
 - name: ssl
   version: latest
+
+# Mandatory; use regex to map endpoints to scripts
+handlers:
+- url: /.*
+  script: trashtalk.app
+
+# Libraries that are built-in by Google Cloud
+libraries:
+- name: ssl
+  version: latest
+- name: flask
+  version: 0.12
+
+# Add env_variables below when deploying

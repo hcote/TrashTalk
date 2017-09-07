@@ -1,9 +1,16 @@
  # TrashTalk
-Repo for artifacts of the Trash Talk app for organizing cleanups and graffiti abatement.
 
-Goal -- Develop code that finds anyone interested in a specified geographical area, with the ability to communicate "scheduled cleanups".
+ - About the project
+ - [Dev Guide](CONTRIBUTE.md)
+ - Documentation
 
-Trashtalk.com will essentially act as a liaison between: Oakland's Department of Public Works and the Oakland Adopt-A Volunteer Program...fueled by community leaders starting cleanups within their community (or defined areas/location of interest)
+## About the Project
+
+Trash Talk is an app for organizing neighborhood cleanups and for graffiti abatement.
+
+Goal is to develop a web application that finds anyone interested in a specified geographical area, with the ability to communicate "scheduled cleanups".
+
+Trashtalk.com will act as a liaison between: Oakland's Department of Public Works and the Oakland Adopt-A Volunteer Program...fueled by community leaders starting cleanups within their community (or defined areas/location of interest)
 
 In order to act as an integrator, TrashTalk will need to manage a datastore of cleanup events and volunteers.  It also needs to message interested individual neighbors using seeclickfix.com via the seeclickfix API v2.  This is where coding help is requested.   We need help:
 ==> Using the API to collect ID tokens of people 'watching" an area that will host a cleanup
