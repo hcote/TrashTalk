@@ -1,8 +1,10 @@
 from flask import Flask
 from werkzeug.utils import find_modules, import_string
 
-from trashtalk import login_manager
+from flask_login import LoginManager
 from trashtalk.models import *
+
+login_manager = LoginManager()
 
 
 def app_factory(config_obj):

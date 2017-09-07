@@ -17,7 +17,7 @@ StatusCodes = namedtuple('StatusCodes', ['HTTP_200_OK', 'HTTP_201_CREATED',
                                          'HTTP_404_NOT_FOUND'])
 status = StatusCodes(200, 201, 400, 403, 404)
 geolocator = Nominatim()
-google = GoogleV3(api_key=os.environ['GOOGLE_MAPS_KEY'])
+google = GoogleV3(api_key=os.getenv('GOOGLE_MAPS_KEY'))
 Point = namedtuple('Point', ['latitude', 'longitude'])
 
 # RESPONSE OBJECTS

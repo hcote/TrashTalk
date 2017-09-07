@@ -1,6 +1,9 @@
+"""
+Trashtalk
+
+This script is for local testing.
+"""
 import argparse
-# Add trashtalk to the sys.path for loading
-import sys
 from trashtalk.factories import app_factory
 
 parser = argparse.ArgumentParser("Trashtalk", description="A demonstration.")

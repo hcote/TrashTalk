@@ -2,7 +2,7 @@ from flask import (Blueprint, current_app, render_template, request,
                    make_response, redirect, url_for, flash)
 from flask_login import login_user, login_required, logout_user, current_user
 
-from trashtalk import login_manager
+from trashtalk.factories import login_manager
 from trashtalk.models import User, db_session
 from trashtalk.utils import status
 from trashtalk.html_constants import HtmlConstants
