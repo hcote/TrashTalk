@@ -11,16 +11,11 @@ Running App: See run.py for all runtime options
 
 """
 from flask import Flask
-# from flask_login import LoginManager
 
 from trashtalk.factories import app_factory
 
 
 app = Flask(__name__)
-
-# Manage Login Feature
-# login_manager = LoginManager()
-# login_manager.init_app(app)
 
 # Default configuration is development!
 # Override with config.from_envvar('APP_ENV_VAR')

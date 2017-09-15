@@ -10,7 +10,7 @@ To run:
 - Clone your fork of the repo.
 - Run: `pip install -r requirements.txt`
 
-Then you must configure the project. Open `dev.cfg` to customize the
+Then you can configure the project. Open `dev.cfg` to customize the
 settings to your local configuration. An example is provided in `dev.cfg.example` of what you may need to change.
 
 Finally: `python run.py`

@@ -8,11 +8,8 @@ __pycache__/
 *.json
 ttshell.py
 exceptions.py
-<<<<<<< 2244758534a1508c16fd2d2683d26bc6599ba2c0
 app.yaml
-=======
 *.cfg
->>>>>>> Fix -- Update app configuration
 
 # C extensions
 *.so
