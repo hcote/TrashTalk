@@ -1,0 +1,5 @@
+; Rename to dev.cfg which is NOT version controlled and can contain anything
+DB_USER=postgres
+DB_PASSWORD=xxxxx
+DB_NAME=trashtalk
+SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://postgres:xxx@localhost:5432/trashtalk

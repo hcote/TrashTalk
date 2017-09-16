@@ -6,24 +6,21 @@ from flask_login import current_user
 from geopy.exc import GeopyError
 
 from trashtalk.seeclickfix import postSCFix
-from trashtalk.google_sheets import send_to_sheet
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session  # User
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
-from trashtalk.constants import DEFAULT_CITY, DEFAULT_STATE
-from trashtalk.utils import get_location#, get_area
-
+from trashtalk.utils import get_location
 
 html_constants = HtmlConstants()
 
-cleanup = Blueprint('cleanups', __name__, url_prefix='/cleanups',
-                    template_folder='templates', static_folder='../static')
+bp = Blueprint('cleanups', __name__, url_prefix='/cleanups',
+               template_folder='templates', static_folder='../static')
 
 # TODO: Issue #16 - Test refactor with DB connection
 
 
-@cleanup.route('/')
+@bp.route('/')
 def get_all():
     """
     Display full list of cleanups.
@@ -43,7 +40,7 @@ def get_all():
                                 default_image_path = html_constants.default_image_path)
 
 
-@cleanup.route('/<int:cleanup_id>')
+@bp.route('/<int:cleanup_id>')
 def get(cleanup_id):
     """
     Render current clean-up template.
@@ -70,7 +67,7 @@ def get(cleanup_id):
                            google_maps_key = '')
 
 
-@cleanup.route('/new')
+@bp.route('/new')
 def new():
     """
     Render template form for creating a new `Cleanup`. POSTs to cleanups/create
@@ -87,7 +84,7 @@ def new():
                            text_pattern = html_constants.text_pattern)
 
 
-@cleanup.route('/<int:cleanup_id>/edit')
+@bp.route('/<int:cleanup_id>/edit')
 @login_required
 def edit(cleanup_id):
     """
@@ -113,7 +110,7 @@ def edit(cleanup_id):
                            time_placeholder = html_constants.time_placeholder)
 
 
-@cleanup.route('/<int:cleanup_id>', methods=['POST']) #PUT, 'DELETE'
+@bp.route('/<int:cleanup_id>', methods=['PUT', 'DELETE'])
 def update(cleanup_id):
     """
     Create, update or delete a `Cleanup`
@@ -151,7 +148,7 @@ def update(cleanup_id):
         return redirect(url_for('cleanups.get_all'))
 
 
-@cleanup.route('/create', methods=["POST"])
+@bp.route('/create', methods=["POST"])
 @login_required
 def create():
     """
@@ -191,7 +188,7 @@ def create():
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
-@cleanup.route('/join', methods=["POST"])
+@bp.route('/<int:cleanup_id>/delete', methods=["POST"])
 @login_required
 def join():
     """
@@ -205,7 +202,7 @@ def join():
     return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@cleanup.route('/leave', methods=["POST"])
+@bp.route('/join', methods=["POST"])
 @login_required
 def leave():
     """
@@ -219,7 +216,7 @@ def leave():
     return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@cleanup.route('/advertise/<id>')
+@bp.route('/advertise/<id>')
 @login_required
 def send_to_scf(id):
     """
@@ -234,39 +231,4 @@ def send_to_scf(id):
     cleanup.html_url = response['html_url']  # Add to SQL Database
     db_session.add(cleanup)
     db_session.commit()
-    return redirect(url_for('cleanups.get', cleanup_id=id))
-
-
-#  Start Coordination with Public Works
-@cleanup.route('/send_to_pw/<id>')
-@login_required
-# Rename to show only starting process
-def send_to_pw(id):
-
-    return render_template("cleanup/send_to_pw_really.html",
-                           section="Public Works",
-                           time_placeholder = html_constants.time_placeholder,
-                           time_pattern = html_constants.time_pattern,
-                           date_placeholder = html_constants.date_placeholder,
-                           date_pattern = html_constants.date_pattern,
-                           id=id)
-
-
-#  Fill out and submit data to Public Works
-@cleanup.route('/send_to_pw_really/<id>', methods=["POST"])
-@login_required
-# Rename to emphasize actually coordination data
-def send_to_pw_really(id):
-    """
-    send clean-up data to Public Works google sheet
-    :param id:
-    :return:
-    """
-    tool_data=request.form.copy()
-    send_to_sheet(id, tool_data)  # Very slow function
-    cleanup = db_session.query(Cleanup).get(id)
-    cleanup.notified_pw=True
-    db_session.add(cleanup)
-    db_session.commit()
-
     return redirect(url_for('cleanups.get', cleanup_id=id))

@@ -1,3 +1,5 @@
+from flask import current_app
+
 from sqlalchemy import (create_engine, func, DateTime,
                         Column, Date, Time, Integer,
                         Numeric, ForeignKey, String,
@@ -9,20 +11,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from trashtalk.constants import (DEFAULT_CITY, DEFAULT_STATE,
                                  STATE_CODE_MAP, COUNTRY_CODE_MAP)
-from trashtalk.settings import app
-from trashtalk.utils import Point
+from trashtalk.utils import Coordinates
 
 # DATABASE CONFIGURATION
-engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo=False)
 db_session = scoped_session(sessionmaker(autocommit=False,
-                                         autoflush=False,
-                                         bind=engine))
+                                         autoflush=False))
 Base = declarative_base()
 Base.query = db_session.query_property()
 
 
 # Database Utilities
-def init_db():
+def init_db(app):
     """
     Used to instantiate a new database. Must run from interpreter upon app setup!
 
@@ -32,7 +31,9 @@ def init_db():
 
     :return:
     """
-    Base.metadata.create_all(bind=engine)
+    _engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+    db_session.configure(bind=_engine)
+    Base.metadata.create_all(bind=_engine)
 
 
 """
@@ -72,7 +73,7 @@ class Model(Base):
             db_session.add(self)
             db_session.commit()
         except (DataError, DatabaseError):
-            app.logger.exception("Failed to save.")
+            current_app.logger.exception("Failed to save.")
             db_session.rollback()
 
     def update(self, **attrs):
@@ -83,20 +84,20 @@ class Model(Base):
         :param attrs: `dict`, updated attributes
         :return:
         """
-        app.logger.info("Updating model: %s | %s", self.id, attrs)
+        current_app.logger.info("Updating model: %s | %s", self.id, attrs)
         try:
             for k, v in attrs.items():
-                # app.logger.info("Model attr: %s\nval: %s", k, v)
+                current_app.logger.info("Model attr: %s\nval: %s", k, v)
                 if hasattr(self, k) and not v == getattr(self, k):
                     if v == '':
                         setattr(self, k, None)
                     else:
                         setattr(self, k, v)
                 else:
-                    app.logger.info("Skipping attr: %s", k)
+                    current_app.logger.info("Skipping attr: %s", k)
                     continue
         except (DataError, DatabaseError):
-            app.logger.exception("Could not update Cleanup.")
+            current_app.logger.exception("Could not update Cleanup.")
             db_session.rollback()
         else:
             self.save()
@@ -106,9 +107,9 @@ class Model(Base):
             db_session.delete(self)
             db_session.commit()
         except DatabaseError:
-            app.logger.exception("Delete Cleanup failed: %s", self.id)
+            current_app.logger.exception("Delete Cleanup failed: %s", self.id)
         else:
-            app.logger.info("Cleanup deleted successfully")
+            current_app.logger.info("Cleanup deleted successfully")
 
 
 class Cleanup(Model):
@@ -227,7 +228,7 @@ class Location(Model):
 
     @property
     def coordinates(self):
-        return Point(self.latitude, self.longitude)
+        return Coordinates(self.latitude, self.longitude)
 
     @property
     def state_code(self):

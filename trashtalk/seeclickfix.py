@@ -6,11 +6,8 @@ from input_handling import twelve_hour_time
 # Variables for API call to test.seeclickfix.com (the developer's page)
 # developer page has own set of user accounts
 # Switching to live page requires removing 'test' from url and creating account for live page
-# ADMIN_USERNAME = key_chain.ADMIN_USERNAME  # SeeClickFix Username and password
-# ADMIN_PASSWORD = key_chain.ADMIN_PASSWORD
 HEADER = {"Content-type": "application/json"}
 BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
-# CLEANUP_BASE_URL = key_chain.CLEANUP_BASE_URL
 
 
 # Create an initial post to SeeClickFix.com
