@@ -1,20 +1,18 @@
 import logging
 import os
 
-from trashtalk import app  # Shortcut to get around circular import
-
 
 class Config(object):
     """
     Common configuration for all app instances and environments.
     Only add settings here which can be used in any environment.
 
-    NEVER ADD SECRETS OR KEYS TO THIS SECTION.
-
+    NEVER ADD SECRETS OR KEYS TO THIS SECTION. Devs should use dev.cfg for customization.
+    
     To use any Config object with Flask:
         - app.config.from_obj(path.to.config.Object)
-
-    Configurations can further be over written by applying another config on top:
+    
+    Configurations can further be over written by using instances or files:
         - app.config.from_envvar(NAME_OF_ENV_VAR)
         - The ENV_VAR should be a path to a .cfg or .py file
     """

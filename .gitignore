@@ -9,6 +9,7 @@ __pycache__/
 ttshell.py
 exceptions.py
 app.yaml
+*.cfg
 
 # C extensions
 *.so
