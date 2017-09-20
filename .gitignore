@@ -8,6 +8,7 @@ __pycache__/
 *.json
 ttshell.py
 exceptions.py
+notes.md
 app.yaml
 *.cfg
 
