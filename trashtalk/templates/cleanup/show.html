@@ -48,7 +48,8 @@ and open the template in the editor.
                 <a href='/cleanups/advertise/{{cleanup.id}}' class="support">Advertise on SeeClickFix</a>
             {%endif%}
             {%if not cleanup.notified_pw%}
-                <a href="/cleanups/send_to_pw/{{cleanup.id}}"  class="support">Submit to Public Works</a>
+                <a href="/cleanups/public_works/{{cleanup.id}}"  class="support">Submit
+                    to Public Works</a>
                 {%else%}
                 Public Works has been notified
             {%endif%}
