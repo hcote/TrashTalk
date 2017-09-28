@@ -34,6 +34,7 @@ def get(user_id):
     :param user_id:
     :return:
     """
+    # TODO: Check for user exist, return 404 if not, then update test
     user = db_session.query(User).get(user_id)
     return render_template("user/show.html",
                            username=user.username,

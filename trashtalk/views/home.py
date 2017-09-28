@@ -35,7 +35,7 @@ def signup():
 def unauthorized_handler():
     """Handle unauthorized access for non-logged in users."""
     flash("Oops! That option is only for registered users")
-    return redirect(url_for("signup"), status.HTTP_403_FORBIDDEN)
+    return redirect(url_for("home.signup"), status.HTTP_403_FORBIDDEN)
 
 
 @login_manager.user_loader
@@ -67,11 +67,11 @@ def login():
         else:
             # Next step: require user feedback password or username incorrect
             flash("Incorrect Username or Password")
-            return redirect(url_for("welcome"), code=200)
+            return redirect(url_for("home.welcome"), code=200)
     else:
         # Next Step: require user feedback password or username incorrect
         flash("Incorrect Username or Password")
-        return redirect(url_for("welcome"), code=400)
+        return redirect(url_for("home.welcome"), code=400)
 
 
 @bp.route('/logout', methods=["GET"])
@@ -84,7 +84,7 @@ def logout():
     user.save()
     logout_user()  # Flask Update
 
-    return redirect(url_for("welcome"), code=200)
+    return redirect(url_for("home.welcome"), code=200)
 
 
 @bp.route('/register', methods=['POST'])
@@ -98,7 +98,7 @@ def create_account():
         #Send back to try again
         # print("%s is taken" % new_name)
         flash("username: %s, is taken" % new_name)
-        return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
+        return redirect(url_for("home.signup"), code=status.HTTP_403_FORBIDDEN)
     else:
         #enter password validation process
         new_password = request.form["password"]
@@ -111,9 +111,9 @@ def create_account():
             db_session.add(new_user)
             db_session.commit()
             login_user(new_user, remember=True)  # Login user to Flask
-            app.logger.info("%s successfully created an account" % new_name)
+            current_app.logger.info("%s successfully created an account" % new_name)
             return redirect(url_for('cleanups.get_all'))
         else:
             # Next Step: feedback that passwords do not match
             flash("passwords do not match")
-            return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
+            return redirect(url_for("home.signup"), code=status.HTTP_403_FORBIDDEN)
