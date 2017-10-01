@@ -221,14 +221,53 @@ def leave():
 def send_to_scf(id):
     """
     Send clean-up to SeeClickFix.com
+
     :param id:
     :return:
     """
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
-    current_app.logger.debug("Address: %s" % cleanup.location.number) # Sanity Check
-    api_request = postSCFix(cleanup)  # Function in SeeClickFix Module,interacts with SeeClickFix API
+    current_app.logger.debug("Address: %s" % cleanup.location.number)
+    api_request = postSCFix(cleanup)
     response = api_request.json()  # Contains Response from SeeClickFix
     cleanup.html_url = response['html_url']  # Add to SQL Database
     db_session.add(cleanup)
     db_session.commit()
+    return redirect(url_for('cleanups.get', cleanup_id=id))
+
+
+@bp.route('/public_works/<id>', methods=['GET'])
+@login_required
+def get_public_works(id):
+    """
+    View Public Works send_password page.
+
+    :param id: cleanup id
+    :return:
+    """
+
+    return render_template("cleanup/public_works/send.html",
+                           section="Public Works",
+                           time_placeholder = html_constants.time_placeholder,
+                           time_pattern = html_constants.time_pattern,
+                           date_placeholder = html_constants.date_placeholder,
+                           date_pattern = html_constants.date_pattern,
+                           id=id)
+
+
+@bp.route('/public_works/<id>', methods=["POST"])
+@login_required
+def send_public_works(id):
+    """
+    Send cleanup data to Public Works google sheet
+
+    :param id: cleanup id
+    :return:
+    """
+    tool_data=request.form.copy()
+    send_to_sheet(id, tool_data)  # Very slow function
+    cleanup = db_session.query(Cleanup).get(id)
+    cleanup.notified_pw=True
+    db_session.add(cleanup)
+    db_session.commit()
+
     return redirect(url_for('cleanups.get', cleanup_id=id))

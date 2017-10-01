@@ -1,7 +1,10 @@
+import logging
 import pytest
 
-from trashtalk.factories import app_factory
+from trashtalk.factories import *
 from .factories import *
+
+logger = logging.getLogger('trashtalk.tests.test_app')
 
 
 @pytest.fixture(scope='module')
@@ -9,19 +12,21 @@ def client(request):
     """
     `Fixture`_ to configure testing client for view requests.
     .. _link: https://docs.pytest.org/en/latest/builtin.html#fixtures-and-requests
-    
+
     This automatically uses the (test) configuration settings for the TrashTalk app, but
     any additional configuration options should be added here.
-    
+
     http://flask.pocoo.org/docs/0.12/config
     """
     app = app_factory('trashtalk.settings.Testing')
+    # app.config.from_pyfile('test.cfg')
     app.testing = True
-    # app.config.from_object('trashtalk.settings.Testing')
+
+    logger.debug("Tester - DB: {}".format(app.config['SQLALCHEMY_DATABASE_URI']))
+    print("Tester - DB: {}".format(app.config['SQLALCHEMY_DATABASE_URI']))
 
     def teardown():
         db_session.remove()
-        db_session.drop_all()
 
     request.addfinalizer(teardown)
     return app.test_client()
@@ -31,12 +36,12 @@ def client(request):
 class TestTrashTalkView:
     """
     Test public view responses.
-    
-    TODO: Setup template tests. 
+
+    TODO: Setup template tests.
     TODO: Parametrize and collapse endpoints into a single function.
     """
 
-    def test_view_home_page(self, client):
+    def test_view_home(self, client):
         response = client.get('/')
         # client.add_template_test(fn, val)
         assert response.status_code == 200
@@ -50,7 +55,7 @@ class TestTrashTalkView:
         assert response.status_code == 200 or 301
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @pytest.mark.usefixture('client')
 class TestUserLogin:
     """
@@ -58,6 +63,15 @@ class TestUserLogin:
     TODO: Setup test database.
     """
 
+    def test_signup_registration(self, client):
+        user = UserFactory()
+        response = client.post('/register', data={'username': user.username,
+                                                  'email': user.email,
+                                                  'password': user.password,
+                                                  'confirm_password': user.password})
+        assert response.status_code == 201 or 302
+
+    @pytest.mark.skip
     def test_login(self, client):
         user = UserFactory(username='bigjoe', password='password')
         response = client.post('/login',
@@ -66,15 +80,18 @@ class TestUserLogin:
         assert response.status_code == 200
         client.get('/logout')
 
-    def test_unauthorized_user(self, client):
-        response = client.get('/users/1')
-        assert response.status_code == 403
+    def test_user_not_found(self, client):
+        response = client.get('/users/10019999999x')
+        assert response.status_code == 404
 
-    def test_signup_registration(self, client):
-        response = client.post('/register', data={'username': 'test',
-                                                  'password': 'password',
-                                                  'confirm_password': 'password'})
-        assert response.status_code == 201
+    @pytest.mark.skip
+    def test_unauthorized_user(self, client):
+        user = UserFactory(username='bigjoe', password='password')
+        client.post('/login',
+                    data={'username': user.username,
+                          'password': user.password})
+        response = client.get('/users/1/edit')
+        assert response.status_code == 403
 
 
 @pytest.mark.skip

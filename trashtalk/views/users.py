@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
-from flask_login import login_required
+from flask import current_app, Blueprint, render_template, request, flash, redirect, url_for
+from flask_login import login_required, current_user
 
 from trashtalk.utils import status
 from trashtalk.models import User, db_session
@@ -34,10 +34,16 @@ def get(user_id):
     :param user_id:
     :return:
     """
+    # TODO: Check for user exist, return 404 if not, then update test
     user = db_session.query(User).get(user_id)
-    return render_template("user/show.html",
-                           username=user.username,
-                           email=user.email)
+    if not user:
+        return render_template("error.html",
+                               code=status.HTTP_404_NOT_FOUND)
+    else:
+        return render_template("user/show.html",
+                               username=user.username,
+                               email=user.email,
+                               code=status.HTTP_200_OK)
 
 
 @bp.route('/<int:user_id>', methods=['POST', 'PUT', 'DELETE'])
@@ -74,12 +80,12 @@ def post(user_id):
 
     elif method == 'POST':
         # create user
-        current_app.logger.info("Create a user ...")
+        current_app.logger.info("Create user ...")
         return redirect(url_for("users.get", user_id = user_id),
                         code=status.HTTP_403_FORBIDDEN)
 
     elif method == 'DELETE':
-        current_app.logger.info("Create a user ...")
+        current_app.logger.info("Delete user ...")
         delete(user_id)
         return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
 
