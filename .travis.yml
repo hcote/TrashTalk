@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.6"
+  - "2.7"
 
 install:
   - pip install -r requirements.txt
@@ -8,10 +8,12 @@ install:
 # command to run tests
 before_script:
 #  - psql -c 'create database travis_ci_test;' -U postgres
+#  - mysql -e 'GRANT ALL ON trashtalk* TO 'travis'@'localhost';'
+  - mysql -e 'create database trashtalk_test;' -u root
   - mysql -e 'create database trashtalk;' -u root
 
 script: pytest -v --tb=short
 
-service:
+services:
 #  - postgresql
   - mysql

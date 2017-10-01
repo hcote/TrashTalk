@@ -28,7 +28,7 @@ class Config(object):
     LOGGING_LEVEL = logging.ERROR
 
     # Database Settings
-    DB_HOST = os.getenv('DB_HOST', 'localhost')
+    DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
     DB_USER = os.getenv('DB_USER', 'root')
     DB_PASSWORD = os.getenv('DB_PASSWORD', '')
     DB_PORT = os.getenv('DB_PORT', '5432')
@@ -59,7 +59,7 @@ class Development(Config):
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
 
-    DB_HOST = os.getenv('DB_HOST', 'localhost')
+    DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
     DB_USER = os.getenv('DB_USER', 'root')
     DB_PASSWORD = os.getenv('DB_PASSWORD', '')
     DB_NAME = "trashtalk"
@@ -78,9 +78,9 @@ class Testing(Config):
     TESTING = True
     LOGGING_LEVEL = logging.DEBUG
 
-    DB_HOST = os.getenv('DB_HOST')
-    DB_USER = os.getenv('DB_USER')
-    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
+    DB_USER = os.getenv('DB_USER', 'travis')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', '')
     DB_PORT = os.getenv('DB_PORT', '5432')
     DB_NAME = os.getenv('DB_NAME', 'trashtalk_test')
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(DB_USER,
@@ -98,7 +98,7 @@ class Production(Config):
     """
     DB_HOST = os.getenv('DB_HOST')
     DB_USER = os.getenv('DB_USER')
-    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', '')
     DB_NAME = "trashtalk"
 
     # Access SQL
