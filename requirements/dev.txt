@@ -1,0 +1,14 @@
+-r common.txt
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# FLASK DEBUG TOOLBAR
+# Also requires: Flask, itsdangerous, werkzeug
+# ^^^^^^^^^^^^^^^^^^^^^^
+Flask-DebugToolbar==0.10.0
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# MISC
+# ^^^^^^^^^^^^^^^^^^^^^^
+ipython>=6.0.0
+isort>=4.2.15
+pylint==1.7.4
