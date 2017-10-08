@@ -43,7 +43,6 @@ class TestTrashTalkView:
 
     def test_view_home(self, client):
         response = client.get('/')
-        # client.add_template_test(fn, val)
         assert response.status_code == 200
 
     def test_view_signup(self, client):
@@ -60,7 +59,6 @@ class TestTrashTalkView:
 class TestUserLogin:
     """
     Tests that require database access.
-    TODO: Setup test database.
     """
 
     def test_signup_registration(self, client):
@@ -71,9 +69,13 @@ class TestUserLogin:
                                                   'confirm_password': user.password})
         assert response.status_code == 201 or 302
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_login(self, client):
-        user = UserFactory(username='bigjoe', password='password')
+        user = UserFactory(username='faramir', password='password')
+        client.post('/register', data={'username': user.username,
+                                       'email': user.email,
+                                       'password': user.password,
+                                       'confirm_password': user.password})
         response = client.post('/login',
                                data={'username': user.username,
                                      'password': user.password})

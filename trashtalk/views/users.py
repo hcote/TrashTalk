@@ -20,6 +20,9 @@ def edit(user_id):
     :return:
     """
     user = db_session.query(User).get(user_id)
+    if not current_user.id == user_id:
+        return redirect(url_for("users.get", user_id=current_user.id),
+                        code=status.HTTP_403_FORBIDDEN)
     return render_template("user/edit.html",
                            user_id=user.id,
                            password_pattern = html_constants.password_pattern,
@@ -76,21 +79,21 @@ def post(user_id):
         db_session.add(user)
         db_session.commit()
         return redirect(url_for("users.get", user_id=user_id),
-                        code=status.HTTP_403_FORBIDDEN)
+                        code=status.HTTP_200_OK)
 
     elif method == 'POST':
         # create user
         current_app.logger.info("Create user ...")
         return redirect(url_for("users.get", user_id = user_id),
-                        code=status.HTTP_403_FORBIDDEN)
+                        code=status.HTTP_201_CREATED)
 
     elif method == 'DELETE':
         current_app.logger.info("Delete user ...")
         delete(user_id)
-        return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
+        return redirect(url_for("signup"), code=status.HTTP_200_OK)
 
     else:
-        return redirect(url_for("signup"), code=status.HTTP_403_FORBIDDEN)
+        return redirect(url_for("signup"), code=status.HTTP_400_BAD_REQUEST)
 
 
 def delete(user_id):
