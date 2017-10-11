@@ -1,5 +1,6 @@
 import json
 
+from settings import Config["SCF_ADMIN_USER"]
 import requests
 from input_handling import twelve_hour_time
 
@@ -27,7 +28,7 @@ def postSCFix(cleanup):
         }
     }
     # Make post to SeeClickFix
-    return requests.post(BASE_CALL, auth=(ADMIN_USERNAME, ADMIN_PASSWORD), data=json.dumps(payload), headers=HEADER)
+    return requests.post(BASE_CALL, auth=(SEE_ADMIN_USER, ADMIN_PASSWORD), data=json.dumps(payload), headers=HEADER)
 
 
 # Updating the status to opened or closed. Requires a comment with update

@@ -21,6 +21,7 @@ class Config(object):
     TESTING = False
     SECRET_KEY = os.getenv('SECRET_KEY', 'Not set')
     SESSION_COOKIE_NAME = 'trashtalk_session'
+    SEE_ADMIN_USER = os.getenv('SCF_ADMIN_USER')
 
     # Logger Settings
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
