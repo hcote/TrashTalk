@@ -28,7 +28,12 @@ def error():
 @bp.route('/signup')
 def signup():
     return render_template("register.html",
-                           section="Sign up")
+                        section="Sign up",
+                        username_pattern = html_constants.username_pattern,
+                        username_title = html_constants.username_title,
+                        password_pattern = html_constants.password_pattern,
+                        password_title = html_constants.password_title
+                        )
 
 
 @login_manager.unauthorized_handler

@@ -12,6 +12,7 @@ bp = Blueprint('users', __name__,
 
 
 @bp.route('/<int:user_id>/edit', methods=['GET'])
+@login_required
 def edit(user_id):
     """
     Route user to a page where they can edit their profile.
@@ -30,6 +31,7 @@ def edit(user_id):
 
 
 @bp.route('/<int:user_id>', methods=['GET'])
+@login_required
 def get(user_id):
     """
     Display user profile
@@ -39,9 +41,10 @@ def get(user_id):
     """
     # TODO: Check for user exist, return 404 if not, then update test
     user = db_session.query(User).get(user_id)
-    if not user:
+    if (not user) or (user_id != current_user.id):
         return render_template("error.html",
                                code=status.HTTP_404_NOT_FOUND)
+
     else:
         return render_template("user/show.html",
                                username=user.username,

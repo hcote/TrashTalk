@@ -42,12 +42,16 @@ class Config(object):
 
     # Google
     GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
-    GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
-                           "&q=".format(GOOGLE_MAPS_KEY)
+    GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?q="
+    # GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
+    #                        "&q=".format(GOOGLE_MAPS_KEY)
     GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')
+    GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')
 
     # See Click Fix
-    SCF_USER = os.getenv('SCF_USER')
+    SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")
+    SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")
+    SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")
 
 
 class Development(Config):
@@ -60,10 +64,11 @@ class Development(Config):
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
 
-    DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
+    DB_HOST = os.getenv('DB_HOST', "")
     DB_USER = os.getenv('DB_USER', 'root')
-    DB_PASSWORD = os.getenv('DB_PASSWORD', '')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', "")
     DB_NAME = "trashtalk"
+
 
     # Access SQL
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(DB_USER,

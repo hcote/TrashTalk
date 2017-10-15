@@ -5,6 +5,7 @@ from flask_login import current_user
 
 from geopy.exc import GeopyError
 
+from trashtalk.google_sheets import send_to_sheet
 from trashtalk.seeclickfix import postSCFix
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session  # User
@@ -64,7 +65,7 @@ def get(cleanup_id):
                            end_time = cleanups.end_time,
                            bool_participated=bool_participated,
                            default_image_path = html_constants.default_image_path,
-                           google_maps_key = '')
+                           google_maps_key = current_app.config['GOOGLE_MAPS_KEY'])
 
 
 @bp.route('/new')
