@@ -14,10 +14,10 @@ scope = ['https://spreadsheets.google.com/feeds/'] #Sheet must be shared with Cl
 validation = ""#Validation pulls from JSON account information file
 sheet_key = "" #Key from sheet URL
 top_row = 2 #First Row is header #Limited ability to find the end of the data. Easier just to put data at the top and find it later
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(validation, scope)
-gc = gspread.authorize(credentials)
-wks = gc.open_by_key(sheet_key).sheet1
+#
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(validation, scope)
+# gc = gspread.authorize(credentials)
+# wks = gc.open_by_key(sheet_key).sheet1
 
 # Function used in cleanups.py for send_to_pw_really.html
 def send_to_sheet(id, tool_data):

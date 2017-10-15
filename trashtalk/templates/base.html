@@ -19,11 +19,11 @@ Outline for rest of the webpage
             <nav>
                 <a href='/cleanups'>All Oakland Cleanups</a>
                 {%if current_user.authenticated%}
-                    <a href="/users/{{ current_user.id }}/cleanups">My Cleanups</a>
+                    <a href="/user/cleanups">My Cleanups</a>
                     <a href="/cleanups/new">Create New Cleanup</a>
                     <!--<a href="/users/{{ current_user.id }}" class="base">Notifications</a><br/>-->
                 <!--Change #2-->
-                    <a href="/users/{{current_user.id}}/edit">Edit Profile</a>
+                    <a href="/user/edit">Edit Profile</a>
                     <a href="/logout">Log out</a>
                 {%else%}
                     Want to create or join clean ups?
