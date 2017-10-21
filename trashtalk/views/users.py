@@ -20,13 +20,10 @@ def edit():
     :param user_id:
     :return:
     """
-    try:
-        return render_template("user/edit.html",
-                        password_pattern=html_constants.password_pattern,
-                        password_title=html_constants.password_title)
-    except:
-        return redirect(url_for("users.get"),
-                        code=status.HTTP_403_FORBIDDEN)
+
+    return render_template("user/edit.html",
+                    password_pattern=html_constants.password_pattern,
+                    password_title=html_constants.password_title)
 
 
 
@@ -41,14 +38,11 @@ def get():
     """
     # TODO: Check for user exist, return 404 if not, then update test
     user = db_session.query(User).get(current_user.id)
-    try:
-        return render_template("user/show.html",
-                               username=user.username,
-                               email=user.email,
-                               code=status.HTTP_200_OK)
-    except:
-        return render_template("error.html",
-                               code=status.HTTP_404_NOT_FOUND)
+    return render_template("user/show.html",
+                           username=user.username,
+                           email=user.email,
+                           code=status.HTTP_200_OK)
+
 
 
 @bp.route('/', methods=['POST', 'PUT', 'DELETE'])

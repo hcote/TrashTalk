@@ -8,7 +8,7 @@ from geopy.exc import GeopyError
 from trashtalk.google_sheets import send_to_sheet
 from trashtalk.seeclickfix import postSCFix
 from trashtalk.factories import cleanup_factory, location_factory
-from trashtalk.models import Cleanup, db_session, User
+from trashtalk.models import Cleanup, db_session
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
 from trashtalk.utils import get_location
@@ -56,15 +56,15 @@ def get(cleanup_id):
     else:
         bool_participated = False #Default to anonymous users not being participants
 
+    map = current_app.config['GOOGLE_MAPS_ENDPOINT'].format(cleanups.gmap_query, current_app.config['GOOGLE_MAPS_KEY'])
     return render_template("cleanup/show.html",
                            section="Cleanup",
                            cleanup=cleanups,
-                           gmap=current_app.config['GOOGLE_MAPS_ENDPOINT'],
+                           gmap= map,
                            start_time = cleanups.start_time,
                            end_time = cleanups.end_time,
                            bool_participated=bool_participated,
-                           default_image_path = html_constants.default_image_path,
-                           google_maps_key = current_app.config['GOOGLE_MAPS_KEY'])
+                           default_image_path = html_constants.default_image_path)
 
 
 @bp.route('/new')
@@ -220,7 +220,7 @@ def join():
 @login_required
 def leave():
     """
-    Users can join currently listed clean-up event.
+    Users can leave currently listed clean-up event.
     :return:
     """
     cleanup_id = request.form['cleanup_id']
