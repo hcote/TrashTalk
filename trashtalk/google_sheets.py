@@ -7,12 +7,18 @@ import gspread
 import datetime
 
 from trashtalk.models import Cleanup, db_session
+from oauth2client.service_account import ServiceAccountCredentials
+from flask import current_app
 
-top_row = 2 #First Row is header: Limited ability to find the end of the data. Easier just to put data at the top and find it later
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEETS_VALIDATION, GOOGLE_SHEETS_SCOPE)
-gc = gspread.authorize(credentials)
-wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1
+# GOOGLE_SHEETS_VALIDATION = current_app.config['GOOGLE_SHEETS_VALIDATION']
+# GOOGLE_SHEETS_SCOPE = current_app.config['GOOGLE_SHEETS_SCOPE']
+# GOOGLE_SHEETS_KEY = current_app.config['GOOGLE_SHEETS_KEY']
+#
+# top_row = 2 #First Row is header: Limited ability to find the end of the data. Easier just to put data at the top and find it later
+#
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEETS_VALIDATION, GOOGLE_SHEETS_SCOPE)
+# gc = gspread.authorize(credentials)
+# wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1
 
 # Function used in cleanups.py for send_to_pw_really.html
 def send_to_sheet(id, tool_data):

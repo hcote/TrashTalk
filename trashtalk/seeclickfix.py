@@ -1,15 +1,16 @@
-#from json import dumps
+import json
 import requests
 from input_handling import twelve_hour_time
+from flask import current_app
 
 # Variables for API call to test.seeclickfix.com (the developer's page)
 # developer page has own set of user accounts
 # Switching to live page requires removing 'test' from url and creating account for live page
-HEADER = SCF_HEADER
-BASE_CALL = SCF_BASE_CALL
-ADMIN_USERNAME = SCF_ADMIN_USER
-ADMIN_PASSWORD = SCF_ADMIN_PASSWORD
-CLEANUP_BASE_URL = SCF_CLEANUP_BASE_URL
+# HEADER = current_app.config['SCF_HEADER']
+# BASE_CALL = current_app.config['SCF_BASE_CALL']
+# ADMIN_USERNAME = current_app.config['SCF_ADMIN_USER']
+# ADMIN_PASSWORD = current_app.config['SCF_ADMIN_PASSWORD']
+# CLEANUP_BASE_URL = current_app.config['SCF_CLEANUP_BASE_URL']
 
 
 # Create an initial post to SeeClickFix.com
@@ -29,14 +30,14 @@ def postSCFix(cleanup):
         }
     }
     # Make post to SeeClickFix
-    return requests.post(BASE_CALL, auth=(ADMIN_USERNAME, ADMIN_PASSWORD), data=dumps(payload), headers=HEADER)
+    return requests.post(BASE_CALL, auth=(ADMIN_USERNAME, ADMIN_PASSWORD), data=json.dumps(payload), headers=HEADER)
 
 
 # Updating the status to opened or closed. Requires a comment with update
 # The website never references this function
 def updateSCFix(cleanup_status, cleanup_id):
     phrase = "Test: This clean-up is actually complete"
-    comment = dumps({"comment": phrase})
+    comment = json.dumps({"comment": phrase})
     url = BASE_CALL + "/%s/%s" % (cleanup_id, cleanup_status)
 
     return requests.post(url, auth=(ADMIN_USERNAME, ADMIN_PASSWORD), data=comment, headers=HEADER)
