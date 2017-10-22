@@ -11,7 +11,7 @@ exceptions.py
 notes.md
 app.yaml
 *.cfg
-
+*.sql
 # C extensions
 *.so
 
