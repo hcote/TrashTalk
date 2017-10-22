@@ -6,11 +6,11 @@ from flask import current_app
 # Variables for API call to test.seeclickfix.com (the developer's page)
 # developer page has own set of user accounts
 # Switching to live page requires removing 'test' from url and creating account for live page
-# HEADER = current_app.config['SCF_HEADER']
-# BASE_CALL = current_app.config['SCF_BASE_CALL']
-# ADMIN_USERNAME = current_app.config['SCF_ADMIN_USER']
-# ADMIN_PASSWORD = current_app.config['SCF_ADMIN_PASSWORD']
-# CLEANUP_BASE_URL = current_app.config['SCF_CLEANUP_BASE_URL']
+HEADER = current_app.config['SCF_HEADER']
+BASE_CALL = current_app.config['SCF_BASE_CALL']
+ADMIN_USERNAME = current_app.config['SCF_ADMIN_USER']
+ADMIN_PASSWORD = current_app.config['SCF_ADMIN_PASSWORD']
+CLEANUP_BASE_URL = current_app.config['SCF_CLEANUP_BASE_URL']
 
 
 # Create an initial post to SeeClickFix.com
