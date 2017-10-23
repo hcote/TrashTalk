@@ -7,6 +7,7 @@ need!).
 
 **Communication:**
 - [Slack](https://openoakland.slack.com)
+- [Project Board](https://github.com/openoakland/TrashTalk/projects)
 - [Issue Tracker](https://github.com/TangoYankee/TrashTalk/issues)
 
 **Development:**

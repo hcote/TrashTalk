@@ -1,41 +1,32 @@
- # TrashTalk
+Trashtalk
+=========
 
- - About the project
- - [Dev Guide](CONTRIBUTE.md)
- - Documentation
+Trashtalk.com will essentially act as a liaison between: Oakland's Department of Public Works and the Oakland Adopt-A Volunteer Program...fueled by community leaders starting cleanups within their community (or defined areas/location of interest)
 
-## About the Project
+## Developers
+Please read CONTRIBUTE.md for full information and instructions.
 
-Trash Talk is an app for organizing neighborhood cleanups and for graffiti abatement.
+Before you can do anything, you must do the following:
 
-Goal is to develop a web application that finds anyone interested in a specified geographical area, with the ability to communicate "scheduled cleanups".
+To run:
+- Fork the repository.
+- Clone your fork of the repo.
+- Run: `pip install -r requirements.txt`
+- Run: `alembic upgrade head`
 
-Trashtalk.com will act as a liaison between: Oakland's Department of Public Works and the Oakland Adopt-A Volunteer Program...fueled by community leaders starting cleanups within their community (or defined areas/location of interest)
+Then you can configure the project. Open `dev.cfg` to customize the
+settings to your local configuration. An example is provided in `dev.cfg.example` of what you may need to change. **Remember to uncomment the config line in the main app script (run.py) if you do this.**
 
-In order to act as an integrator, TrashTalk will need to manage a datastore of cleanup events and volunteers.  It also needs to message interested individual neighbors using seeclickfix.com via the seeclickfix API v2.  This is where coding help is requested.   We need help:
-==> Using the API to collect ID tokens of people 'watching" an area that will host a cleanup
-==> Writing the queries to find those individuals
-==> Writing and addressing the clean up invitations to those individuals via the API
-==> Creating tables for the ID tokens and the real contact info
-==> Managing this info to send to the City of Oakland's Adopt-a-site and Volunteer hours apps
+Finally: `python run.py`
 
-Information on the Seeclickfix API is available here:
+For debug mode, set the `FLASK_APP` environment variable and use `flask run` instead.
 
-http://dev.seeclickfix.com/ & https://github.com/SeeClickFix/dev.seeclickfix.com
+To locally test the app on Google Cloud, please check the wiki for full instructions:
+https://github.com/openoakland/TrashTalk/wiki/Deployment
 
+### Updating Your App
 
-Other areas that will need to inherently be developed are:
-==> A database umbrella based off the seeclickfix api
-==> Page listing of "Clean-up Sites Near You" (with a JOIN feature)
-==> Geofencing/Geomapping feature for linking an individual with a service area preference
+You'll also need to update `alembic.ini` with the URI to your database in
+order to run migrations:
+`sqlalchemy.url = postgresql://postgres@localhost/trashtalk`
 
-Also … making a Mobile app and Website to help users navigate this information
-Registration feature for smart phones  (i.e. QRcode 'neighborhood registration' feature -- Version 2)
-
-Architectural approach
-
-Trash Talk will be both a Mobile App and a web site so as to provide wide demographic coverage for all citizens regardless of age and social and economic status.  Seniors and low income students still use web sites first or exclusively so a fully functional web site for the application is necessary.
-
-Because this is a utility for the community, and it will be supported by less technical personnel, a serverless architecture is probably best to reduce the management requirements for the backend. We plan to use a website proxy for desktop users, that connects to the application logic.  That would be best provided by a cloud service such as Google App Engine or AWS Lambda.  Assistance in setting up Google App Engine would very helpful and could be a Day 0 activity.  
-
-The proxy web site could be set up via Google Sites or services such as Wix or Square, separating the design and UX components from the backend application logic.
