@@ -3,8 +3,6 @@ from flask import redirect, url_for
 from flask_login import login_required
 from flask_login import current_user
 
-from geopy.exc import GeopyError
-
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session
 from trashtalk.html_constants import HtmlConstants
@@ -52,13 +50,14 @@ def get(cleanup_id):
     if current_user.is_authenticated:
         bool_participated = check_participants(current_user.id, cleanups.participants)
     else:
-        bool_participated = False #Default to anonymous users not being participants
+        bool_participated = False  # Default to anonymous users not being participants
 
-    map = current_app.config['GOOGLE_MAPS_ENDPOINT'].format(cleanups.gmap_query, current_app.config['GOOGLE_MAPS_KEY'])
+    gmap = "{0}{1}".format(current_app.config['GOOGLE_MAPS_ENDPOINT'],
+                           cleanups.gmap_query)
     return render_template("cleanup/show.html",
                            section="Cleanup",
                            cleanup=cleanups,
-                           gmap= map,
+                           gmap=gmap,
                            start_time = cleanups.start_time,
                            end_time = cleanups.end_time,
                            bool_participated=bool_participated,
@@ -177,25 +176,17 @@ def create():
     :return: redirect to cleanup/:id if successful, to cleanup/new if not
     """
     # TODO: Issue #9 - Prevent multiple accidental submissions (ex., when errors occur)
-    full_address= get_full_address(request.form.to_dict())
+    full_address = get_full_address(request.form.to_dict())
     try:
         geoloc = get_location(full_address)
-    except:
+    except:  # TODO: Issue 56 - Add custom exception CleanupException or something
         current_app.logger.exception("There was an error finding location.")
-        flash("s%: Address not found" % full_address)
+        flash("There was an error creating your cleanup. Please try again.")
         return redirect(url_for('cleanups.new'))
     else:
-        location=location_factory(geoloc._asdict())
+        location = location_factory(geoloc._asdict())
         cleanup_data = request.form.copy()
-        if not cleanup_data['image']:
-            current_app.logger.info("No image was found: replaced with default")
-            cleanup_data['image'] = "crossed_rakes.png"
-        else:
-            current_app.logger.info("Image found: ", cleanup_data['image'])
-        cleanup_data['start_time'] = request.form["start_time"]
-        cleanup_data['end_time'] = request.form["end_time"]
         cleanup_data['location'] = location
-        cleanup_data['host'] = current_user
         new_cleanup = cleanup_factory(cleanup_data)
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
@@ -251,6 +242,7 @@ def send_to_scf(id):
     else:
         flash("You do not have rights to edit this cleanup")
         return redirect(url_for('cleanups.get', cleanup_id=id))
+
 
 @bp.route('/public_works/<id>', methods=['GET'])
 @login_required
