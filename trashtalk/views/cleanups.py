@@ -5,9 +5,8 @@ from flask_login import current_user
 
 from geopy.exc import GeopyError
 
-from trashtalk.seeclickfix import postSCFix
 from trashtalk.factories import cleanup_factory, location_factory
-from trashtalk.models import Cleanup, db_session  # User
+from trashtalk.models import Cleanup, db_session
 from trashtalk.html_constants import HtmlConstants
 from trashtalk.input_handling import *
 from trashtalk.utils import get_location
@@ -48,7 +47,6 @@ def get(cleanup_id):
     :param cleanup_id:
     :return: show template
     """
-
     cleanups = db_session.query(Cleanup).get(cleanup_id)
     # Method sort those logged in and out, in reference to participating in cleanups
     if current_user.is_authenticated:
@@ -56,18 +54,19 @@ def get(cleanup_id):
     else:
         bool_participated = False #Default to anonymous users not being participants
 
+    map = current_app.config['GOOGLE_MAPS_ENDPOINT'].format(cleanups.gmap_query, current_app.config['GOOGLE_MAPS_KEY'])
     return render_template("cleanup/show.html",
                            section="Cleanup",
                            cleanup=cleanups,
-                           gmap=current_app.config['GOOGLE_MAPS_ENDPOINT'],
+                           gmap= map,
                            start_time = cleanups.start_time,
                            end_time = cleanups.end_time,
                            bool_participated=bool_participated,
-                           default_image_path = html_constants.default_image_path,
-                           google_maps_key = '')
+                           default_image_path = html_constants.default_image_path)
 
 
 @bp.route('/new')
+@login_required
 def new():
     """
     Render template form for creating a new `Cleanup`. POSTs to cleanups/create
@@ -93,24 +92,30 @@ def edit(cleanup_id):
     :return: edit template.
     """
     # TODO: Update form to include current values for current cleanup
+
     cleanups = db_session.query(Cleanup).get(cleanup_id)
-    return render_template('cleanup/edit.html',
-                           section='Edit Cleanup',
-                           id=cleanups.id,
-                           date=cleanups.date,
-                           current_address=cleanups.location.number,
-                           start_time= hour_min_value(cleanups.start_time),
-                           start_time_of_day = am_pm_value(cleanups.start_time),
-                           end_time = hour_min_value(cleanups.end_time),
-                           end_time_of_day = am_pm_value(cleanups.end_time),
-                           description=cleanups.description,
-                           date_pattern = html_constants.date_pattern,
-                           date_placeholder = html_constants.date_placeholder,
-                           time_pattern = html_constants.time_pattern,
-                           time_placeholder = html_constants.time_placeholder)
+    if cleanups.host_id == current_user.id: #Only let host edit cleanup
+        return render_template('cleanup/edit.html',
+                               section='Edit Cleanup',
+                               id=cleanups.id,
+                               date=cleanups.date,
+                               current_address=cleanups.location.number,
+                               start_time= hour_min_value(cleanups.start_time),
+                               start_time_of_day = am_pm_value(cleanups.start_time),
+                               end_time = hour_min_value(cleanups.end_time),
+                               end_time_of_day = am_pm_value(cleanups.end_time),
+                               description=cleanups.description,
+                               date_pattern = html_constants.date_pattern,
+                               date_placeholder = html_constants.date_placeholder,
+                               time_pattern = html_constants.time_pattern,
+                               time_placeholder = html_constants.time_placeholder)
+    else:
+        flash("You do not have rights to edit this cleanup")
+        return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
 @bp.route('/<int:cleanup_id>', methods=['PUT', 'DELETE'])
+@login_required
 def update(cleanup_id):
     """
     Create, update or delete a `Cleanup`
@@ -120,32 +125,39 @@ def update(cleanup_id):
     """
     cleanup_dict = request.form.to_dict()
     method = cleanup_dict['method']
+
     cleanups = db_session.query(Cleanup).get(cleanup_id)
-    if method == 'POST': #PUT
-        current_app.logger.debug("REQUEST FORM: %s", request.form)
+    if cleanups.host_id == current_user.id:  # Only let host edit cleanup
 
-        start_time = twenty_four_time(cleanup_dict['start_time'],cleanup_dict['start_time_of_day'])
-        end_time = twenty_four_time(cleanup_dict['end_time'],cleanup_dict['end_time_of_day'])
-        cleanup_dict.update({"start_time": start_time, "end_time": end_time})
+        if method == 'POST': #PUT
+            current_app.logger.debug("REQUEST FORM: %s", request.form)
 
-        full_address=get_full_address(cleanup_dict)
-        try:
-            geoloc = get_location(full_address)
-        except:
-            current_app.logger.exception("There was an error finding location.")
-            flash("s%: Address not found" % full_address)
-            return redirect(url_for('cleanups.edit', cleanup_id=cleanup_id))
-        else:
-            location_dict = {"number": geoloc.address, "latitude": geoloc.latitude, "longitude": geoloc.longitude}
-            cleanup_dict.pop("location",None)#Hack- location should be renamed, coming from HTML
-            cleanups.update(**cleanup_dict)
-            cleanups.location.update(**location_dict)
-            return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
+            start_time = twenty_four_time(cleanup_dict['start_time'],cleanup_dict['start_time_of_day'])
+            end_time = twenty_four_time(cleanup_dict['end_time'],cleanup_dict['end_time_of_day'])
+            cleanup_dict.update({"start_time": start_time, "end_time": end_time})
 
-    elif method == 'DELETE':
-        print("now deleting")
-        cleanups.delete()
-        return redirect(url_for('cleanups.get_all'))
+            full_address=get_full_address(cleanup_dict)
+            try:
+                geoloc = get_location(full_address)
+            except:
+                current_app.logger.exception("There was an error finding location.")
+                flash("s%: Address not found" % full_address)
+                return redirect(url_for('cleanups.edit', cleanup_id=cleanup_id))
+            else:
+                location_dict = {"number": geoloc.address, "latitude": geoloc.latitude, "longitude": geoloc.longitude}
+                cleanup_dict.pop("location",None)#Hack- location should be renamed, coming from HTML
+                cleanups.update(**cleanup_dict)
+                cleanups.location.update(**location_dict)
+                return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
+
+        elif method == 'DELETE':
+            print("now deleting")
+            cleanups.delete()
+            return redirect(url_for('cleanups.get_all'))
+
+    else:
+        flash("You do not have rights to edit this cleanup")
+        return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
 @bp.route('/create', methods=["POST"])
@@ -188,7 +200,7 @@ def create():
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
 
-@bp.route('/<int:cleanup_id>/delete', methods=["POST"])
+@bp.route('/join', methods=["POST"])
 @login_required
 def join():
     """
@@ -202,11 +214,11 @@ def join():
     return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@bp.route('/join', methods=["POST"])
+@bp.route('/leave', methods=["POST"])
 @login_required
 def leave():
     """
-    Users can join currently listed clean-up event.
+    Users can leave currently listed clean-up event.
     :return:
     """
     cleanup_id = request.form['cleanup_id']
@@ -225,15 +237,20 @@ def send_to_scf(id):
     :param id:
     :return:
     """
+    from trashtalk.seeclickfix import postSCFix
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
-    current_app.logger.debug("Address: %s" % cleanup.location.number)
-    api_request = postSCFix(cleanup)
-    response = api_request.json()  # Contains Response from SeeClickFix
-    cleanup.html_url = response['html_url']  # Add to SQL Database
-    db_session.add(cleanup)
-    db_session.commit()
-    return redirect(url_for('cleanups.get', cleanup_id=id))
-
+    cleanups = db_session.query(Cleanup).get(id)
+    if cleanups.host_id == current_user.id:  # Only let host edit cleanup
+        current_app.logger.debug("Address: %s" % cleanup.location.number)
+        api_request = postSCFix(cleanup)
+        response = api_request.json()  # Contains Response from SeeClickFix
+        cleanup.html_url = response['html_url']  # Add to SQL Database
+        db_session.add(cleanup)
+        db_session.commit()
+        return redirect(url_for('cleanups.get', cleanup_id=id))
+    else:
+        flash("You do not have rights to edit this cleanup")
+        return redirect(url_for('cleanups.get', cleanup_id=id))
 
 @bp.route('/public_works/<id>', methods=['GET'])
 @login_required
@@ -257,17 +274,24 @@ def get_public_works(id):
 @bp.route('/public_works/<id>', methods=["POST"])
 @login_required
 def send_public_works(id):
+    from trashtalk.google_sheets import send_to_sheet
+
     """
     Send cleanup data to Public Works google sheet
 
     :param id: cleanup id
     :return:
     """
-    tool_data=request.form.copy()
-    send_to_sheet(id, tool_data)  # Very slow function
-    cleanup = db_session.query(Cleanup).get(id)
-    cleanup.notified_pw=True
-    db_session.add(cleanup)
-    db_session.commit()
+    cleanups = db_session.query(Cleanup).get(id)
+    if cleanups.host_id == current_user.id:  # Only let host edit cleanup
+        tool_data=request.form.copy()
+        send_to_sheet(id, tool_data)  # Very slow function)
+        cleanups.notified_pw=True
+        db_session.add(cleanups)
+        db_session.commit()
 
-    return redirect(url_for('cleanups.get', cleanup_id=id))
+        return redirect(url_for('cleanups.get', cleanup_id=id))
+
+    else:
+        flash("You do not have rights to edit this cleanup")
+        return redirect(url_for('cleanups.get', cleanup_id=id))

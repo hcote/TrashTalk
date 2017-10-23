@@ -39,15 +39,20 @@ class Config(object):
                                                                    DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-    # Google
+    # Google Map
     GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
-    GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
-                           "&q=".format(GOOGLE_MAPS_KEY)
-    GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')
+    GOOGLE_MAPS_ENDPOINT ="https://www.google.com/maps/embed/v1/place?q={0}&zoom=17&key={1}"#Must be formatted when used
+    # Google worksheets
+    GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION') # Permission to access drive account
+    GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/'] # URL in Google Drive account to find spreadsheet
+    GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY') # ID of spreadsheet found in Scope
 
     # See Click Fix
-    SCF_USER = os.getenv('SCF_USER')
-
+    SCF_HEADER = {"Content-type": "application/json"}
+    SCF_BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
+    SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")
+    SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")
+    SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")
 
 class Development(Config):
     """
@@ -59,10 +64,11 @@ class Development(Config):
     DEBUG = True
     LOGGING_LEVEL = logging.INFO
 
-    DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
+    DB_HOST = os.getenv('DB_HOST', "")
     DB_USER = os.getenv('DB_USER', 'root')
-    DB_PASSWORD = os.getenv('DB_PASSWORD', '')
+    DB_PASSWORD = os.getenv('DB_PASSWORD', "")
     DB_NAME = "trashtalk"
+
 
     # Access SQL
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(DB_USER,

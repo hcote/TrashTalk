@@ -7,7 +7,7 @@ and open the template in the editor.
 -->
 {%extends 'base.html'%}
 {%block content%}
-<form action="/users/{{ user_id }}" method="post">
+<form action="/user/" method="post">
     <input type="hidden" name="method" value="PUT">
     <input type="email" name="email" placeholder="Update Email"><br />
     <input type="password" name="password"
@@ -21,7 +21,7 @@ and open the template in the editor.
     <input type="submit" value="Update">
     <a href='/cleanups' class="support">Cancel</a>
 </form>
-<form action="/users/{{ user_id }}" method="post">
+<form action="/user/" method="post">
     <input type="hidden" name="method" value="DELETE">
     <input type="submit" value="Delete">
 </form>

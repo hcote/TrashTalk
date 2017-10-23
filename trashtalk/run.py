@@ -28,7 +28,7 @@ if __name__ == '__main__':
         app.logger.info("Production server configured ...")
     else:
         app = app_factory('trashtalk.settings.Development')
-        # app.config.from_pyfile('dev.cfg')
+        app.config.from_pyfile('dev.cfg')
         app.logger.info('Welcome to the Development server')
 
     app.run()

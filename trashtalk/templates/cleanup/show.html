@@ -18,21 +18,18 @@ and open the template in the editor.
         width="450";
         height="400";
         frameborder="0";
-        src="https://www.google.com/maps/embed/v1/place?q={{cleanup.location.latitude}},{{cleanup.location.longitude}}&zoom=17&key={{google_maps_key}}">
-
-          <!--src="{{ gmap }}{{ cleanup.gmap_query }}" allowfullscreen>-->
+        src = "{{gmap}}">
     </iframe></br>
 
 
     <p class="single_cleanup">
         <b>{{cleanup.name}}</b>
-        <br>hosted by: {{cleanup.host.username}}
+        <br>hosted by: {{cleanup.host.username}}<br>
     </p>
     <p class="single_cleanup">
         <i> {{cleanup.description}}</i>
         <br>    {{cleanup.date}}, {{start_time}}-{{end_time}}
         <br>    {{cleanup.location.number}}
-        <!--<br>    {{cleanup.location.latitude}}, {{cleanup.location.longitude}}-->
     </p>
 
     <p class="single_cleanup">Participants:

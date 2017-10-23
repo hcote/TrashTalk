@@ -5,20 +5,20 @@
 
 import gspread
 import datetime
-from oauth2client.service_account import ServiceAccountCredentials
 
 from trashtalk.models import Cleanup, db_session
-from trashtalk.master_keys import MasterKeys
-key_chain = MasterKeys()
+from oauth2client.service_account import ServiceAccountCredentials
+from flask import current_app
 
-scope = ['https://spreadsheets.google.com/feeds/'] #Sheet must be shared with Cloud account in order to find it
-validation =key_chain.validation #Validation pulls from JSON account information file
-sheet_key = key_chain.sheet_key #Key from sheet URL
-top_row = 2 #First Row is header #Limited ability to find the end of the data. Easier just to put data at the top and find it later
+GOOGLE_SHEETS_VALIDATION = current_app.config['GOOGLE_SHEETS_VALIDATION']
+GOOGLE_SHEETS_SCOPE = current_app.config['GOOGLE_SHEETS_SCOPE']
+GOOGLE_SHEETS_KEY = current_app.config['GOOGLE_SHEETS_KEY']
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name(validation, scope)
+top_row = 2 #First Row is header: Limited ability to find the end of the data. Easier just to put data at the top and find it later
+
+credentials = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEETS_VALIDATION, GOOGLE_SHEETS_SCOPE)
 gc = gspread.authorize(credentials)
-wks = gc.open_by_key(sheet_key).sheet1
+wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1
 
 # Function used in cleanups.py for send_to_pw_really.html
 def send_to_sheet(id, tool_data):
@@ -114,10 +114,4 @@ def send_to_sheet(id, tool_data):
                       standard_weed_wrench,large_weed_wrench,plastic_bag,green_waste,reusable_bag,first_aid,cooler,
                       five_gal_buck,two_gal_buck,skimmer, ed_poster, other]
 
-    #print("Formatted Data:", formatted_data)
-
     wks.insert_row(formatted_data,index=top_row)
-
-    data.insert(0,timestamp)
-    # print(data)
-    # wks.insert_row(data,index=top_row)
