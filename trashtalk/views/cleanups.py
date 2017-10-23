@@ -5,8 +5,6 @@ from flask_login import current_user
 
 from geopy.exc import GeopyError
 
-from trashtalk.google_sheets import send_to_sheet
-from trashtalk.seeclickfix import postSCFix
 from trashtalk.factories import cleanup_factory, location_factory
 from trashtalk.models import Cleanup, db_session
 from trashtalk.html_constants import HtmlConstants
@@ -239,6 +237,7 @@ def send_to_scf(id):
     :param id:
     :return:
     """
+    from trashtalk.seeclickfix import postSCFix
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
     cleanups = db_session.query(Cleanup).get(id)
     if cleanups.host_id == current_user.id:  # Only let host edit cleanup
@@ -275,6 +274,8 @@ def get_public_works(id):
 @bp.route('/public_works/<id>', methods=["POST"])
 @login_required
 def send_public_works(id):
+    from trashtalk.google_sheets import send_to_sheet
+
     """
     Send cleanup data to Public Works google sheet
 
