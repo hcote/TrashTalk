@@ -41,7 +41,9 @@ class Config(object):
 
     # Google Map
     GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
-    GOOGLE_MAPS_ENDPOINT ="https://www.google.com/maps/embed/v1/place?q={0}&zoom=17&key={1}"#Must be formatted when used
+    GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
+                           "&q=".format(GOOGLE_MAPS_KEY)
+
     # Google worksheets
     GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION') # Permission to access drive account
     GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/'] # URL in Google Drive account to find spreadsheet

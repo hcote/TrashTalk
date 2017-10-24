@@ -20,6 +20,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEETS_VAL
 gc = gspread.authorize(credentials)
 wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1
 
+
 # Function used in cleanups.py for send_to_pw_really.html
 def send_to_sheet(id, tool_data):
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()

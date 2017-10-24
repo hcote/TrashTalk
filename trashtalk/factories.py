@@ -53,7 +53,15 @@ def register_all_blueprints(app):
 
 def location_factory(data):
     location = Location(
-        number=data.get('address'),
+        number=data.get('number').strip(),
+        street=data.get('street').strip(),
+        cross_street=data.get('cross_street'),
+        city=data.get('city').strip(),
+        state=data.get('state').strip(),
+        zipcode=data.get('zipcode').strip(),
+        county=data.get('county').strip(),
+        district=data.get('district').strip(),
+        country=data.get('country').strip(),
         latitude=data.get('latitude'),
         longitude=data.get('longitude')
     )
@@ -62,10 +70,7 @@ def location_factory(data):
 
 
 def cleanup_factory(data):
-
     cleanup = Cleanup(
-        # SQL cannot currently handle the commented out values
-
         name=data.get('name'),
         description=data.get('description'),
         location=data.get('location'),
@@ -75,7 +80,6 @@ def cleanup_factory(data):
         image=data.get('image'),
         host=data.get('host')
     )
-    print("Image: ",data.get('image'))
     cleanup.save()
     return cleanup
 

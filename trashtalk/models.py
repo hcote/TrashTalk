@@ -125,12 +125,11 @@ class Cleanup(Model):
     date = Column(Date, nullable=False)
     start_time = Column(Time, nullable=False)
     end_time = Column(Time, nullable=False)
-    image = Column(Text, default='default_broom.png')  # Optional input
+    image = Column(Text, default='crossed_rakes.png')  # Optional input
 
-    # Program Assigned
     host_id = Column(Integer, ForeignKey('users.id'))
     location_id = Column(Integer, ForeignKey('locations.id'))
-    html_url = Column(Text)  # Set after seeclickfix call
+    html_url = Column(Text)
     notified_pw = Column(Boolean, default=False)
 
     # Many to Many: Cleanup and Participants, part 2 of 3
@@ -143,20 +142,19 @@ class Cleanup(Model):
 
     @property
     def gmap_query(self):
-        """For cross street queries."""
-        # if self.location and self.location.cross_street:
-        #     return "{0}:{1}, {2}".format(self.location.street,
-        #                                  self.location.cross_street, self.city)
-        # else:
-        #     return self.address
-
-        return "{0},{1}".format(self.location.latitude, self.location.longitude)
+        """For street queries."""
+        # TODO: Issue #12 - Add cross street queries when implemented.
+        if self.location and self.location.cross_street:
+            return "{0}:{1}, {2}".format(self.location.street,
+                                         self.location.cross_street, self.city)
+        else:
+            return self.address
 
     @property
     def address(self):
-        return "{0} {1}, {2} {3}".format(self.location.street,
-                                         self.location.city, self.location.state,
-                                         self.location.zipcode)
+        return "{0}+{1},{2}+{3}".format(self.location.street,
+                                        self.location.city, self.location.state,
+                                        self.location.zipcode)
 
     def check_name(self):
         if not self.name:
@@ -266,6 +264,3 @@ def add_default_city(city):
         o.city = city
         db_session.add(o)
     db_session.commit()
-
-    # Base.metadata.create_all(bind=engine)
-    # init_db()

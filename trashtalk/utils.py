@@ -18,7 +18,6 @@ StatusCodes = namedtuple('StatusCodes', ['HTTP_200_OK', 'HTTP_201_CREATED',
 status = StatusCodes(200, 201, 400, 403, 404)
 geolocator = Nominatim()
 google = GoogleV3(api_key=os.getenv('GOOGLE_MAPS_KEY'))
-Point = namedtuple('Point', ['latitude', 'longitude'])
 
 # RESPONSE OBJECTS
 # Used to return nicely formatted, predictable data
@@ -28,7 +27,6 @@ Coordinates = namedtuple('Coordinates', ['latitude', 'longitude'])
 
 # TOOLS
 # Objects that require initialization for later use
-geolocator = Nominatim()
 
 
 def drop_db():
@@ -48,34 +46,30 @@ def get_location(address):
     :param city: `str`, Defaults to Oakland
     :return: `namedtuple`, `Place` with full location data
     """
-    location=google.geocode(address)
-    # print(location.address)
-    # first_split=location.address.split(",")
-    # street_split=first_split[0].split(" ")
-    # zipcode_split=first_split[2].split(" ")
+    try:
+        res = geolocator.geocode(address)
+        coords = Coordinates(res.latitude, res.longitude)
+    except (GeocoderQueryError, GeopyError):
+        current_app.logger.exception("Geopy error: %s", address)
+        raise
+    else:
+        current_app.logger.info("Geolocator successful!: %s", address)
+        print(res.address)
+        location = res.address.split(',')
+        if len(location) == 7:
+            # Locations should only be of length 7 or 9
+            # Handle for missing name and building number
+            current_app.logger.debug("Location: %s", location)
+            return Place(name='', number='', street=location[0],
+                         district=location[1], city=location[2], county=location[3],
+                         state=location[4], zipcode=location[5], country=location[6],
+                         coordinates=coords)
 
-    return Place(address=location.address, latitude=location.latitude,
-                 longitude=location.longitude)
-
-
-    # try:
-    #     res = geolocator.geocode(' '.join(address))
-    # except (GeocoderQueryError, GeopyError):
-    #     app.logger.exception("Geopy error.")
-    #     raise
-    # else:
-    #     app.logger.info("Geolocator successful!: %s", address)
-    #     print(res.address)
-    #     location = res.address.split(',')
-    #     if len(location) == 7:
-    #         # Locations should only be of length 7 or 9
-    #         # Handle for missing name and building number
-    #         location.insert(0, None) * 2
-    #     app.logger.info("Location: %s", location)
-    #     return Place(name=location[0], number=location[1], street=location[2],
-    #                  district=location[3], city=location[4], county=location[5],
-    #                  state=location[6], zipcode=location[7], country=location[8],
-    #                  latitude=res.latitude, longitude=res.longitude)
+        current_app.logger.debug("Location: %s", location)
+        return Place(name=location[0], number=location[1], street=location[2],
+                     district=location[3], city=location[4], county=location[5],
+                     state=location[6], zipcode=location[7], country=location[8],
+                     coordinates=coords)
 
 #
 # def get_area(street_name, cross_street, city):
