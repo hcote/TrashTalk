@@ -187,6 +187,7 @@ def create():
         location = location_factory(geoloc._asdict())
         cleanup_data = request.form.copy()
         cleanup_data['location'] = location
+        cleanup_data['host_id'] = current_user
         new_cleanup = cleanup_factory(cleanup_data)
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 

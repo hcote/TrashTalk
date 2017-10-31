@@ -56,6 +56,7 @@ class Config(object):
     SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")
     SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")
 
+
 class Development(Config):
     """
     Settings specific to local development. You can use whatever database, settings and
@@ -70,7 +71,6 @@ class Development(Config):
     DB_USER = os.getenv('DB_USER', 'root')
     DB_PASSWORD = os.getenv('DB_PASSWORD', "")
     DB_NAME = "trashtalk"
-
 
     # Access SQL
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(DB_USER,
