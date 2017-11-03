@@ -58,8 +58,8 @@ def get(cleanup_id):
                            section="Cleanup",
                            cleanup=cleanups,
                            gmap=gmap,
-                           start_time = cleanups.start_time,
-                           end_time = cleanups.end_time,
+                           start_time=cleanups.event_start,
+                           end_time=cleanups.event_end,
                            bool_participated=bool_participated,
                            default_image_path = html_constants.default_image_path)
 
@@ -75,11 +75,11 @@ def new():
     return render_template("cleanup/new.html",
                            section="Cleanup",
                            user_id=current_user.id,
-                           date_pattern = html_constants.date_pattern,
-                           date_placeholder = html_constants.date_placeholder,
-                           time_pattern = html_constants.time_pattern,
-                           time_placeholder = html_constants.time_placeholder,
-                           text_pattern = html_constants.text_pattern)
+                           date_pattern=html_constants.date_pattern,
+                           date_placeholder=html_constants.date_placeholder,
+                           time_pattern=html_constants.time_pattern,
+                           time_placeholder=html_constants.time_placeholder,
+                           text_pattern=html_constants.text_pattern)
 
 
 @bp.route('/<int:cleanup_id>/edit')
@@ -99,21 +99,21 @@ def edit(cleanup_id):
                                id=cleanups.id,
                                date=cleanups.date,
                                current_address=cleanups.location.number,
-                               start_time= hour_min_value(cleanups.start_time),
-                               start_time_of_day = am_pm_value(cleanups.start_time),
-                               end_time = hour_min_value(cleanups.end_time),
-                               end_time_of_day = am_pm_value(cleanups.end_time),
+                               start_time=cleanups.event_start,
+                               # start_time_of_day=cleanups.event_end,
+                               end_time=cleanups.end_time,
+                               # end_time_of_day = am_pm_value(cleanups.end_time),
                                description=cleanups.description,
                                date_pattern = html_constants.date_pattern,
                                date_placeholder = html_constants.date_placeholder,
                                time_pattern = html_constants.time_pattern,
                                time_placeholder = html_constants.time_placeholder)
     else:
-        flash("You do not have rights to edit this cleanup")
+        flash("You do not have permission to edit this cleanup")
         return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
 
 
-@bp.route('/<int:cleanup_id>', methods=['PUT', 'DELETE'])
+@bp.route('/<int:cleanup_id>', methods=['POST', 'PUT', 'DELETE'])
 @login_required
 def update(cleanup_id):
     """
@@ -131,11 +131,11 @@ def update(cleanup_id):
         if method == 'POST': #PUT
             current_app.logger.debug("REQUEST FORM: %s", request.form)
 
-            start_time = twenty_four_time(cleanup_dict['start_time'],cleanup_dict['start_time_of_day'])
-            end_time = twenty_four_time(cleanup_dict['end_time'],cleanup_dict['end_time_of_day'])
-            cleanup_dict.update({"start_time": start_time, "end_time": end_time})
+            # start_time = cleanup_dict['start_time'], cleanup_dict['start_time_of_day']
+            # end_time = cleanup_dict['end_time'], cleanup_dict['end_time_of_day']
+            # cleanup_dict.update({"start_time": start_time, "end_time": end_time})
 
-            full_address=get_full_address(cleanup_dict)
+            full_address = get_full_address(cleanup_dict)
             try:
                 geoloc = get_location(full_address)
             except:
@@ -187,7 +187,7 @@ def create():
         location = location_factory(geoloc._asdict())
         cleanup_data = request.form.copy()
         cleanup_data['location'] = location
-        cleanup_data['host_id'] = current_user
+        cleanup_data['host'] = current_user
         new_cleanup = cleanup_factory(cleanup_data)
         return redirect(url_for('cleanups.get', cleanup_id=new_cleanup.id))
 
@@ -257,10 +257,10 @@ def get_public_works(id):
 
     return render_template("cleanup/public_works/send.html",
                            section="Public Works",
-                           time_placeholder = html_constants.time_placeholder,
-                           time_pattern = html_constants.time_pattern,
-                           date_placeholder = html_constants.date_placeholder,
-                           date_pattern = html_constants.date_pattern,
+                           time_placeholder=html_constants.time_placeholder,
+                           time_pattern=html_constants.time_pattern,
+                           date_placeholder=html_constants.date_placeholder,
+                           date_pattern=html_constants.date_pattern,
                            id=id)
 
 

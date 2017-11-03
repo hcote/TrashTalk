@@ -19,6 +19,6 @@ from trashtalk.factories import app_factory
 # http://flask.pocoo.org/docs/0.12/config/#configuring-from-files
 app = app_factory('trashtalk.settings.Development')
 # app.config.from_object('trashtalk.settings.Development')
-app.config.from_pyfile('dev.cfg')
+# app.config.from_pyfile('dev.cfg')
 app.logger.info('Welcome to the Development server')
-app.run()
+# app.run()

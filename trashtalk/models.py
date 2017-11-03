@@ -1,4 +1,5 @@
 from flask import current_app
+from datetime import datetime
 
 from sqlalchemy import (create_engine, func, DateTime,
                         Column, Date, Time, Integer,
@@ -159,6 +160,16 @@ class Cleanup(Model):
     def check_name(self):
         if not self.name:
             self.name = self.location
+
+    @property
+    def event_start(self):
+        """User friendly time. Convert event times to 12-hr format."""
+        return datetime.strptime(str(self.start_time), '%X').strftime('%I:%M %p')
+
+    @property
+    def event_end(self):
+        """User friendly time. Convert event times to 12-hr format."""
+        return datetime.strptime(str(self.end_time), '%X').strftime('%I:%M %p')
 
 
 class User(Model):
