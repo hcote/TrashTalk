@@ -10,7 +10,6 @@ Configuration: See settings.py for all configuration options and env variables
 Running App: See run.py for all runtime options
 
 """
-from flask import Flask
 
 from trashtalk.factories import app_factory
 
@@ -18,6 +17,8 @@ from trashtalk.factories import app_factory
 # Default configuration is development!
 # Override with config.from_envvar('APP_ENV_VAR')
 # http://flask.pocoo.org/docs/0.12/config/#configuring-from-files
+app = app_factory('trashtalk.settings.Development')
 # app.config.from_object('trashtalk.settings.Development')
-# app = app_factory('trashtalk.settings.Development')
-# app.logger.info('Welcome to the Development server')
+# app.config.from_pyfile('dev.cfg')
+app.logger.info('Welcome to the Development server')
+# app.run()
