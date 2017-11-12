@@ -1,0 +1,26 @@
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+# DJANGO & EXTENSIONS
+# Also requires: None
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+Django==1.11.7
+djangorestframework==3.7.1
+django-extensions==1.9.7
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# DATABASE MODULES
+# ^^^^^^^^^^^^^^^^^^^^^^
+psycopg2==2.7.1
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# TESTING
+# ^^^^^^^^^^^^^^^^^^^^^^
+factory-boy==2.8.1
+pytest>=3.1.0,<4.0.0
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# STANDALONE
+# ^^^^^^^^^^^^^^^^^^^^^^
+requests==2.16.0
+geopy==1.11.0
+gspread==0.6.2
+oauth2client==4.1.2

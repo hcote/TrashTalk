@@ -1,0 +1,14 @@
+-r common.txt
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# DJANGO DEBUG TOOLBAR
+# Also requires: Django
+# ^^^^^^^^^^^^^^^^^^^^^^
+#django-debug-toolbar==1.8
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# MISC
+# ^^^^^^^^^^^^^^^^^^^^^^
+ipython==6.1.0
+isort>=4.2.15
+pylint>=1.7.4
