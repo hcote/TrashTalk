@@ -2,8 +2,7 @@
 {%extends "base.html"%}
 
 {%block content%}
-
-<!--<div style="width:100%">-->
+<div class="public_works">
     <!--<div style="float:right; text-align:center;">-->
     <h3>Enter Clean Up Information Below:</h3>
     <form action = "/cleanups/public_works/{{id}}" method='post'>
@@ -53,420 +52,437 @@
             <option value="pm">pm</option>
         </select>        <br/>
 
-        {#Tool Table#}
 
-        <table class="tools">
-            <th>Health and Safety Equipment</th>
-            <!--<tr>-->
-                <!--<td>Item</td>-->
-                <!--<td>Description</td>-->
-                <!--<td>Quantity Requested</td>-->
-            <!--</tr>-->
-            <tr style="border: 2px solid black;">
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Safety Vests</a></div>
-                    <div><img src="/static/images/tools/safety_vest.PNG"
-                              alt="Safety Vests" class="image_tool"></div>
+        <!--<table class="table-condensed table-bordered table-responsive">-->
+        <a href="#health" data-toggle="collapse"><h4>Health and Safety Equipment</h4></a>
+            <table id="health" class="table-condensed table-bordered table-responsive collapse">
+            <tr>
+                <td>
+                    <a href="#vest" data-toggle="collapse">Safety Vest</a>
+                    <div id="vest" class="collapse">
+                        <img src='{{tool_image_path}}safety_vest.PNG' class=img-responsive'/>
+                    </div>
+                    <p>Required for all volunteers working in or adjacent to streets and sidewalks</p>
                 </td>
-                <td style="width:300px;">Required for all volunteers working in or adjacent to streets and sidewalks</td>
-                <td><input class="tool_count" type="number" min=0 name="vest" required pattern="[0-9]{1,}" value="0"></td>
+                <td><input class="form-control input-sm" style="width:60px;" min=0 name="vest" required pattern="[0-9]{1,}" value="0"></td>
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Rubber-dipped Work Gloves</a></div>
-                    <div><img src="/static/images/tools/rubber dipped gloves.PNG"
-                              alt="Rubber-dipped Work Gloves" class="image_tool"></div>
+                <td>
+                    <a href="#rub_gloves" data-toggle="collapse">Rubber-dipped Work Gloves</a>
+                    <div id="rub_gloves" class="collapse">
+                        <img src='{{tool_image_path}}rubber dipped gloves.PNG' class=img-responsive' />
+                    </div>
+                    <p>General purpose gloves</p>
                 </td>
-                <td>General purpose gloves</td>
-                <td><input class="tool_count" type="number" min=0 name="rubber_dipped" required pattern="[0-9]{1,}" value="0"></td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="rubber_dipped" required pattern="[0-9]{1,}" value="0"></td>
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Nitrile Gloves</a></div>
-                    <div><img src="/static/images/tools/nitrile gloves.PNG"
-                                     alt="Nitrile Gloves" class="image_tool"></div>
+                <td>
+                    <a href="#nit_gloves" data-toggle="collapse">Nitrile Gloves</a>
+                    <div id="nit_gloves" class="collapse">
+                        <img src='{{tool_image_path}}nitrile gloves.PNG' class=img-responsive' />
+                    </div>
+                    <p>Recommended only for painting and graffiti removal</p>
                 </td>
-                <td>Recommended only for painting<br>and graffiti removal
-                <td><input class="tool_count" type="number" min=0 name="small_nitrile" required pattern="[0-9]{1,}" value="0">Small<br>
-                    <input class="tool_count" type="number" min=0 name="medium_nitrile" required pattern="[0-9]{1,}" value="0">Medium<br>
-                    <input class="tool_count" type="number" min=0 name="large_nitrile" required pattern="[0-9]{1,}" value="0">Large
+                <td>
+                    <label for="small_nitrile">Small</label>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="small_nitrile" id="small_nitrile"required pattern="[0-9]{1,}" value="0">
+                    <label for = "medium_nitrile">Medium</label>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="medium_nitrile" id = 'medium_nitrile'required pattern="[0-9]{1,}" value="0">
+                    <label for="large_nitrile">Large</label>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="large_nitrile" id="large_nitrile" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Child Size Cotton Gloves</a></div>
-                    <div><img src="/static/images/tools/Child-size Cotton Gloves.jpg"
-                              alt="Child Size Cotton Gloves" class="image_tool"></div>
+                <td>
+                    <a href="#cot_gloves" data-toggle="collapse">Child-size Cotton Gloves</a>
+                        <div id="cot_gloves" class="collapse">
+                            <img src='{{tool_image_path}}Child-size Cotton Gloves.jpg' class=img-responsive' />
+                        </div>
+                    <p>General purpose Gloves</p>
                 </td>
-                <td>General purpose Gloves
-                <td><input class="tool_count" type="number" min=0 name="cotton_glove" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="cotton_glove" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Water Coolers</a></div>
-                    <div><img src="/static/images/tools/water cooler.PNG"
-                              alt="Water Coolers" class="image_tool"></div>
+                <td>
+                    <a href="#cooler" data-toggle="collapse">Water Cooler</a>
+                        <div id="cooler" class="collapse">
+                            <img src='{{tool_image_path}}water cooler.PNG' class=img-responsive' />
+                        </div>
+                    <p>Volunteers are encouraged to bring reusable water bottles rather than disposable cups</p>
                 </td>
-                <td>Volunteers are encouraged<br>to bring reusable water bottles<br>rather than disposable cups
-                <td><input class="tool_count" type="number" min=0 name="cooler" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="cooler" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">First Aid Kit</a></div>
-                    <div><img src="/static/images/tools/First Aid.PNG"
-                              alt="First Aid Kit" class="image_tool"></div>
+                <td>
+                    <a href="#aid" data-toggle="collapse">First Aid Kit</a>
+                        <div id="aid" class="collapse">
+                            <img src='{{tool_image_path}}First Aid.PNG' class=img-responsive' />
+                        </div>
+                    <p>Treat minor injuries</p>
                 </td>
-                <td>Treat minor injuries
-                <td><input class="tool_count" type="number" min=0 name="first_aid" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="first_aid" required pattern="[0-9]{1,}" value="0">
             </tr>
-        <!--</table>-->
+            </table>
 
+        <a href="#street" data-toggle="collapse"><h4>Street Cleaning Tools</h4></a>
+        <table id="street" class="table-condensed table-bordered table-responsive collapse">
+            <tr>
+                <td>
+                    <a href="#sticks" data-toggle="collapse">Pickup Sticks</a>
+                        <div id="sticks" class="collapse">
+                            <img src='{{tool_image_path}}pickupsticks.PNG' class=img-responsive' />
+                        </div>
+                    <p>Reaches and grabs for trash</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="reg_pickup_stick" required pattern="[0-9]{1,}" value="0">Regular (3')<br>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="small_pickup_stick" required pattern="[0-9]{1,}" value="0">Child (1.5')
+            </tr>
+            <tr>
+                <td>
+                    <a href="#push" data-toggle="collapse">Push Broom</a>
+                        <div id="push" class="collapse">
+                            <img src='{{tool_image_path}}push broom.PNG' class=img-responsive' />
+                        </div>
+                    <p>Efficiently sweep dirt and debris</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="push_broom" required pattern="[0-9]{1,}" value="0">
+            </tr>
+            <tr>
+                <td>
+                    <a href="#house" data-toggle="collapse">House Broom</a>
+                        <div id="house" class="collapse">
+                            <img src='{{tool_image_path}}brooms.PNG' class=img-responsive' />
+                        </div>
+                    <p>Lightweight for easy sweeping</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="reg_house_broom" required pattern="[0-9]{1,}" value="0">Regular<br>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="small_house_broom" required pattern="[0-9]{1,}" value="0">Child
+            </tr>
+            <tr>
+                <td>
+                    <a href="#pan" data-toggle="collapse">Dust Pan</a>
+                        <div id="pan" class="collapse">
+                            <img src='{{tool_image_path}}dust pan.PNG' class=img-responsive' />
+                        </div>
+                    <p>Pick up collected dirt and debris</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="reg_dust_pan" required pattern="[0-9]{1,}" value="0">Regular<br>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="long_handle_dust_pan" required pattern="[0-9]{1,}" value="0">Long-Handled
+            </tr>
+        </table>
 
-        {#Street Cleaning Table#}
-         <!--<table>-->
-            <!--<tr>-->
-                <!--<td>Item</td>-->
-                <!--<td>Description</td>-->
-                <!--<td>Quantity Requested</td>-->
-            <!--</tr>-->
-            <th>Street Cleaning Tools</th>
+        <a href="#cutting" data-toggle="collapse"><h4>Cutting Tools</h4></a>
+        <table id="cutting" class="table-condensed table-bordered table-responsive collapse">
             <tr>
-                <!--<td>Pickup Sticks-->
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pickup Sticks</a></div>
-                    <div><img src="/static/images/tools/pickupsticks.PNG"
-                                     alt="Pickup Sticks" class="image_tool"></div>
+                <td>
+                    <a href="#clippers" data-toggle="collapse">Hand Clippers</a>
+                        <div id="clippers" class="collapse">
+                            <img src='{{tool_image_path}}pruners.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts branches less than 1" thick</p>
                 </td>
-                <td>Reaches and grabs for trash
-                <td><input class="tool_count" type="number" min=0 name="reg_pickup_stick" required pattern="[0-9]{1,}" value="0">Regular (3')<br>
-                    <input class="tool_count" type="number" min=0 name="small_pickup_stick" required pattern="[0-9]{1,}" value="0">Child (1.5')
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hand_clippers" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Push Broom</a></div>
-                    <div><img src ="/static/images/tools/push broom.PNG"
-                          alt="Push Broom" class="image_tool"></div>
+                <td>
+                    <a href="#loppers" data-toggle="collapse">Loppers</a>
+                        <div id="loppers" class="collapse">
+                            <img src='{{tool_image_path}}loppers.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts branches less than 2" thick</p>
                 </td>
-                <td>Efficiently sweep dirt and debris
-                <td><input class="tool_count" type="number" min=0 name="push_broom" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="loppers" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">House Broom</a></div>
-                    <div><img src ="/static/images/tools/brooms.PNG"
-                          alt="House Broom" class="image_tool"></div>
+                <td>
+                    <a href="#saw" data-toggle="collapse">Pruning Saw</a>
+                        <div id="saw" class="collapse">
+                            <img src='{{tool_image_path}}folding saw.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts branches larger than 2"</p>
                 </td>
-                <td>Lightweight for easy sweeping
-                <td><input class="tool_count" type="number" min=0 name="reg_house_broom" required pattern="[0-9]{1,}" value="0">Regular<br>
-                    <input class="tool_count" type="number" min=0 name="small_house_broom" required pattern="[0-9]{1,}" value="0">Child
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="pruning_saw" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Dust Pan</a></div>
-                    <div><img src ="/static/images/tools/dust pan.PNG"
-                          alt="Dust Pan" class="image_tool"></div>
+                <td>
+                    <a href="#shears" data-toggle="collapse">Shears</a>
+                        <div id="shears" class="collapse">
+                            <img src='{{tool_image_path}}shears.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts/prunes shrubs or grasses</p>
                 </td>
-                <td>Pick up collected dirt and debris
-                <td><input class="tool_count" type="number" min=0 name="reg_dust_pan" required pattern="[0-9]{1,}" value="0">Regular<br>
-                    <input class="tool_count" type="number" min=0 name="long_handle_dust_pan" required pattern="[0-9]{1,}" value="0">Long-Handled
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="shears" required pattern="[0-9]{1,}" value="0">
             </tr>
-
-
-            {#Cutting Table#}
-            <th>Cutting Tools</th>
+        </table>
+        <a href="#bags" data-toggle="collapse"><h4>Bags/Containers</h4></a>
+        <table id="bags" class="table-condensed table-bordered table-responsive collapse">
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hand Clippers</a></div>
-                    <div><img src ="/static/images/tools/pruners.PNG"
-                          alt="Hand Clippers" class="image_tool"></div>
+                <td>
+                    <a href="#plastic" data-toggle="collapse">Clear Plastic Bags</a>
+                        <div id="plastic" class="collapse">
+                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                        </div>
+                    <p>Fill with trash debris or recyclable materials</p>
                 </td>
-                <td>Cuts branches less than 1" thick
-                <td><input class="tool_count" type="number" min=0 name="hand_clippers" required pattern="[0-9]{1,}" value="0">
-            </tr>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Loppers</a></div>
-                    <div><img src ="/static/images/tools/loppers.PNG"
-                          alt="Loppers" class="image_tool"></div>
-                </td>
-                <td>Cuts branches less than 2" thick
-                <td><input class="tool_count" type="number" min=0 name="loppers" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="plastic_bag" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pruning Saw</a></div>
-                    <div><img src ="/static/images/tools/folding saw.PNG"
-                          alt="Pruning Saw" class="image_tool"></div>
+                <td>
+                    <a href="#green" data-toggle="collapse">Green Waste/Compost Bags</a>
+                        <div id="green" class="collapse">
+                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                        </div>
+                    <p>Fill with compostable materials,such as weeds, paper plates,food scraps, tree branches
+                        (before placing in bags,cut branches into smaller pieces )</p>
                 </td>
-                <td>Cuts branches larger than 2"
-                <td><input class="tool_count" type="number" min=0 name="pruning_saw" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="green_waste" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Shears</a></div>
-                    <div><img src ="/static/images/tools/shears.PNG"
-                          alt="Shears" class="image_tool"></div>
+                <td>
+                    <a href="#reuseable" data-toggle="collapse">Collapesable, Reusable Bags</a>
+                        <div id="reuseable" class="collapse">
+                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                        </div>
+                    <p>Transports waste materials to a debris bin if you requested one. Must be returned for reuse</p>
                 </td>
-                <td>Cuts/prunes shrubs or grasses
-                <td><input class="tool_count" type="number" min=0 name="shears" required pattern="[0-9]{1,}" value="0">
-            </tr>
-
-
-            <th>Bags/Containers</th>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Clear Plastic Trash/Recycling</a></div>
-                    <div><img src ="/static/images/tools/plastic bag.PNG"
-                          alt="Clear Plastic Trash/Recycling" class="image_tool"></div>
-                </td>
-                <td>Fill with trash debris or <br>recyclable materials
-                <td><input class="tool_count" type="number" min=0 name="plastic_bag" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" min=0 name="reusable_bag" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Green Waste/Compost</a></div>
-                    <div><img src ="/static/images/tools/compost bag.PNG"
-                          alt="Green Waste/Compost" class="image_tool"></div>
+                <td>
+                    <a href="#bucket" data-toggle="collapse">Bucket</a>
+                        <div id="bucket" class="collapse">
+                            <img src='{{tool_image_path}}bucket.PNG' class=img-responsive' />
+                        </div>
+                    <p>Collects trash similarly to the collapsible green waste bags above</p>
                 </td>
-                <td>Fill with compostable materials,<br>such as weeds, paper plates,<br>food scraps, tree branches<br>
-                    (before placing in bags,<br>cut branches into smaller pieces )
-                <td><input class="tool_count" type="number" min=0 name="green_waste" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="two_gal_buck" required pattern="[0-9]{1,}" value="0">2 Gallon<br>
+                            <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="five_gal_buck" required pattern="[0-9]{1,}" value="0">5 Gallon
             </tr>
-                        <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Collapesable, Reusable Green Waste</a></div>
-                    <div><img src ="/static/images/tools/reusable bag.PNG"
-                          alt="Reusable Green Waste" class="image_tool"></div>
+        </table>
+        <a href="#dig" data-toggle="collapse"><h4>Digging Tools</h4></a>
+        <table id="dig" class="table-condensed table-bordered table-responsive collapse">
+            <tr>
+                <td>
+                    <a href="#planters" data-toggle="collapse">Bulb Planters</a>
+                        <div id="planters" class="collapse">
+                            <img src='{{tool_image_path}}bulb planter.PNG' class=img-responsive' />
+                        </div>
+                    <p>Push head of planter into the ground, grab soil in its cone and create a deep enough hole to plant a bulb.
+                The long handled version is better for larger projects with harder soil.</p>
                 </td>
-                <td>Transports waste materials to<br>a debris bin if you requested one.<br>Must be returned for reuse
-                <td><input class="tool_count" type="number" min=0 name="reusable_bag" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="held_bulb_planter" required pattern="[0-9]{1,}" value="0">hand held<br>
+                        <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="long_bulb_planter" required pattern="[0-9]{1,}" value="0">long handled
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Bucket</a></div>
-                    <div><img src ="/static/images/tools/bucket.PNG"
-                          alt="bucket" class="image_tool"></div>
+                <td>
+                    <a href="#trowel" data-toggle="collapse">Hand Trowel</a>
+                        <div id="trowel" class="collapse">
+                            <img src='{{tool_image_path}}hand trowel.PNG' class=img-responsive' />
+                        </div>
+                    <p>For digging and planting.</p>
                 </td>
-                <td>Collects trash similarly to the<br>collapsible green waste bags above
-                <td><input class="tool_count" type="number" min=0 name="two_gal_buck" required pattern="[0-9]{1,}" value="0">2 Gallon<br>
-                            <input class="tool_count" type="number" min=0 name="five_gal_buck" required pattern="[0-9]{1,}" value="0">5 Gallon
-            </tr>
-
-
-            <!--<th>Graffiti Removal</th>-->
-            <!--<tr>-->
-                <!--<td class="display_tool">-->
-                    <!--<div><a {#class="base"#} href="#">Paint Roller and Bucket</a></div>-->
-                    <!--<div><img src ="https://lh3.googleusercontent.com/ZL35GBJO5GR23Qc61BlgjZ8_78rEAkvxOOOxbKvLpmLpJVx3Vs6eGeQl0s8YUaJKIsj2hlElSw=w296"-->
-                          <!--alt="Paint Roller and Bucket" class="image_tool"></div>-->
-                <!--</td>-->
-                <!--<td>Includes roller, roller cover, small bucket with lid, metal paint grid for removing excess paint from roller before painting-->
-                <!--<td><input class="tool_count" type="number" min=0 name="roller_bucket" required pattern="[0-9]{1,}" value="0">-->
-            <!--</tr>-->
-
-
-
-            <th>Digging Tools</th>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Bulb Planters</a></div>
-                    <div><img src ="/static/images/tools/bulb planter.PNG"
-                          alt="Bulb Planters" class="image_tool"></div>
-                </td>
-                <td>Push head of planter into the ground,<br>grab soil in its cone and create<br>a deep enough hole to plant a bulb.<br>
-                The long handled version is better<br>for larger projects with harder soil.
-                <td><input class="tool_count" type="number" min=0 name="held_bulb_planter" required pattern="[0-9]{1,}" value="0">hand held<br>
-                        <input class="tool_count" type="number" min=0 name="long_bulb_planter" required pattern="[0-9]{1,}" value="0">long handled
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hand_trowel" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hand Trowel</a></div>
-                    <div><img src ="/static/images/tools/hand trowel.PNG"
-                          alt="Hand Trowel" class="image_tool"></div>
+                <td>
+                    <a href="#mattock" data-toggle="collapse">Mattock</a>
+                        <div id="mattock" class="collapse">
+                            <img src='{{tool_image_path}}mattock.PNG' class=img-responsive' />
+                        </div>
+                    <p>Hand tool used for digging and chopping, similar to the pickax</p>
                 </td>
-                <td>For digging and planting
-                <td><input class="tool_count" type="number" min=0 name="hand_trowel" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="fifteen_mattock" required pattern="[0-9]{1,}" value="0">15"<br>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="twenty_three_mattock" required pattern="[0-9]{1,}" value="0">23"<br>
+                    <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="thirty_two_mattock" required pattern="[0-9]{1,}" value="0">32"
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Mattock</a></div>
-                    <div><img src ="/static/images/tools/mattock.PNG"
-                          alt="Mattock" class="image_tool"></div>
+                <td>
+                    <a href="#pointed" data-toggle="collapse">Pointed Shovel</a>
+                        <div id="pointed" class="collapse">
+                            <img src='{{tool_image_path}}pointed shovel.PNG' class=img-responsive' />
+                        </div>
+                    <p>Best for digging holes</p>
                 </td>
-                <td>Hand tool used for digging and chopping,<br>similar to the pickax
-                <td><input class="tool_count" type="number" min=0 name="fifteen_mattock" required pattern="[0-9]{1,}" value="0">15"<br>
-                    <input class="tool_count" type="number" min=0 name="twenty_three_mattock" required pattern="[0-9]{1,}" value="0">23"<br>
-                    <input class="tool_count" type="number" min=0 name="thirty_two_mattock" required pattern="[0-9]{1,}" value="0">32"
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="pointed_shovel" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pointed Shovel</a></div>
-                    <div><img src ="/static/images/tools/pointed shovel.PNG"
-                          alt="Pointed Shovel" class="image_tool"></div>
+                <td>
+                    <a href="#pickax" data-toggle="collapse">Pick Ax</a>
+                        <div id="pickax" class="collapse">
+                            <img src='{{tool_image_path}}Pick axe.PNG' class=img-responsive' />
+                        </div>
+                    <p>Breaks up hard soil or rock</p>
                 </td>
-                <td>Best for digging holes
-                <td><input class="tool_count" type="number" min=0 name="pointed_shovel" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="pick_ax" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pick Ax</a></div>
-                    <div><img src ="/static/images/tools/Pick axe.PNG"
-                          alt="Pick Ax" class="image_tool"></div>
+                <td>
+                    <a href="#fireax" data-toggle="collapse">Pulaski/Fire Ax</a>
+                        <div id="fireax" class="collapse">
+                            <img src='{{tool_image_path}}Pulaski.PNG' class=img-responsive' />
+                        </div>
+                    <p>Both chops wood and digs in soil. Good for trail construction and invasive plant removal (pampas grass)</p>
                 </td>
-                <td>Breaks up hard soil or rock
-                <td><input class="tool_count" type="number" min=0 name="pick_ax" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="fire_ax" required pattern="[0-9]{1,}" value="0">
+            </tr>
+        </table>
+        <a href="#weeding" data-toggle="collapse"><h4>Weeding Tools</h4></a>
+        <table id="weeding" class="table-condensed table-bordered table-responsive collapse">
+            <tr>
+                <td>
+                    <a href="#weeder" data-toggle="collapse">Hand Weeder</a>
+                        <div id="weeder" class="collapse">
+                            <img src='{{tool_image_path}}hand weeder.PNG' class=img-responsive' />
+                        </div>
+                    <p>Digs up small weeds</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hand_weeder" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pulaski/Fire Ax</a></div>
-                    <div><img src ="/static/images/tools/Pulaski.PNG"
-                          alt="Pulaski/Fire Ax" class="image_tool"></div>
+                <td>
+                    <a href="#hoe" data-toggle="collapse">Hand Hoe</a>
+                        <div id="hoe" class="collapse">
+                            <img src='{{tool_image_path}}hand hoe.PNG' class=img-responsive' />
+                        </div>
+                    <p>Moves small amounts of soil; used in weed control, hilling, and creating shallow trenches</p>
                 </td>
-                <td>Both chops wood and digs in soil.<br>Good for trail construction and<br>invasive plant removal (pampas grass)
-                <td><input class="tool_count" type="number" min=0 name="fire_ax" required pattern="[0-9]{1,}" value="0">
-            </tr>
-
-
-            <th>Weeding Tools</th>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hand Weeder</a></div>
-                    <div><img src ="/static/images/tools/hand weeder.PNG"
-                          alt="Hand Weeder" class="image_tool"></div>
-                </td>
-                <td>Digs up small weeds
-                <td><input class="tool_count" type="number" min=0 name="hand_weeder" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hand_hoe" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hand Hoe</a></div>
-                    <div><img src ="/static/images/tools/hand hoe.PNG"
-                          alt="Hand Hoe" class="image_tool"></div>
+                <td>
+                    <a href="#hori" data-toggle="collapse">Hori Hori</a>
+                        <div id="hori" class="collapse">
+                            <img src='{{tool_image_path}}hori hori.PNG' class=img-responsive' />
+                        </div>
+                    <p>A multi-purpose blade serrated on one side. Suitable for digging and cutting roots</p>
                 </td>
-                <td>Moves small amounts of soil;<br>used in weed control, hilling,<br>and creating shallow trenches
-                <td><input class="tool_count" type="number" min=0 name="hand_hoe" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hori_hori" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hori Hori</a></div>
-                    <div><img src ="/static/images/tools/hori hori.PNG"
-                          alt="Hori Hori" class="image_tool"></div>
+                <td>
+                    <a href="#wrench" data-toggle="collapse">Weed Wrench</a>
+                        <div id="wrench" class="collapse">
+                            <img src='{{tool_image_path}}weed extractigator.PNG' class=img-responsive' />
+                        </div>
+                    <p>Pulls out woody plants such as French broom; Easiest to use with soft and slightly moist soils</p>
                 </td>
-                <td>A multi-purpose blade<br>serrated on one side.<br>Suitable for digging<br>and cutting roots
-                <td><input class="tool_count" type="number" min=0 name="hori_hori" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="standard_weed_wrench" required pattern="[0-9]{1,}" value="0">Standard<br>
+                        <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="large_weed_wrench" required pattern="[0-9]{1,}" value="0">Large
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Weed Wrench</a></div>
-                    <div><img src ="/static/images/tools/weed extractigator.PNG"
-                          alt="Weed Wrench" class="image_tool"></div>
+                <td>
+                    <a href="#trimmer" data-toggle="collapse">Grass Trimmers</a>
+                        <div id="trimmer" class="collapse">
+                            <img src='{{tool_image_path}}grass trimmer.PNG' class=img-responsive' />
+                        </div>
+                    <p>Whip back and forth to cut tall grasses and weeds</p>
                 </td>
-                <td>Pulls out woody plants<br>such as French broom;<br>Easiest to use with soft<br>and slightly moist soils
-                <td><input class="tool_count" type="number" min=0 name="standard_weed_wrench" required pattern="[0-9]{1,}" value="0">Standard<br>
-                        <input class="tool_count" type="number" min=0 name="large_weed_wrench" required pattern="[0-9]{1,}" value="0">Large
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="grass_trimmers" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Grass Trimmers</a></div>
-                    <div><img src ="/static/images/tools/grass trimmer.PNG"
-                          alt="Grass Trimmers" class="image_tool"></div>
+                <td>
+                    <a href="#hula" data-toggle="collapse">Hula Hoe</a>
+                        <div id="hula" class="collapse">
+                            <img src='{{tool_image_path}}hula hoe.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts weeds in sandy soils</p>
                 </td>
-                <td>Whip back and forth<br>to cut tall grasses and weeds
-                <td><input class="tool_count" type="number" min=0 name="grass_trimmers" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="hula_hoe" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Hula Hoe</a></div>
-                    <div><img src ="/static/images/tools/hula hoe.PNG"
-                          alt="Hula Hoe" class="image_tool"></div>
+                <td>
+                    <a href="#standard" data-toggle="collapse">Standard Hoe</a>
+                        <div id="standard" class="collapse">
+                            <img src='{{tool_image_path}}hoe.PNG' class=img-responsive' />
+                        </div>
+                    <p>Cuts weeds just under the surface of the soil</p>
                 </td>
-                <td>Cuts weeds in sandy soils
-                <td><input class="tool_count" type="number" min=0 name="hula_hoe" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="standard_hoe" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Standard Hoe</a></div>
-                    <div><img src ="/static/images/tools/hoe.PNG"
-                          alt="Standard Hoe" class="image_tool"></div>
+                <td>
+                    <a href="#tiller" data-toggle="collapse">Mattock Tiller</a>
+                        <div id="tiller" class="collapse">
+                            <img src='{{tool_image_path}}mattock tiller.PNG' class=img-responsive' />
+                        </div>
+                    <p>A heavy duty tool for weeding and breaking up soil. One side is a hoe and the other side is a fork</p>
                 </td>
-                <td>Cuts weeds just under the surface of the soil
-                <td><input class="tool_count" type="number" min=0 name="standard_hoe" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="mattock_tiller" required pattern="[0-9]{1,}" value="0">
+            </tr>
+        </table>
+        <a href="#move" data-toggle="collapse"><h4>Material Movers</h4></a>
+        <table id="move" class="table-condensed table-bordered table-responsive collapse">
+            <tr>
+                <td>
+                    <a href="#skimmer" data-toggle="collapse">Skimmer</a>
+                        <div id="skimmer" class="collapse">
+                            <img src='{{tool_image_path}}skimmer.PNG' class=img-responsive' />
+                        </div>
+                    <p>Collects debris from water</p>
+                </td>
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="skimmer" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Mattock Tiller</a></div>
-                    <div><img src ="/static/images/tools/mattock tiller.PNG"
-                          alt="Mattock Tiller" class="image_tool"></div>
+                <td>
+                    <a href="#leaf" data-toggle="collapse">Leaf Rakes</a>
+                        <div id="leaf" class="collapse">
+                            <img src='{{tool_image_path}}Rakes.jpg' class=img-responsive' />
+                        </div>
+                    <p>Shaped like a fan and used to rake leaves</p>
                 </td>
-                <td>A heavy duty tool for weeding<br>and breaking up soil.<br>One side is a hoe<br>and the other side is a fork
-                <td><input class="tool_count" type="number" min=0 name="mattock_tiller" required pattern="[0-9]{1,}" value="0">
-            </tr>
-
-
-            <th>Material Movers</th>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Skimmer</a></div>
-                    <div><img src ="/static/images/tools/skimmer.PNG"
-                          alt="Skimmer" class="image_tool"></div>
-                </td>
-                <td>Collects debris from bodies of water
-                <td><input class="tool_count" type="number" min=0 name="skimmer" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="standard_leaf_rake" required pattern="[0-9]{1,}" value="0">Standard<br>
+                        <input class="form-control input-sm" style="width:60px;" type="number" min=0 name="narrow_leaf_rake" required pattern="[0-9]{1,}" value="0">Narrow
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Leaf Rakes</a></div>
-                    <div><img src ="/static/images/tools/Rakes.jpg"
-                          alt="Leaf Rakes" class="image_tool"></div>
+                <td>
+                    <a href="#bow" data-toggle="collapse">Bow Rake</a>
+                        <div id="bow" class="collapse">
+                            <img src='{{tool_image_path}}bow rake.JPG' class=img-responsive' />
+                        </div>
+                    <p>Rakes hard materials or moves through roots and ruts</p>
                 </td>
-                <td>Shaped like a fan and used to rake leaves
-                <td><input class="tool_count" type="number" min=0 name="standard_leaf_rake" required pattern="[0-9]{1,}" value="0">Standard<br>
-                        <input class="tool_count" type="number" min=0 name="narrow_leaf_rake" required pattern="[0-9]{1,}" value="0">Narrow
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="bow_rake" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Bow Rake</a></div>
-                    <div><img src ="/static/images/tools/bow rake.JPG"
-                          alt="Bow Rake" class="image_tool"></div>
+                <td>
+                    <a href="#mcleod" data-toggle="collapse">McLeod</a>
+                        <div id="mcleod" class="collapse">
+                            <img src='{{tool_image_path}}mcleod.PNG' class=img-responsive' />
+                        </div>
+                    <p>Combines a large hoe-like blade on one side for cutting and a large rake on the other side.
+                    Useful for clearing large areas of vegetation and building trails</p>
                 </td>
-                <td>Rakes hard materials or moves through roots and ruts
-                <td><input class="tool_count" type="number" min=0 name="bow_rake" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="mcleod" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">McLeod</a></div>
-                    <div><img src ="/static/images/tools/mcleod.PNG"
-                          alt="McLeod" class="image_tool"></div>
+                <td>
+                    <a href="#scoop" data-toggle="collapse">Scoop Shovel</a>
+                        <div id="scoop" class="collapse">
+                            <img src='{{tool_image_path}}scoop shovel.PNG' class=img-responsive' />
+                        </div>
+                    <p>Scoops large amounts of material; also called a snow shovel</p>
                 </td>
-                <td>Combines a large hoe-like blade on one side for cutting<br>and a large rake on the other side.<br>
-                    Useful for clearing large areas of vegetation and building trails
-                <td><input class="tool_count" type="number" min=0 name="mcleod" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="scoop_shovel" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Scoop Shovel</a></div>
-                    <div><img src ="/static/images/tools/scoop shovel.PNG"
-                          alt="Scoop Shovel" class="image_tool"></div>
+                <td>
+                    <a href="#flat" data-toggle="collapse">Flat Shovel</a>
+                        <div id="flat" class="collapse">
+                            <img src='{{tool_image_path}}flat shovel.PNG' class=img-responsive' />
+                        </div>
+                    <p>Scoops soil or moves piles; Not recommended for digging holes</p>
                 </td>
-                <td>Scoops large amounts of material; also called a snow shovel
-                <td><input class="tool_count" type="number" min=0 name="scoop_shovel" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="flat_shovel" required pattern="[0-9]{1,}" value="0">
             </tr>
             <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Flat Shovel</a></div>
-                    <div><img src ="/static/images/tools/flat shovel.PNG"
-                          alt="Flat Shovel" class="image_tool"></div>
+                <td>
+                    <a href="#pitch" data-toggle="collapse">Pitch Fork</a>
+                        <div id="pitch" class="collapse">
+                            <img src='{{tool_image_path}}pitchfork.PNG' class=img-responsive' />
+                        </div>
+                    <p>Moves or picks up loose materials such as hay, compost, or vegetation. Also spreads straw or mulch, etc.</p>
                 </td>
-                <td>Scoops soil or moves piles;<br>Not recommended for digging holes
-                <td><input class="tool_count" type="number" min=0 name="flat_shovel" required pattern="[0-9]{1,}" value="0">
-            </tr>
-            <tr>
-                <td class="display_tool">
-                    <div><a {#class="base"#} href="#">Pitch Fork</a></div>
-                    <div><img src ="/static/images/tools/pitchfork.PNG"
-                          alt="Pitch Fork" class="image_tool"></div>
-                </td>
-                <td>Moves or picks up loose materials such as<br>hay or compost, piles of vegetation.<br>Also spreads straw or mulch, etc.
-                <td><input class="tool_count" type="number" min=0 name="pitch_fork" required pattern="[0-9]{1,}" value="0">
+                <td><input class="form-control input-sm" style="width:60px;" type="number" min=0 name="pitch_fork" required pattern="[0-9]{1,}" value="0">
             </tr>
         </table>
 
@@ -474,8 +490,7 @@
         <input type = "submit" value="Coordinate with Public Works" name = "coord_with_pw"/>
         <a href='/cleanups/{{id}}' class="support">Cancel</a>
     </form>
-
-    </div>
+</div>
 
 
 {%endblock%}

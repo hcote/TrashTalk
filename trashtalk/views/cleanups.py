@@ -32,7 +32,7 @@ def get_all():
         return render_template('index.html')
     else:
         return render_template('cleanup/list.html',
-                                section="Cleanup",
+                                section="All Cleanups",
                                 cleanups=cleanups,
                                 default_image_path = html_constants.default_image_path)
 
@@ -55,7 +55,7 @@ def get(cleanup_id):
     gmap = "{0}{1}".format(current_app.config['GOOGLE_MAPS_ENDPOINT'],
                            cleanups.gmap_query)
     return render_template("cleanup/show.html",
-                           section="Cleanup",
+                           section="My Cleanups",
                            cleanup=cleanups,
                            gmap=gmap,
                            start_time=cleanups.event_start,
@@ -73,7 +73,7 @@ def new():
     :return: new template
     """
     return render_template("cleanup/new.html",
-                           section="Cleanup",
+                           section="New Cleanup",
                            user_id=current_user.id,
                            date_pattern=html_constants.date_pattern,
                            date_placeholder=html_constants.date_placeholder,
@@ -95,19 +95,8 @@ def edit(cleanup_id):
     cleanups = db_session.query(Cleanup).get(cleanup_id)
     if cleanups.host_id == current_user.id: #Only let host edit cleanup
         return render_template('cleanup/edit.html',
-                               section='Edit Cleanup',
-                               id=cleanups.id,
-                               date=cleanups.date,
-                               current_address=cleanups.location.number,
-                               start_time=cleanups.event_start,
-                               # start_time_of_day=cleanups.event_end,
-                               end_time=cleanups.end_time,
-                               # end_time_of_day = am_pm_value(cleanups.end_time),
-                               description=cleanups.description,
-                               date_pattern = html_constants.date_pattern,
-                               date_placeholder = html_constants.date_placeholder,
-                               time_pattern = html_constants.time_pattern,
-                               time_placeholder = html_constants.time_placeholder)
+                               section = 'Edit Cleanup',
+                               cleanup = cleanups)
     else:
         flash("You do not have permission to edit this cleanup")
         return redirect(url_for('cleanups.get', cleanup_id=cleanup_id))
@@ -130,10 +119,6 @@ def update(cleanup_id):
 
         if method == 'POST': #PUT
             current_app.logger.debug("REQUEST FORM: %s", request.form)
-
-            # start_time = cleanup_dict['start_time'], cleanup_dict['start_time_of_day']
-            # end_time = cleanup_dict['end_time'], cleanup_dict['end_time_of_day']
-            # cleanup_dict.update({"start_time": start_time, "end_time": end_time})
 
             full_address = get_full_address(cleanup_dict)
             try:
@@ -261,6 +246,7 @@ def get_public_works(id):
                            time_pattern=html_constants.time_pattern,
                            date_placeholder=html_constants.date_placeholder,
                            date_pattern=html_constants.date_pattern,
+                           tool_image_path=html_constants.tool_image_path,
                            id=id)
 
 

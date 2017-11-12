@@ -15,7 +15,9 @@ bp = Blueprint('home', __name__, template_folder='templates')
 def welcome():
     """Home page. Section is the name of the page in the tab."""
     return render_template("index.html",
-                           section='Home')
+                           section='Home',
+                           default_image_path = html_constants.default_image_path,
+                           home_image = "trash-can-icon.png")
 
 
 @bp.route('/error')
@@ -24,6 +26,14 @@ def error():
     return render_template('error.html',
                            section="Error")
 
+@bp.route('/login_page')
+def login_page():
+    return render_template("login_page.html",
+                           section="Login",
+                           username_pattern=html_constants.username_pattern,
+                           username_title=html_constants.username_title,
+                           password_pattern=html_constants.password_pattern,
+                           password_title=html_constants.password_title)
 
 @bp.route('/signup')
 def signup():
@@ -72,11 +82,11 @@ def login():
         else:
             # Next step: require user feedback password or username incorrect
             flash("Incorrect Username or Password")
-            return redirect(url_for("home.welcome"), code=200)
+            return redirect(url_for("home.login_page"), code=200)
     else:
         # Next Step: require user feedback password or username incorrect
         flash("Incorrect Username or Password")
-        return redirect(url_for("home.welcome"), code=400)
+        return redirect(url_for("home.login_page"), code=400)
 
 
 @bp.route('/logout', methods=["GET"])
@@ -102,7 +112,7 @@ def create_account():
     if db_session.query(User).filter(User.username == new_name).count():
         #Send back to try again
         # print("%s is taken" % new_name)
-        flash("username: %s, is taken" % new_name)
+        flash("'%s' is already taken" % new_name)
         return redirect(url_for("home.signup"), code=status.HTTP_403_FORBIDDEN)
     else:
         #enter password validation process

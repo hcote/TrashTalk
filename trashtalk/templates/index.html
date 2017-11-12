@@ -4,16 +4,21 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, chotoolsools | Templates
 and open the template in the editor.
-<!--&ndash;&gt;-->
+-->
 {%extends 'base.html'%}
 {%block content%}
-
-        <div align="center">
-            <h1>Welcome to Trash Talk</h1>
-            <h2>A Community Clean-Up Organizer Tool</h2>
-            <img src="{{default_image_path}}{{home_image}}"
-                  alt="Trash Talk Logo"
-                  style="width:300px;height:300px;">
+<div class="container">
+    <div class="row text-center">
+        <h1>Welcome to Trash Talk</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 ">
+            <img class="center-block img-responsive" src="{{default_image_path}}{{home_image}}">
         </div>
+    </div>
+    <div class="row text-center">
+        <h2>Organize a Community Cleanup</h2>
+    </div>
 
+</div>
 {%endblock%}
