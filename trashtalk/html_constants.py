@@ -13,7 +13,7 @@ class HtmlConstants:
         self.date_placeholder = "yyyy-mm-dd"
 
         self.time_pattern = "([0-9]|0[0-9]|1[0-2])(:[0-5][0-9])"
-        self.time_placeholder = "hh:mm"
+        self.time_placeholder = "hh:mm am/pm"
 
         self.default_image_path = "/static/images/defaults/"
         self.tool_image_path = "/static/images/tools/"
