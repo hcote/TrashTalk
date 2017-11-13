@@ -130,3 +130,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # =======================================================================
 STATIC_URL = '/static/'
+
+# Google Map
+GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
+GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
+                       "&q=".format(GOOGLE_MAPS_KEY)
+
+# Google worksheets
+GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION') # Permission to access drive account
+GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/'] # URL in Google Drive account to find spreadsheet
+GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY') # ID of spreadsheet found in Scope
+
+# See Click Fix
+SCF_HEADER = {"Content-type": "application/json"}
+SCF_BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
+SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")
+SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")
+SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")
