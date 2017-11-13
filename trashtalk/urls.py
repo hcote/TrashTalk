@@ -16,8 +16,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.conf import settings
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/', include('api_urls')),
+
+    # Development
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^docs/', include('rest_framework_docs.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls))]
