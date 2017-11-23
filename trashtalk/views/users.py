@@ -20,10 +20,11 @@ def edit():
     :param user_id:
     :return:
     """
-
+    user = db_session.query(User).get(current_user.id)
     return render_template("user/edit.html",
-                    password_pattern=html_constants.password_pattern,
-                    password_title=html_constants.password_title)
+                           user = user,
+                           password_pattern=html_constants.password_pattern,
+                           password_title=html_constants.password_title)
 
 
 

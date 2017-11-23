@@ -3,59 +3,129 @@
 
 {%block content%} 
 
-<div align="center">
-    <h3>Update Clean Up Information Below:</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <h3>Edit Cleanup:</h3>
+        </div>
+    </div>
+
     <form action = "/cleanups/{{ id }}" method='POST'>
         <input type = "hidden" name="method" value="POST"/><!--value was PUT-->
-        <!--Date-->
-        <label for = "date">Date:</label>
-        <input type = "date" name="date" value="{{ date }}"
-               pattern="{{date_pattern}}"
-               placeholder={{date_placeholder}}/><br/>
-        <!--Start Time-->
-        <label for = "start_time">Start Time</label>
-        <input type = "time" name ="start_time" value="{{ start_time }}"
-                pattern= "{{time_pattern}}"
-                placeholder="{{time_placeholder}}"/>
-        <select name="start_time_of_day" >
-            <option selected="selected" value="{{start_time_of_day}}">{{start_time_of_day}}</option>
-            <option value="am">am</option>
-            <option value="pm">pm</option>
-        </select><br/>
-        <!--End Time-->
-        <label for ="end_time">End Time</label>
-        <input type ="time" name ="end_time" value="{{ end_time }}"
-               pattern="{{time_pattern}}"
-               placeholder="{{time_placeholder}}"/>
-        <select name="end_time_of_day" >
-            <option selected="selected" value="{{end_time_of_day}}">{{end_time_of_day}}</option>
-            <option value="am">am</option>
-            <option value="pm">pm</option>
-        </select><br/>
-        <textarea name="description" cols="50" rows="4" value="{{ description }}">{{ description }}</textarea><br/>
-        <!--<label for="street_number">Street Number:</label>-->
-        <input type="radio" name="location" value="current_address" checked="checked">{{current_address}}
-        <input type="hidden" name="current_address" value="{{current_address}}"><br/>
 
-        <input class="type_address" type="radio" name="location" value="address">Address
-        <input type="number" name="street_number" min="1" pattern="[0-9]{1,}" placeholder="Street Number"/>
-        <input type="text" name="street_name" placeholder="Street Name"/><br/>
+        <!--Event Title-->
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="name">Event Title</label>
+                <input class="form-control"
+                       type="text" name="name" id="name"
+                      value="{{cleanup.name}}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="date">Date</label>
+                <div class='input-group date' data-provide="datepicker">
+                    <input id="date" name="date" type='text' class="form-control" value="{{cleanup.date}}" />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#date').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+            });
+        </script>
+
+        <!--Start Time-->
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="start_time">Start Time</label>
+                <div class="input-group bootstrap-timepicker timepicker">
+                    <input id="start_time" name="start_time" type="text" value="{{cleanup.event_start}}" class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#start_time').timepicker();
+        </script>
+
+        <!--End Time-->
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="end_time">End Time</label>
+                <div class="input-group bootstrap-timepicker timepicker">
+                    <input id="end_time" name="end_time" type="text" value="{{cleanup.event_end}}" class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#end_time').timepicker();
+        </script>
+
+        <!--Address-->
+        <!--<input class="form-control" type="radio" name="location" value="address" checked="checked">-->
+        <input class="form-control" type="hidden" name="location" value="address" checked="checked">
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="street_number">Street Number</label>
+                <input class="form-control" value="{{cleanup.location.number}}" type="number" id="street_number" name="street_number" min="1" pattern="[0-9]{1,}"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="street_name">Street Name</label>
+                <input class="form-control" type="text" name="street_name" id="street_name" value="{{cleanup.location.street}}"/>
+            </div>
+        </div>
+
         <!--Street Name-->
         <!--<label for="street_name">Street Name:</label>-->
-        <input type="radio" name="location" value="cross_street">Cross Street
+        <!--<input type="radio" name="location" value="cross_street">Cross Street-->
         <!--<label for="street_name">Cross Street Name:</label>-->
-        <input type="text" name="street_one" placeholder="Street One"/>
-        <input type="text" name="street_two" placeholder="Street Two"/><br/>
+        <!--<input type="text" name="street_one" placeholder="Street One"/>-->
+        <!--<input type="text" name="street_two" placeholder="Street Two"/><br/>-->
         <!--image hidden until functional-->
         <!--<label for = "image">Image: (optional)</label>-->
         <!--<input type ="hidden" name="image"/><br/>-->
-        <input type="submit" value="Update"/>
+
+        {#Picture input hidden and given default value until referencing can be fixed#}
+        <input class="form-control" type ="hidden" name="image" placeholder="Picture" value="{{cleanup.image}}"/>
+
+        <!--Description-->
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="desc">Description</label>
+                <textarea class="form-control" name="description" id="desc" cols="50" rows="4" placeholder="{{cleanup.description}}">{{cleanup.description}}</textarea>
+            </div>
+        </div>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
+        <input class="btn btn-sm" type="submit" value="Update"/>
         <a href='/cleanups/{{ id }}' class="support">Cancel</a>
     </form>
-    <form action = "/cleanups/{{ id }}" method='POST'>
-        <input type = "hidden" name="method" value="DELETE">
-        <input type="submit" value="Delete">
-    </form>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="text-center">Are you sure?</p>
+            <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
+              <form action = "/cleanups/{{ id }}" method='POST'>
+                    <input type = "hidden" name="method" value="DELETE">
+                    <input class="form-control" type="submit" value="Delete">
+                </form>
+        </div>
+
+      </div>
+    </div>
 </div>
 
 {%endblock%}

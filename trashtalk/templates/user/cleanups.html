@@ -8,30 +8,42 @@ and open the template in the editor.
 
 {%block content%}
     <h3>Hosted Clean-Ups</h3>
-    <div class="scroll">
+    <div class="list-group">
     {% for cleanup in my_cleanups %}
-        <div class="list_cleanups">
-            <img src = {{default_image_path}}{{cleanup.image}}
-                alt="Pretend this is a cool photo"
-                style = "width:150px;height:150px; "><br>
-
-            <a href = '/cleanups/{{cleanup.id}}'class="support">{{cleanup.name}}: {{ cleanup.location.number }} {{cleanup.location.street}}</a></br>
-
-        </div>
+        <a href="/cleanups/{{cleanup.id}}" class="list-group-item row">
+            <div class="col-xs-4">
+                <div class="imgAbt">
+                    <img class="img-responsive img-thumbnail" src="{{default_image_path}}{{cleanup.image}}" />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p><h4>{{cleanup.name}}</h4>
+                <date>{{ cleanup.date }}</date>
+                <time>{{cleanup.event_start}}</time><br>
+                {{ cleanup.address}}
+                </p>
+            </div>
+        </a>
     {% endfor %}
     </div>
-
     <h3>Joined Cleanups</h3>
-    <div class="scroll">
+    <div class="list-group">
     {% for cleanup in current_user.cleanups_participated %}
-    <div class="list_cleanups">
-                <img src = {{default_image_path}}{{cleanup.image}}
-                    alt="Pretend this is a cool photo"
-                     style = "width:150px;height:150px; align:left;"></br>
-
-        <a href = '/cleanups/{{cleanup.id}}'class="support">{{cleanup.name}}: {{ cleanup.location.number }} {{cleanup.location.street}}</a></br>
-
-    </div>
+        <a href="/cleanups/{{cleanup.id}}" class="list-group-item row">
+            <div class="col-xs-4">
+                <div class="imgAbt">
+                    <img class="img-responsive img-thumbnail" src="{{default_image_path}}{{cleanup.image}}" />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p><h4>{{cleanup.name}}</h4>
+                Host: <i>{{cleanup.host.username}}</i><br>
+                <date>{{ cleanup.date }}</date>
+                <time>{{cleanup.event_start}}</time><br>
+                {{ cleanup.address}}
+                </p>
+            </div>
+        </a>
     {% endfor %}
-    </div>
+
 {%endblock%}
