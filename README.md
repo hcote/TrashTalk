@@ -6,6 +6,9 @@ Trashtalk.com will essentially act as a liaison between: Oakland's Department of
 ## Developers
 Please read CONTRIBUTE.md for full information and instructions.
 
+Gspread docs: https://gspread.readthedocs.io/en/latest/
+Django links:
+https://docs.djangoproject.com/en/1.11/topics/http/shortcuts/
 Before you can do anything, you must do the following:
 
 To run:

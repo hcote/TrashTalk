@@ -13,19 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url, include, static
 from django.contrib import admin
 
 from django.conf import settings
 
+from cleanups.views import HomeViews
+
 urlpatterns = [
+    # Homepage
+    url(r'^$', HomeViews.as_view(), name='home'),
+
+    # Admin Pages
     url(r'^admin/', admin.site.urls),
+
+    # API
     url(r'^api/v1/', include('api_urls')),
 
-    # Development
+    # Developers Only
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^docs/', include('rest_framework_docs.urls')),
-]
+] + static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
