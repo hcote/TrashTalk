@@ -4,7 +4,9 @@ import factory.fuzzy
 from .models import Cleanup, Location, User
 
 
+# pylint: disable=missing-docstring
 class UserFactory(factory.DjangoModelFactory):
+    # pylint: disable=too-few-public-methods
     class Meta:
         model = User
 
@@ -15,7 +17,9 @@ class UserFactory(factory.DjangoModelFactory):
     email = factory.LazyAttribute(lambda u: '%s@example.com' % u.username)
 
 
+# pylint: disable=missing-docstring
 class LocationFactory(factory.DjangoModelFactory):
+    # pylint: disable=too-few-public-methods
     class Meta:
         model = Location
 
@@ -24,7 +28,9 @@ class LocationFactory(factory.DjangoModelFactory):
     cross_street = '23rd'
 
 
+# pylint: disable=missing-docstring
 class CleanupFactory(factory.DjangoModelFactory):
+    # pylint: disable=too-few-public-methods
     class Meta:
         model = Cleanup
 

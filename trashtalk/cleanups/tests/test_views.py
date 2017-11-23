@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from .factories import *
+from cleanups.factories import *
 
 
 class CleanupTestCase(TestCase):

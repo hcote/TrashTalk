@@ -7,6 +7,7 @@ from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP
 from .utils import Coordinates
 
 
+# pylint: disable=missing-docstring
 class Cleanup(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField()
@@ -27,9 +28,8 @@ class Cleanup(models.Model):
         # TODO: Issue #12 - Add cross street queries when implemented.
         if self.location and self.location.cross_street:
             return "{0}:{1}, {2}".format(self.location.street,
-                                         self.location.cross_street, self.city)
-        else:
-            return self.address
+                                         self.location.cross_street, self.location.city)
+        return self.address
 
     @property
     def address(self):
@@ -38,6 +38,7 @@ class Cleanup(models.Model):
                                         self.location.zipcode)
 
     def check_name(self):
+        # TODO: Refactor as staticmethod; set location as a default on the name field
         if not self.name:
             self.name = self.location
 
@@ -52,6 +53,7 @@ class Cleanup(models.Model):
         return datetime.strptime(str(self.end_time), '%X').strftime('%I:%M %p')
 
 
+# pylint: disable=missing-docstring
 class Location(models.Model):
     DEFAULT_CITY = "Oakland"
     DEFAULT_STATE = "California"
@@ -69,18 +71,21 @@ class Location(models.Model):
     longitude = models.CharField(max_length=100)
 
     def __str__(self):
-        return "{0} {1}, {2}".format(self.street, self.cross_street, self.city)
+        return "{0} {1}, {2}".format(self.street, self.city, self.state)
 
     @property
     def address(self):
+        """Provide neatly formatted address."""
         return "{} {}".format(self.number, self.street)
 
     @property
     def coordinates(self):
+        """Provide easy access to coordinates for queries."""
         return Coordinates(self.latitude, self.longitude)
 
     @property
     def state_code(self):
+        """TODO: Set as a default on model field?"""
         if not self.has_state_code():
             return STATE_CODE_MAP[self.state]
         return self.state

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href={% static 'stylesheets/theme.css' %} rel="stylesheet" type="text/css"
+              media="all"/>
+        <title>Trash Talk</title>
+    </head>
+    <body>
+{#    TODO: Issue #75: Export all inline styles to an external syltesheet. #}
+        <header style="text-align: center;">
+            <h1>Trash Talk</h1>
+        </header>
+
+        <div class ="main_menu">
+            <nav>
+                <a href='/cleanups'>All Oakland Cleanups</a>
+                {% if current_user.authenticated %}
+                    <a href="/user/cleanups">My Cleanups</a>
+                    <a href="/cleanups/new">Create New Cleanup</a>
+                    {{ current_user.id }}" class="base">Notifications</a><br/>
+                <!--Change #2-->
+                    <a href="/user/edit">Edit Profile</a>
+                    <a href="/logout">Log out</a>
+                {% else %}
+                    Want to create or join clean ups?
+                    <form action ="/login" method ="POST">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="submit" value="Log in">
+                        <a href='/signup' class="support">Sign Up</a>
+                    </form>
+                {% endif %}
+            </nav>
+        </div>
+        <article>
+{#        FIXME: Legacy from Flask; fix! #}
+{#        {% with messages = get_flashed_messages() %}#}
+{#            {% if messages %}#}
+{#            <ul class=flashes>#}
+{#                {% for message in messages %}#}
+{#                    <li>{{ message | safe }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#          {% endif %}#}
+{#        {% endwith %}#}
+        {% block content %}{% endblock %}
+        </article>
+        <footer>
+            An Open Oakland Initiative
+{#    TODO: Issue #75: Export all inline styles to an external syltesheet. #}
+            <img src={% static 'images/oo_logo.png' %}
+            alt="Open Oakland Logo" style="width 100px; height:25px; float:right;">
+        </footer>
+    </body>
+</html>

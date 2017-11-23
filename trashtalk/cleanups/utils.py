@@ -97,21 +97,38 @@ def get_area(street_name, cross_street, city):
 
 
 def get_full_address(request_form):
+    """
+    Parse form address to determine it's type: cross street location or current address.
+
+    :param request_form:
+    :return:
+    """
     selection = request_form['location']
 
     if selection == "current_address":
         full_address = request_form["current_address"]
 
-    if selection =='cross_street':
-        full_address=("%s at %s, %s, %s") % (request_form['street_one'],request_form['street_two'],DEFAULT_CITY, DEFAULT_STATE)
+    if selection == 'cross_street':
+        full_address = ("%s at %s, %s, %s") % (request_form['street_one'],
+                                               request_form['street_two'],
+                                               DEFAULT_CITY, DEFAULT_STATE)
 
-    if selection =='address':
-        full_address = ("%s %s, %s, %s") % (request_form['street_number'], request_form['street_name'], DEFAULT_CITY, DEFAULT_STATE)
+    if selection == 'address':
+        full_address = ("%s %s, %s, %s") % (request_form['street_number'],
+                                            request_form['street_name'],
+                                            DEFAULT_CITY, DEFAULT_STATE)
 
     return full_address
 
 
+# TODO: This should be is_participant, but also this can be checked on the model.
 def check_participants(user, participants):
+    """
+    Check whether user is a participant.
+    :param user:
+    :param participants:
+    :return:
+    """
     participant_ids = []
     for participant in participants:
         participant_ids.append(participant.id)

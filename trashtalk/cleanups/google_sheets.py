@@ -1,3 +1,4 @@
+# pylint: skip-file
 """
 Sheets API Requires a Google Cloud services account.
 Instructions are found in this link
@@ -19,7 +20,9 @@ GOOGLE_SHEETS_VALIDATION = settings.GOOGLE_SHEETS_VALIDATION
 GOOGLE_SHEETS_SCOPE = settings.GOOGLE_SHEETS_SCOPE
 GOOGLE_SHEETS_KEY = settings.GOOGLE_SHEETS_KEY
 
-top_row = 2 # First Row is header: Limited ability to find the end of the data. Easier just to put data at the top and find it later
+# First Row is header: Limited ability to find the end of the data. Easier just to put
+# data at the top and find it later
+top_row = 2
 
 # FIXME: See gspread docs to find 'credentials' value/data type (tuple? list?)
 gc = gspread.authorize(credentials)
@@ -27,6 +30,7 @@ wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1
 
 
 # Function used in cleanups.py for send_to_pw_really.html
+# TODO: Refactor!!!!!
 def send_to_sheet(id, tool_data):
     cleanup = db_session.query(Cleanup).filter(Cleanup.id == id).first()
 
@@ -75,7 +79,7 @@ def send_to_sheet(id, tool_data):
     shears = tool_data.get("shears")
     held_bulb_planter = tool_data.get("held_bulb_planter")
     long_bulb_planter = tool_data.get("long_bulb_planter")
-    hand_hoe=tool_data.get("hand_hoe")
+    hand_hoe = tool_data.get("hand_hoe")
     hand_trowel = tool_data.get("hand_trowel")
     hand_weeder = tool_data.get("hand_weeder")
     hori_hori = tool_data.get("hori_hori")
@@ -88,7 +92,7 @@ def send_to_sheet(id, tool_data):
     standard_hoe = tool_data.get("standard_hoe")
     hula_hoe = tool_data.get("hula_hoe")
     standard_leaf_rake = tool_data.get("standard_leaf_rake")
-    narrow_leaf_rake=tool_data.get("narrow_leaf_rake")
+    narrow_leaf_rake = tool_data.get("narrow_leaf_rake")
     bow_rake = tool_data.get("bow_rake")
     pitch_fork = tool_data.get("pitch_fork")
     mcleod = tool_data.get("mcleod")

@@ -1,5 +1,7 @@
+# pylint: disable=missing-docstring
 
 
+# pylint: disable=missing-docstring
 class TrashTalkError(Exception):
     _code = 'TRASHTALK_ERROR'
 
@@ -11,7 +13,7 @@ class TrashTalkError(Exception):
         """
         self.message = message
         self.code = code
-        super(TrashTalkError, self).__init__(msg)
+        super(TrashTalkError, self).__init__(message)
 
     def __str__(self):
         return "{0} - {1}".format(self.code, self.message)
@@ -35,7 +37,9 @@ class TrashTalkHTTPError(TrashTalkError):
         self.url = url
         self.detail = detail
         self.options = kwargs
-        super(TrashTalkError, self).__init__(message)
+        # Python 2 style:
+        # super(TrashTalkError, self).__init__(message)
+        super()
 
     def __str__(self):
         return "{0} - {1}\n Status: {2}\n URL: {3}\n Detail: {4}".format(self.code,
