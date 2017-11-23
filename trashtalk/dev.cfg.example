@@ -1,5 +1,0 @@
-# Rename to dev.cfg which is NOT version controlled and can contain anything
-DB_USER="postgres"
-DB_PASSWORD="xxxxx"
-DB_NAME="trashtalk"
-SQLALCHEMY_DATABASE_URI="mysql+pymysql://username:xxx@localhost/trashtalk"
