@@ -22,14 +22,17 @@ need!).
 
 - Do not merge your own code. It should be reviewed by your fellow devs and merged by them.
 - Test your changes, always, before submitting them.
-- Lint your files before submitting them to make sure they follow PEP8
+- Lint your files before submitting them to make sure they follow PEP8. Aim for a pylint score of at least 7 per file you edit (C level messages are acceptable usually).
 - Never store API keys or passwords in your code! Sensitive data should be stored securely, never in the repository.
 - Be sure to add any new modules you install to the requirements file.
 
-**Other Documentation**
+Please [read more about how to understand pylint messages](https://pylint.readthedocs.io/en/latest/user_guide/output.html#source-code-analysis-section).
+
+**More Documentation**
 - [Django Docs](https://docs.djangoproject.com/en/dev/)
 - [Python](https://www.python.org/dev/peps/pep-0008/)
 - [Google Apps](https://cloud.google.com/docs/)
+- [Pylint](https://pylint.readthedocs.io/en/latest/user_guide/)
 
 ## Setting Up Local
 
@@ -41,7 +44,7 @@ The steps laid out will be further detailed below, step by step.
 4. Install the requirements to a folder named `venv`. This is important.
 5. Create a new branch
 6. Commit your changes to the code.
-7. Lint and update accordingly: `venv/bin/pylint --rcfile=./pylint.cfg ./`
+7. Lint and update accordingly: `venv/bin/pylint --rcfile=./.pylintrc ./`
 8. Test: `python manage.py test`
 9. Push the branch to your fork
 0. Create a Pull Request

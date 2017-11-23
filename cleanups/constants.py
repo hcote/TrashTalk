@@ -1,3 +1,4 @@
+# pylint: skip-file
 # The app works at the local level. Set your default city and state for users.
 DEFAULT_CITY = "Oakland"
 DEFAULT_STATE = "California"
@@ -65,7 +66,7 @@ STATE_NAME_MAP = {
 }
 
 # State names mapped to state codes
-STATE_CODE_MAP = {v:k for k,v in STATE_NAME_MAP.items()}
+STATE_CODE_MAP = {v:k for k, v in STATE_NAME_MAP.items()}
 
 # A very long international list of countries/states with their capitals and timezones
 COUNTRIES = [
