@@ -1,0 +1,1 @@
+web: gunicorn trashtalk.wsgi --log-file -
