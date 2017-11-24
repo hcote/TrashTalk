@@ -109,6 +109,15 @@ REST_FRAMEWORK_DOCS = {
 }
 
 # =======================================================================
+# DATABASE SETTINGS
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# =======================================================================
+
+DATABASES = {
+    'default': {}
+}
+
+# =======================================================================
 # AUTHENTICATION
 # =======================================================================
 # Password validation
@@ -134,9 +143,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # =======================================================================
 STATIC_URL = '/assets/'
-STATIC_ROOT = '/assets/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -146,25 +155,12 @@ STATICFILES_DIRS = [
 
 # =======================================================================
 # THIRD-PARTY INTEGRATION SETTINGS
-# For settings specific to third-party modules and apis
+# For settings specific to third-party modules and apis.
+# The credentials below are NOT FOR PRODUCTION. Overwrite them by editing
+# your dev.py
 # =======================================================================
 
-# Google Maps
-GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')
-GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
-                       "&q=".format(GOOGLE_MAPS_KEY)
-
-# Google Sheets
-# Permission to access drive account
-GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')
-
-# URL in Google Drive account to find spreadsheet
-GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/']
-
-# ID of spreadsheet found in Scope
-GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')
-
-# See Click Fix
+# See Click Fix Testing for all environments
 SCF_HEADER = {"Content-type": "application/json"}
 SCF_BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
 SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")

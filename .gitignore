@@ -68,6 +68,7 @@ coverage.xml
 .media/
 local_settings.py
 **/dev.py
+assets/
 
 # Flask stuff:
 instance/
