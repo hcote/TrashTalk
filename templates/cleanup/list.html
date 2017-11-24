@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, chotoolsools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+
+{%block content%}
+    <h3>Active Oakland Cleanups</h3>
+    <div class="list-group">
+    {% for clean in cleanups %}
+        <a  href='/cleanups/{{clean.id}}' class="list-group-item row">
+            <div class="col-xs-4">
+                <div class="imgAbt">
+                    <img class="img-responsive img-thumbnail" src="{{default_image_path}}{{clean.image}}" />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p><h4>{{clean.name}}</h4>
+                Host: <i>{{clean.host.username}}</i><br>
+                <date>{{ clean.date }}</date>
+                <time>{{clean.event_start}}</time><br>
+                {{clean.address}}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+
+{%endblock%}
