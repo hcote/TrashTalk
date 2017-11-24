@@ -4,7 +4,7 @@
 # DJANGO DEBUG TOOLBAR
 # Also requires: Django
 # ^^^^^^^^^^^^^^^^^^^^^^
-#django-debug-toolbar==1.8
+django-debug-toolbar==1.8
 
 # ^^^^^^^^^^^^^^^^^^^^^^
 # TESTING
