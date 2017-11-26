@@ -9,11 +9,13 @@ from .utils import Coordinates
 
 # pylint: disable=missing-docstring
 class Cleanup(models.Model):
+    DEFAULT_ICON = 'images/defaults/bow_rake.jpg'
+
     name = models.CharField(max_length=300)
     description = models.TextField()
     start_time = models.TimeField()
     end_time = models.TimeField()
-    image = models.CharField(max_length=300)
+    image = models.CharField(max_length=300, default=DEFAULT_ICON)
     host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cleanups")
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
 
@@ -57,21 +59,23 @@ class Cleanup(models.Model):
 class Location(models.Model):
     DEFAULT_CITY = "Oakland"
     DEFAULT_STATE = "California"
+    DEFAULT_COUNTRY = "United States"
 
+    # Fields with blank=True make them non-required fields
     number = models.CharField(max_length=100)
     street = models.CharField(max_length=100)
-    cross_street = models.CharField(max_length=100)
+    cross_street = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100, default=DEFAULT_CITY)
     state = models.CharField(max_length=100, default=DEFAULT_STATE)
-    zipcode = models.CharField(max_length=10)
-    county = models.CharField(max_length=100)
-    district = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    latitude = models.CharField(max_length=100)
-    longitude = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=10, blank=True)
+    county = models.CharField(max_length=100, blank=True)
+    district = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=100, default=DEFAULT_COUNTRY)
+    latitude = models.CharField(max_length=100, blank=True)
+    longitude = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
-        return "{0} {1}, {2}".format(self.street, self.city, self.state)
+        return "{0} {1}, {2}".format(self.address, self.city, self.state)
 
     @property
     def address(self):
