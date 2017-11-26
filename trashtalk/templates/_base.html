@@ -1,12 +1,25 @@
-{% load static %}
-<!DOCTYPE html>
 <html>
+{% load static %}
 <head>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href={% static 'stylesheets/theme.css' %} rel="stylesheet" type="text/css"
-              media="all"/>
-        <title>Trash Talk</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{#    JQUERY #}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{#    BOOTSTRAP #}
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{#    DATE and TIME PICKER #}
+    <link rel="stylesheet" type="text/css" href={% static "stylesheets/datepicker.css" %}>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          type="text/css"
+          href={% static "stylesheets/bootstrap-timepicker.min.css" %}>
+    <script type="text/javascript"
+            src={% static "scripts/bootstrap-datepicker.js" %}></script>
+    <script type="text/javascript"
+            src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
+
+    <title>Trash Talk</title>
     </head>
     <body>
 {#    TODO: Issue #75: Export all inline styles to an external syltesheet. #}
@@ -16,21 +29,19 @@
 
         <div class ="main_menu">
             <nav>
-                <a href='/cleanups'>All Oakland Cleanups</a>
-                {% if current_user.authenticated %}
-                    <a href="/user/cleanups">My Cleanups</a>
-                    <a href="/cleanups/new">Create New Cleanup</a>
-                    {{ current_user.id }}" class="base">Notifications</a><br/>
+                <a href={% url 'cleanups' %}>All Oakland Cleanups</a>
+                {% if user.id %}
+                    <a href={% url 'users' %}>My Cleanups</a>
+                    <a href={% url 'cleanups' %}>Create New Cleanup</a>
                 <!--Change #2-->
-                    <a href="/user/edit">Edit Profile</a>
-                    <a href="/logout">Log out</a>
+                    <a href={% url 'users' %}>Edit Profile</a>
+                    <a href={% url 'logout' %}>Log out</a>
                 {% else %}
                     Want to create or join clean ups?
-                    <form action ="/login" method ="POST">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="submit" value="Log in">
-                        <a href='/signup' class="support">Sign Up</a>
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" />
                     </form>
                 {% endif %}
             </nav>

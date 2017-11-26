@@ -15,20 +15,30 @@ Including another URLconf
 """
 from django.conf.urls import url, include, static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 
-from cleanups.views import HomeViews
+from accounts.views import LoginView
+from cleanups.views import CleanupDetailView
 
 urlpatterns = [
     # Homepage
-    url(r'^$', HomeViews.as_view(), name='home'),
+    url(r'^$', LoginView.as_view(), name='home'),
+
+    # User logins
+    url(r'^login/', LoginView.as_view(), name='login'),
+    url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
 
     # Admin Pages
     url(r'^admin/', admin.site.urls),
 
     # API
-    url(r'^api/v1/', include('api_urls')),
+    url(r'^api/v1/', include('api_urls'), name='api'),
+
+    # Cleanups
+    # TODO: Move to cleanups app urls.py
+    url(r'^cleanups/(?P<pk>[\w+])/$', CleanupDetailView.as_view(), name='cleanup-detail'),
 
     # Developers Only
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
