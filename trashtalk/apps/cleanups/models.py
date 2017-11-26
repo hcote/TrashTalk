@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from django.db import models
-from django.contrib.auth.models import User
 
+from accounts.models import User
 from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP
 from .utils import Coordinates
 

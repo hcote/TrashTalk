@@ -21,16 +21,17 @@ More settings can be added at any time.
 """
 
 import os
+from os.path import dirname, join
 
 # =======================================================================
 # SECURITY SETTINGS
 # =======================================================================
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DJANGO_ROOT = dirname(os.path.abspath(__file__))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a8oyi3kp=d6)y@+j(qt53_lqhvmb)np2dbe1uy%y+5t8gjy6b*'
+# CURRENT PROJECT_DIR: trashtalk/trashtalk
+PROJECT_DIR = dirname(DJANGO_ROOT)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Apps
+    'accounts',
     'cleanups',
     'integrations',
 
@@ -80,8 +82,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'cleanups/templates'),
+            os.path.join(PROJECT_DIR, 'templates'),
+            os.path.join(PROJECT_DIR, 'cleanups/templates'),
         ]
         ,
         'APP_DIRS': True,
@@ -141,15 +143,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # =======================================================================
 # STATIC AND MEDIA
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+# You must run collectstatic to use STATIC_ROOT in staging and prod
 # =======================================================================
 STATIC_URL = '/assets/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    # TODO: Add this line to prod settings
     # '/var/www/static/',
 ]
 
@@ -166,3 +167,60 @@ SCF_BASE_CALL = "https://test.seeclickfix.com/api/v2/issues"
 SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")
 SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")
 SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")
+
+# =======================================================================
+# LOGGING SETTINGS
+# https://docs.djangoproject.com/en/1.11/topics/logging
+# =======================================================================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'default': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(dirname(PROJECT_DIR), 'logs', 'trashtalk.log'),
+            'formatter': 'standard',
+        },
+        'file_sample': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(PROJECT_DIR, 'logs', 'sample.log'),
+            'formatter': 'standard',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'sample': {
+            'handlers': ['file_sample'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
