@@ -128,3 +128,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+NOTES.MD
+NOTES.md

@@ -47,7 +47,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 INSTALLED_APPS += [
     'django_extensions',
     'debug_toolbar',
-    'rest_framework_docs'
+    'rest_framework_docs',
 ]
 
 MIDDLEWARE += [
@@ -60,7 +60,7 @@ MIDDLEWARE += [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(PROJECT_DIR, 'templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -95,6 +95,7 @@ DEBUG_TOOLBAR_PANELS = [
 REST_FRAMEWORK_DOCS = {
     'HIDE_DOCS': False
 }
+
 # =======================================================================
 # DATABASE SETTINGS
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -105,8 +106,8 @@ DATABASES = {
         'NAME': 'trashtalk',
         'HOST': 'localhost',
         'PORT': '5432',
-        'USER': 'xotomajor',
-        'PASSWORD': 'admin'
+        'USER': 'postgres',
+        # 'PASSWORD': ''
     }
 }
 
@@ -137,10 +138,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # =======================================================================
 STATIC_URL = '/assets/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads')
 
 STATICFILES_DIRS += [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(PROJECT_DIR, "static"),
 ]
 
 # =======================================================================
@@ -152,7 +153,6 @@ GOOGLE_SHEETS_KEY = ''
 
 # =======================================================================
 # LOGGING SETTINGS
-# https://docs.djangoproject.com/en/1.11/topics/logging/#django-s-logging-extensions
 # =======================================================================
 LOGGING = {
     'version': 1,
@@ -169,10 +169,8 @@ LOGGING = {
         # Print logs to file
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'default.log'),
-            'maxBytes': 1024 * 1024 * 10,
-            'backupCount': 10,
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(dirname(PROJECT_DIR), 'logs', 'trashtalk.log'),
             'formatter': 'standard',
         },
         # Print logs to console

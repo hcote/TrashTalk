@@ -7,7 +7,7 @@ install:
 
 # command to run tests
 before_script:
-  - creatdb trashtalk
+  - createdb trashtalk
   - python manage.py migrate
 #  - psql -c 'create database travis_ci_test;' -U postgres
 #  - mysql -e 'GRANT ALL ON trashtalk* TO 'travis'@'localhost';'
