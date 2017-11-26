@@ -2,19 +2,24 @@ language: python
 python:
   - "3.6"
 
+before_install:
+  - cp trasthalk/settings/dev.py.example trashtalk/settings/dev.py
+  - mkdir logs
+  - touch logs/trashtalk.log
+
 install:
   - pip install -r requirements/dev.txt
 
 # command to run tests
 before_script:
-  - creatdb trashtalk
-  - python manage.py migrate
+  - createdb trashtalk
 #  - psql -c 'create database travis_ci_test;' -U postgres
 #  - mysql -e 'GRANT ALL ON trashtalk* TO 'travis'@'localhost';'
 #  - mysql -e 'create database trashtalk_test;' -u root
 #  - mysql -e 'create database trashtalk;' -u root
 
 script:
+  - python manage.py migrate
   - python manage.py test
 
 after_script:
