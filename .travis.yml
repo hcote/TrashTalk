@@ -3,7 +3,7 @@ python:
   - "3.6"
 
 before_install:
-  - cp trasthalk/settings/dev.py.example trashtalk/settings/dev.py
+  - cp trashtalk/settings/dev.py.example trashtalk/settings/dev.py
   - mkdir logs
   - touch logs/trashtalk.log
 
