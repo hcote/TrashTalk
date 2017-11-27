@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from accounts.views import UserView
-from cleanups.views import CleanupListCreateView, LocationView
+from accounts.views import UserAPIView
+from cleanups.views import CleanupListCreateView, LocationListCreateView
 
 urlpatterns = [
     url(r'^cleanups/', CleanupListCreateView.as_view(), name='cleanups'),
-    url(r'^locations/', LocationView.as_view(), name='locations'),
-    url(r'^users/', UserView.as_view(), name='users'),
+    url(r'^locations/', LocationListCreateView.as_view(), name='locations'),
+    url(r'^users/', UserAPIView.as_view(), name='users'),
 ]

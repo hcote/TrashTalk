@@ -29,12 +29,11 @@
 
         <div class ="main_menu">
             <nav>
-                <a href={% url 'cleanups' %}>All Oakland Cleanups</a>
+                <a href="{% url 'cleanups-list' %}">All Oakland Cleanups</a>
                 {% if user.id %}
-                    <a href={% url 'users' %}>My Cleanups</a>
-                    <a href={% url 'cleanups' %}>Create New Cleanup</a>
+                    <a href={% url 'dashboard' %}>My Cleanups</a>
+                    <a href={% url 'cleanup-new' %}>Create New Cleanup</a>
                 <!--Change #2-->
-                    <a href={% url 'users' %}>Edit Profile</a>
                     <a href={% url 'logout' %}>Log out</a>
                 {% else %}
                     Want to create or join clean ups?

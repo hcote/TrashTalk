@@ -19,28 +19,37 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 
-from accounts.views import LoginView
-from cleanups.views import CleanupDetailView
+from accounts.views import LoginView, SignupView, UserDashboardView
+from cleanups.views import (CleanupDetailView, CleanupListCreateView,
+                            cleanup_new, cleanup_edit, cleanup_list)
 
 urlpatterns = [
     # Homepage
     url(r'^$', LoginView.as_view(), name='home'),
 
-    # User logins
-    url(r'^login/', LoginView.as_view(), name='login'),
-    url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
-
     # Admin Pages
     url(r'^admin/', admin.site.urls),
 
     # API
-    url(r'^api/v1/', include('api_urls'), name='api'),
+    url(r'^api/v1/', include('api_urls', namespace='api')),
+
+    # Auth
+    url(r'^login/', LoginView.as_view(), name='login'),
+    url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^signup/', SignupView.as_view(), name='register'),
+
+    # User
+    # TODO: Issue #83 - Move to accounts/urls.py
+    url(r'^dashboard/', UserDashboardView.as_view(), name='dashboard'),
 
     # Cleanups
-    # TODO: Move to cleanups app urls.py
-    url(r'^cleanups/(?P<pk>[\w+])/$', CleanupDetailView.as_view(), name='cleanup-detail'),
+    # TODO: Issue #83 - Move to cleanups/urls.py
+    url(r'^cleanups/$', cleanup_list, name='cleanups-list'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/$', CleanupDetailView.as_view(), name='cleanup-detail'),
+    url(r'^cleanups/new/$', cleanup_new, name='cleanup-new'),
+    url(r'^cleanups/edit/$', cleanup_edit, name='cleanup-edit'),
 
-    # Developers Only
+    # Development Only
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^docs/', include('rest_framework_docs.urls')),
 ] + static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

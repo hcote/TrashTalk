@@ -1,10 +1,10 @@
 import logging
 
-from django.contrib.auth import authenticate, login, logout
-from django.views.generic.edit import FormMixin
+from django.contrib.auth import authenticate, login
 
 from rest_framework import status
-from rest_framework.generics import GenericAPIView, ListCreateAPIView
+from rest_framework.generics import (GenericAPIView, ListCreateAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .forms import UserLoginForm, UserSignupForm
@@ -14,7 +14,7 @@ log = logging.getLogger('accounts.views')
 
 
 # pylint: disable=missing-docstring
-class LoginView(GenericAPIView, FormMixin):
+class LoginView(GenericAPIView):
     queryset = User.objects.all()
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'index.html'
@@ -60,6 +60,20 @@ class SignupView(GenericAPIView):
 
 
 # pylint: disable=missing-docstring
-class UserView(ListCreateAPIView):
+class UserDashboardView(RetrieveUpdateDestroyAPIView):
+    """
+    User can view and edit: profile, cleanups, and participation.
+    Use formsets.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    renderer_classes = (TemplateHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        return Response({'user': request.user}, template_name='users/detail.html')
+
+
+# pylint: disable=missing-docstring
+class UserAPIView(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
