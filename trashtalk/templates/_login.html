@@ -13,7 +13,8 @@ and open the template in the editor.
         </div>
     </div>
     <div class="form-group">
-        <form action ="/login" method ="POST">
+        <!--TODO: change action destintation-->
+        <form action ={% url 'login' %} method ="POST">
             <div class="row">
                 <div class="col-sm-4">
                     <input type="text"
@@ -35,7 +36,7 @@ and open the template in the editor.
                     </div>
                 </div>
             <input class="btn btn-sm" type="submit" value="Log in">
-            <a href='/'>Cancel</a>
+            <a href={% url 'home' %}>Cancel</a>
         </form>
     </div>
 </div>

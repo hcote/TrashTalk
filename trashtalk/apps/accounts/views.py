@@ -48,7 +48,7 @@ class SignupView(GenericAPIView):
     def get(self, request):
         # FIXME: Do some password checking, user validating, yada, yada
         form = UserSignupForm()
-        return Response({'form': form}, template_name='signup.html')
+        return Response({'form': form}, template_name='_signup.html')
 
     def post(self, request):
         # FIXME: Do some password checking, user validating, yada, yada

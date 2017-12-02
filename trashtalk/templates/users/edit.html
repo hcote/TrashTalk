@@ -13,8 +13,8 @@ and open the template in the editor.
             <h3>Edit Profile</h3>
         </div>
     </div>
-
-    <form action="/user/" method="post">
+<!--TODO: Redirect action-->
+    <form action={% url 'dashboard' %} method="post">
     <input type="hidden" name="method" value="PUT">
         <div class="form-group">
     <div class="row">
@@ -49,7 +49,7 @@ and open the template in the editor.
 
     <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#delUser">Delete</button>
     <input class="btn btn-sm" type="submit" value="Update">
-    <a href='/cleanups' class="btn">Cancel</a>
+    <a href={% url 'dashboard' %} class="btn">Cancel</a>
 </form>
     <!--Modal Function-->
     <div id="delUser" class="modal fade" role="dialog">
@@ -60,7 +60,8 @@ and open the template in the editor.
           <div class="modal-body">
             <p class="text-center">Are you sure?</p>
             <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
-              <form action="/user/" method='POST'>
+              <!--TODO: Redired Action-->
+              <form action={% url 'dashboard' %} method='POST'>
                 <input type = "hidden" name="method" value="DELETE">
                 <input class="form-control" type="submit" value="Delete">
               </form>
