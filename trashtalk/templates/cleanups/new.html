@@ -9,8 +9,10 @@
                 <h3>Cleanup Information:</h3>
             </div>
         </div>
-        <form action="{% url 'cleanup-new' %}"  method="post">
+        <form action="{% url 'api:cleanups' %}"  method="post">
+            {% csrf_token %}
             {{ form }}
+            <input type="submit">
         </form>
 {#    <form action = "/cleanups/create" method='post'>#}
 {#        <input type="hidden" name="method" value="POST"/>#}

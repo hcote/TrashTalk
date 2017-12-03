@@ -13,14 +13,19 @@ from .serializers import Cleanup, CleanupSerializer, Location, LocationSerialize
 log = logging.getLogger('cleanups.views')
 
 
-def cleanup_edit(request, cleanup_id):
-    # context = {'cleanup': cleanups.filter(id=request.get('pk')).first()}
-    context = {'cleanup': get_object_or_404(Cleanup, id=cleanup_id)}
+def cleanup_edit(request, *args, **kwargs):
+    context = {'cleanup': get_object_or_404(Cleanup, id=kwargs['pk'])}
     return render(request, 'cleanups/edit.html', context)
 
 
+def cleanup_show(request, *args, **kwargs):
+    context = {'cleanup': get_object_or_404(Cleanup, id=kwargs['pk'])}
+    return render(request, 'cleanups/detail.html', context)
+
+
 def cleanup_list(request):
-    context = {'cleanups': get_list_or_404(Cleanup, end_time__gt=datetime.today())}
+    # TODO: Issue #86 - Filter, return only upcoming cleanups
+    context = {'cleanups': get_list_or_404(Cleanup)}
     return render(request, 'cleanups/list.html', context)
 
 
@@ -33,22 +38,15 @@ def cleanup_new(request):
 class CleanupDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cleanup.objects.all()
     serializer_class = CleanupSerializer
-    renderer_classes = (TemplateHTMLRenderer,)
-    template_name = 'cleanups/detail.html'
-
-    def get(self, request, *args, **kwargs):
-        cleanup = self.get_object()
-        log.info("Cleanup: %s", cleanup)
-        return Response({'cleanup': cleanup}, template_name=self.template_name)
-
-
-# pylint: disable=missing-docstring
-class LocationListCreateView(generics.ListCreateAPIView):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
 
 
 # pylint: disable=missing-docstring
 class CleanupListCreateView(generics.ListCreateAPIView):
     queryset = Cleanup.objects.all()
     serializer_class = CleanupSerializer
+
+
+# pylint: disable=missing-docstring
+class LocationListCreateView(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
