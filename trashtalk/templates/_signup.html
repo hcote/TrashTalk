@@ -13,8 +13,8 @@ and open the template in the editor.
             <p>Enter your information below</p>
         </div>
     </div>
-
-    <form action ="/register" method ="POST">
+    <!--TODO: change action destintation-->
+    <form action ={% url 'register' %}method ="POST">
     <div class="form-group">
         <div class="row">
             <div class="col-lg-4">
@@ -56,7 +56,7 @@ and open the template in the editor.
         <!--<label for = "rec_vol_hours">Record Volunteer Hours (optional)</label>-->
         <!--<input type="checkbox" name='track_vol_hours'/><br/>-->
         <input class="btn btn-sm" type="submit" name="signup" value="Sign Up"/>
-    <a href='/'>Cancel</a>
+    <a href={% url 'home' %}>Cancel</a>
 
     </form>
 </div>

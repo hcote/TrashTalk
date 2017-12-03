@@ -106,7 +106,7 @@
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
         <input class="btn btn-sm" type="submit" value="Update"/>
-        <a href='/cleanups/{{ id }}' class="support">Cancel</a>
+        <a href={% url 'cleanup-detail' cleanup.id %}class="support">Cancel</a>
     </form>
 
     <!-- Modal -->
@@ -118,7 +118,8 @@
           <div class="modal-body">
             <p class="text-center">Are you sure?</p>
             <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
-              <form action = "/cleanups/{{ id }}" method='POST'>
+              {#<!--TODO: Change Action Path-->#}
+              <form action = {% url 'cleanup-detail' cleanup.id %} method='POST'>
                     <input type = "hidden" name="method" value="DELETE">
                     <input class="form-control" type="submit" value="Delete">
                 </form>

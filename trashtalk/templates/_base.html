@@ -1,68 +1,84 @@
+<!DOCTYPE html>
+<!--
+Outline for rest of the webpage
+-->
+
 <html>
 {% load static %}
-<head>
-    <meta charset="windows-1252">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{#    JQUERY #}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{#    BOOTSTRAP #}
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-{#    DATE and TIME PICKER #}
-    <link rel="stylesheet" type="text/css" href={% static "stylesheets/datepicker.css" %}>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-          type="text/css"
-          href={% static "stylesheets/bootstrap-timepicker.min.css" %}>
-    <script type="text/javascript"
-            src={% static "scripts/bootstrap-datepicker.js" %}></script>
-    <script type="text/javascript"
-            src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
+    <head>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Trash Talk</title>
+        <script src={% static "scripts/jquery.min.js" %}></script>
+        <link rel="stylesheet" href={% static "stylesheets/bootstrap.min.css" %}>
+        <script src={% static "scripts/bootstrap.min.js" %}></script>
+
+        <link rel="stylesheet" type="text/css" href={% static "stylesheets/datepicker.css"%}>
+        <script type="text/javascript" src={% static "scripts/bootstrap-datepicker.js" %}></script>
+        <script type="text/javascript" src={% static "stylesheets/bootstrap-timepicker.min.css" %}></script>
+        <script type="text/javascript" src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
+        <title>Trash Talk: {{section}}</title>
     </head>
-    <body>
-{#    TODO: Issue #75: Export all inline styles to an external syltesheet. #}
-        <header style="text-align: center;">
-            <h1>Trash Talk</h1>
-        </header>
 
-        <div class ="main_menu">
-            <nav>
-                <a href="{% url 'cleanups-list' %}">All Oakland Cleanups</a>
-                {% if user.id %}
-                    <a href={% url 'dashboard' %}>My Cleanups</a>
-                    <a href={% url 'cleanup-new' %}>Create New Cleanup</a>
-                <!--Change #2-->
-                    <a href={% url 'logout' %}>Log out</a>
-                {% else %}
-                    Want to create or join clean ups?
-                    <form action="{% url 'login' %}" method="post">
-                        {% csrf_token %}
-                        {{ form }}
-                        <input type="submit" />
-                    </form>
-                {% endif %}
+    <body>
+        <header>
+             <nav class="navbar navbar-inverse">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                        <!--TODO-->
+                      <a class="navbar-brand" href="{% url 'home' %}">TrashTalk</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        {%if current_user.authenticated%}
+                      <ul class="nav navbar-nav">
+                        <li><a href="{% url 'cleanups-list' %}">All Cleanups</a></li>
+                        <li><a href="{% url 'dashboard' %}">My Cleanups</a></li>
+                        <li><a href="{% url 'cleanup-new' %}">New Cleanup</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'dashboard' %}"><span class="glyphicon glyphicon-user"></span>Edit Profile</a></li>
+                        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                      </ul>
+                        {%else%}
+                        <ul class="nav navbar-nav">
+                        <li><a href="{% url 'cleanups-list' %}">All Cleanups</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                          <!--FIXME-->
+                          {% csrf_token %}
+                      </ul>
+                        {%endif%}
+                    </div>
+
+                  </div>
             </nav>
-        </div>
-        <article>
-{#        FIXME: Legacy from Flask; fix! #}
+        </header>
+        <article class="container" style="padding-bottom:50px">
 {#        {% with messages = get_flashed_messages() %}#}
 {#            {% if messages %}#}
-{#            <ul class=flashes>#}
 {#                {% for message in messages %}#}
-{#                    <li>{{ message | safe }}</li>#}
+{#                <div class="row">#}
+{#                    <div class="alert alert-warning col-sm-4">{{ message | safe }}</div>#}
+{#                </div>#}
 {#                {% endfor %}#}
-{#            </ul>#}
 {#          {% endif %}#}
 {#        {% endwith %}#}
-        {% block content %}{% endblock %}
+        {%block content%}{%endblock%}
         </article>
-        <footer>
-            An Open Oakland Initiative
-{#    TODO: Issue #75: Export all inline styles to an external syltesheet. #}
-            <img src={% static 'images/oo_logo.png' %}
-            alt="Open Oakland Logo" style="width 100px; height:25px; float:right;">
+        <footer class="navbar navbar-fixed-bottom">
+            <div class="col-xs-offset-8 col-xs-4">
+                <a href="https://www.openoakland.org/" >
+                    <img class="img-responsive" style="padding:10px" src={% static 'images/open_oakland_logo.png' %}>
+                </a>
+            </div>
         </footer>
     </body>
 </html>

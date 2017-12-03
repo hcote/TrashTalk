@@ -39,24 +39,29 @@
             {% if cleanup.html_url %}
                 <a href ='{{ cleanup.html_url }}'>SeeClickFix Link</a>
                 {% else %}
-                <a href='/cleanups/advertise/{{cleanup.id}}'>Advertise on SeeClickFix</a>
+        {#<!--TODO: Change Path-->#}
+                <a href={% url 'cleanup-detail' cleanup.id %}>Advertise on SeeClickFix</a>
             {% endif %}
             {% if not cleanup.notified_pw %}
-                <a href="/cleanups/public_works/{{cleanup.id}}">Submit
+        {#<!--TODO: Change Path-->#}
+                <a href={% url 'cleanup-detail' cleanup.id %}>Submit
                     to Public Works</a>
                 {% else %}
                 Public Works has been notified
             {% endif %}
-            <a href="/cleanups/{{ cleanup.id }}/edit">Edit Cleanup</a>
+        {#<!--TODO: Change Path-->#}
+            <a href={% url 'cleanup-detail' cleanup.id %}>Edit Cleanup</a>
 
         {% else %}
             {% if not bool_participated %}
-                <form action = '/cleanups/join' method='POST'>
+        {#<!--TODO: Change Action Path-->#}
+                <form action = {% url 'cleanup-detail' cleanup.id %} method='POST'>
                     <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
                     <input class="btn btn-sm" type ="submit" name="Join" value="Join Cleanup">
                 </form>
             {% else %}
-                    <form action = '/cleanups/leave' method='POST'>
+        {#<!--TODO: Change Action Path-->#}
+                    <form action = {% url 'cleanup-detail' cleanup.id %} method='POST'>
                     <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
                     <input class="btn btn-sm" type ="submit" name="Leave" value="Leave Cleanup">
                 </form>

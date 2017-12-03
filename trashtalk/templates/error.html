@@ -1,10 +1,10 @@
 {% extends '_base.html' %}
 {% block content %}
-<div align="center">
+<div class="container">
     <p>Something has gone wrong!</p>
     <p>This is embarrassing.</p>
-    <img src={% static 'oops.jpg' %}
-         alt="<Insert cute animal photo here>"
-         style = "width:660px;height:420px;">
+    <img class="img-responsive"
+         src={% static 'clueless_golden.jpg' %}
+         alt="<Insert cute animal photo here>">
 </div>
 {%endblock%}

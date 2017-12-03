@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 {%extends "base.html"%}
-
+{% load static %}
 {%block content%}
-<div class="public_works">
+<div class="container">
     <!--<div style="float:right; text-align:center;">-->
     <h3>Enter Clean Up Information Below:</h3>
-    <form action = "/cleanups/public_works/{{id}}" method='post'>
+    <!--TODO: Remort Action-->
+    <form action = "{% url 'cleanup-edit' %}" method='post'>
         <input type="hidden" name="method" value="POST"/><br/>
         {#    Legal/Organization Name    #}
         <!--<label for="name">Event Title:</label>-->
@@ -60,7 +61,7 @@
                 <td>
                     <a href="#vest" data-toggle="collapse">Safety Vest</a>
                     <div id="vest" class="collapse">
-                        <img src='{{tool_image_path}}safety_vest.PNG' class=img-responsive'/>
+                        <img src={% static 'images/icons/safety_vest.png' %} class='img-responsive'/>
                     </div>
                     <p>Required for all volunteers working in or adjacent to streets and sidewalks</p>
                 </td>
@@ -68,9 +69,9 @@
             </tr>
             <tr>
                 <td>
-                    <a href="#rub_gloves" data-toggle="collapse">Rubber-dipped Work Gloves</a>
+                    <a href="#rub_gloves" data-toggle="collapse">Rubber-Dipped Work Gloves</a>
                     <div id="rub_gloves" class="collapse">
-                        <img src='{{tool_image_path}}rubber dipped gloves.PNG' class=img-responsive' />
+                        <img src={% static 'images/icons/rubber_dipped_gloves.png' %} class='img-responsive' />
                     </div>
                     <p>General purpose gloves</p>
                 </td>
@@ -80,7 +81,7 @@
                 <td>
                     <a href="#nit_gloves" data-toggle="collapse">Nitrile Gloves</a>
                     <div id="nit_gloves" class="collapse">
-                        <img src='{{tool_image_path}}nitrile gloves.PNG' class=img-responsive' />
+                        <img src={% static 'images/icons/nitrile_gloves.png' %} class='img-responsive' />
                     </div>
                     <p>Recommended only for painting and graffiti removal</p>
                 </td>
@@ -94,9 +95,9 @@
             </tr>
             <tr>
                 <td>
-                    <a href="#cot_gloves" data-toggle="collapse">Child-size Cotton Gloves</a>
+                    <a href="#cot_gloves" data-toggle="collapse">Child-Size Cotton Gloves</a>
                         <div id="cot_gloves" class="collapse">
-                            <img src='{{tool_image_path}}Child-size Cotton Gloves.jpg' class=img-responsive' />
+                            <img src={% static 'images/icons/child_cotton_gloves.jpg' %} class='img-responsive' />
                         </div>
                     <p>General purpose Gloves</p>
                 </td>
@@ -106,7 +107,7 @@
                 <td>
                     <a href="#cooler" data-toggle="collapse">Water Cooler</a>
                         <div id="cooler" class="collapse">
-                            <img src='{{tool_image_path}}water cooler.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/water_cooler.png' %} class='img-responsive' />
                         </div>
                     <p>Volunteers are encouraged to bring reusable water bottles rather than disposable cups</p>
                 </td>
@@ -116,7 +117,7 @@
                 <td>
                     <a href="#aid" data-toggle="collapse">First Aid Kit</a>
                         <div id="aid" class="collapse">
-                            <img src='{{tool_image_path}}First Aid.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/first_aid.png' %} class='img-responsive' />
                         </div>
                     <p>Treat minor injuries</p>
                 </td>
@@ -130,7 +131,7 @@
                 <td>
                     <a href="#sticks" data-toggle="collapse">Pickup Sticks</a>
                         <div id="sticks" class="collapse">
-                            <img src='{{tool_image_path}}pickupsticks.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/pickup_sticks.png' %} class='img-responsive' />
                         </div>
                     <p>Reaches and grabs for trash</p>
                 </td>
@@ -141,7 +142,7 @@
                 <td>
                     <a href="#push" data-toggle="collapse">Push Broom</a>
                         <div id="push" class="collapse">
-                            <img src='{{tool_image_path}}push broom.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/push_broom.png' %} class='img-responsive' />
                         </div>
                     <p>Efficiently sweep dirt and debris</p>
                 </td>
@@ -151,7 +152,7 @@
                 <td>
                     <a href="#house" data-toggle="collapse">House Broom</a>
                         <div id="house" class="collapse">
-                            <img src='{{tool_image_path}}brooms.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/brooms' %} class='img-responsive' />
                         </div>
                     <p>Lightweight for easy sweeping</p>
                 </td>
@@ -162,7 +163,7 @@
                 <td>
                     <a href="#pan" data-toggle="collapse">Dust Pan</a>
                         <div id="pan" class="collapse">
-                            <img src='{{tool_image_path}}dust pan.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/dust_pan.png' %} class='img-responsive' />
                         </div>
                     <p>Pick up collected dirt and debris</p>
                 </td>
@@ -177,7 +178,7 @@
                 <td>
                     <a href="#clippers" data-toggle="collapse">Hand Clippers</a>
                         <div id="clippers" class="collapse">
-                            <img src='{{tool_image_path}}pruners.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hand_clippers.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts branches less than 1" thick</p>
                 </td>
@@ -187,7 +188,7 @@
                 <td>
                     <a href="#loppers" data-toggle="collapse">Loppers</a>
                         <div id="loppers" class="collapse">
-                            <img src='{{tool_image_path}}loppers.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/loppers.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts branches less than 2" thick</p>
                 </td>
@@ -197,7 +198,7 @@
                 <td>
                     <a href="#saw" data-toggle="collapse">Pruning Saw</a>
                         <div id="saw" class="collapse">
-                            <img src='{{tool_image_path}}folding saw.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/pruning_saw.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts branches larger than 2"</p>
                 </td>
@@ -207,7 +208,7 @@
                 <td>
                     <a href="#shears" data-toggle="collapse">Shears</a>
                         <div id="shears" class="collapse">
-                            <img src='{{tool_image_path}}shears.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/shears.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts/prunes shrubs or grasses</p>
                 </td>
@@ -220,7 +221,7 @@
                 <td>
                     <a href="#plastic" data-toggle="collapse">Clear Plastic Bags</a>
                         <div id="plastic" class="collapse">
-                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/plastic_bag.png' %} class='img-responsive' />
                         </div>
                     <p>Fill with trash debris or recyclable materials</p>
                 </td>
@@ -230,7 +231,7 @@
                 <td>
                     <a href="#green" data-toggle="collapse">Green Waste/Compost Bags</a>
                         <div id="green" class="collapse">
-                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/compost_bag.png' %} class='img-responsive' />
                         </div>
                     <p>Fill with compostable materials,such as weeds, paper plates,food scraps, tree branches
                         (before placing in bags,cut branches into smaller pieces )</p>
@@ -241,7 +242,7 @@
                 <td>
                     <a href="#reuseable" data-toggle="collapse">Collapesable, Reusable Bags</a>
                         <div id="reuseable" class="collapse">
-                            <img src='{{tool_image_path}}plastic bag.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/reusable_bag.png' %} class='img-responsive' />
                         </div>
                     <p>Transports waste materials to a debris bin if you requested one. Must be returned for reuse</p>
                 </td>
@@ -251,7 +252,7 @@
                 <td>
                     <a href="#bucket" data-toggle="collapse">Bucket</a>
                         <div id="bucket" class="collapse">
-                            <img src='{{tool_image_path}}bucket.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/bucket.png' %} class='img-responsive' />
                         </div>
                     <p>Collects trash similarly to the collapsible green waste bags above</p>
                 </td>
@@ -265,7 +266,7 @@
                 <td>
                     <a href="#planters" data-toggle="collapse">Bulb Planters</a>
                         <div id="planters" class="collapse">
-                            <img src='{{tool_image_path}}bulb planter.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/bulb_planter.png' %} class='img-responsive' />
                         </div>
                     <p>Push head of planter into the ground, grab soil in its cone and create a deep enough hole to plant a bulb.
                 The long handled version is better for larger projects with harder soil.</p>
@@ -277,7 +278,7 @@
                 <td>
                     <a href="#trowel" data-toggle="collapse">Hand Trowel</a>
                         <div id="trowel" class="collapse">
-                            <img src='{{tool_image_path}}hand trowel.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hand_trowel.png' %} class='img-responsive' />
                         </div>
                     <p>For digging and planting.</p>
                 </td>
@@ -287,7 +288,7 @@
                 <td>
                     <a href="#mattock" data-toggle="collapse">Mattock</a>
                         <div id="mattock" class="collapse">
-                            <img src='{{tool_image_path}}mattock.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/mattock.png' %} class='img-responsive' />
                         </div>
                     <p>Hand tool used for digging and chopping, similar to the pickax</p>
                 </td>
@@ -299,7 +300,7 @@
                 <td>
                     <a href="#pointed" data-toggle="collapse">Pointed Shovel</a>
                         <div id="pointed" class="collapse">
-                            <img src='{{tool_image_path}}pointed shovel.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/pointed_shovel.png' %} class='img-responsive' />
                         </div>
                     <p>Best for digging holes</p>
                 </td>
@@ -307,9 +308,9 @@
             </tr>
             <tr>
                 <td>
-                    <a href="#pickax" data-toggle="collapse">Pick Ax</a>
+                    <a href="#pickax" data-toggle="collapse">Pick Axe</a>
                         <div id="pickax" class="collapse">
-                            <img src='{{tool_image_path}}Pick axe.PNG' class=img-responsive' />
+                           <img src={% static 'images/icons/pick_axe.png' %} class='img-responsive' />
                         </div>
                     <p>Breaks up hard soil or rock</p>
                 </td>
@@ -319,7 +320,7 @@
                 <td>
                     <a href="#fireax" data-toggle="collapse">Pulaski/Fire Ax</a>
                         <div id="fireax" class="collapse">
-                            <img src='{{tool_image_path}}Pulaski.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/pulaski.png' %} class='img-responsive' />
                         </div>
                     <p>Both chops wood and digs in soil. Good for trail construction and invasive plant removal (pampas grass)</p>
                 </td>
@@ -332,7 +333,7 @@
                 <td>
                     <a href="#weeder" data-toggle="collapse">Hand Weeder</a>
                         <div id="weeder" class="collapse">
-                            <img src='{{tool_image_path}}hand weeder.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hand_weeder.png' %} class='img-responsive' />
                         </div>
                     <p>Digs up small weeds</p>
                 </td>
@@ -342,7 +343,7 @@
                 <td>
                     <a href="#hoe" data-toggle="collapse">Hand Hoe</a>
                         <div id="hoe" class="collapse">
-                            <img src='{{tool_image_path}}hand hoe.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hand_hoe.png' %} class='img-responsive' />
                         </div>
                     <p>Moves small amounts of soil; used in weed control, hilling, and creating shallow trenches</p>
                 </td>
@@ -352,7 +353,7 @@
                 <td>
                     <a href="#hori" data-toggle="collapse">Hori Hori</a>
                         <div id="hori" class="collapse">
-                            <img src='{{tool_image_path}}hori hori.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hori_hori.png' %} class='img-responsive' />
                         </div>
                     <p>A multi-purpose blade serrated on one side. Suitable for digging and cutting roots</p>
                 </td>
@@ -362,7 +363,7 @@
                 <td>
                     <a href="#wrench" data-toggle="collapse">Weed Wrench</a>
                         <div id="wrench" class="collapse">
-                            <img src='{{tool_image_path}}weed extractigator.PNG' class=img-responsive' />
+                           <img src={% static 'images/icons/weed_wrench.png' %} class='img-responsive' />
                         </div>
                     <p>Pulls out woody plants such as French broom; Easiest to use with soft and slightly moist soils</p>
                 </td>
@@ -373,7 +374,7 @@
                 <td>
                     <a href="#trimmer" data-toggle="collapse">Grass Trimmers</a>
                         <div id="trimmer" class="collapse">
-                            <img src='{{tool_image_path}}grass trimmer.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/grass_trimmer.png' %} class='img-responsive' />
                         </div>
                     <p>Whip back and forth to cut tall grasses and weeds</p>
                 </td>
@@ -383,7 +384,7 @@
                 <td>
                     <a href="#hula" data-toggle="collapse">Hula Hoe</a>
                         <div id="hula" class="collapse">
-                            <img src='{{tool_image_path}}hula hoe.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hula_hoe.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts weeds in sandy soils</p>
                 </td>
@@ -393,7 +394,7 @@
                 <td>
                     <a href="#standard" data-toggle="collapse">Standard Hoe</a>
                         <div id="standard" class="collapse">
-                            <img src='{{tool_image_path}}hoe.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/hoe.png' %} class='img-responsive' />
                         </div>
                     <p>Cuts weeds just under the surface of the soil</p>
                 </td>
@@ -403,7 +404,7 @@
                 <td>
                     <a href="#tiller" data-toggle="collapse">Mattock Tiller</a>
                         <div id="tiller" class="collapse">
-                            <img src='{{tool_image_path}}mattock tiller.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/mattock_tiller.png' %} class='img-responsive' />
                         </div>
                     <p>A heavy duty tool for weeding and breaking up soil. One side is a hoe and the other side is a fork</p>
                 </td>
@@ -416,7 +417,7 @@
                 <td>
                     <a href="#skimmer" data-toggle="collapse">Skimmer</a>
                         <div id="skimmer" class="collapse">
-                            <img src='{{tool_image_path}}skimmer.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/skimmer.png' %} class='img-responsive' />
                         </div>
                     <p>Collects debris from water</p>
                 </td>
@@ -426,7 +427,7 @@
                 <td>
                     <a href="#leaf" data-toggle="collapse">Leaf Rakes</a>
                         <div id="leaf" class="collapse">
-                            <img src='{{tool_image_path}}Rakes.jpg' class=img-responsive' />
+                            <img src={% static 'images/icons/rakes.jpg' %} class='img-responsive' />
                         </div>
                     <p>Shaped like a fan and used to rake leaves</p>
                 </td>
@@ -437,7 +438,7 @@
                 <td>
                     <a href="#bow" data-toggle="collapse">Bow Rake</a>
                         <div id="bow" class="collapse">
-                            <img src='{{tool_image_path}}bow rake.JPG' class=img-responsive' />
+                            <img src={% static 'images/icons/bow_rake.jpg' %} class='img-responsive' />
                         </div>
                     <p>Rakes hard materials or moves through roots and ruts</p>
                 </td>
@@ -447,7 +448,7 @@
                 <td>
                     <a href="#mcleod" data-toggle="collapse">McLeod</a>
                         <div id="mcleod" class="collapse">
-                            <img src='{{tool_image_path}}mcleod.PNG' class=img-responsive' />
+                           <img src={% static 'images/icons/mcleod.png' %} class='img-responsive' />
                         </div>
                     <p>Combines a large hoe-like blade on one side for cutting and a large rake on the other side.
                     Useful for clearing large areas of vegetation and building trails</p>
@@ -458,7 +459,7 @@
                 <td>
                     <a href="#scoop" data-toggle="collapse">Scoop Shovel</a>
                         <div id="scoop" class="collapse">
-                            <img src='{{tool_image_path}}scoop shovel.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/scoop_shovel.png' %} class='img-responsive' />
                         </div>
                     <p>Scoops large amounts of material; also called a snow shovel</p>
                 </td>
@@ -468,7 +469,7 @@
                 <td>
                     <a href="#flat" data-toggle="collapse">Flat Shovel</a>
                         <div id="flat" class="collapse">
-                            <img src='{{tool_image_path}}flat shovel.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/flat_shovel.png' %} class='img-responsive' />
                         </div>
                     <p>Scoops soil or moves piles; Not recommended for digging holes</p>
                 </td>
@@ -478,7 +479,7 @@
                 <td>
                     <a href="#pitch" data-toggle="collapse">Pitch Fork</a>
                         <div id="pitch" class="collapse">
-                            <img src='{{tool_image_path}}pitchfork.PNG' class=img-responsive' />
+                            <img src={% static 'images/icons/pitch_fork.png' %} class='img-responsive' />
                         </div>
                     <p>Moves or picks up loose materials such as hay, compost, or vegetation. Also spreads straw or mulch, etc.</p>
                 </td>
@@ -488,7 +489,7 @@
 
         <span class="validity"></span>
         <input type = "submit" value="Coordinate with Public Works" name = "coord_with_pw"/>
-        <a href='/cleanups/{{id}}' class="support">Cancel</a>
+        <a href={ % url 'cleanup-detail' cleanup.id % }>Cancel</a>
     </form>
 </div>
 
