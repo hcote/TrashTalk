@@ -6,7 +6,7 @@
             <p>Enter your information below</p>
         </div>
     </div>
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'api:users' %}" method="POST">
     {% csrf_token %}
     <div class="form-group">
         <div class="row">
@@ -14,7 +14,7 @@
                 <input class="form-control"
                        type="text" name="username"
                        placeholder="Username"
-                       required pattern="{{ username_pattern }}"
+{#                       required pattern="{{ username_pattern }}"#}
                        title="{{ username_title }}" />
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-4">
                 <input class="form-control" type="password" name="password"
                     placeholder="Password"
-                    required pattern="{{ password_pattern }}"
+{#                    required pattern="{{ password_pattern }}"#}
                     title="{{ password_title }}"/>
             </div>
         </div>
@@ -31,8 +31,7 @@
                 <input type="password"
                        class="form-control"
                        name="confirm_password"
-                       placeholder="Confirm Password"
-                       required pattern="{{ password_pattern }}" />
+                       placeholder="Confirm Password" />
             </div>
         </div>
         <div class="row">

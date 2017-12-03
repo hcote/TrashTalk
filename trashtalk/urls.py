@@ -19,7 +19,8 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 
-from accounts.views import LoginView, SignupView, UserDashboardView
+from accounts.views import (LoginView, SignupView, UserDashboardView, UserListCreateView,
+                            user_signup_view)
 from cleanups.views import (cleanup_new, cleanup_edit, cleanup_list, cleanup_show)
 
 urlpatterns = [
@@ -35,7 +36,7 @@ urlpatterns = [
     # Auth
     url(r'^login/', LoginView.as_view(), name='login'),
     url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
-    url(r'^signup/', SignupView.as_view(), name='register'),
+    url(r'^signup/', user_signup_view, name='register'),
 
     # User
     # TODO: Issue #83 - Move to accounts/urls.py
