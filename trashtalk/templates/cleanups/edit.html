@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-{%extends "base.html"%}
+{% extends "_base.html" %}
 
-{%block content%} 
+{% block content %}
 
 <div class="container">
     <div class="row">
@@ -106,7 +106,7 @@
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
         <input class="btn btn-sm" type="submit" value="Update"/>
-        <a href={% url 'cleanup-detail' cleanup.id %}class="support">Cancel</a>
+        <a href={% url 'api:cleanup-detail' cleanup.id %}class="support">Cancel</a>
     </form>
 
     <!-- Modal -->
@@ -119,7 +119,7 @@
             <p class="text-center">Are you sure?</p>
             <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
               {#<!--TODO: Change Action Path-->#}
-              <form action = {% url 'cleanup-detail' cleanup.id %} method='POST'>
+              <form action = {% url 'api:cleanup-detail' cleanup.id %} method='POST'>
                     <input type = "hidden" name="method" value="DELETE">
                     <input class="form-control" type="submit" value="Delete">
                 </form>
@@ -129,4 +129,4 @@
     </div>
 </div>
 
-{%endblock%}
+{% endblock %}

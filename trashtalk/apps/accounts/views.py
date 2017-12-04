@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render
 
 from rest_framework import status
 from rest_framework.generics import (GenericAPIView, ListCreateAPIView,
@@ -11,6 +12,10 @@ from .forms import UserLoginForm, UserSignupForm
 from .serializers import User, UserSerializer
 
 log = logging.getLogger('accounts.views')
+
+
+def user_signup_view(request):
+    return render(request, template_name='users/new.html')
 
 
 # pylint: disable=missing-docstring
@@ -31,10 +36,11 @@ class LoginView(GenericAPIView):
         log.info('User logging in...')
         user = authenticate(username=request.POST.get('username'),
                             password=request.POST.get('password'))
-        if user:
+        if user is not None:
             login(request, user)
             return Response({'user': user}, template_name=self.template_name)
         else:
+            log.info("Login failed: %s", user)
             return Response({"error": "Login failed."},
                             status=status.HTTP_400_BAD_REQUEST)
 
@@ -48,15 +54,7 @@ class SignupView(GenericAPIView):
     def get(self, request):
         # FIXME: Do some password checking, user validating, yada, yada
         form = UserSignupForm()
-        return Response({'form': form}, template_name='_signup.html')
-
-    def post(self, request):
-        # FIXME: Do some password checking, user validating, yada, yada
-        form = UserSignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.save()
-            return Response({'user': user}, template_name='index.html')
+        return Response({'form': form}, template_name='users/new.html')
 
 
 # pylint: disable=missing-docstring
@@ -74,6 +72,6 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
 
 
 # pylint: disable=missing-docstring
-class UserAPIView(ListCreateAPIView):
+class UserListCreateView(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer

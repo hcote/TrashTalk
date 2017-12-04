@@ -6,23 +6,21 @@ from django.urls import reverse
 from cleanups.factories import *
 
 
-class CleanupTestCase(TestCase):
+class CleanupsAPIViewsTestCase(TestCase):
     def setUp(self):
-        self.url = reverse('cleanups-list')
+        self.url = reverse('api:cleanups')
         self.user = UserFactory()
         self.location = LocationFactory()
         CleanupFactory()
         CleanupFactory()
         CleanupFactory()
 
-    @skip("Issue #83: Cleanup Api view test.")
     def test_cleanup_list_view(self):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 3)
 
-    @skip("Issue #83: Cleanup Api view test.")
     def test_cleanup_create_view(self):
         cleanup = {
             'name': 'Cleanup Event 1',
@@ -32,18 +30,44 @@ class CleanupTestCase(TestCase):
             'host': self.user.id,
             'location': self.location.id
         }
-        url = reverse('cleanup-create')
         response = self.client.post(self.url, data=cleanup)
 
         self.assertEqual(response.status_code, 201)
-        cleanups = Cleanup.objects.all()
-        self.assertEqual(len(cleanups), 4)
 
-    @skip("Issue #83: Cleanup Api view test.")
-    def test_cleanup_edit_view(self):
+    def test_cleanup_detail_view(self):
         cleanup = CleanupFactory(name='Oakland Test Cleanup')
-        url = reverse('cleanup-edit', args=[cleanup.id])
+        url = reverse('api:cleanup-detail', args=[cleanup.id])
         new_name = 'Oakland Cleanup'
-        response = self.client.post(url, data={'name': new_name})
+        response = self.client.post(url, data={'name': new_name,
+                                               'description': cleanup.description,
+                                               'location': cleanup.location.id,
+                                               'host': cleanup.host.id,
+                                               'start_time': cleanup.start_time,
+                                               'end_time': cleanup.end_time})
 
-        self.assertEqual(response.data.get('name'), new_name )
+        self.assertEqual(response.data.get('name'), new_name)
+
+
+class CleanupTemplateViewsTestCase(TestCase):
+    def setUp(self):
+        self.cleanup = CleanupFactory()
+        CleanupFactory()
+        CleanupFactory()
+
+    def test_cleanup_edit_template(self):
+        url = reverse('cleanup-edit', args=[self.cleanup.id])
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_cleanup_list_template(self):
+        url = reverse('cleanups-list')
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_cleanup_new_template(self):
+        url = reverse('cleanup-new')
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)

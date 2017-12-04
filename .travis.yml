@@ -20,7 +20,7 @@ before_script:
 
 script:
   - python manage.py migrate
-  - python manage.py test
+  - python manage.py test apps
 
 after_script:
   - pylint --rcfile=.pylintrc trashtalk/**/*.py

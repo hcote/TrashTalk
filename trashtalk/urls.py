@@ -19,9 +19,9 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 
-from accounts.views import LoginView, SignupView, UserDashboardView
-from cleanups.views import (CleanupDetailView, CleanupListCreateView,
-                            cleanup_new, cleanup_edit, cleanup_list)
+from accounts.views import (LoginView, SignupView, UserDashboardView, UserListCreateView,
+                            user_signup_view)
+from cleanups.views import (cleanup_new, cleanup_edit, cleanup_list, cleanup_show)
 
 urlpatterns = [
     # Homepage
@@ -36,7 +36,7 @@ urlpatterns = [
     # Auth
     url(r'^login/', LoginView.as_view(), name='login'),
     url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
-    url(r'^signup/', SignupView.as_view(), name='register'),
+    url(r'^signup/', user_signup_view, name='register'),
 
     # User
     # TODO: Issue #83 - Move to accounts/urls.py
@@ -45,9 +45,9 @@ urlpatterns = [
     # Cleanups
     # TODO: Issue #83 - Move to cleanups/urls.py
     url(r'^cleanups/$', cleanup_list, name='cleanups-list'),
-    url(r'^cleanups/(?P<pk>[0-9]+)/$', CleanupDetailView.as_view(), name='cleanup-detail'),
     url(r'^cleanups/new/$', cleanup_new, name='cleanup-new'),
-    url(r'^cleanups/edit/$', cleanup_edit, name='cleanup-edit'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/edit/', cleanup_edit, name='cleanup-edit'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/$', cleanup_show, name='cleanup-detail'),
 
     # Development Only
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
