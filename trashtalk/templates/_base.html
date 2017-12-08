@@ -8,15 +8,19 @@ Outline for rest of the webpage
     <head>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+{# JQUERY -- Always first import! #}
         <script src={% static "scripts/jquery.min.js" %}></script>
+{#  BOOTSTRAP #}
         <link rel="stylesheet" href={% static "stylesheets/bootstrap.min.css" %}>
         <script src={% static "scripts/bootstrap.min.js" %}></script>
-
+{#  DATEP AND TIME PICKERS#}
         <link rel="stylesheet" type="text/css" href={% static "stylesheets/datepicker.css"%}>
-        <script type="text/javascript" src={% static "scripts/bootstrap-datepicker.js" %}></script>
-        <script type="text/javascript" src={% static "stylesheets/bootstrap-timepicker.min.css" %}></script>
-        <script type="text/javascript" src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
+        <script type="text/javascript"
+                src={% static "scripts/bootstrap-datepicker.js" %}></script>
+        <script type="text/javascript"
+                src={% static "stylesheets/bootstrap-timepicker.min.css" %}></script>
+        <script type="text/javascript"
+                src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
         <title>Trash Talk: {{section}}</title>
     </head>
 

@@ -22,6 +22,7 @@ More settings can be added at any time.
 """
 
 from .common import *
+from .utils import create_log_folder
 
 # =======================================================================
 # DEPLOYMENT SECURITY SETTINGS
@@ -107,3 +108,50 @@ GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')
 GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/']
 
 # SEE CLICK FIX ----------------------------------------------------------
+
+# =======================================================================
+# LOGGING SETTINGS
+# https://docs.djangoproject.com/en/1.11/topics/logging
+# =======================================================================
+create_log_folder('logs')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'default': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(dirname(PROJECT_DIR), 'logs', 'trashtalk.log'),
+            'formatter': 'standard',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
