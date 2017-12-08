@@ -21,7 +21,8 @@ More settings can be added at any time.
 """
 
 import os
-from os.path import dirname, join
+from os.path import dirname
+from .utils import create_log_folder
 
 # =======================================================================
 # SECURITY SETTINGS

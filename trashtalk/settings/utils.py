@@ -1,6 +1,8 @@
 import json
 import os
 from os.path import dirname, abspath
+import logging
+import errno
 
 PROJECT_PATH = dirname(dirname(abspath(__file__)))
 
@@ -19,3 +21,16 @@ def get_credentials():
         }
     }
     return json.dumps(credentials)
+
+
+def create_log_folder(path):
+    """Create logs folders for prod."""
+    try:
+        os.makedirs(path, exist_ok=True)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
+
+# TODO: Issue #91 -- Subclass filehandler logger so its created at log time?
