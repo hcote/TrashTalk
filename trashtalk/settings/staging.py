@@ -90,8 +90,8 @@ AUTH_PASSWORD_VALIDATORS += []
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')
 
 STATICFILES_DIRS = [
-    '/var/www/static/',
     os.path.join(PROJECT_DIR, "static"),
+    '/var/www/static/',
 ]
 
 # =======================================================================
