@@ -83,7 +83,11 @@ AUTH_PASSWORD_VALIDATORS += []
 # STATIC AND MEDIA
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # =======================================================================
-# STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')
+
+STATICFILES_DIRS = [
+    '/var/www/static/',
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # =======================================================================
