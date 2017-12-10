@@ -22,7 +22,6 @@ More settings can be added at any time.
 """
 
 from .common import *
-from .utils import create_log_folder
 
 # =======================================================================
 # DEPLOYMENT SECURITY SETTINGS
@@ -50,7 +49,7 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE += [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # =======================================================================
@@ -65,10 +64,15 @@ REST_FRAMEWORK_DOCS = {
 # DATABASE SETTINGS
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # =======================================================================
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME', 'trashtalk'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': '5432',
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD')
+    }
 }
 
 # =======================================================================
@@ -84,7 +88,7 @@ AUTH_PASSWORD_VALIDATORS += []
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # =======================================================================
 # STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # =======================================================================
 # INTEGRATED APP SETTINGS
@@ -113,7 +117,6 @@ GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/']
 # LOGGING SETTINGS
 # https://docs.djangoproject.com/en/1.11/topics/logging
 # =======================================================================
-create_log_folder('logs')
 
 LOGGING = {
     'version': 1,
