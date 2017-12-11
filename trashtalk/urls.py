@@ -19,8 +19,7 @@ from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 
-from accounts.views import (LoginView, SignupView, UserDashboardView, UserListCreateView,
-                            user_signup_view)
+from accounts.views import (LoginView, UserDashboardView, user_signup_view)
 from cleanups.views import (cleanup_new, cleanup_edit, cleanup_list, cleanup_show)
 
 urlpatterns = [

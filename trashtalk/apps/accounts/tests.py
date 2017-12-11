@@ -7,7 +7,7 @@ from cleanups.factories import UserFactory, User
 
 class UserAuthTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create(username='loggyuser', password='password')
+        self.user = User.objects.create_user(username='loggyuser', password='password')
         UserFactory()
 
     def test_user_signup(self):
@@ -23,14 +23,13 @@ class UserAuthTestCase(TestCase):
 
         self.assertEqual(response.status_code, 201)
 
-    @skip('Fix me')
+    @skip('May need to configure the request and session for this.')
     def test_user_login(self):
-        login_url = reverse('login')
-        login_data = {'username': self.user.username, 'password': self.user.password}
+        user = User.objects.create_user(username='TestUser', password='password')
+        login_data = {'username': user.username, 'password': user.password}
 
-        response = self.client.post(login_url, login_data, follow=True)
-        print(response.context)
-        self.assertTrue(response.context['user'].is_authenticated())
+        is_logged_in = self.client.login(**login_data)
+        self.assertTrue(is_logged_in)
 
     def test_user_login_template(self):
         url = reverse('login')
