@@ -6,7 +6,7 @@ from .models import Cleanup, Location
 class CleanupForm(ModelForm):
     class Meta:
         model = Cleanup
-        fields = ('name', 'description', 'start_time', 'end_time', 'image', 'host')
+        fields = ('title', 'description', 'start_time', 'end_time', 'image', 'host')
 
 
 class LocationForm(ModelForm):

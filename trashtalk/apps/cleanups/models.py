@@ -11,7 +11,7 @@ from .utils import Coordinates
 class Cleanup(models.Model):
     DEFAULT_ICON = 'images/defaults/bow_rake.jpg'
 
-    name = models.CharField(max_length=300)
+    title = models.CharField(max_length=300)
     description = models.TextField()
     start_time = models.TimeField()
     end_time = models.TimeField()
@@ -41,8 +41,8 @@ class Cleanup(models.Model):
 
     def check_name(self):
         # TODO: Refactor as staticmethod; set location as a default on the name field
-        if not self.name:
-            self.name = self.location
+        if not self.title:
+            self.title = self.location
 
     @property
     def event_start(self):

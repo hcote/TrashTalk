@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 
 {% block content %}
-    <h3>{{ cleanup.location.street_number }} {{ cleanup.location.street_name }}</h3>
+    <h3>{{ cleanup.location.street }} {{ cleanup.location.number }}</h3>
 {# TODO: Block image to the left of description and below Google Map   #}
     <!--<img src = "{{default_image_path}}{{cleanup.image}}"-->
             <!--alt="Photograph"-->
@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    <h4>{{ cleanup.name }}</h4>
+    <h4>{{ cleanup.title }}</h4>
     <div class="col-lg-4">
         <p><b>By: </b><i>{{ cleanup.host.username }}</i><br>
             <b>Start: </b>{{ cleanup.event_start }}<br>
@@ -24,21 +24,20 @@
         </p>
     </div>
 </div>
-<div class="container">
     <h4>Participants</h4>
     <ul class="list-group">
 {#        {% for participant in cleanup.participants %}#}
 {#        <li class="list-group-item col-lg-4">{{ participant.username} }</li>#}
 {#        {% endfor %}#}
     </ul>
-</div>
-<div class="container">
-    <nav>
+
+{#    Breadcrumb links #}
+    <div class="breadcrumb">
 {#        TODO: Issue #75: Move this check to the the backend views #}
         {% if cleanup.host.username == user.username %}
             {% if cleanup.html_url %}
                 <a href="{{ cleanup.html_url }}">SeeClickFix Link</a>
-                {% else %}
+            {% else %}
         {#<!--TODO: Change Path-->#}
                 <a href="{% url 'cleanup-detail' cleanup.id %}">Advertise on SeeClickFix</a>
             {% endif %}
@@ -46,7 +45,7 @@
         {#<!--TODO: Change Path-->#}
                 <a href="{% url 'cleanup-detail' cleanup.id %}">Submit
                     to Public Works</a>
-                {% else %}
+            {% else %}
                 Public Works has been notified
             {% endif %}
         {#<!--TODO: Change Path-->#}
@@ -67,6 +66,6 @@
                 </form>
             {% endif %}
         {%endif%}
-    </nav>
+    </div>
 </div>
 {%endblock%}

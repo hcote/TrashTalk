@@ -34,7 +34,7 @@ class CleanupFactory(factory.DjangoModelFactory):
     class Meta:
         model = Cleanup
 
-    name = factory.fuzzy.FuzzyText(prefix='Cleanup-')
+    title = factory.fuzzy.FuzzyText(prefix='Cleanup-')
     description = factory.Sequence(lambda n: 'Cleanup number %s needs YOU!' % n)
     start_time = '15:30 PM'
     end_time = '17:30 PM'

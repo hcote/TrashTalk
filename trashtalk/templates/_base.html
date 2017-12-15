@@ -8,6 +8,7 @@ Outline for rest of the webpage
     <head>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 {# JQUERY -- Always first import! #}
         <script src={% static "scripts/jquery.min.js" %}></script>
 {#  BOOTSTRAP #}
@@ -21,7 +22,7 @@ Outline for rest of the webpage
                 src={% static "stylesheets/bootstrap-timepicker.min.css" %}></script>
         <script type="text/javascript"
                 src={% static "scripts/bootstrap-timepicker.min.js" %}></script>
-        <title>Trash Talk: {{section}}</title>
+        <title>Trash Talk</title>
     </head>
 
     <body>
@@ -39,7 +40,7 @@ Outline for rest of the webpage
                     </div>
 
                     <div class="collapse navbar-collapse" id="myNavbar">
-                        {%if user.is_authenticated %}
+                        {% if user.is_authenticated %}
                       <ul class="nav navbar-nav">
                         <li><a href="{% url 'cleanups-list' %}">All Cleanups</a></li>
                         <li><a href="{% url 'dashboard' %}">My Cleanups</a></li>
