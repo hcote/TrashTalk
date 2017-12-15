@@ -1,16 +1,53 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, chotoolsools | Templates
-and open the template in the editor.
--->
-{%extends '_base.html'%}
-{%block content%}
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
 <div class="container">
     <h3>Welcome, {{ user.username }}</h3>
     <ul>
         <li>You've volunteered for: x hours</li>
         <li>Your email address is: {{ user.email }}</li>
     </ul>
+    <h3>Hosted Clean-Ups</h3>
+    <div class="list-group">
+    {% for cleanup in cleanups %}
+        <a href="{% url 'cleanup-detail' cleanup.id %}" class="list-group-item row">
+            <div class="col-xs-4">
+                <div class="imgAbt">
+                    <!--TODO: Change to path held in SQL data-->
+                    <img class="img-responsive img-thumbnail" src="{% static cleanup.image %}" />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p><h4>{{ cleanup.title }}</h4>
+                <date>{{ cleanup.date }}</date>
+                <time>{{ cleanup.event_start }}</time><br>
+                {{ cleanup.address }}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+
+{#  USER PARTICIPATION  #}
+    <h3>Joined Cleanups</h3>
+    <div class="list-group">
+    {% for cleanup in current_user.cleanups_participated %}
+        <a href={% url 'cleanup-detail' %} class="list-group-item row">
+            <div class="col-xs-4">
+                <div class="imgAbt">
+                    <!--TODO: Change to path held in SQL data-->
+                    <img class="img-responsive img-thumbnail" src={% static 'images/crossed_rakes.png' %} />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <p><h4>{{cleanup.name}}</h4>
+                Host: <i>{{cleanup.host.username}}</i><br>
+                <date>{{ cleanup.date }}</date>
+                <time>{{cleanup.event_start}}</time><br>
+                {{ cleanup.address}}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
 </div>
 {%endblock%}

@@ -2,7 +2,7 @@ from unittest import skip
 from django.test import TestCase
 from django.urls import reverse
 
-from cleanups.factories import UserFactory, User
+from cleanups.factories import UserFactory, User, CleanupFactory
 
 
 class UserAuthTestCase(TestCase):
@@ -36,3 +36,11 @@ class UserAuthTestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    @skip('Add login method for testing this.')
+    def test_user_dashboard(self):
+        url = reverse('dashboard')
+        user = UserFactory()
+        CleanupFactory(host=user)
+        response = self.client.get(url, args=user.id)
+        print(response.data)
+        self.assertContains(response.data, 'cleanups')

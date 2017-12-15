@@ -56,7 +56,8 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
     renderer_classes = (TemplateHTMLRenderer,)
 
     def get(self, request, *args, **kwargs):
-        return Response({'user': request.user}, template_name='users/detail.html')
+        return Response({'user': request.user, 'cleanups': request.user.cleanups.all()},
+                        template_name='users/detail.html')
 
 
 # pylint: disable=missing-docstring
