@@ -1,5 +1,6 @@
 import logging
 from copy import deepcopy
+from datetime import datetime
 
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from rest_framework import generics, status
@@ -24,8 +25,8 @@ def cleanup_show(request, *args, **kwargs):
 
 
 def cleanup_list(request):
-    # TODO: Issue #86 - Filter, return only upcoming cleanups
-    context = {'cleanups': get_list_or_404(Cleanup)}
+    cleanups = Cleanup.objects.all().filter(date__gte=datetime.now())
+    context = {'cleanups': cleanups}
     return render(request, 'cleanups/list.html', context)
 
 
