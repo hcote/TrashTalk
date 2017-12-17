@@ -1,4 +1,6 @@
+from datetime import date
 from unittest import skip
+from urllib.parse import urlencode
 
 from django.test import TestCase
 from django.urls import reverse
@@ -27,6 +29,7 @@ class CleanupsAPIViewsTestCase(TestCase):
             'description': 'A test event.',
             'start_time': '09:30 AM',
             'end_time': '11:30 AM',
+            'date': date.today(),
             'number': '123',
             'street': 'Main Street',
             'host': self.user.id,
@@ -35,19 +38,33 @@ class CleanupsAPIViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 201)
 
-    def test_cleanup_detail_view(self):
+    def test_cleanup_update_view(self):
         cleanup = CleanupFactory(title='Oakland Test Cleanup')
         url = reverse('api:cleanup-detail', args=[cleanup.id])
         new_name = 'Oakland Cleanup'
-        response = self.client.post(url, data={'title': new_name,
-                                               'description': cleanup.description,
-                                               'street': cleanup.location.street,
-                                               'number': cleanup.location.number,
-                                               'host': cleanup.host.id,
-                                               'start_time': cleanup.start_time,
-                                               'end_time': cleanup.end_time})
+        data = urlencode({'title': new_name,
+                          'description': cleanup.description,
+                          'street': cleanup.location.street,
+                          'number': cleanup.location.number,
+                          'host': cleanup.host.id,
+                          'date': date.today(),
+                          'start_time': cleanup.start_time,
+                          'end_time': cleanup.end_time})
+        response = self.client.put(url, data=data,
+                                   content_type='application/x-www-form-urlencoded')
 
         self.assertEqual(response.data.get('title'), new_name)
+
+    def test_cleanup_add_participant(self):
+        cleanup = CleanupFactory(title='Oakland Test Cleanup')
+        url = reverse('api:join-cleanup', kwargs={'pk': cleanup.id})
+        participant = UserFactory()
+        data = urlencode({'participants': participant})
+        response = self.client.patch(url, data=data,
+                                     content_type='application/x-www-form-urlencoded')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(cleanup.participants.all()), 1)
 
 
 class CleanupTemplateViewsTestCase(TestCase):

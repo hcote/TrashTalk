@@ -26,9 +26,9 @@
 </div>
     <h4>Participants</h4>
     <ul class="list-group">
-{#        {% for participant in cleanup.participants %}#}
-{#        <li class="list-group-item col-lg-4">{{ participant.username} }</li>#}
-{#        {% endfor %}#}
+        {% for participant in cleanup.participants.all %}
+            <li class="list-group-item col-lg-4">{{ participant.username }}</li>
+        {% endfor %}
     </ul>
 
 {#    Breadcrumb links #}
@@ -49,20 +49,23 @@
                 Public Works has been notified
             {% endif %}
         {#<!--TODO: Change Path-->#}
-            <a href="{% url 'cleanup-detail' cleanup.id %}">Edit Cleanup</a>
+            <a href="{% url 'cleanup-edit' cleanup.id %}">Edit Cleanup</a>
 
         {% else %}
-            {% if not bool_participated %}
-        {#<!--TODO: Change Action Path-->#}
-                <form action ="{% url 'cleanup-detail' cleanup.id %}" method='POST'>
-                    <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
-                    <input class="btn btn-sm" type ="submit" name="Join" value="Join Cleanup">
+            {% if user not in participants %}
+                <form action ="{% url 'api:join-cleanup' cleanup.id %}" method='POST'>
+                    {% csrf_token %}
+                    <input type="hidden" name="cleanup_id" value="{{ cleanup.id }}">
+                    <input type="hidden" name="participants" value="{{ user }}">
+                    <input class="btn btn-sm" type ="submit" name="join" value="Join Cleanup">
                 </form>
             {% else %}
-        {#<!--TODO: Change Action Path-->#}
-                    <form action="{% url 'cleanup-detail' cleanup.id %}" method='POST'>
+                <form action="{% url 'api:join-cleanup' cleanup.id %}" method='POST'>
+                    {% csrf_token %}
                     <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
-                    <input class="btn btn-sm" type ="submit" name="Leave" value="Leave Cleanup">
+                    <input type="hidden" name="participants" value="{{ user }}">
+
+                    <input class="btn btn-sm" type ="submit" name="leave" value="Leave Cleanup">
                 </form>
             {% endif %}
         {%endif%}

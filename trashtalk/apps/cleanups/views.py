@@ -2,14 +2,14 @@ import logging
 from copy import deepcopy
 from datetime import datetime
 
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import get_object_or_404, render
 from rest_framework import generics, status
+from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
 from .forms import CleanupFormSet
-from .serializers import (Cleanup, CleanupSerializer, Location,
-                          LocationSerializer)
+from .serializers import Cleanup, CleanupSerializer, Location, LocationSerializer, User
 
 log = logging.getLogger('cleanups.views')
 
@@ -35,6 +35,19 @@ def cleanup_new(request):
     return render(request, 'cleanups/new.html', context)
 
 
+@api_view(['PATCH', 'POST', 'PUT'])
+def cleanup_join_view(request, *args, **kwargs):
+    cleanup = Cleanup.objects.get(id=kwargs.get('pk'))
+    participant = User.objects.get(username=request.POST.get('participants'))
+    if participant in cleanup.participants.all():
+        cleanup.participants.remove(participant)
+    else:
+        cleanup.participants.add(participant)
+    cleanup.save()
+    return render(request, 'cleanups/detail.html',
+                  {'cleanup': cleanup, 'participants': cleanup.participants.all()})
+
+
 # pylint: disable=missing-docstring
 class CleanupDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cleanup.objects.all()
@@ -55,11 +68,12 @@ class CleanupListCreateView(generics.ListCreateAPIView):
             'description': data.get('description'),
             'start_time': data.get('start_time'),
             'end_time': data.get('end_time'),
+            'date': data.get('date'),
             'host': data.get('host'),
-            'location': location_data
+            'location': location_data,
+            'participants': data.get('participants')
         }
 
-        log.debug("Cleanup: %s", cleanup)
         try:
             serializer = self.get_serializer(data=cleanup)
             serializer.is_valid(raise_exception=True)

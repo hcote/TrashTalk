@@ -22,7 +22,7 @@ class CleanupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cleanup
-        fields = ('id', 'title', 'description',
+        fields = ('id', 'title', 'description', 'date', 'participants',
                   'start_time', 'end_time', 'location', 'host')
         depth = 1
 
