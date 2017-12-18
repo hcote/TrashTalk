@@ -40,3 +40,17 @@ class CleanupFactory(factory.DjangoModelFactory):
     end_time = '17:30 PM'
     host = factory.SubFactory(UserFactory)
     location = factory.SubFactory(LocationFactory)
+
+
+def cleanup_factory(request):
+    location_data = {'street': request.pop('street')[0], 'number': request.pop('number')[0]}
+    return {
+        'title': request.get('title'),
+        'description': request.get('description'),
+        'date': request.get('date'),
+        'start_time': request.get('start_time'),
+        'end_time': request.get('end_time'),
+        'image': request.get('image'),
+        'host': User.objects.get(username=request.get('host')),
+        'location': location_data
+    }

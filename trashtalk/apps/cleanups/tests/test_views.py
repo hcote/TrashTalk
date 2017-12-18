@@ -38,7 +38,7 @@ class CleanupsAPIViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 201)
 
-    def test_cleanup_update_view(self):
+    def test_cleanup_update_api_view(self):
         cleanup = CleanupFactory(title='Oakland Test Cleanup')
         url = reverse('api:cleanup-detail', args=[cleanup.id])
         new_name = 'Oakland Cleanup'
@@ -54,6 +54,23 @@ class CleanupsAPIViewsTestCase(TestCase):
                                    content_type='application/x-www-form-urlencoded')
 
         self.assertEqual(response.data.get('title'), new_name)
+
+    def test_cleanup_edit_view(self):
+        cleanup = CleanupFactory(description="An old description.", host=self.user)
+        url = reverse('api:cleanup-edit', args=[cleanup.id])
+        data = urlencode({'title': cleanup.title,
+                          'description': 'A new description.',
+                          'image': 'happyface.png',
+                          'street': cleanup.location.street,
+                          'number': cleanup.location.number,
+                          'host': self.user,
+                          'date': date.today(),
+                          'start_time': cleanup.start_time,
+                          'end_time': cleanup.end_time})
+        response = self.client.put(url, data=data,
+                                   content_type='application/x-www-form-urlencoded')
+
+        self.assertContains(response, 'A new description.')
 
     def test_cleanup_add_participant(self):
         cleanup = CleanupFactory(title='Oakland Test Cleanup')

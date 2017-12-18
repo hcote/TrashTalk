@@ -10,31 +10,32 @@
         </div>
     </div>
 
-    <form action = "/cleanups/{{ id }}" method='POST'>
-        <input type = "hidden" name="method" value="POST"/><!--value was PUT-->
-
+    <form action="{% url 'api:cleanup-edit' cleanup.id %}" method='POST'>
+        {% csrf_token %}
+        <input type = "hidden" name="host" value="{{ cleanup.host }}"/>
         <!--Event Title-->
         <div class="row">
             <div class="col-lg-4">
                 <label for="name">Event Title</label>
                 <input class="form-control"
-                       type="text" name="name" id="name"
-                      value="{{cleanup.name}}">
+                       type="text" name="title" id="title"
+                      value="{{ cleanup.title }}">
             </div>
         </div>
 
+{#      Event Date #}
         <div class="row">
             <div class="col-lg-4">
                 <label for="date">Date</label>
                 <div class='input-group date' data-provide="datepicker">
-                    <input id="date" name="date" type='text' class="form-control" value="{{cleanup.date}}" />
+                    <input id="date" name="date" type='text' class="form-control" value="{{ cleanup.date }}" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
         </div>
         <script type="text/javascript">
             $('#date').datepicker({
-            format: 'mm/dd/yyyy',
+            format: 'yyyy-mm-dd',
             startDate: '-3d'
             });
         </script>
@@ -44,7 +45,7 @@
             <div class="col-lg-4">
                 <label for="start_time">Start Time</label>
                 <div class="input-group bootstrap-timepicker timepicker">
-                    <input id="start_time" name="start_time" type="text" value="{{cleanup.event_start}}" class="form-control input-small">
+                    <input id="start_time" name="start_time" type="text" value="{{ cleanup.event_start }}" class="form-control input-small">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
             </div>
@@ -58,7 +59,7 @@
             <div class="col-lg-4">
                 <label for="end_time">End Time</label>
                 <div class="input-group bootstrap-timepicker timepicker">
-                    <input id="end_time" name="end_time" type="text" value="{{cleanup.event_end}}" class="form-control input-small">
+                    <input id="end_time" name="end_time" type="text" value="{{ cleanup.event_end }}" class="form-control input-small">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
             </div>
@@ -72,14 +73,14 @@
         <input class="form-control" type="hidden" name="location" value="address" checked="checked">
         <div class="row">
             <div class="col-lg-4">
-                <label for="street_number">Street Number</label>
-                <input class="form-control" value="{{cleanup.location.number}}" type="number" id="street_number" name="street_number" min="1" pattern="[0-9]{1,}"/>
+                <label for="number">Street Number</label>
+                <input class="form-control" value="{{ cleanup.location.number }}" type="number" id="street_number" name="number" min="1" pattern="[0-9]{1,}"/>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <label for="street_name">Street Name</label>
-                <input class="form-control" type="text" name="street_name" id="street_name" value="{{cleanup.location.street}}"/>
+                <label for="street">Street Name</label>
+                <input class="form-control" type="text" name="street" id="street" value="{{ cleanup.location.street }}"/>
             </div>
         </div>
 
@@ -94,13 +95,13 @@
         <!--<input type ="hidden" name="image"/><br/>-->
 
         {#Picture input hidden and given default value until referencing can be fixed#}
-        <input class="form-control" type ="hidden" name="image" placeholder="Picture" value="{{cleanup.image}}"/>
+        <input class="form-control" type ="hidden" name="image" placeholder="Picture" value="{{ cleanup.image }}"/>
 
         <!--Description-->
         <div class="row">
             <div class="col-lg-4">
                 <label for="desc">Description</label>
-                <textarea class="form-control" name="description" id="desc" cols="50" rows="4" placeholder="{{cleanup.description}}">{{cleanup.description}}</textarea>
+                <textarea class="form-control" name="description" id="desc" cols="50" rows="4" value="{{ cleanup.description }}">{{ cleanup.description }}</textarea>
             </div>
         </div>
         <!-- Trigger the modal with a button -->

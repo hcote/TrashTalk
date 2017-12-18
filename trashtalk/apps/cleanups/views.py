@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
+from .factories import cleanup_factory
 from .forms import CleanupFormSet
 from .serializers import Cleanup, CleanupSerializer, Location, LocationSerializer, User
 
@@ -44,6 +45,16 @@ def cleanup_join_view(request, *args, **kwargs):
     else:
         cleanup.participants.add(participant)
     cleanup.save()
+    return render(request, 'cleanups/detail.html',
+                  {'cleanup': cleanup, 'participants': cleanup.participants.all()})
+
+
+@api_view(['POST', 'PUT', 'PATCH'])
+def cleanup_update_view(request, *args, **kwargs):
+    cleanup_data = cleanup_factory(deepcopy(request.data))
+    Location.objects.filter(cleanup=kwargs['pk']).update(**cleanup_data.pop('location'))
+    Cleanup.objects.filter(id=kwargs['pk']).update(**cleanup_data)
+    cleanup = Cleanup.objects.get(id=kwargs['pk'])
     return render(request, 'cleanups/detail.html',
                   {'cleanup': cleanup, 'participants': cleanup.participants.all()})
 
