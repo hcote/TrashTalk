@@ -1,6 +1,10 @@
+from datetime import time
+
 import factory
 import factory.faker
 import factory.fuzzy
+
+from core.utils import iso_time
 from .models import Cleanup, Location, User
 
 
@@ -44,12 +48,13 @@ class CleanupFactory(factory.DjangoModelFactory):
 
 def cleanup_factory(request):
     location_data = {'street': request.pop('street')[0], 'number': request.pop('number')[0]}
+
     return {
         'title': request.get('title'),
         'description': request.get('description'),
         'date': request.get('date'),
-        'start_time': request.get('start_time'),
-        'end_time': request.get('end_time'),
+        'start_time': iso_time(request.get('start_time')),
+        'end_time': iso_time(request.get('end_time')),
         'image': request.get('image'),
         'host': User.objects.get(username=request.get('host')),
         'location': location_data

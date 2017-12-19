@@ -9,7 +9,7 @@
                 <h3>Cleanup Information:</h3>
             </div>
         </div>
-        <form action="{% url 'api:cleanups' %}" method="post">
+        <form action="{% url 'cleanup-create' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="host" value="{{ user.id }}">
             <!--Event Name-->

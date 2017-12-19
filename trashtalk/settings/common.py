@@ -78,6 +78,7 @@ MIDDLEWARE = [
 # CONFIGURATION SETTINGS
 # =======================================================================
 ROOT_URLCONF = 'trashtalk.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {

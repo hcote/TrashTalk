@@ -20,7 +20,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 
 from accounts.views import (LoginView, UserDashboardView, user_signup_view)
-from cleanups.views import (cleanup_new, cleanup_edit, cleanup_list, cleanup_show)
+from cleanups.views import (cleanup_new, cleanup_edit, cleanup_list,
+                            cleanup_show, cleanup_create, cleanup_update)
 
 urlpatterns = [
     # Homepage
@@ -45,7 +46,9 @@ urlpatterns = [
     # TODO: Issue #83 - Move to cleanups/urls.py
     url(r'^cleanups/$', cleanup_list, name='cleanups-list'),
     url(r'^cleanups/new/$', cleanup_new, name='cleanup-new'),
-    url(r'^cleanups/(?P<pk>[0-9]+)/edit/', cleanup_edit, name='cleanup-edit'),
+    url(r'^cleanups/create/$', cleanup_create, name='cleanup-create'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/edit/$', cleanup_edit, name='cleanup-edit'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/update/$', cleanup_update, name='cleanup-update'),
     url(r'^cleanups/(?P<pk>[0-9]+)/$', cleanup_show, name='cleanup-detail'),
 
     # Development Only

@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <form action="{% url 'api:cleanup-edit' cleanup.id %}" method='POST'>
+    <form action="{% url 'cleanup-update' cleanup.id %}" method='POST'>
         {% csrf_token %}
         <input type = "hidden" name="host" value="{{ cleanup.host }}"/>
         <!--Event Title-->
@@ -28,7 +28,8 @@
             <div class="col-lg-4">
                 <label for="date">Date</label>
                 <div class='input-group date' data-provide="datepicker">
-                    <input id="date" name="date" type='text' class="form-control" value="{{ cleanup.date }}" />
+                    <input id="date" name="date" type='text' class="form-control"
+                           value="{{ cleanup.date|date:"m/d/Y" }}" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
