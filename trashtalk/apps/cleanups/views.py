@@ -3,6 +3,8 @@ from copy import deepcopy
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.http.response import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
@@ -44,10 +46,16 @@ def cleanup_new(request):
 
 @login_required
 def cleanup_create(request):
-    cleanup_data = cleanup_factory(deepcopy(request.POST))
-    cleanup_data['location'] = Location.objects.create(**cleanup_data.get('location'))
-    cleanup = Cleanup.objects.create(**cleanup_data)
-    return render(request, 'cleanups/detail.html', {'user': request.user, 'cleanup': cleanup})
+    try:
+        cleanup_data = cleanup_factory(deepcopy(request.POST))
+        cleanup_data['location'] = Location.objects.create(**cleanup_data.get('location'))
+    except (ObjectDoesNotExist, AttributeError):
+        logger.exception('Error while creating a cleanup or location.')
+        return HttpResponseBadRequest()
+    else:
+        cleanup = Cleanup.objects.create(**cleanup_data)
+        return render(request, 'cleanups/detail.html', {'user': request.user,
+                                                        'cleanup': cleanup})
 
 
 @login_required

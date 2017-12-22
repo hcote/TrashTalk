@@ -11,7 +11,7 @@
         </div>
         <form action="{% url 'cleanup-create' %}" method="post">
             {% csrf_token %}
-            <input type="hidden" name="host" value="{{ user.id }}">
+            <input type="hidden" name="host" value="{{ user }}">
             <!--Event Name-->
             <div class="row">
                 <div class="col-lg-4">

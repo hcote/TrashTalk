@@ -1,5 +1,3 @@
-from datetime import time
-
 import factory
 import factory.faker
 import factory.fuzzy
@@ -48,8 +46,7 @@ class CleanupFactory(factory.DjangoModelFactory):
 
 def cleanup_factory(request):
     location_data = {'street': request.pop('street')[0], 'number': request.pop('number')[0]}
-
-    return {
+    cleanup = {
         'title': request.get('title'),
         'description': request.get('description'),
         'date': request.get('date'),
@@ -59,3 +56,4 @@ def cleanup_factory(request):
         'host': User.objects.get(username=request.get('host')),
         'location': location_data
     }
+    return cleanup
