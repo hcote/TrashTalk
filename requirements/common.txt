@@ -28,3 +28,4 @@ gunicorn==19.7.1
 geopy==1.11.0
 gspread==0.6.2                          # TODO: This may be unnecessary.
 google-api-python-client==1.6.4         # Includes oauth2client
+googlemaps==2.5.1

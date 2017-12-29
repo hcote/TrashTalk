@@ -2,6 +2,7 @@ import logging
 from copy import deepcopy
 from datetime import datetime
 
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponseBadRequest
@@ -28,8 +29,9 @@ def cleanup_edit(request, *args, **kwargs):
 
 
 def cleanup_show(request, *args, **kwargs):
-    context = {'cleanup': get_object_or_404(Cleanup, id=kwargs['pk'])}
-    return render(request, 'cleanups/detail.html', context)
+    cleanup = get_object_or_404(Cleanup, id=kwargs['pk'])
+    gmap = settings.GOOGLE_MAPS_EMBED + cleanup.gmap_query
+    return render(request, 'cleanups/detail.html', {'cleanup': cleanup, 'gmap': gmap})
 
 
 def cleanup_list(request):

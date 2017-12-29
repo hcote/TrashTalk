@@ -9,7 +9,6 @@ __pycache__/
 .idea
 *.json
 ttshell.py
-exceptions.py
 notes.md
 app.yaml
 *.cfg

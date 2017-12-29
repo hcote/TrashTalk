@@ -273,7 +273,16 @@ COUNTRY_TIMEZONES_MAP = {country['name']: country['timezones'][0] for country in
 COUNTRY_NAME_MAP = {v: k for k, v in COUNTRY_CODE_MAP.items()}
 
 
+class LocationCategory:
+    """Options that describe the type of `Location`."""
+    intersection = 'intersection'
+    address = 'address'
+    public = 'premise'
+    landnmark = 'landmark'
+
+
 class HtmlConstants:
+    # TODO: Issue #114 - Do we still need? If so, refactor as regexes for validators.
     def __init__(self):
         self.password_pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
         self.password_title = "Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"

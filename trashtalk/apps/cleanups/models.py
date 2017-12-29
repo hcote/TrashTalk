@@ -3,7 +3,7 @@ from datetime import datetime
 from django.db import models
 
 from accounts.models import User
-from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP
+from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP, LocationCategory as category
 from .utils import Coordinates
 
 
@@ -61,9 +61,13 @@ class Location(models.Model):
     DEFAULT_CITY = "Oakland"
     DEFAULT_STATE = "California"
     DEFAULT_COUNTRY = "United States"
+    LOCATION_CATEGORIES = [(category.intersection, 'Intersection'),
+                           (category.address, 'Address'),
+                           (category.public, 'Public Building'),
+                           (category.landnmark, 'Landmark')]
 
     # Fields with blank=True make them non-required fields
-    number = models.CharField(max_length=100)
+    number = models.CharField(max_length=100, blank=True)
     street = models.CharField(max_length=100)
     cross_street = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100, default=DEFAULT_CITY)
@@ -74,6 +78,7 @@ class Location(models.Model):
     country = models.CharField(max_length=100, default=DEFAULT_COUNTRY)
     latitude = models.CharField(max_length=100, blank=True)
     longitude = models.CharField(max_length=100, blank=True)
+    category = models.CharField(choices=LOCATION_CATEGORIES, max_length=100, null=True)
 
     def __str__(self):
         return "{0} {1}, {2}".format(self.address, self.city, self.state)
@@ -106,3 +111,6 @@ class Location(models.Model):
 
     def has_state_code(self):
         return len(self.state) < 3
+
+    def is_intersection(self):
+        return self.category == 'intersection'

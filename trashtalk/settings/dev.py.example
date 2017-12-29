@@ -25,7 +25,7 @@ from .common import *
 # =======================================================================
 # SECURITY SETTINGS
 # =======================================================================
-
+ENVIRONMENT = 'development'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +37,7 @@ DEBUG = True
 
 # SECURITY WARNING: Configuration required for production!
 # https://docs.djangoproject.com/en/1.11/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 
 # =======================================================================
 # APPLICATIONS
@@ -145,11 +145,29 @@ STATICFILES_DIRS += [
 ]
 
 # =======================================================================
-# INTEGRATED APP SETTINGS
-# Credentials and settings for integrated applications.
+# THIRD-PARTY INTEGRATION SETTINGS
+# For settings specific to third-party modules and apis.
+# The credentials below are NOT FOR PRODUCTION. Overwrite them by editing
+# your dev.py
 # =======================================================================
-GOOGLE_MAPS_KEY = ''
-GOOGLE_SHEETS_KEY = ''
+
+# GOOGLE MAPS -----------------------------------------------------------
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+GOOGLE_MAPS_ENDPOINT = "https://www.google.com/maps/embed/v1/place?key={0}" \
+                       "&q=".format(GOOGLE_API_KEY)
+
+# GOOGLE SHEETS ---------------------------------------------------------
+
+# ID of spreadsheet found in Scope
+GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')
+
+# Permission to access drive account
+GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')
+
+# URL in Google Drive account to find spreadsheet
+GOOGLE_SHEETS_SCOPE = ['https://spreadsheets.google.com/feeds/']
+
+# SEE CLICK FIX ----------------------------------------------------------
 
 # =======================================================================
 # LOGGING SETTINGS
