@@ -36,6 +36,7 @@ class LoginView(GenericAPIView):
             user = authenticate(request,
                                 username=request.POST.get('username'),
                                 password=request.POST.get('password'))
+            login(request, user)
         except (AttributeError, Exception):
             log.exception("Login failed: %s", request.POST)
             return Response({"error": "Login failed."},

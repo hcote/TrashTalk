@@ -30,7 +30,7 @@ def cleanup_edit(request, *args, **kwargs):
 
 def cleanup_show(request, *args, **kwargs):
     cleanup = get_object_or_404(Cleanup, id=kwargs['pk'])
-    gmap = settings.GOOGLE_MAPS_EMBED + cleanup.gmap_query
+    gmap = settings.GOOGLE_MAPS_ENDPOINT + cleanup.gmap_query
     return render(request, 'cleanups/detail.html', {'cleanup': cleanup, 'gmap': gmap})
 
 
