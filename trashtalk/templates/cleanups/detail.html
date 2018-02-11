@@ -58,14 +58,14 @@
 
         {% else %}
             {% if user not in participants %}
-                <form action ="{% url 'api:join-cleanup' cleanup.id %}" method='POST'>
+                <form action ="{% url 'join-cleanup' cleanup.id %}" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name="cleanup_id" value="{{ cleanup.id }}">
                     <input type="hidden" name="participants" value="{{ user }}">
                     <input class="btn btn-sm" type ="submit" name="join" value="Join Cleanup">
                 </form>
             {% else %}
-                <form action="{% url 'api:join-cleanup' cleanup.id %}" method='POST'>
+                <form action="{% url 'join-cleanup' cleanup.id %}" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
                     <input type="hidden" name="participants" value="{{ user }}">
