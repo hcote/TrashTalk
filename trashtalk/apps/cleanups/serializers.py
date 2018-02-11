@@ -19,6 +19,8 @@ class LocationSerializer(serializers.ModelSerializer):
 class CleanupSerializer(serializers.ModelSerializer):
     location = LocationSerializer(required=False)
     host = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    participants = serializers.PrimaryKeyRelatedField(many=True, required=False,
+                                                      queryset=User.objects.all())
 
     class Meta:
         model = Cleanup
@@ -31,3 +33,19 @@ class CleanupSerializer(serializers.ModelSerializer):
         location = Location.objects.create(**validated_data.pop('location'))
         cleanup = Cleanup.objects.create(location=location, **validated_data)
         return cleanup
+
+    def update(self, instance, validated_data):
+        for key, val in validated_data.items():
+            if key == 'location':
+                for k, v in validated_data[key].items():
+                    setattr(instance.location, k, v)
+            elif key == 'participants':
+                participant = validated_data[key][0]
+                if participant not in instance.participants.all():
+                    instance.participants.add(participant)
+                else:
+                    instance.participants.remove(participant)
+            else:
+                setattr(instance, key, val)
+        instance.save()
+        return instance

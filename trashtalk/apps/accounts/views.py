@@ -42,7 +42,6 @@ class LoginView(GenericAPIView):
             return Response({"error": "Login failed."},
                             status=status.HTTP_400_BAD_REQUEST)
         else:
-            login(request, user)
             return Response({'user': user}, template_name=self.template_name)
 
 
@@ -52,6 +51,7 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
     User can view and edit: profile, cleanups, and participation.
     Use formsets.
     """
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     renderer_classes = (TemplateHTMLRenderer,)

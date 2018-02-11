@@ -7,15 +7,12 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render
-from rest_framework import generics, status
 from rest_framework.decorators import api_view
-from rest_framework.exceptions import ValidationError
-from rest_framework.response import Response
 
 from core.utils import host_required
-from .factories import cleanup_factory
-from .forms import CleanupFormSet
-from .serializers import Cleanup, CleanupSerializer, Location, LocationSerializer, User
+from cleanups.factories import cleanup_factory
+from cleanups.forms import CleanupFormSet
+from cleanups.serializers import Cleanup, Location, User
 
 logger = logging.getLogger('cleanups.views')
 
@@ -83,47 +80,3 @@ def cleanup_update(request, *args, **kwargs):
     cleanup = Cleanup.objects.get(id=kwargs['pk'])
     return render(request, 'cleanups/detail.html',
                   {'cleanup': cleanup, 'participants': cleanup.participants.all()})
-
-
-# pylint: disable=missing-docstring
-class CleanupDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cleanup.objects.all()
-    serializer_class = CleanupSerializer
-
-
-# pylint: disable=missing-docstring
-class CleanupListCreateView(generics.ListCreateAPIView):
-    queryset = Cleanup.objects.all()
-    serializer_class = CleanupSerializer
-
-    def create(self, request, *args, **kwargs):
-        data = deepcopy(request.data)
-        location_data = {'street': data.pop('street')[0], 'number': data.pop('number')[0]}
-        # TODO: Why req QueryDict wasn't passing location to serializer, forcing this approach
-        cleanup = {
-            'title': data.get('title'),
-            'description': data.get('description'),
-            'start_time': data.get('start_time'),
-            'end_time': data.get('end_time'),
-            'date': data.get('date'),
-            'host': data.get('host'),
-            'location': location_data,
-            'participants': data.get('participants')
-        }
-
-        try:
-            serializer = self.get_serializer(data=cleanup)
-            serializer.is_valid(raise_exception=True)
-        except ValidationError:
-            logger.exception("Cleanup not created.")
-            return Response({}, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            self.perform_create(serializer)
-            headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
-# pylint: disable=missing-docstring
-class LocationListCreateView(generics.ListCreateAPIView):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
