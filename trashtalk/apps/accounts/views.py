@@ -4,8 +4,11 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 
 from rest_framework import status
-from rest_framework.generics import (GenericAPIView, ListCreateAPIView,
+from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,
                                      RetrieveUpdateDestroyAPIView)
+from rest_framework.permissions import (IsAdminUser, IsAuthenticatedOrReadOnly)
+from rest_framework.parsers import FormParser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .serializers import User, UserSerializer
@@ -21,6 +24,7 @@ def user_signup_view(request):
 class LoginView(GenericAPIView):
     queryset = User.objects.all()
     renderer_classes = [TemplateHTMLRenderer]
+    parser_classes = [FormParser,]
     template_name = 'index.html'
 
     def get(self, request):
@@ -55,6 +59,7 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     renderer_classes = (TemplateHTMLRenderer,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         return Response({'user': request.user, 'cleanups': request.user.cleanups.all()},
@@ -62,6 +67,20 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
 
 
 # pylint: disable=missing-docstring
-class UserListCreateView(ListCreateAPIView):
+class UserCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+# pylint: disable=missing-docstring
+class UserListAPIView(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminUser,)
+
+
+# pylint: disable=missing-docstring
+class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
