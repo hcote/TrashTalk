@@ -10,6 +10,7 @@ __pycache__/
 *.json
 ttshell.py
 notes.md
+CHANGELONG.md
 app.yaml
 *.cfg
 *.sql
