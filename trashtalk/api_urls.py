@@ -4,6 +4,8 @@ from accounts.views import UserCreateAPIView, UserListAPIView, UserDetailAPIView
 from cleanups.views.api_views import (CleanupListCreateAPIView, CleanupDetailAPIView,
                                       LocationListCreateView)
 
+app_name = 'trashtalk'
+
 urlpatterns = [
     url(r'^cleanups/$', CleanupListCreateAPIView.as_view(), name='cleanups'),
     url(r'^cleanups/(?P<pk>[0-9]+)/$', CleanupDetailAPIView.as_view(), name='cleanup-detail'),

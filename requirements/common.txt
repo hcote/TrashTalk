@@ -2,25 +2,25 @@
 # DJANGO & EXTENSIONS
 # Also requires: None
 # ^^^^^^^^^^^^^^^^^^^^^^^^
-Django==1.11.7
-djangorestframework==3.7.1
-django-extensions==1.9.7
-django-model-utils==3.0.0
+Django==2.0.2
+djangorestframework==3.7.7
+django-extensions==1.9.9
+django-model-utils==3.1.1
 
 # ^^^^^^^^^^^^^^^^^^^^^^
 # DATABASE MODULES
 # ^^^^^^^^^^^^^^^^^^^^^^
-psycopg2==2.7.1
+psycopg2==2.7.4                         # v2.8 psycopg2-binary is the new wheel equivalent
 
 # ^^^^^^^^^^^^^^^^^^^^^^
 # TESTING
 # ^^^^^^^^^^^^^^^^^^^^^^
-factory-boy==2.8.1
+factory-boy==2.10.0
 
 # ^^^^^^^^^^^^^^^^^^^^^^
 # STANDALONE
 # ^^^^^^^^^^^^^^^^^^^^^^
-requests==2.16.0
+requests==2.18.4
 gunicorn==19.7.1
 
 # ^^^^^^^^^^^^^^^^^^^^^^
@@ -28,5 +28,5 @@ gunicorn==19.7.1
 # ^^^^^^^^^^^^^^^^^^^^^^
 geopy==1.11.0
 gspread==0.6.2                          # TODO: This may be unnecessary.
-google-api-python-client==1.6.4         # Includes oauth2client
+google-api-python-client==1.6.5         # Includes oauth2client
 googlemaps==2.5.1

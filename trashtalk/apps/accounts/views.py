@@ -29,7 +29,7 @@ class LoginView(GenericAPIView):
 
     def get(self, request):
         log.info('Loading home view...')
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             return Response({'user': request.user}, template_name=self.template_name)
         else:
             return render(request, template_name='index.html')

@@ -52,7 +52,7 @@ def cleanup_factory(request):
         'date': request.get('date'),
         'start_time': iso_time(request.get('start_time')),
         'end_time': iso_time(request.get('end_time')),
-        'image': request.get('image'),
+        'image': request.get('image', Cleanup.DEFAULT_ICON),
         'host': User.objects.get(username=request.get('host')),
         'location': location_data
     }

@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import FormParser
 
 from core.utils import host_required
 from cleanups.factories import cleanup_factory
@@ -19,6 +20,7 @@ logger = logging.getLogger('cleanups.views')
 
 @host_required
 @login_required
+@parser_classes([FormParser])
 def cleanup_edit(request, *args, **kwargs):
     logger.info("Edit user: %s", request.user)
     context = {'cleanup': get_object_or_404(Cleanup, id=kwargs['pk'])}
@@ -38,12 +40,14 @@ def cleanup_list(request):
 
 
 @login_required
+@parser_classes([FormParser])
 def cleanup_new(request):
     context = {'form': CleanupFormSet()}
     return render(request, 'cleanups/new.html', context)
 
 
 @login_required
+@parser_classes([FormParser])
 def cleanup_create(request):
     try:
         cleanup_data = cleanup_factory(deepcopy(request.POST))
@@ -59,6 +63,7 @@ def cleanup_create(request):
 
 @login_required
 @api_view(['PATCH', 'POST', 'PUT'])
+@parser_classes([FormParser])
 def cleanup_join_view(request, *args, **kwargs):
     cleanup = Cleanup.objects.get(id=kwargs.get('pk'))
     participant = User.objects.get(username=request.POST.get('participants'))
@@ -73,6 +78,7 @@ def cleanup_join_view(request, *args, **kwargs):
 
 @host_required
 @api_view(['POST', 'PUT', 'PATCH'])
+@parser_classes([FormParser])
 def cleanup_update(request, *args, **kwargs):
     cleanup_data = cleanup_factory(deepcopy(request.data))
     Location.objects.filter(cleanup=kwargs['pk']).update(**cleanup_data.pop('location'))

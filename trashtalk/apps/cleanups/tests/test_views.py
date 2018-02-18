@@ -1,6 +1,7 @@
 import json
 
 from datetime import date
+from django.utils.html import urlencode
 
 from django.test import TestCase
 from django.urls import reverse
@@ -121,9 +122,52 @@ class CleanupTemplateViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
+    def test_cleanup_create_success(self):
+        url = reverse('cleanup-create')
+        self.client.force_login(self.user)
+        data = urlencode({'title': "New Cleanup Created",
+                          'description': 'A totally new cleanup event!',
+                          'number': '333',
+                          'street': 'Newbie Ave',
+                          'image': 'default.jpg',
+                          'host': self.user,
+                          'date': str(date.today()),
+                          'start_time': '3:30 PM',
+                          'end_time': '7:30 PM'})
+        response = self.client.post(url, data=data,
+                                    content_type='application/x-www-form-urlencoded')
+
+        self.assertEqual(response.status_code, 200)
+
     def test_cleanup_edit_template(self):
         url = reverse('cleanup-edit', args=[self.cleanup.id])
         self.client.force_login(self.user)
         response = self.client.get(url)
 
+        self.assertEqual(response.status_code, 200)
+
+    def test_cleanup_edit_success(self):
+        url = reverse('cleanup-edit', args=[self.cleanup.id])
+        self.client.force_login(self.user)
+        data = {'title': "New Name Edited",
+                'description': self.cleanup.description,
+                'number': '122',
+                'street': 'Sandy Lane',
+                'host': self.user.id,
+                'date': str(date.today()),
+                'start_time': self.cleanup.start_time,
+                'end_time': self.cleanup.end_time}
+        response = self.client.put(url, data=data,
+                                   content_type='application/x-www-form-urlencoded')
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_cleanup_join_success(self):
+        user = UserFactory()
+        url = reverse('join-cleanup', args=[self.cleanup.id])
+        data = urlencode({'participants': user.username})
+
+        self.client.force_login(user)
+        response = self.client.post(url, data=data,
+                                    content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 200)

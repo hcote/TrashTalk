@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,4 +14,4 @@ class User(AbstractUser):
         return self.username
 
     def get_absolute_url(self):
-        return reverse('api:users-detail', kwargs={'username': self.username})
+        return reverse('api:users-detail', kwargs={'pk': self.id})

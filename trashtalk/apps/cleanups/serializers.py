@@ -17,6 +17,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
 # pylint: disable=missing-docstring
 class CleanupSerializer(serializers.ModelSerializer):
+    image = serializers.CharField(required=False)
     location = LocationSerializer(required=False)
     host = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     participants = serializers.PrimaryKeyRelatedField(many=True, required=False,
@@ -24,7 +25,7 @@ class CleanupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cleanup
-        fields = ('id', 'title', 'description', 'date', 'participants',
+        fields = ('id', 'title', 'description', 'image', 'date', 'participants',
                   'start_time', 'end_time', 'location', 'host')
         depth = 1
 
