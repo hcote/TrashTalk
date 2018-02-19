@@ -22,7 +22,7 @@ from django.conf import settings
 from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)
 from cleanups.views.template_views import (cleanup_new, cleanup_edit, cleanup_list,
                                            cleanup_show, cleanup_create, cleanup_update,
-                                           cleanup_join_view)
+                                           cleanup_join_view, cleanup_delete)
 
 urlpatterns = [
     # Homepage
@@ -52,6 +52,7 @@ urlpatterns = [
     url(r'^cleanups/(?P<pk>[0-9]+)/edit/$', cleanup_edit, name='cleanup-edit'),
     url(r'^cleanups/(?P<pk>[0-9]+)/update/$', cleanup_update, name='cleanup-update'),
     url(r'^cleanups/(?P<pk>[0-9]+)/join/$', cleanup_join_view, name='join-cleanup'),
+    url(r'^cleanups/(?P<pk>[0-9]+)/delete$', cleanup_delete, name='cleanup-delete'),
     url(r'^cleanups/(?P<pk>[0-9]+)/$', cleanup_show, name='cleanup-detail'),
 
     # Development Only

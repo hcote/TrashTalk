@@ -86,3 +86,15 @@ def cleanup_update(request, *args, **kwargs):
     cleanup = Cleanup.objects.get(id=kwargs['pk'])
     return render(request, 'cleanups/detail.html',
                   {'cleanup': cleanup, 'participants': cleanup.participants.all()})
+
+
+@host_required
+@api_view(['POST', 'DELETE'])
+def cleanup_delete(request, *args, **kwargs):
+    cleanup = Cleanup.objects.get(id=kwargs['pk'])
+    try:
+        cleanup.delete()
+    except (AssertionError, Exception):
+        logger.exception('Error while deleting cleanup.')
+        redirect(cleanup)
+    return redirect('dashboard')

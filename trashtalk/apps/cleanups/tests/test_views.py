@@ -171,3 +171,13 @@ class CleanupTemplateViewsTestCase(TestCase):
         response = self.client.post(url, data=data,
                                     content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 200)
+
+    def test_cleanup_delete_success(self):
+        cleanup = CleanupFactory(host=self.user)
+        url = reverse('cleanup-delete', args=[cleanup.id])
+        self.client.force_login(self.user)
+
+        response = self.client.delete(url, follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, reverse('dashboard'))
