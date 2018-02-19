@@ -29,7 +29,7 @@
                 <label for="date">Date</label>
                 <div class='input-group date' data-provide="datepicker">
                     <input id="date" name="date" type='text' class="form-control"
-                           value="{{ cleanup.date|date:"m/d/Y" }}" />
+                           value="{{ cleanup.date|date:"Y-m-d" }}" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
@@ -105,30 +105,8 @@
                 <textarea class="form-control" name="description" id="desc" cols="50" rows="4" value="{{ cleanup.description }}">{{ cleanup.description }}</textarea>
             </div>
         </div>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
         <input class="btn btn-sm" type="submit" value="Update"/>
-        <a href={% url 'api:cleanup-detail' cleanup.id %}class="support">Cancel</a>
+        <a href={% url 'cleanup-detail' cleanup.id %} class="support">Cancel</a>
     </form>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-sm">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-body">
-            <p class="text-center">Are you sure?</p>
-            <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
-              {#<!--TODO: Change Action Path-->#}
-              <form action = {% url 'api:cleanup-detail' cleanup.id %} method='POST'>
-                    <input type = "hidden" name="method" value="DELETE">
-                    <input class="form-control" type="submit" value="Delete">
-                </form>
-        </div>
-
-      </div>
-    </div>
 </div>
-
 {% endblock %}

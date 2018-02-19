@@ -284,9 +284,9 @@ class LocationCategory:
 class ValidatorPatterns:
     # TODO: Issue #114 - Do we still need? If so, refactor as regexes for validators.
     password_pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-    password_title = "Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+    password_message = "Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
     username_pattern = "[a-zA-Z0-9]{2,}"
-    username_title = "2-20 alpha-numeric characters"
+    username_message = "2-20 alpha-numeric characters"
     date_placeholder = "yyyy-mm-dd"
     time_placeholder = "hh:mm"
     default_image_path = "/static/images/defaults/"

@@ -24,54 +24,75 @@
             <b>Start: </b>{{ cleanup.event_start }}<br>
             <b>End: </b>{{ cleanup.event_end }}<br>
             <b>Date: </b>{{ cleanup.date }}<br>
-            <b>Where: </b>{{ cleanup.location.ddress }}<br>
+            <b>Where: </b>{{ cleanup.location.address }}<br>
             <b>About: </b>{{ cleanup.description }}
         </p>
     </div>
 </div>
-    <h4>Participants</h4>
-    <ul class="list-group">
-        {% for participant in cleanup.participants.all %}
-            <li class="list-group-item col-lg-4">{{ participant.username }}</li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <h4>Participants</h4>
+        <ul class="list-group">
+            {% for participant in cleanup.participants.all %}
+                <li class="list-group-item col-lg-4">{{ participant.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {#    Breadcrumb links #}
     <div class="breadcrumb">
 {#        TODO: Issue #75: Move this check to the the backend views #}
         {% if cleanup.host.username == user.username %}
-            {% if cleanup.html_url %}
+            <!--{% if cleanup.html_url %}
                 <a href="{{ cleanup.html_url }}">SeeClickFix Link</a>
-            {% else %}
-        {#<!--TODO: Change Path-->#}
-                <a href="{% url 'cleanup-detail' cleanup.id %}">Advertise on SeeClickFix</a>
+            {% else %} -->
+        {#TODO: Change Path#}
+                <!-- <a href="{% url 'cleanup-detail' cleanup.id %}">Advertise on SeeClickFix</a>
             {% endif %}
-            {% if not cleanup.notified_pw %}
-        {#<!--TODO: Change Path-->#}
-                <a href="{% url 'cleanup-detail' cleanup.id %}">Submit
+            {% if not cleanup.notified_pw %} -->
+        {#TODO: Change Path#}
+                <!-- <a href="{% url 'cleanup-detail' cleanup.id %}">Submit
                     to Public Works</a>
             {% else %}
                 Public Works has been notified
-            {% endif %}
+            {% endif %} -->
         {#<!--TODO: Change Path-->#}
+            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
             <a href="{% url 'cleanup-edit' cleanup.id %}">Edit Cleanup</a>
-
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="text-center">Are you sure?</p>
+                        <button type="button" class="form-control" data-dismiss="modal">Cancel</button>
+                        {#<!--TODO: Change Action Path-->#}
+                        <form action = {% url 'cleanup-delete' cleanup.id %} method='POST'>
+                                {% csrf_token %}
+                                <input type = "hidden" name="method" value="DELETE">
+                                <input class="form-control" type="submit" value="Delete">
+                            </form>
+                    </div>
+                </div>
+            </div>    
         {% else %}
-            {% if user not in participants %}
+            {% if user not in cleanup.participants.all %}
+            <div class="row">
                 <form action ="{% url 'join-cleanup' cleanup.id %}" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name="cleanup_id" value="{{ cleanup.id }}">
                     <input type="hidden" name="participants" value="{{ user }}">
                     <input class="btn btn-sm" type ="submit" name="join" value="Join Cleanup">
                 </form>
+            </div>
             {% else %}
+            <div class="row">
                 <form action="{% url 'join-cleanup' cleanup.id %}" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name="cleanup_id" value="{{cleanup.id}}">
                     <input type="hidden" name="participants" value="{{ user }}">
-
                     <input class="btn btn-sm" type ="submit" name="leave" value="Leave Cleanup">
                 </form>
+            </div>
             {% endif %}
         {%endif%}
     </div>
