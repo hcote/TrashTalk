@@ -1,7 +1,7 @@
 import logging
 
 from django.contrib.auth import authenticate, login
-from django.http.response import HttpResponseBadRequest
+from django.db.utils import IntegrityError
 from django.shortcuts import render, redirect
 
 from rest_framework import status
@@ -23,17 +23,18 @@ def user_signup_view(request):
 
 def user_signup_create(request):
     log.info("Signup submitted ...")
+    invalid = any([request.POST.get('password') != request.POST.get('confirm_password')])
+    if invalid:
+        log.info('User passwords do not match.')
+        return redirect('register')
     try:
-        if request.POST.get('password') != request.POST.get('confirm_password'):
-            log.info('New user passwords do not match.')
-            return HttpResponseBadRequest()
         user = User.objects.create_user(request.POST.get('username'),
-                                        request.POST.get('password'),
-                                        request.POST.get('email'))
+                                        request.POST.get('email'),
+                                        request.POST.get('password'))
         login(request, user)
-    except AttributeError:
+    except (AttributeError, IntegrityError):
         log.exception('Error while creating a new user.')
-        return HttpResponseBadRequest()
+        return redirect('register')
     else:
         log.info("Signup successful.")
         return redirect('home')

@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponseBadRequest
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import FormParser
 
@@ -54,7 +54,7 @@ def cleanup_create(request):
         cleanup_data['location'] = Location.objects.create(**cleanup_data.get('location'))
     except (ObjectDoesNotExist, AttributeError):
         logger.exception('Error while creating a cleanup or location.')
-        return HttpResponseBadRequest()
+        return redirect('cleanup-create')
     else:
         cleanup = Cleanup.objects.create(**cleanup_data)
         return render(request, 'cleanups/detail.html', {'user': request.user,
