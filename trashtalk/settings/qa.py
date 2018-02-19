@@ -51,7 +51,8 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE += [
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Heroku assets management
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # =======================================================================

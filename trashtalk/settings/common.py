@@ -21,8 +21,8 @@ More settings can be added at any time.
 """
 
 import os
+
 from os.path import dirname
-from .utils import create_log_folder
 
 # =======================================================================
 # SECURITY SETTINGS
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # Tools
     'rest_framework',
     'gspread',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -208,7 +209,14 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html': True
-        }
+        },
+        'loggly': {
+             'level': 'DEBUG',
+             'class': 'logging.handlers.SysLogHandler',
+             'facility': 'local7',
+             'formatter': 'standard',
+             'address': '/dev/log',
+        },
     },
     'loggers': {
         '': {
@@ -225,6 +233,11 @@ LOGGING = {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'loggly_logs':{
+             'handlers': ['loggly'],
+             'level': 'DEBUG',
+             'propagate': True,
         },
     }
 }

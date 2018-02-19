@@ -46,6 +46,7 @@ ALLOWED_HOSTS = ['trashtalkdev.herokuapp.com', 'trashtalk.divethree.com', '107.1
 # =======================================================================
 INSTALLED_APPS += [
     # Any prod apps? Not likely ...
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE += [
@@ -60,6 +61,14 @@ REST_FRAMEWORK_DOCS = {
     'HIDE_DOCS': os.getenv('HIDE_DRFDOCS', True)
 }
 
+# Docs: https://docs.sentry.io/clients/python/integrations/django/
+RAVEN_CONFIG = {
+    'dsn': 'https://d079e390cb4548b6911ff41665eaf796:824b9a00844f4f20bbff307b91bfedff@sentry.io/290085',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    # 'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+    # 'release': "ba744e7cd305548458295fd4c1a68214bbab9b7b",
+}
 # =======================================================================
 # DATABASE SETTINGS
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
