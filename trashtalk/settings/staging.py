@@ -46,7 +46,6 @@ ALLOWED_HOSTS = ['trashtalkdev.herokuapp.com', 'trashtalk.divethree.com', '107.1
 # =======================================================================
 INSTALLED_APPS += [
     # Any prod apps? Not likely ...
-    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE += [

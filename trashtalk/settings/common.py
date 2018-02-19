@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'gspread',
     'django_extensions',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
