@@ -11,20 +11,18 @@ class UserAuthTestCase(TestCase):
         self.user = User.objects.create_user(username='loggyuser', password='password')
         UserFactory()
 
-    @skip('Getting 415 errors ...')
     def test_user_signup(self):
-        url = reverse('api:users-create')
+        url = reverse('create-user')
         user = urlencode({
             'username': 'FakeUser',
-            'password': 'password',
-            'password_confirmation': 'password',
+            'password': 'Password1!',
+            'confirm_password': 'Password1!',
             'email': 'faker@example.com'
         })
 
         response = self.client.post(url, user,
-                                    content_type='application/x-www-form-urlencoded')
-        print(response.data)
-        self.assertEqual(response.status_code, 201)
+                                    content_type='application/x-www-form-urlencoded', follow=True)
+        self.assertEqual(response.status_code, 200)
 
     @skip('May need to configure the request and session for this.')
     def test_user_login(self):

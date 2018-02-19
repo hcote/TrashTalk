@@ -1,7 +1,8 @@
 import logging
 
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render
+from django.http.response import HttpResponseBadRequest
+from django.shortcuts import render, redirect
 
 from rest_framework import status
 from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,
@@ -18,6 +19,24 @@ log = logging.getLogger('accounts.views')
 
 def user_signup_view(request):
     return render(request, template_name='users/new.html')
+
+
+def user_signup_create(request):
+    log.info("Signup submitted ...")
+    try:
+        if request.POST.get('password') != request.POST.get('confirm_password'):
+            log.info('New user passwords do not match.')
+            return HttpResponseBadRequest()
+        user = User.objects.create_user(request.POST.get('username'),
+                                        request.POST.get('password'),
+                                        request.POST.get('email'))
+        login(request, user)
+    except AttributeError:
+        log.exception('Error while creating a new user.')
+        return HttpResponseBadRequest()
+    else:
+        log.info("Signup successful.")
+        return redirect('home')
 
 
 # pylint: disable=missing-docstring
@@ -70,6 +89,7 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
 class UserCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    parser_classes = (FormParser,)
 
 
 # pylint: disable=missing-docstring
