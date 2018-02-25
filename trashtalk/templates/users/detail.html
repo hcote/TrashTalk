@@ -31,8 +31,8 @@
 {#  USER PARTICIPATION  #}
     <h3>Joined Cleanups</h3>
     <div class="list-group">
-    {% for cleanup in current_user.cleanups_participated %}
-        <a href={% url 'cleanup-detail' %} class="list-group-item row">
+    {% for cleanup in cleanups_joined  %}
+        <a href={% url 'cleanup-detail' cleanup.id %} class="list-group-item row">
             <div class="col-xs-4">
                 <div class="imgAbt">
                     <!--TODO: Change to path held in SQL data-->

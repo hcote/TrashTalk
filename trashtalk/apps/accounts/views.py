@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 
 from django.contrib.auth import authenticate, login
 from django.db.utils import IntegrityError
@@ -13,6 +14,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .serializers import User, UserSerializer
+
+from cleanups.models import Cleanup
 
 log = logging.getLogger('accounts.views')
 
@@ -82,8 +85,15 @@ class UserDashboardView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
-        return Response({'user': request.user, 'cleanups': request.user.cleanups.all()},
+        return Response({'user': request.user,
+                         'cleanups': request.user.cleanups.all(),
+                         'cleanups_joined': self.get_cleanup_participation(request.user)},
                         template_name='users/detail.html')
+
+    @staticmethod
+    def get_cleanup_participation(user):
+        current_cleanups = Cleanup.objects.filter(date__gte=datetime.today())
+        return [event for event in current_cleanups if user in event.participants.all()]
 
 
 # pylint: disable=missing-docstring
