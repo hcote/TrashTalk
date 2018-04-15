@@ -144,7 +144,7 @@ a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and updat
 b. [Test](https://docs.djangoproject.com/en/2.0/topics/testing/): 
     `python manage.py test`
 
-<a name="issues".</a>
+<a name="issues"></a>
 ## Addressing Issues
 
 TrashTalk depends on the insights of various contributors. These contributions are organized in the [Issues](https://github.com/openoakland/TrashTalk/issues) section of the Master repository. Any developer that has discovered a bug, knows a way  to improve the code, or would like to help with an old problem should refer to these issues. This is the most effective way to complement each other's efforts, without duplicating any work.
