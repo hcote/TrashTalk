@@ -9,19 +9,15 @@
 - [Integrations](#integrations)
 - [Deployment](#deployment)
 
-This guide attempts to make no assumptions about the skill level of the developer. Your
-contributions are welcome no matter your skill level. If you have questions, you can post
-them on the issue tracker (use the appropriate labels so you can get the attention you
-need!).
+This guide attempts to make no assumptions about the skill level of the developer. Contributions are welcome, regardless of skill level! Post any questions on the issue tracker (use appropriate labels to get the right help).
+
 <a name="teamcontact"></a>
 ## Team Contact
 - [Slack](https://openoakland.slack.com)
 - [Project Board](https://github.com/openoakland/TrashTalk/projects)
-- [Issue Tracker](https://github.com/TangoYankee/TrashTalk/issues)
+- [Issue Tracker](https://github.com/openoakland/TrashTalk/issues)
 
-As an open source, collaborative, public project developers come and go with the seasons. The goal of this guide is to make it possible for each participant to make contributions with as little pain as possible.
-
-That said, communication is still the key to the optimal experience! Asking questions and working with others will be very helpful during development.
+As an open source, collaborative, public project developers come and go with the seasons. The goal of this guide is to make it possible for each participant to make contributions with as little pain as possible.Communication is the key to an optimal experience! Ask questions and work with others to create a fluid development process.
 
 <a name="codeguidelines"></a>
 ## Code Guidelines
@@ -30,7 +26,7 @@ That said, communication is still the key to the optimal experience! Asking ques
    - **Never push directly to the Master repository**
 - Allow another contributer to review and commit the changes to the master repository. 
    - **Never commit your own code to the Master repository**
-- [Test](https://docs.djangoproject.com/en/2.0/topics/testing/) code changes programmtically
+- [Test](https://docs.djangoproject.com/en/2.0/topics/testing/) code changes programmtically before committing them
 - [Lint](https://pylint.readthedocs.io/en/latest/index.html) files to make sure they follow PEP8. Aim for a pylint score of at least 7 per file edited file (C level messages are acceptable usually).
 - Securely store password and keys.
     - **Never place sensitive information in a repository**
@@ -38,18 +34,18 @@ That said, communication is still the key to the optimal experience! Asking ques
 
 <a name="pullrequests"></a>
 #### Submitting Pull Requests
-When submitting pull requests, try to follow these conventions:
+When submitting pull requests, please follow these conventions:
 
 __Commit message format__
 *ISSUE NUMBER ISSUE TYPE -- Description of the work done*</br>
-    -If there's no issue for the changes you want to make, create one and describe the changes you want to submit. Give as much detail as you're able!
+    -If there's no issue associated with the code changes, create one and describe the desired changes. Give as much detail as possible!
 
 __Pull Request Format__
 - Title: Same as commit message above.
 - Description: Add some details about the code changes. 
- Include links or references to any information that will be helpful to other developers who have to review your code!
-- Checklist: Make sure you've hit all the marks! 
-- Code Failures: The code will be automatically tested by Travis once you create the PR. If you see any test failures, re-review your code and fix the errors. If you're not sure what's wrong, leave a comment on your PR for other devs to help you out.
+ Include links or references to any information that will be helpful to other developers reviewing the code!
+- Checklist: Make sure all the marks are hit! 
+- Code Failures: The code will be automatically tested by Travis once the PR is created. If there are any test failures, re-review your code and fix the errors. If it's unclear what's wrong, leave a comment on the PR and other developers will help.
 - Linting: Read about [Lint Messaging](https://pylint.readthedocs.io/en/latest/user_guide/output.html#source-code-analysis-section) in order to improve the readability of the code
 
 **More Documentation**
@@ -57,19 +53,19 @@ __Pull Request Format__
 - [Python](https://www.python.org/dev/peps/pep-0008/)
 - [Google Apps](https://cloud.google.com/docs/)
 - [Pylint](https://pylint.readthedocs.io/en/latest/user_guide/)
+- [PostgreSQL](https://www.postgresql.org/docs/)
 
 <a name="settings"></a>
 ## Setting Up Local
 Follow the links at each step for appropriate instructions
 ## Overview
 1. Create local copy of project: [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide)
-2. [Install python requirements to a virtual environment named `venv`.](#requirements) This is important to control versions of dependencies
-3. Install [postgreSQL](https://www.postgresql.org/)
-4. Update and configure local settings
-5. Seed Test Data
+2. [Install python requirements](#requirements) to a virtual environment named `venv`. This is important for dependency version control
+3. [Install postgreSQL](https://www.postgresql.org/)
+4. [Configure local settings](#localsettings) 
 6. Create code changes locally: [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide) 
-7. Lint and update accordingly: `venv/bin/pylint --rcfile=./.pylintrc ./`
-8. Test: `python manage.py test`
+8. [Manage model](#modeling) changes
+8. [Locally Review](#localreview) code changes
 9. Share Code Changes: [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide)
 
 <a name="requirements"></a>
@@ -82,48 +78,49 @@ source venv/bin/activate
 pip install -r requirements/dev.txt
 ```
 
-#### Step : Update and Configure Local Settings
+<a name="localsettings"></a>
+#### Step 4: Configure Local Settings
 
 Always work on a new branch when developing new changes to the code. Never work on the
 master branch.
 
+Make your own copy of dev.py.example and rename to dev.py
 ```
-# Update to the latest the code
-git pull upstream master
-
-# Make your own copy of dev.py.example and rename to dev.py
 cp trashtalk/settings/dev.py.example trashtalk/settings/dev.py
-
-# Open dev.py and update it with your database settings
-# Next, create and migrate the database:
+```
+Open dev.py and update it with:
+   a.postgresql username and password
+   b. [API Key](https://developers.google.com/maps/documentation/embed/guide) to view Google Maps
+        - Each new IP address will need to gain permission to use the API Key
+   
+Create and migrate the database:
+```
 createdb trashtalk
 python manage.py migrate
-
-# Create an admin user for the Trashtalk app and follow the prompts
+```
+Create an admin user for the Trashtalk app and follow the prompts
+```
 python manage.py createsuperuser
-
-# Run the server and open in your browser at localhost:8000
+```
+Seed test data
+```
+python manage.py seed config/locations.csv
+```
+Run the server and open in your browser at localhost:8000
+```
 python manage.py runserver
-
+```
 *NOTE: `dev.py` is yours and is best used for storing your credentials and custom log settings. Beware that these settings are NOT shared by anyone else so keep it simple.*
 
+Verify all the files that have changed
 ```
-# Verify all the files that have changed
 git status
-
-# If you're satisfied, stage all your file changes and additions
-git add .
-
-git commit -m "#99 Type a good message here about the changes."
-git push origin YOUR_BRANCH_NAME
 ```
-
 
 <a name="modeling"></a>
-## Making Model Changes
+## Step 7: Make Model Changes
 
-Django manages the database for us. Be extremely thoughtful about making changes to models.
-If you change models, make sure you create the migrations and commit them to git.
+Django manages the database for us. Be extremely thoughtful about making changes to models. Ensure to migrate any model changes and and commit them to git.
 
 ```
 # First edit the models you wish to change/add/remove
@@ -138,3 +135,13 @@ Please refer to the official Django Documentation and learn more:
 - [Model Documentation](https://docs.djangoproject.com/en/dev/topics/db/)
 - [Migrtions Documentation](https://docs.djangoproject.com/en/dev/topics/migrations/)
 
+
+<a name="locallyreview"></a>
+## Step 8: Local Code Review
+a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and update accordingly: 
+    ```venv/bin/pylint --rcfile=./.pylintrc ./```
+    or
+    ```pylint [filename].py```
+    
+8. [Test](https://docs.djangoproject.com/en/2.0/topics/testing/): 
+    `python manage.py test`
