@@ -43,7 +43,7 @@ __Pull Request Format__
 - Description: Add some details about the code changes. 
  Include links or references that will help other developers review the code!
 - Checklist: Make sure to hit all the marks! 
-- Code Failures: Travis will automatically test the PR. If there are any test failures, review the code and fix the errors. If it's unclear what's wrong, leave a comment on the PR and other developers will help.
+- Code Failures: [Travis](https://docs.travis-ci.com/user/getting-started/) will automatically test the PR. If there are any test failures, review the code and fix the errors. If it's unclear what's wrong, leave a comment on the PR and other developers will help.
 - Linting: Read about [Lint Messaging](https://pylint.readthedocs.io/en/latest/user_guide/output.html#source-code-analysis-section) and improve the readability of the code
 
 **More Documentation**
@@ -140,5 +140,5 @@ a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and updat
     or
     ```pylint [filename].py```
     
-8. [Test](https://docs.djangoproject.com/en/2.0/topics/testing/): 
+b. [Test](https://docs.djangoproject.com/en/2.0/topics/testing/): 
     `python manage.py test`
