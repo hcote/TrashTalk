@@ -17,7 +17,7 @@ This guide attempts to make no assumptions about the skill level of the develope
 - [Project Board](https://github.com/openoakland/TrashTalk/projects)
 - [Issue Tracker](https://github.com/openoakland/TrashTalk/issues)
 
-As an open source, collaborative, public project developers come and go with the seasons. The goal of this guide is to make it possible for each participant to make contributions with as little pain as possible.Communication is the key to an optimal experience! Ask questions and work with others to create a fluid development process.
+As an open source, collaborative, and public project, developers come and go in seasons. This guide to makes it possible for each participant to effectively contribute. Communication is the key to an optimal experience! Ask questions and work with others to create a fluid development process.
 
 <a name="codeguidelines"></a>
 ## Code Guidelines
@@ -33,7 +33,7 @@ As an open source, collaborative, public project developers come and go with the
 - Update the [requirements files](https://github.com/openoakland/TrashTalk/tree/master/requirements) with any newly added modules
 
 <a name="pullrequests"></a>
-#### Submitting Pull Requests
+#### Submitting Pull Requests (PRs)
 When submitting pull requests, please follow these conventions:
 
 __Commit message format__
@@ -43,10 +43,10 @@ __Commit message format__
 __Pull Request Format__
 - Title: Same as commit message above.
 - Description: Add some details about the code changes. 
- Include links or references to any information that will be helpful to other developers reviewing the code!
-- Checklist: Make sure all the marks are hit! 
-- Code Failures: The code will be automatically tested by Travis once the PR is created. If there are any test failures, re-review your code and fix the errors. If it's unclear what's wrong, leave a comment on the PR and other developers will help.
-- Linting: Read about [Lint Messaging](https://pylint.readthedocs.io/en/latest/user_guide/output.html#source-code-analysis-section) in order to improve the readability of the code
+ Include links or references that will help other developers review the code!
+- Checklist: Make sure to hit all the marks! 
+- Code Failures: Travis will automatically test the PR. If there are any test failures, review the code and fix the errors. If it's unclear what's wrong, leave a comment on the PR and other developers will help.
+- Linting: Read about [Lint Messaging](https://pylint.readthedocs.io/en/latest/user_guide/output.html#source-code-analysis-section) and improve the readability of the code
 
 **More Documentation**
 - [Django Docs](https://docs.djangoproject.com/en/dev/)
@@ -64,7 +64,7 @@ Follow the links at each step for appropriate instructions
 3. [Install postgreSQL](https://www.postgresql.org/)
 4. [Configure local settings](#localsettings) 
 6. Create code changes locally: [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide) 
-8. [Manage model](#modeling) changes
+7. [Manage model](#modeling) changes
 8. [Locally Review](#localreview) code changes
 9. Share Code Changes: [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide)
 
@@ -81,16 +81,15 @@ pip install -r requirements/dev.txt
 <a name="localsettings"></a>
 #### Step 4: Configure Local Settings
 
-Always work on a new branch when developing new changes to the code. Never work on the
-master branch.
+Always develop on a new branch. Never work on the master branch.
 
 Make your own copy of dev.py.example and rename to dev.py
 ```
 cp trashtalk/settings/dev.py.example trashtalk/settings/dev.py
 ```
 Open dev.py and update it with:
-   a.postgresql username and password
-   b. [API Key](https://developers.google.com/maps/documentation/embed/guide) to view Google Maps
+   </br>a. postgresql username and password
+   </br>b. [API Key](https://developers.google.com/maps/documentation/embed/guide) to view Google Maps
         - Each new IP address will need to gain permission to use the API Key
    
 Create and migrate the database:
@@ -110,7 +109,7 @@ Run the server and open in your browser at localhost:8000
 ```
 python manage.py runserver
 ```
-*NOTE: `dev.py` is yours and is best used for storing your credentials and custom log settings. Beware that these settings are NOT shared by anyone else so keep it simple.*
+*NOTE: `dev.py` is private and is best used for storing custom credentials and settings. Beware: these settings are NOT shared by anyone; Keep it Simple.*
 
 Verify all the files that have changed
 ```
