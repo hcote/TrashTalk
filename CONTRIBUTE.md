@@ -25,7 +25,7 @@ As an open source, collaborative, and public project, developers come and go in 
 - Allow another contributer to review and commit the changes to the master repository. 
    - **Never commit your own code to the Master repository**
 - [Test](https://docs.djangoproject.com/en/2.0/topics/testing/) code changes programmtically before committing them
-- [Lint](https://pylint.readthedocs.io/en/latest/index.html) files to make sure they follow PEP8. Aim for a pylint score of at least 7 per file edited file (C level messages are acceptable usually).
+- [Lint](https://pylint.readthedocs.io/en/latest/index.html) files to make sure they follow PEP8. Aim for a pylint score of at least 7 in each edited file (C level messages are acceptable usually).
 - Securely store password and keys.
     - **Never place sensitive information in a repository**
 - Update the [requirements files](https://github.com/openoakland/TrashTalk/tree/master/requirements) with any newly added modules
