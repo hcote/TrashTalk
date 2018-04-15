@@ -6,8 +6,6 @@
 - [Code Guidelines](#codeguidelines)
 - [Submitting Pull Requests](#pullrequests)
 - [Setting up locally](#settings)
-- [Integrations](#integrations)
-- [Deployment](#deployment)
 
 This guide attempts to make no assumptions about the skill level of the developer. Contributions are welcome, regardless of skill level! Post any questions on the issue tracker (use appropriate labels to get the right help).
 
@@ -119,7 +117,7 @@ git status
 <a name="modeling"></a>
 ## Step 7: Make Model Changes
 
-Django manages the database for us. Be extremely thoughtful about making changes to models. Ensure to migrate any model changes and and commit them to git.
+Django includes database management. Be extremely thoughtful when making changes to models. Ensure to migrate any model changes and commit them to git.
 
 ```
 # First edit the models you wish to change/add/remove
@@ -135,7 +133,7 @@ Please refer to the official Django Documentation and learn more:
 - [Migrtions Documentation](https://docs.djangoproject.com/en/dev/topics/migrations/)
 
 
-<a name="locallyreview"></a>
+<a name="localreview"></a>
 ## Step 8: Local Code Review
 a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and update accordingly: 
     ```venv/bin/pylint --rcfile=./.pylintrc ./```
