@@ -115,7 +115,7 @@ git status
 ```
 
 <a name="modeling"></a>
-## Step 7: Make Model Changes
+## Step 6: Make Model Changes
 
 Django includes database management. Be extremely thoughtful when making changes to models. Ensure to migrate any model changes and commit them to git.
 
@@ -134,7 +134,7 @@ Please refer to the official Django Documentation and learn more:
 
 
 <a name="localreview"></a>
-## Step 8: Local Code Review
+## Step 7: Local Code Review
 a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and update accordingly: 
     ```venv/bin/pylint --rcfile=./.pylintrc ./```
     or
