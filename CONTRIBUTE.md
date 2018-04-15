@@ -6,6 +6,7 @@
 - [Code Guidelines](#codeguidelines)
 - [Submitting Pull Requests](#pullrequests)
 - [Setting up locally](#settings)
+- [Addressing Issues](#issues)
 
 This guide attempts to make no assumptions about the skill level of the developer. Contributions are welcome, regardless of skill level! Post any questions on the issue tracker (use appropriate labels to get the right help).
 
@@ -142,3 +143,11 @@ a. [Lint](https://pylint.readthedocs.io/en/latest/user_guide/run.html) and updat
     
 b. [Test](https://docs.djangoproject.com/en/2.0/topics/testing/): 
     `python manage.py test`
+
+<a name="issues".</a>
+## Addressing Issues
+
+TrashTalk depends on the insights of various contributors. These contributions are organized in the [Issues](https://github.com/openoakland/TrashTalk/issues) section of the Master repository. Any developer that has discovered a bug, knows a way  to improve the code, or would like to help with an old problem should refer to these issues. This is the most effective way to complement each other's efforts, without duplicating any work.
+
+## Thank You
+ Thank you for taking the time to learn about TrashTalk. We appreciate any help you provide!
