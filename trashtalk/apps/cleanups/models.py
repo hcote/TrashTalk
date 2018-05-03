@@ -8,6 +8,35 @@ from .utils import Coordinates
 
 
 # pylint: disable=missing-docstring
+class ToolCategory(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = "tool categories"
+
+    def __str__(self):
+        return self.name
+
+
+# pylint: disable=missing-docstring
+class Tool(models.Model): # pylint: disable=too-few-public-methods
+    name = models.CharField(max_length=128)
+    description = models.TextField(blank=True)
+    image_static_location = models.CharField(max_length=200, blank=True)
+    is_available = models.BooleanField(default=True)
+    category = models.ForeignKey(
+        ToolCategory,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+# pylint: disable=missing-docstring
 class Cleanup(models.Model):
     DEFAULT_ICON = 'images/defaults/bow_rake.jpg'
 
@@ -19,8 +48,8 @@ class Cleanup(models.Model):
     image = models.CharField(max_length=300, blank=True, default=DEFAULT_ICON)
     host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cleanups")
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
-
     participants = models.ManyToManyField(User)
+    required_tools = models.ManyToManyField(Tool, through='RequiredTool')
 
     def __str__(self):
         return "Cleanup at {0}".format(self.location)
@@ -114,3 +143,20 @@ class Location(models.Model):
 
     def is_intersection(self):
         return self.category == 'intersection'
+
+
+# pylint: disable=missing-docstring
+class RequiredTool(models.Model): # pylint: disable=too-few-public-methods
+    tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
+    cleanup = models.ForeignKey(Cleanup, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1, blank=True)
+
+    class Meta:
+        unique_together = ('tool', 'cleanup')
+        verbose_name_plural = "required tools"
+
+    def __str__(self):
+        return "Cleanup: {} / Tool: {} (quantity: {})".format(
+            self.cleanup.title, self.tool.name, self.quantity
+        )
+        

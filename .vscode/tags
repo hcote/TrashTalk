@@ -1,0 +1,1117 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+0001_initial.py	../trashtalk/apps/accounts/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../trashtalk/apps/cleanups/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../trashtalk/apps/core/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_auto_20171113_0027.py	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	1;"	kind:file	line:1
+0002_auto_20180214_0432.py	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	1;"	kind:file	line:1
+0003_auto_20171126_1940.py	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	1;"	kind:file	line:1
+0003_auto_20180219_1814.py	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	1;"	kind:file	line:1
+0004_auto_20171215_0510.py	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	1;"	kind:file	line:1
+0005_cleanup_date.py	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	1;"	kind:file	line:1
+0006_auto_20171228_2054.py	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	1;"	kind:file	line:1
+0007_auto_20180214_0432.py	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	1;"	kind:file	line:1
+0008_auto_20180314_2340.py	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	1;"	kind:file	line:1
+0009_auto_20180314_2341.py	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	1;"	kind:file	line:1
+0010_auto_20180314_2353.py	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	1;"	kind:file	line:1
+0011_auto_20180315_0012.py	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	1;"	kind:file	line:1
+0012_auto_20180320_1543.py	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	1;"	kind:file	line:1
+0013_auto_20180320_1559.py	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	1;"	kind:file	line:1
+0014_auto_20180320_1610.py	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	1;"	kind:file	line:1
+0015_auto_20180320_1615.py	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	1;"	kind:file	line:1
+0016_auto_20180320_1620.py	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	1;"	kind:file	line:1
+0017_auto_20180320_1622.py	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	1;"	kind:file	line:1
+0018_auto_20180320_1820.py	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	1;"	kind:file	line:1
+0019_auto_20180406_1413.py	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	1;"	kind:file	line:1
+0020_auto_20180408_1901.py	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	1;"	kind:file	line:1
+0021_auto_20180415_2257.py	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	1;"	kind:file	line:1
+0022_auto_20180415_2309.py	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	1;"	kind:file	line:1
+0023_auto_20180416_2321.py	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	1;"	kind:file	line:1
+0024_auto_20180416_2324.py	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	1;"	kind:file	line:1
+0025_auto_20180416_2329.py	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	1;"	kind:file	line:1
+0026_remove_cleanup_date.py	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	1;"	kind:file	line:1
+0027_auto_20180416_2337.py	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	1;"	kind:file	line:1
+0028_location_query_string.py	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	1;"	kind:file	line:1
+0029_auto_20180417_2317.py	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	1;"	kind:file	line:1
+ADMIN_PASSWORD	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^ADMIN_PASSWORD = settings.SCF_ADMIN_PASSWORD$/;"	kind:variable	line:12
+ADMIN_USERNAME	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^ADMIN_USERNAME = settings.SCF_ADMIN_USER$/;"	kind:variable	line:11
+ALLOWED_HOSTS	../trashtalk/settings/beta.py	/^ALLOWED_HOSTS = ['trashtalkdev.herokuapp.com', 'trashtalk.divethree.com', '107.170.255.6']$/;"	kind:variable	line:42
+ALLOWED_HOSTS	../trashtalk/settings/common.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:42
+ALLOWED_HOSTS	../trashtalk/settings/dev.py	/^ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']$/;"	kind:variable	line:40
+ALLOWED_HOSTS	../trashtalk/settings/production.py	/^ALLOWED_HOSTS = ['trashtalkdev.herokuapp.com', 'trashtalk.divethree.com', '107.170.255.6']$/;"	kind:variable	line:42
+ALLOWED_HOSTS	../trashtalk/settings/qa.py	/^ALLOWED_HOSTS = ['trashtalkdev.herokuapp.com', 'trashtalk.divethree.com', QA_IP]$/;"	kind:variable	line:43
+AUTH_PASSWORD_VALIDATORS	../trashtalk/settings/common.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:135
+AUTH_PASSWORD_VALIDATORS	../trashtalk/settings/dev.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:123
+AUTH_USER_MODEL	../trashtalk/settings/common.py	/^AUTH_USER_MODEL = 'accounts.User'$/;"	kind:variable	line:133
+AbstractUser	../trashtalk/apps/accounts/models.py	/^from django.contrib.auth.models import AbstractUser$/;"	kind:namespace	line:1
+AccountsConfig	../trashtalk/apps/accounts/apps.py	/^class AccountsConfig(AppConfig):$/;"	kind:class	line:4
+AppConfig	../trashtalk/apps/accounts/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:1
+AppConfig	../trashtalk/apps/cleanups/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:1
+AppConfig	../trashtalk/apps/core/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:3
+AppConfig	../trashtalk/apps/integrations/apps.py	/^from django.apps import AppConfig$/;"	kind:namespace	line:1
+BASE_CALL	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^BASE_CALL = settings.SCF_BASE_CALL$/;"	kind:variable	line:10
+BaseCommand	../trashtalk/apps/core/management/commands/seed.py	/^from django.core.management.base import BaseCommand$/;"	kind:namespace	line:3
+CLEANUP_BASE_URL	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^CLEANUP_BASE_URL = settings.SCF_CLEANUP_BASE_URL$/;"	kind:variable	line:13
+CORS_ORIGIN_ALLOW_ALL	../trashtalk/settings/dev.py	/^CORS_ORIGIN_ALLOW_ALL = True$/;"	kind:variable	line:98
+CORS_ORIGIN_WHITELIST	../trashtalk/settings/dev.py	/^CORS_ORIGIN_WHITELIST = ()$/;"	kind:variable	line:101
+COUNTRIES	../trashtalk/apps/cleanups/constants.py	/^COUNTRIES = [$/;"	kind:variable	line:72
+COUNTRY_CODE_MAP	../trashtalk/apps/cleanups/constants.py	/^COUNTRY_CODE_MAP = {country['name']: country['code'] for country in COUNTRIES}$/;"	kind:variable	line:268
+COUNTRY_CODE_MAP	../trashtalk/apps/cleanups/models.py	/^from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP, LocationCategory as category$/;"	kind:namespace	line:6
+COUNTRY_NAME_MAP	../trashtalk/apps/cleanups/constants.py	/^COUNTRY_NAME_MAP = {v: k for k, v in COUNTRY_CODE_MAP.items()}$/;"	kind:variable	line:273
+COUNTRY_TIMEZONES_MAP	../trashtalk/apps/cleanups/constants.py	/^COUNTRY_TIMEZONES_MAP = {country['name']: country['timezones'][0] for country in COUNTRIES}$/;"	kind:variable	line:270
+CSRF_TRUSTED_ORIGINS	../trashtalk/settings/dev.py	/^CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1']$/;"	kind:variable	line:41
+CharField	../trashtalk/apps/accounts/forms.py	/^from django.forms import ModelForm, PasswordInput, CharField$/;"	kind:namespace	line:1
+Cleanup	../trashtalk/apps/accounts/views.py	/^from cleanups.models import Cleanup$/;"	kind:namespace	line:18
+Cleanup	../trashtalk/apps/cleanups/admin.py	/^from .models import Cleanup, Location, RequiredTools, Tool, ToolCategory$/;"	kind:namespace	line:3
+Cleanup	../trashtalk/apps/cleanups/factories.py	/^from .models import Cleanup, Location, User$/;"	kind:namespace	line:6
+Cleanup	../trashtalk/apps/cleanups/forms.py	/^from .models import Cleanup, Location$/;"	kind:namespace	line:3
+Cleanup	../trashtalk/apps/cleanups/models.py	/^class Cleanup(models.Model):$/;"	kind:class	line:11
+Cleanup	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.serializers import Cleanup, Location, User$/;"	kind:namespace	line:17
+Cleanup	../trashtalk/apps/core/management/commands/seed.py	/^from cleanups.models import User, Cleanup, Location$/;"	kind:namespace	line:5
+Cleanup	../trashtalk/apps/core/utils.py	/^from cleanups.models import Cleanup$/;"	kind:namespace	line:8
+Cleanup	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^from .models import Cleanup$/;"	kind:namespace	line:14
+CleanupDetailAPIView	../trashtalk/apps/cleanups/views/api_views.py	/^class CleanupDetailAPIView(generics.RetrieveUpdateDestroyAPIView):$/;"	kind:class	line:19
+CleanupDetailView	../trashtalk/apps/cleanups/views/api_views.py	/^class CleanupDetailView(generics.RetrieveUpdateDestroyAPIView):$/;"	kind:class	line:33
+CleanupFactory	../trashtalk/apps/accounts/tests.py	/^from cleanups.factories import UserFactory, User, CleanupFactory$/;"	kind:namespace	line:8
+CleanupFactory	../trashtalk/apps/cleanups/factories.py	/^class CleanupFactory(factory.DjangoModelFactory):$/;"	kind:class	line:34
+CleanupForm	../trashtalk/apps/cleanups/forms.py	/^class CleanupForm(ModelForm):$/;"	kind:class	line:6
+CleanupFormSet	../trashtalk/apps/cleanups/forms.py	/^CleanupFormSet = inlineformset_factory(Location, Cleanup, form=CleanupForm,$/;"	kind:variable	line:19
+CleanupFormSet	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.forms import CleanupFormSet$/;"	kind:namespace	line:15
+CleanupListCreateAPIView	../trashtalk/apps/cleanups/views/api_views.py	/^class CleanupListCreateAPIView(generics.ListCreateAPIView):$/;"	kind:class	line:26
+CleanupSerializer	../trashtalk/apps/cleanups/serializers.py	/^class CleanupSerializer(serializers.ModelSerializer):$/;"	kind:class	line:38
+CleanupSerializer	../trashtalk/apps/cleanups/views/api_views.py	/^from cleanups.serializers import (CleanupSerializer,$/;"	kind:namespace	line:10
+CleanupsAPIViewsTestCase	../trashtalk/apps/cleanups/tests/test_views.py	/^class CleanupsAPIViewsTestCase(TestCase):$/;"	kind:class	line:11
+CleanupsConfig	../trashtalk/apps/cleanups/apps.py	/^class CleanupsConfig(AppConfig):$/;"	kind:class	line:4
+Command	../trashtalk/apps/core/management/commands/seed.py	/^class Command(BaseCommand):$/;"	kind:class	line:8
+Coordinates	../trashtalk/apps/cleanups/models.py	/^from .utils import Coordinates$/;"	kind:namespace	line:7
+Coordinates	../trashtalk/apps/cleanups/utils.py	/^Coordinates = namedtuple('Coordinates', ['latitude', 'longitude'])$/;"	kind:variable	line:29
+Coordinates	../trashtalk/apps/integrations/google_maps/api.py	/^Coordinates = namedtuple('Coordinates', ['latitude', 'longitude'])$/;"	kind:variable	line:21
+CoreConfig	../trashtalk/apps/core/apps.py	/^class CoreConfig(AppConfig):$/;"	kind:class	line:6
+CreateAPIView	../trashtalk/apps/accounts/views.py	/^from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,$/;"	kind:namespace	line:9
+DATABASES	../trashtalk/settings/beta.py	/^DATABASES = {$/;"	kind:variable	line:76
+DATABASES	../trashtalk/settings/common.py	/^DATABASES = {$/;"	kind:variable	line:124
+DATABASES	../trashtalk/settings/dev.py	/^DATABASES = {$/;"	kind:variable	line:106
+DATABASES	../trashtalk/settings/production.py	/^DATABASES = {$/;"	kind:variable	line:78
+DATABASES	../trashtalk/settings/qa.py	/^DATABASES = {$/;"	kind:variable	line:70
+DEBUG	../trashtalk/settings/beta.py	/^DEBUG = False$/;"	kind:variable	line:38
+DEBUG	../trashtalk/settings/common.py	/^DEBUG = False$/;"	kind:variable	line:38
+DEBUG	../trashtalk/settings/dev.py	/^DEBUG = True$/;"	kind:variable	line:36
+DEBUG	../trashtalk/settings/production.py	/^DEBUG = False$/;"	kind:variable	line:38
+DEBUG	../trashtalk/settings/qa.py	/^DEBUG = False$/;"	kind:variable	line:38
+DEBUG_TOOLBAR_PANELS	../trashtalk/settings/dev.py	/^DEBUG_TOOLBAR_PANELS = [$/;"	kind:variable	line:81
+DEFAULT_CITY	../trashtalk/apps/cleanups/constants.py	/^DEFAULT_CITY = "Oakland"$/;"	kind:variable	line:3
+DEFAULT_CITY	../trashtalk/apps/cleanups/models.py	/^    DEFAULT_CITY = "Oakland"$/;"	kind:variable	line:60
+DEFAULT_CITY	../trashtalk/apps/cleanups/utils.py	/^from .constants import DEFAULT_CITY, DEFAULT_STATE$/;"	kind:namespace	line:12
+DEFAULT_COUNTRY	../trashtalk/apps/cleanups/models.py	/^    DEFAULT_COUNTRY = "United States"$/;"	kind:variable	line:62
+DEFAULT_GEOLOC	../trashtalk/apps/cleanups/constants.py	/^DEFAULT_GEOLOC = "{0}, {1}".format(DEFAULT_CITY, DEFAULT_STATE)$/;"	kind:variable	line:5
+DEFAULT_ICON	../trashtalk/apps/cleanups/models.py	/^    DEFAULT_ICON = 'images\/defaults\/bow_rake.jpg'$/;"	kind:variable	line:12
+DEFAULT_STATE	../trashtalk/apps/cleanups/constants.py	/^DEFAULT_STATE = "California"$/;"	kind:variable	line:4
+DEFAULT_STATE	../trashtalk/apps/cleanups/models.py	/^    DEFAULT_STATE = "California"$/;"	kind:variable	line:61
+DEFAULT_STATE	../trashtalk/apps/cleanups/utils.py	/^from .constants import DEFAULT_CITY, DEFAULT_STATE$/;"	kind:namespace	line:12
+DJANGO_ROOT	../trashtalk/settings/common.py	/^DJANGO_ROOT = dirname(os.path.abspath(__file__))$/;"	kind:variable	line:32
+ENVIRONMENT	../trashtalk/settings/beta.py	/^ENVIRONMENT = 'beta'$/;"	kind:variable	line:29
+ENVIRONMENT	../trashtalk/settings/dev.py	/^ENVIRONMENT = 'development'$/;"	kind:variable	line:28
+ENVIRONMENT	../trashtalk/settings/qa.py	/^ENVIRONMENT = 'qa'$/;"	kind:variable	line:29
+FIXTURE_DIRS	../trashtalk/settings/common.py	/^FIXTURE_DIRS = [$/;"	kind:variable	line:168
+Faker	../trashtalk/apps/core/management/commands/seed.py	/^from faker import Faker$/;"	kind:namespace	line:1
+FormParser	../trashtalk/apps/accounts/views.py	/^from rest_framework.parsers import FormParser$/;"	kind:namespace	line:12
+FormParser	../trashtalk/apps/cleanups/views/template_views.py	/^from rest_framework.parsers import FormParser$/;"	kind:namespace	line:11
+GOOGLE_API_KEY	../trashtalk/settings/dev.py	/^GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')$/;"	kind:variable	line:158
+GOOGLE_API_KEY	../trashtalk/settings/qa.py	/^GOOGLE_API_KEY = os.getenv('GOOGLE_MAPS_KEY')$/;"	kind:variable	line:107
+GOOGLE_MAPS_KEY	../trashtalk/settings/beta.py	/^GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')$/;"	kind:variable	line:112
+GOOGLE_MAPS_KEY	../trashtalk/settings/production.py	/^GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')$/;"	kind:variable	line:107
+GOOGLE_MAPS_KEY	../trashtalk/settings/qa.py	/^GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY')$/;"	kind:variable	line:106
+GOOGLE_SHEETS_KEY	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^GOOGLE_SHEETS_KEY = settings.GOOGLE_SHEETS_KEY$/;"	kind:variable	line:21
+GOOGLE_SHEETS_KEY	../trashtalk/settings/beta.py	/^GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')$/;"	kind:variable	line:119
+GOOGLE_SHEETS_KEY	../trashtalk/settings/dev.py	/^GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')$/;"	kind:variable	line:165
+GOOGLE_SHEETS_KEY	../trashtalk/settings/production.py	/^GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')$/;"	kind:variable	line:114
+GOOGLE_SHEETS_KEY	../trashtalk/settings/qa.py	/^GOOGLE_SHEETS_KEY = os.getenv('GOOGLE_SHEETS_KEY')$/;"	kind:variable	line:114
+GOOGLE_SHEETS_SCOPE	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^GOOGLE_SHEETS_SCOPE = settings.GOOGLE_SHEETS_SCOPE$/;"	kind:variable	line:20
+GOOGLE_SHEETS_SCOPE	../trashtalk/settings/beta.py	/^GOOGLE_SHEETS_SCOPE = ['https:\/\/spreadsheets.google.com\/feeds\/']$/;"	kind:variable	line:125
+GOOGLE_SHEETS_SCOPE	../trashtalk/settings/dev.py	/^GOOGLE_SHEETS_SCOPE = ['https:\/\/spreadsheets.google.com\/feeds\/']$/;"	kind:variable	line:171
+GOOGLE_SHEETS_SCOPE	../trashtalk/settings/production.py	/^GOOGLE_SHEETS_SCOPE = ['https:\/\/spreadsheets.google.com\/feeds\/']$/;"	kind:variable	line:120
+GOOGLE_SHEETS_SCOPE	../trashtalk/settings/qa.py	/^GOOGLE_SHEETS_SCOPE = ['https:\/\/spreadsheets.google.com\/feeds\/']$/;"	kind:variable	line:120
+GOOGLE_SHEETS_VALIDATION	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^GOOGLE_SHEETS_VALIDATION = settings.GOOGLE_SHEETS_VALIDATION$/;"	kind:variable	line:19
+GOOGLE_SHEETS_VALIDATION	../trashtalk/settings/beta.py	/^GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')$/;"	kind:variable	line:122
+GOOGLE_SHEETS_VALIDATION	../trashtalk/settings/dev.py	/^GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')$/;"	kind:variable	line:168
+GOOGLE_SHEETS_VALIDATION	../trashtalk/settings/production.py	/^GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')$/;"	kind:variable	line:117
+GOOGLE_SHEETS_VALIDATION	../trashtalk/settings/qa.py	/^GOOGLE_SHEETS_VALIDATION = os.getenv('GOOGLE_SHEETS_VALIDATION')$/;"	kind:variable	line:117
+GenericAPIView	../trashtalk/apps/accounts/views.py	/^from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,$/;"	kind:namespace	line:9
+GeocoderParseError	../trashtalk/apps/cleanups/utils.py	/^from geopy.exc import GeopyError, GeocoderQueryError, GeocoderParseError$/;"	kind:namespace	line:9
+GeocoderQueryError	../trashtalk/apps/cleanups/utils.py	/^from geopy.exc import GeopyError, GeocoderQueryError, GeocoderParseError$/;"	kind:namespace	line:9
+GeopyError	../trashtalk/apps/cleanups/utils.py	/^from geopy.exc import GeopyError, GeocoderQueryError, GeocoderParseError$/;"	kind:namespace	line:9
+GoogleAPIResponse	../trashtalk/apps/integrations/google_maps/api.py	/^class GoogleAPIResponse:$/;"	kind:class	line:79
+GoogleAPITestCase	../trashtalk/apps/integrations/tests/test_google_maps.py	/^class GoogleAPITestCase(TestCase):$/;"	kind:class	line:8
+GoogleMapsApi	../trashtalk/apps/integrations/google_maps/api.py	/^class GoogleMapsApi(object):$/;"	kind:class	line:24
+GoogleMapsApi	../trashtalk/apps/integrations/tests/test_google_maps.py	/^from integrations.google_maps.api import GoogleMapsApi$/;"	kind:namespace	line:4
+GoogleV3	../trashtalk/apps/cleanups/utils.py	/^from geopy.geocoders import Nominatim, GoogleV3$/;"	kind:namespace	line:10
+HEADER	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^HEADER = settings.SCF_HEADER$/;"	kind:variable	line:9
+HttpResponseBadRequest	../trashtalk/apps/cleanups/views/template_views.py	/^from django.http.response import HttpResponseBadRequest$/;"	kind:namespace	line:8
+HttpResponseForbidden	../trashtalk/apps/core/utils.py	/^from django.http.response import HttpResponseForbidden$/;"	kind:namespace	line:6
+INSTALLED_APPS	../trashtalk/settings/common.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:49
+INTERNAL_IPS	../trashtalk/settings/dev.py	/^INTERNAL_IPS = ('127.0.0.1',)$/;"	kind:variable	line:80
+IntegrationsConfig	../trashtalk/apps/integrations/apps.py	/^class IntegrationsConfig(AppConfig):$/;"	kind:class	line:4
+IntegrityError	../trashtalk/apps/accounts/views.py	/^from django.db.utils import IntegrityError$/;"	kind:namespace	line:5
+IsAdminUser	../trashtalk/apps/accounts/views.py	/^from rest_framework.permissions import (IsAdminUser, IsAuthenticatedOrReadOnly)$/;"	kind:namespace	line:11
+IsAuthenticated	../trashtalk/apps/accounts/views.py	/^from rest_framework.permissions import IsAuthenticated$/;"	kind:namespace	line:13
+IsAuthenticatedOrReadOnly	../trashtalk/apps/accounts/views.py	/^from rest_framework.permissions import (IsAdminUser, IsAuthenticatedOrReadOnly)$/;"	kind:namespace	line:11
+IsAuthenticatedOrReadOnly	../trashtalk/apps/cleanups/views/api_views.py	/^from rest_framework.permissions import IsAuthenticatedOrReadOnly$/;"	kind:namespace	line:4
+LANGUAGE_CODE	../trashtalk/settings/common.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:109
+LOCATION_CATEGORIES	../trashtalk/apps/cleanups/models.py	/^    LOCATION_CATEGORIES = [(category.intersection, 'Intersection'),$/;"	kind:variable	line:63
+LOGGING	../trashtalk/settings/beta.py	/^LOGGING = {$/;"	kind:variable	line:134
+LOGGING	../trashtalk/settings/common.py	/^LOGGING = {$/;"	kind:variable	line:191
+LOGGING	../trashtalk/settings/dev.py	/^LOGGING = {$/;"	kind:variable	line:178
+LOGGING	../trashtalk/settings/production.py	/^LOGGING = {$/;"	kind:variable	line:130
+LOGGING	../trashtalk/settings/qa.py	/^LOGGING = {$/;"	kind:variable	line:129
+LOGIN_URL	../trashtalk/settings/common.py	/^LOGIN_URL = '\/login\/'$/;"	kind:variable	line:85
+ListAPIView	../trashtalk/apps/accounts/views.py	/^from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,$/;"	kind:namespace	line:9
+Location	../trashtalk/apps/cleanups/admin.py	/^from .models import Cleanup, Location, RequiredTools, Tool, ToolCategory$/;"	kind:namespace	line:3
+Location	../trashtalk/apps/cleanups/factories.py	/^from .models import Cleanup, Location, User$/;"	kind:namespace	line:6
+Location	../trashtalk/apps/cleanups/forms.py	/^from .models import Cleanup, Location$/;"	kind:namespace	line:3
+Location	../trashtalk/apps/cleanups/models.py	/^class Location(models.Model):$/;"	kind:class	line:59
+Location	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.serializers import Cleanup, Location, User$/;"	kind:namespace	line:17
+Location	../trashtalk/apps/core/management/commands/seed.py	/^from cleanups.models import User, Cleanup, Location$/;"	kind:namespace	line:5
+LocationCategory	../trashtalk/apps/cleanups/constants.py	/^class LocationCategory:$/;"	kind:class	line:276
+LocationFactory	../trashtalk/apps/cleanups/factories.py	/^class LocationFactory(factory.DjangoModelFactory):$/;"	kind:class	line:23
+LocationForm	../trashtalk/apps/cleanups/forms.py	/^class LocationForm(ModelForm):$/;"	kind:class	line:12
+LocationListCreateView	../trashtalk/apps/cleanups/views/api_views.py	/^class LocationListCreateView(generics.ListCreateAPIView):$/;"	kind:class	line:39
+LocationSerializer	../trashtalk/apps/cleanups/serializers.py	/^class LocationSerializer(serializers.ModelSerializer):$/;"	kind:class	line:30
+LoginView	../trashtalk/apps/accounts/views.py	/^class LoginView(GenericAPIView):$/;"	kind:class	line:47
+LoginView	../trashtalk/urls.py	/^from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)$/;"	kind:namespace	line:22
+MEDIA_ROOT	../trashtalk/settings/common.py	/^MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads')$/;"	kind:variable	line:158
+MEDIA_ROOT	../trashtalk/settings/dev.py	/^MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads')$/;"	kind:variable	line:144
+MEDIA_URL	../trashtalk/settings/common.py	/^MEDIA_URL = '\/media\/'$/;"	kind:variable	line:157
+MEDIA_URL	../trashtalk/settings/dev.py	/^MEDIA_URL = '\/media\/'$/;"	kind:variable	line:143
+MIDDLEWARE	../trashtalk/settings/common.py	/^MIDDLEWARE = [$/;"	kind:variable	line:70
+Meta	../trashtalk/apps/accounts/forms.py	/^    class Meta:$/;"	kind:class	line:12
+Meta	../trashtalk/apps/accounts/forms.py	/^    class Meta:$/;"	kind:class	line:20
+Meta	../trashtalk/apps/accounts/serializers.py	/^    class Meta:$/;"	kind:class	line:13
+Meta	../trashtalk/apps/cleanups/factories.py	/^    class Meta:$/;"	kind:class	line:12
+Meta	../trashtalk/apps/cleanups/factories.py	/^    class Meta:$/;"	kind:class	line:25
+Meta	../trashtalk/apps/cleanups/factories.py	/^    class Meta:$/;"	kind:class	line:36
+Meta	../trashtalk/apps/cleanups/forms.py	/^    class Meta:$/;"	kind:class	line:13
+Meta	../trashtalk/apps/cleanups/forms.py	/^    class Meta:$/;"	kind:class	line:7
+Meta	../trashtalk/apps/cleanups/models.py	/^    class Meta:$/;"	kind:class	line:126
+Meta	../trashtalk/apps/cleanups/models.py	/^    class Meta:$/;"	kind:class	line:154
+Meta	../trashtalk/apps/cleanups/serializers.py	/^    class Meta:$/;"	kind:class	line:13
+Meta	../trashtalk/apps/cleanups/serializers.py	/^    class Meta:$/;"	kind:class	line:20
+Meta	../trashtalk/apps/cleanups/serializers.py	/^    class Meta:$/;"	kind:class	line:25
+Meta	../trashtalk/apps/cleanups/serializers.py	/^    class Meta:$/;"	kind:class	line:32
+Meta	../trashtalk/apps/cleanups/serializers.py	/^    class Meta:$/;"	kind:class	line:45
+Migration	../trashtalk/apps/accounts/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:11
+Migration	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:7
+Migration	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:6
+Migration	../trashtalk/apps/core/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+ModelForm	../trashtalk/apps/accounts/forms.py	/^from django.forms import ModelForm, PasswordInput, CharField$/;"	kind:namespace	line:1
+ModelForm	../trashtalk/apps/cleanups/forms.py	/^from django.forms import ModelForm, inlineformset_factory, modelformset_factory$/;"	kind:namespace	line:1
+Nominatim	../trashtalk/apps/cleanups/utils.py	/^from geopy.geocoders import Nominatim, GoogleV3$/;"	kind:namespace	line:10
+ObjectDoesNotExist	../trashtalk/apps/cleanups/views/template_views.py	/^from django.core.exceptions import ObjectDoesNotExist$/;"	kind:namespace	line:7
+PROJECT_DIR	../trashtalk/settings/common.py	/^PROJECT_DIR = dirname(DJANGO_ROOT)$/;"	kind:variable	line:35
+PROJECT_PATH	../trashtalk/settings/__init__.py	/^from .utils import PROJECT_PATH$/;"	kind:namespace	line:5
+PROJECT_PATH	../trashtalk/settings/utils.py	/^PROJECT_PATH = dirname(dirname(abspath(__file__)))$/;"	kind:variable	line:7
+PasswordInput	../trashtalk/apps/accounts/forms.py	/^from django.forms import ModelForm, PasswordInput, CharField$/;"	kind:namespace	line:1
+Place	../trashtalk/apps/cleanups/utils.py	/^Place = namedtuple('Place', ['name', 'number', 'street', 'district', 'city', 'county',$/;"	kind:variable	line:27
+Place	../trashtalk/apps/integrations/google_maps/api.py	/^Place = namedtuple('Place', ['number', 'street', 'district', 'city', 'county', 'state',$/;"	kind:variable	line:19
+QA_IP	../trashtalk/settings/qa.py	/^QA_IP = os.getenv('QA_IP', None)$/;"	kind:variable	line:42
+RAVEN_CONFIG	../trashtalk/settings/beta.py	/^RAVEN_CONFIG = {$/;"	kind:variable	line:65
+RAVEN_CONFIG	../trashtalk/settings/production.py	/^RAVEN_CONFIG = {$/;"	kind:variable	line:65
+REST_FRAMEWORK_DOCS	../trashtalk/settings/beta.py	/^REST_FRAMEWORK_DOCS = {$/;"	kind:variable	line:60
+REST_FRAMEWORK_DOCS	../trashtalk/settings/common.py	/^REST_FRAMEWORK_DOCS = {$/;"	kind:variable	line:115
+REST_FRAMEWORK_DOCS	../trashtalk/settings/production.py	/^REST_FRAMEWORK_DOCS = {$/;"	kind:variable	line:60
+REST_FRAMEWORK_DOCS	../trashtalk/settings/qa.py	/^REST_FRAMEWORK_DOCS = {$/;"	kind:variable	line:62
+ROOT_URLCONF	../trashtalk/settings/common.py	/^ROOT_URLCONF = 'trashtalk.urls'$/;"	kind:variable	line:84
+RequiredTools	../trashtalk/apps/cleanups/admin.py	/^from .models import Cleanup, Location, RequiredTools, Tool, ToolCategory$/;"	kind:namespace	line:3
+RequiredTools	../trashtalk/apps/cleanups/models.py	/^class RequiredTools(models.Model): # pylint: disable=too-few-public-methods$/;"	kind:class	line:149
+RequiredToolsSerializer	../trashtalk/apps/cleanups/serializers.py	/^class RequiredToolsSerializer(serializers.ModelSerializer):$/;"	kind:class	line:24
+RequiredToolsView	../trashtalk/apps/cleanups/views/api_views.py	/^class RequiredToolsView():$/;"	kind:class	line:52
+Response	../trashtalk/apps/accounts/views.py	/^from rest_framework.response import Response$/;"	kind:namespace	line:15
+SCF_ADMIN_PASSWORD	../trashtalk/settings/common.py	/^SCF_ADMIN_PASSWORD = os.getenv("SCF_ADMIN_PASSWORD")$/;"	kind:variable	line:183
+SCF_ADMIN_USER	../trashtalk/settings/common.py	/^SCF_ADMIN_USER = os.getenv("SCF_ADMIN_USER")$/;"	kind:variable	line:182
+SCF_BASE_CALL	../trashtalk/settings/common.py	/^SCF_BASE_CALL = "https:\/\/test.seeclickfix.com\/api\/v2\/issues"$/;"	kind:variable	line:181
+SCF_CLEANUP_BASE_URL	../trashtalk/settings/common.py	/^SCF_CLEANUP_BASE_URL = os.getenv("SCF_CLEANUP_BASE_URL")$/;"	kind:variable	line:184
+SCF_HEADER	../trashtalk/settings/common.py	/^SCF_HEADER = {"Content-type": "application\/json"}$/;"	kind:variable	line:180
+SECRET_KEY	../trashtalk/settings/beta.py	/^SECRET_KEY = os.getenv('TRASHTALK_SECRET_KEY')$/;"	kind:variable	line:35
+SECRET_KEY	../trashtalk/settings/production.py	/^SECRET_KEY = os.getenv('TRASHTALK_SECRET_KEY')$/;"	kind:variable	line:35
+SECRET_KEY	../trashtalk/settings/qa.py	/^SECRET_KEY = os.getenv('TRASHTALK_SECRET_KEY')$/;"	kind:variable	line:35
+STATE_CODE_MAP	../trashtalk/apps/cleanups/constants.py	/^STATE_CODE_MAP = {v:k for k, v in STATE_NAME_MAP.items()}$/;"	kind:variable	line:69
+STATE_CODE_MAP	../trashtalk/apps/cleanups/models.py	/^from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP, LocationCategory as category$/;"	kind:namespace	line:6
+STATE_NAME_MAP	../trashtalk/apps/cleanups/constants.py	/^STATE_NAME_MAP = {$/;"	kind:variable	line:8
+STATICFILES_DIRS	../trashtalk/settings/beta.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:101
+STATICFILES_DIRS	../trashtalk/settings/common.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:160
+STATICFILES_DIRS	../trashtalk/settings/production.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:96
+STATICFILES_DIRS	../trashtalk/settings/qa.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:95
+STATICFILES_STORAGE	../trashtalk/settings/production.py	/^STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'$/;"	kind:variable	line:99
+STATIC_ROOT	../trashtalk/settings/beta.py	/^STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')$/;"	kind:variable	line:99
+STATIC_ROOT	../trashtalk/settings/common.py	/^STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')$/;"	kind:variable	line:156
+STATIC_ROOT	../trashtalk/settings/production.py	/^STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')$/;"	kind:variable	line:94
+STATIC_ROOT	../trashtalk/settings/qa.py	/^STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')$/;"	kind:variable	line:93
+STATIC_URL	../trashtalk/settings/common.py	/^STATIC_URL = '\/assets\/'$/;"	kind:variable	line:155
+STATIC_URL	../trashtalk/settings/dev.py	/^STATIC_URL = '\/assets\/'$/;"	kind:variable	line:142
+StatusCodes	../trashtalk/apps/cleanups/utils.py	/^StatusCodes = namedtuple('StatusCodes', ['HTTP_200_OK', 'HTTP_201_CREATED',$/;"	kind:variable	line:18
+TEMPLATES	../trashtalk/settings/common.py	/^TEMPLATES = [$/;"	kind:variable	line:87
+TEMPLATES	../trashtalk/settings/dev.py	/^TEMPLATES = [$/;"	kind:variable	line:62
+TIME_ZONE	../trashtalk/settings/common.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:110
+TemplateHTMLRenderer	../trashtalk/apps/accounts/views.py	/^from rest_framework.renderers import TemplateHTMLRenderer$/;"	kind:namespace	line:14
+TestCase	../trashtalk/apps/accounts/tests.py	/^from django.test import TestCase$/;"	kind:namespace	line:4
+TestCase	../trashtalk/apps/cleanups/tests/test_views.py	/^from django.test import TestCase$/;"	kind:namespace	line:5
+TestCase	../trashtalk/apps/core/tests.py	/^from django.test import TestCase$/;"	kind:namespace	line:1
+TestCase	../trashtalk/apps/integrations/tests/test_google_maps.py	/^from django.test import TestCase$/;"	kind:namespace	line:2
+TimeStampedModel	../trashtalk/apps/core/models.py	/^class TimeStampedModel(models.Model):$/;"	kind:class	line:6
+Tool	../trashtalk/apps/cleanups/admin.py	/^from .models import Cleanup, Location, RequiredTools, Tool, ToolCategory$/;"	kind:namespace	line:3
+Tool	../trashtalk/apps/cleanups/models.py	/^class Tool(models.Model): # pylint: disable=too-few-public-methods$/;"	kind:class	line:133
+Tool	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.models import Tool, ToolCategory$/;"	kind:namespace	line:16
+ToolAdmin	../trashtalk/apps/cleanups/admin.py	/^class ToolAdmin(admin.ModelAdmin):$/;"	kind:class	line:6
+ToolCategory	../trashtalk/apps/cleanups/admin.py	/^from .models import Cleanup, Location, RequiredTools, Tool, ToolCategory$/;"	kind:namespace	line:3
+ToolCategory	../trashtalk/apps/cleanups/models.py	/^class ToolCategory(models.Model): $/;"	kind:class	line:122
+ToolCategory	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.models import Tool, ToolCategory$/;"	kind:namespace	line:16
+ToolCategorySerializer	../trashtalk/apps/cleanups/serializers.py	/^class ToolCategorySerializer(serializers.ModelSerializer):$/;"	kind:class	line:18
+ToolCategoryView	../trashtalk/apps/cleanups/views/api_views.py	/^class ToolCategoryView(generics.ListAPIView):$/;"	kind:class	line:47
+ToolSerializer	../trashtalk/apps/cleanups/serializers.py	/^class ToolSerializer(serializers.ModelSerializer):$/;"	kind:class	line:12
+ToolView	../trashtalk/apps/cleanups/views/api_views.py	/^class ToolView(generics.ListAPIView):$/;"	kind:class	line:43
+TrashTalkError	../trashtalk/apps/core/exceptions.py	/^class TrashTalkError(Exception):$/;"	kind:class	line:5
+TrashTalkError	../trashtalk/apps/integrations/google_maps/api.py	/^from core.exceptions import TrashTalkError$/;"	kind:namespace	line:15
+TrashTalkHTTPError	../trashtalk/apps/core/exceptions.py	/^class TrashTalkHTTPError(TrashTalkError):$/;"	kind:class	line:27
+TrashtalkQueryError	../trashtalk/apps/core/exceptions.py	/^class TrashtalkQueryError(TrashTalkError):$/;"	kind:class	line:23
+USE_I18N	../trashtalk/settings/common.py	/^USE_I18N = True$/;"	kind:variable	line:111
+USE_L10N	../trashtalk/settings/common.py	/^USE_L10N = True$/;"	kind:variable	line:112
+USE_TZ	../trashtalk/settings/common.py	/^USE_TZ = True$/;"	kind:variable	line:113
+UniqueValidator	../trashtalk/apps/accounts/serializers.py	/^from rest_framework.validators import UniqueValidator$/;"	kind:namespace	line:2
+User	../trashtalk/apps/accounts/forms.py	/^from .models import User$/;"	kind:namespace	line:3
+User	../trashtalk/apps/accounts/models.py	/^class User(AbstractUser):$/;"	kind:class	line:7
+User	../trashtalk/apps/accounts/serializers.py	/^from .models import User$/;"	kind:namespace	line:4
+User	../trashtalk/apps/accounts/tests.py	/^from cleanups.factories import UserFactory, User, CleanupFactory$/;"	kind:namespace	line:8
+User	../trashtalk/apps/accounts/views.py	/^from .serializers import User, UserSerializer$/;"	kind:namespace	line:16
+User	../trashtalk/apps/cleanups/factories.py	/^from .models import Cleanup, Location, User$/;"	kind:namespace	line:6
+User	../trashtalk/apps/cleanups/models.py	/^from accounts.models import User$/;"	kind:namespace	line:5
+User	../trashtalk/apps/cleanups/serializers.py	/^from accounts.serializers import User$/;"	kind:namespace	line:4
+User	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.serializers import Cleanup, Location, User$/;"	kind:namespace	line:17
+User	../trashtalk/apps/core/management/commands/seed.py	/^from cleanups.models import User, Cleanup, Location$/;"	kind:namespace	line:5
+UserAuthTestCase	../trashtalk/apps/accounts/tests.py	/^class UserAuthTestCase(TestCase):$/;"	kind:class	line:11
+UserCreateAPIView	../trashtalk/api_urls.py	/^from accounts.views import UserCreateAPIView, UserListAPIView, UserDetailAPIView$/;"	kind:namespace	line:3
+UserCreateAPIView	../trashtalk/apps/accounts/views.py	/^class UserCreateAPIView(CreateAPIView):$/;"	kind:class	line:100
+UserDashboardView	../trashtalk/apps/accounts/views.py	/^class UserDashboardView(RetrieveUpdateDestroyAPIView):$/;"	kind:class	line:76
+UserDashboardView	../trashtalk/urls.py	/^from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)$/;"	kind:namespace	line:22
+UserDetailAPIView	../trashtalk/api_urls.py	/^from accounts.views import UserCreateAPIView, UserListAPIView, UserDetailAPIView$/;"	kind:namespace	line:3
+UserDetailAPIView	../trashtalk/apps/accounts/views.py	/^class UserDetailAPIView(RetrieveUpdateDestroyAPIView):$/;"	kind:class	line:114
+UserFactory	../trashtalk/apps/accounts/tests.py	/^from cleanups.factories import UserFactory, User, CleanupFactory$/;"	kind:namespace	line:8
+UserFactory	../trashtalk/apps/cleanups/factories.py	/^class UserFactory(factory.DjangoModelFactory):$/;"	kind:class	line:10
+UserListAPIView	../trashtalk/api_urls.py	/^from accounts.views import UserCreateAPIView, UserListAPIView, UserDetailAPIView$/;"	kind:namespace	line:3
+UserListAPIView	../trashtalk/apps/accounts/views.py	/^class UserListAPIView(ListAPIView):$/;"	kind:class	line:107
+UserLoginForm	../trashtalk/apps/accounts/forms.py	/^class UserLoginForm(ModelForm):$/;"	kind:class	line:6
+UserSerializer	../trashtalk/apps/accounts/serializers.py	/^class UserSerializer(serializers.ModelSerializer):$/;"	kind:class	line:7
+UserSerializer	../trashtalk/apps/accounts/views.py	/^from .serializers import User, UserSerializer$/;"	kind:namespace	line:16
+UserSignupForm	../trashtalk/apps/accounts/forms.py	/^class UserSignupForm(ModelForm):$/;"	kind:class	line:19
+ValidatorPatterns	../trashtalk/apps/cleanups/constants.py	/^class ValidatorPatterns:$/;"	kind:class	line:284
+WSGI_APPLICATION	../trashtalk/settings/common.py	/^WSGI_APPLICATION = 'trashtalk.wsgi.application'$/;"	kind:variable	line:107
+_	../trashtalk/apps/accounts/models.py	/^from django.utils.translation import ugettext_lazy as _$/;"	kind:namespace	line:4
+__init_.py	../trashtalk/apps/core/management/__init_.py	1;"	kind:file	line:1
+__init_.py	../trashtalk/apps/core/management/commands/__init_.py	1;"	kind:file	line:1
+__init__	../trashtalk/apps/accounts/forms.py	/^    def __init__(self, *args, **kwargs):$/;"	kind:member	line:7
+__init__	../trashtalk/apps/core/exceptions.py	/^    def __init__(self, message, code=_code, base_exception=None):$/;"	kind:member	line:8
+__init__	../trashtalk/apps/core/exceptions.py	/^    def __init__(self, message, status=None, url=None, detail=None, **kwargs):$/;"	kind:member	line:28
+__init__	../trashtalk/apps/integrations/google_maps/api.py	/^    def __init__(self, query=None):$/;"	kind:member	line:26
+__init__	../trashtalk/apps/integrations/google_maps/api.py	/^    def __init__(self, response, query=None):$/;"	kind:member	line:87
+__init__.py	../trashtalk/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/accounts/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/accounts/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/cleanups/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/cleanups/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/cleanups/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/cleanups/views/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/core/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/core/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/google_maps/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/google_sheets/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/see_click_fix/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/apps/integrations/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../trashtalk/settings/__init__.py	1;"	kind:file	line:1
+__str__	../trashtalk/apps/accounts/models.py	/^    def __str__(self):$/;"	kind:member	line:14
+__str__	../trashtalk/apps/cleanups/models.py	/^    def __str__(self):$/;"	kind:member	line:129
+__str__	../trashtalk/apps/cleanups/models.py	/^    def __str__(self):$/;"	kind:member	line:145
+__str__	../trashtalk/apps/cleanups/models.py	/^    def __str__(self):$/;"	kind:member	line:158
+__str__	../trashtalk/apps/cleanups/models.py	/^    def __str__(self):$/;"	kind:member	line:24
+__str__	../trashtalk/apps/cleanups/models.py	/^    def __str__(self):$/;"	kind:member	line:83
+__str__	../trashtalk/apps/core/exceptions.py	/^    def __str__(self):$/;"	kind:member	line:19
+__str__	../trashtalk/apps/core/exceptions.py	/^    def __str__(self):$/;"	kind:member	line:45
+_code	../trashtalk/apps/core/exceptions.py	/^    _code = 'TRASHTALK_ERROR'$/;"	kind:variable	line:6
+_get_data	../trashtalk/apps/integrations/google_maps/api.py	/^    def _get_data(self, response):$/;"	kind:member	line:94
+abspath	../trashtalk/settings/utils.py	/^from os.path import dirname, abspath$/;"	kind:namespace	line:3
+add_arguments	../trashtalk/apps/core/management/commands/seed.py	/^    def add_arguments(self, parser):$/;"	kind:member	line:11
+address	../trashtalk/apps/cleanups/constants.py	/^    address = 'address'$/;"	kind:variable	line:279
+address	../trashtalk/apps/cleanups/models.py	/^    def address(self):$/;"	kind:member	line:37
+address	../trashtalk/apps/cleanups/models.py	/^    def address(self):$/;"	kind:member	line:89
+admin	../trashtalk/apps/accounts/admin.py	/^from django.contrib import admin$/;"	kind:namespace	line:1
+admin	../trashtalk/apps/cleanups/admin.py	/^from django.contrib import admin$/;"	kind:namespace	line:1
+admin	../trashtalk/apps/integrations/admin.py	/^from django.contrib import admin$/;"	kind:namespace	line:1
+admin	../trashtalk/urls.py	/^from django.contrib import admin$/;"	kind:namespace	line:17
+admin.py	../trashtalk/apps/accounts/admin.py	1;"	kind:file	line:1
+admin.py	../trashtalk/apps/cleanups/admin.py	1;"	kind:file	line:1
+admin.py	../trashtalk/apps/integrations/admin.py	1;"	kind:file	line:1
+api.py	../trashtalk/apps/integrations/google_maps/api.py	1;"	kind:file	line:1
+api.py	../trashtalk/apps/integrations/google_sheets/api.py	1;"	kind:file	line:1
+api.py	../trashtalk/apps/integrations/see_click_fix/api.py	1;"	kind:file	line:1
+api_urls.py	../trashtalk/api_urls.py	1;"	kind:file	line:1
+api_view	../trashtalk/apps/cleanups/views/template_views.py	/^from rest_framework.decorators import api_view, parser_classes$/;"	kind:namespace	line:10
+api_views.py	../trashtalk/apps/cleanups/views/api_views.py	1;"	kind:file	line:1
+app_name	../trashtalk/api_urls.py	/^app_name = 'trashtalk'$/;"	kind:variable	line:9
+application	../trashtalk/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../trashtalk/apps/accounts/apps.py	1;"	kind:file	line:1
+apps.py	../trashtalk/apps/cleanups/apps.py	1;"	kind:file	line:1
+apps.py	../trashtalk/apps/core/apps.py	1;"	kind:file	line:1
+apps.py	../trashtalk/apps/integrations/apps.py	1;"	kind:file	line:1
+auth	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.models$/;"	kind:namespace	line:5
+auth	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.validators$/;"	kind:namespace	line:6
+auth_views	../trashtalk/urls.py	/^from django.contrib.auth import views as auth_views$/;"	kind:namespace	line:18
+authenticate	../trashtalk/apps/accounts/views.py	/^from django.contrib.auth import authenticate, login$/;"	kind:namespace	line:4
+beta.py	../trashtalk/settings/beta.py	1;"	kind:file	line:1
+blank	../trashtalk/apps/cleanups/models.py	/^        blank=True$/;"	kind:variable	line:142
+category	../trashtalk/apps/cleanups/models.py	/^    category = models.CharField(choices=LOCATION_CATEGORIES, max_length=100, blank=True, null=True)$/;"	kind:variable	line:81
+category	../trashtalk/apps/cleanups/models.py	/^    category = models.ForeignKey($/;"	kind:variable	line:138
+category	../trashtalk/apps/cleanups/models.py	/^from .constants import COUNTRY_CODE_MAP, STATE_CODE_MAP, LocationCategory as category$/;"	kind:namespace	line:6
+check_name	../trashtalk/apps/cleanups/models.py	/^    def check_name(self):$/;"	kind:member	line:42
+check_participants	../trashtalk/apps/cleanups/utils.py	/^def check_participants(user, participants):$/;"	kind:function	line:125
+city	../trashtalk/apps/cleanups/models.py	/^    city = models.CharField(max_length=100, default=DEFAULT_CITY)$/;"	kind:variable	line:72
+cleanup	../trashtalk/apps/cleanups/models.py	/^    cleanup = models.ForeignKey(Cleanup, on_delete=models.CASCADE)$/;"	kind:variable	line:151
+cleanup_create	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_create(request):$/;"	kind:function	line:63
+cleanup_delete	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_delete(request, *args, **kwargs):$/;"	kind:function	line:105
+cleanup_edit	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_edit(request, *args, **kwargs):$/;"	kind:function	line:25
+cleanup_edit	../trashtalk/urls.py	/^from cleanups.views.template_views import (cleanup_new, cleanup_edit, cleanup_list,$/;"	kind:namespace	line:23
+cleanup_factory	../trashtalk/apps/cleanups/factories.py	/^def cleanup_factory(request):$/;"	kind:function	line:47
+cleanup_factory	../trashtalk/apps/cleanups/views/template_views.py	/^from cleanups.factories import cleanup_factory$/;"	kind:namespace	line:14
+cleanup_join_view	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_join_view(request, *args, **kwargs):$/;"	kind:function	line:79
+cleanup_list	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_list(request):$/;"	kind:function	line:37
+cleanup_list	../trashtalk/urls.py	/^from cleanups.views.template_views import (cleanup_new, cleanup_edit, cleanup_list,$/;"	kind:namespace	line:23
+cleanup_new	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_new(request):$/;"	kind:function	line:45
+cleanup_new	../trashtalk/urls.py	/^from cleanups.views.template_views import (cleanup_new, cleanup_edit, cleanup_list,$/;"	kind:namespace	line:23
+cleanup_show	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_show(request, *args, **kwargs):$/;"	kind:function	line:31
+cleanup_update	../trashtalk/apps/cleanups/views/template_views.py	/^def cleanup_update(request, *args, **kwargs):$/;"	kind:function	line:94
+common.py	../trashtalk/settings/common.py	1;"	kind:file	line:1
+constants.py	../trashtalk/apps/cleanups/constants.py	1;"	kind:file	line:1
+contrib	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.models$/;"	kind:namespace	line:5
+contrib	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.validators$/;"	kind:namespace	line:6
+coordinates	../trashtalk/apps/cleanups/models.py	/^    def coordinates(self):$/;"	kind:member	line:94
+country	../trashtalk/apps/cleanups/models.py	/^    country = models.CharField(max_length=100, default=DEFAULT_COUNTRY)$/;"	kind:variable	line:77
+country_code	../trashtalk/apps/cleanups/models.py	/^    def country_code(self):$/;"	kind:member	line:106
+county	../trashtalk/apps/cleanups/models.py	/^    county = models.CharField(max_length=100, blank=True)$/;"	kind:variable	line:75
+create	../trashtalk/apps/accounts/serializers.py	/^    def create(self, validated_data):$/;"	kind:member	line:17
+create	../trashtalk/apps/cleanups/serializers.py	/^    def create(self, validated_data):$/;"	kind:member	line:51
+create_log_folder	../trashtalk/settings/production.py	/^from .utils import create_log_folder$/;"	kind:namespace	line:25
+create_log_folder	../trashtalk/settings/utils.py	/^def create_log_folder(path):$/;"	kind:function	line:26
+created	../trashtalk/apps/core/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:7
+cross_street	../trashtalk/apps/cleanups/factories.py	/^    cross_street = '23rd'$/;"	kind:variable	line:30
+cross_street	../trashtalk/apps/cleanups/models.py	/^    cross_street = models.CharField(max_length=100, blank=True)$/;"	kind:variable	line:71
+date_placeholder	../trashtalk/apps/cleanups/constants.py	/^    date_placeholder = "yyyy-mm-dd"$/;"	kind:variable	line:290
+datetime	../trashtalk/apps/accounts/views.py	/^from datetime import datetime$/;"	kind:namespace	line:2
+datetime	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^import datetime$/;"	kind:namespace	line:5
+datetime	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^import datetime$/;"	kind:namespace	line:3
+datetime	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^import datetime$/;"	kind:namespace	line:3
+datetime	../trashtalk/apps/cleanups/models.py	/^from datetime import datetime$/;"	kind:namespace	line:1
+datetime	../trashtalk/apps/cleanups/views/template_views.py	/^from datetime import datetime$/;"	kind:namespace	line:3
+datetime	../trashtalk/apps/core/utils.py	/^from datetime import datetime$/;"	kind:namespace	line:4
+datetime	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^import datetime$/;"	kind:namespace	line:10
+db	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:7
+db	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^import django.db.models.deletion$/;"	kind:namespace	line:6
+db	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+db	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+db	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+db	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+db	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+db	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+debug_toolbar	../trashtalk/urls.py	/^    import debug_toolbar$/;"	kind:namespace	line:63
+deepcopy	../trashtalk/apps/cleanups/views/template_views.py	/^from copy import deepcopy$/;"	kind:namespace	line:2
+default_image_path	../trashtalk/apps/cleanups/constants.py	/^    default_image_path = "\/static\/images\/defaults\/"$/;"	kind:variable	line:292
+deletion	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:7
+deletion	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^import django.db.models.deletion$/;"	kind:namespace	line:6
+deletion	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+deletion	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+deletion	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+deletion	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+deletion	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+deletion	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+dependencies	../trashtalk/apps/accounts/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:15
+dependencies	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:14
+dependencies	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^    dependencies = [$/;"	kind:variable	line:8
+dependencies	../trashtalk/apps/core/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+depth	../trashtalk/apps/cleanups/serializers.py	/^        depth = 1$/;"	kind:variable	line:49
+description	../trashtalk/apps/cleanups/factories.py	/^    description = factory.Sequence(lambda n: 'Cleanup number %s needs YOU!' % n)$/;"	kind:variable	line:40
+description	../trashtalk/apps/cleanups/models.py	/^    description = models.TextField(blank=True)$/;"	kind:variable	line:124
+description	../trashtalk/apps/cleanups/models.py	/^    description = models.TextField(blank=True)$/;"	kind:variable	line:135
+description	../trashtalk/apps/cleanups/models.py	/^    description = models.TextField(blank=True, null=True)$/;"	kind:variable	line:15
+dev.py	../trashtalk/settings/dev.py	1;"	kind:file	line:1
+directions	../trashtalk/apps/integrations/google_maps/api.py	/^    def directions(self, origin, destination, mode='driving'):$/;"	kind:member	line:67
+dirname	../trashtalk/settings/common.py	/^from os.path import dirname$/;"	kind:namespace	line:25
+dirname	../trashtalk/settings/utils.py	/^from os.path import dirname, abspath$/;"	kind:namespace	line:3
+district	../trashtalk/apps/cleanups/models.py	/^    district = models.CharField(max_length=100, blank=True)$/;"	kind:variable	line:76
+dj_database_url	../trashtalk/settings/production.py	/^import dj_database_url$/;"	kind:namespace	line:76
+django	../manage.py	/^            import django$/;"	kind:namespace	line:14
+django	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.models$/;"	kind:namespace	line:5
+django	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.validators$/;"	kind:namespace	line:6
+django	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.utils.timezone$/;"	kind:namespace	line:8
+django	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:7
+django	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^import django.db.models.deletion$/;"	kind:namespace	line:6
+django	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+django	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+django	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+django	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+django	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+django	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+email	../trashtalk/apps/accounts/models.py	/^    email = models.EmailField(_('email address'), blank=False, unique=True)$/;"	kind:variable	line:12
+email	../trashtalk/apps/accounts/serializers.py	/^    email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])$/;"	kind:variable	line:11
+email	../trashtalk/apps/cleanups/factories.py	/^    email = factory.LazyAttribute(lambda u: '%s@example.com' % u.username)$/;"	kind:variable	line:19
+end	../trashtalk/apps/cleanups/factories.py	/^    end = '2018-04-15 17:30'$/;"	kind:variable	line:42
+end	../trashtalk/apps/cleanups/models.py	/^    end = models.DateTimeField(blank=True, null=True)$/;"	kind:variable	line:17
+errno	../trashtalk/settings/utils.py	/^import errno$/;"	kind:namespace	line:5
+event_end	../trashtalk/apps/cleanups/models.py	/^    def event_end(self):$/;"	kind:member	line:53
+event_start	../trashtalk/apps/cleanups/models.py	/^    def event_start(self):$/;"	kind:member	line:48
+exceptions.py	../trashtalk/apps/core/exceptions.py	1;"	kind:file	line:1
+execute_from_command_line	../manage.py	/^        from django.core.management import execute_from_command_line$/;"	kind:namespace	line:8
+factories.py	../trashtalk/apps/cleanups/factories.py	1;"	kind:file	line:1
+factory	../trashtalk/apps/cleanups/factories.py	/^import factory$/;"	kind:namespace	line:1
+factory	../trashtalk/apps/cleanups/factories.py	/^import factory.faker$/;"	kind:namespace	line:2
+factory	../trashtalk/apps/cleanups/factories.py	/^import factory.fuzzy$/;"	kind:namespace	line:3
+faker	../trashtalk/apps/cleanups/factories.py	/^import factory.faker$/;"	kind:namespace	line:2
+field	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^            field=models.CharField(blank=True, max_length=150, verbose_name='last name'),$/;"	kind:variable	line:16
+field	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^            field=models.EmailField(max_length=254, unique=True, verbose_name='email address'),$/;"	kind:variable	line:16
+field	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cleanups.Location'),$/;"	kind:variable	line:23
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=10),$/;"	kind:variable	line:53
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:28
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:33
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:38
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:43
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:48
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(default='United States', max_length=100),$/;"	kind:variable	line:23
+field	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            field=models.CharField(default='images\/defaults\/bow_rake.jpg', max_length=300),$/;"	kind:variable	line:18
+field	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^            field=models.DateField(default=datetime.datetime.today),$/;"	kind:variable	line:19
+field	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            field=models.CharField(blank=True, max_length=100),$/;"	kind:variable	line:23
+field	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            field=models.CharField(choices=[('intersection', 'Intersection'), ('address', 'Address'), ('premise', 'Public Building'), ('landmark', 'Landmark')], max_length=100, null=True),$/;"	kind:variable	line:18
+field	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^            field=models.CharField(blank=True, default='images\/defaults\/bow_rake.jpg', max_length=300),$/;"	kind:variable	line:16
+field	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cleanups.Tool'),$/;"	kind:variable	line:33
+field	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            field=models.ImageField(default='', upload_to=''),$/;"	kind:variable	line:25
+field	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            field=models.TextField(blank=True),$/;"	kind:variable	line:20
+field	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^            field=models.IntegerField(blank=True, default=1),$/;"	kind:variable	line:16
+field	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='cleanups.ToolCategory'),$/;"	kind:variable	line:28
+field	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='cleanups.ToolCategory'),$/;"	kind:variable	line:21
+field	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cleanups.ToolCategory'),$/;"	kind:variable	line:22
+field	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            field=models.URLField(blank=True),$/;"	kind:variable	line:17
+field	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^            field=models.CharField(blank=True, max_length=200),$/;"	kind:variable	line:20
+field	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            field=models.DecimalField(blank=True, decimal_places=3, max_digits=6),$/;"	kind:variable	line:16
+field	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            field=models.DecimalField(blank=True, decimal_places=3, max_digits=6),$/;"	kind:variable	line:21
+field	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='cleanups', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:18
+field	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='cleanups', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:18
+field	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            field=models.DecimalField(blank=True, decimal_places=3, max_digits=6, null=True),$/;"	kind:variable	line:21
+field	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            field=models.DecimalField(blank=True, decimal_places=3, max_digits=6, null=True),$/;"	kind:variable	line:26
+field	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            field=models.TextField(blank=True),$/;"	kind:variable	line:16
+field	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            field=models.DateTimeField(blank=True, null=True),$/;"	kind:variable	line:17
+field	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            field=models.DateTimeField(blank=True, null=True),$/;"	kind:variable	line:22
+field	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            field=models.TimeField(blank=True, null=True),$/;"	kind:variable	line:27
+field	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            field=models.TimeField(blank=True, null=True),$/;"	kind:variable	line:32
+field	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            field=models.DateField(blank=True, default=datetime.datetime.today, null=True),$/;"	kind:variable	line:25
+field	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            field=models.TextField(blank=True, null=True),$/;"	kind:variable	line:30
+field	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            field=models.CharField(blank=True, choices=[('intersection', 'Intersection'), ('address', 'Address'), ('premise', 'Public Building'), ('landmark', 'Landmark')], max_length=100, null=True),$/;"	kind:variable	line:22
+field	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            field=models.CharField(blank=True, max_length=100, null=True),$/;"	kind:variable	line:37
+field	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            field=models.DecimalField(blank=True, decimal_places=4, max_digits=7, null=True),$/;"	kind:variable	line:27
+field	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            field=models.DecimalField(blank=True, decimal_places=4, max_digits=7, null=True),$/;"	kind:variable	line:32
+field	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            field=models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:17
+field	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^            field=models.CharField(blank=True, help_text='String used to query this location', max_length=200, null=True),$/;"	kind:variable	line:16
+fields	../trashtalk/apps/accounts/forms.py	/^        fields = ('email', 'password',)$/;"	kind:variable	line:22
+fields	../trashtalk/apps/accounts/forms.py	/^        fields = ('username', 'password',)$/;"	kind:variable	line:14
+fields	../trashtalk/apps/accounts/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:22
+fields	../trashtalk/apps/accounts/serializers.py	/^        fields = ('id', 'username', 'email', 'password',)$/;"	kind:variable	line:15
+fields	../trashtalk/apps/cleanups/forms.py	/^        fields = ('number', 'street', 'cross_street')$/;"	kind:variable	line:15
+fields	../trashtalk/apps/cleanups/forms.py	/^        fields = ('title', 'description', 'start', 'end', 'image', 'host')$/;"	kind:variable	line:9
+fields	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:21
+fields	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:34
+fields	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            fields=[$/;"	kind:variable	line:16
+fields	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            fields=[$/;"	kind:variable	line:24
+fields	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            fields=[$/;"	kind:variable	line:16
+fields	../trashtalk/apps/cleanups/serializers.py	/^        fields = ('id', 'title', 'description', 'image', 'participants',$/;"	kind:variable	line:47
+fields	../trashtalk/apps/cleanups/serializers.py	/^        fields = ['id', 'category', 'description', 'image_static_location', 'name']$/;"	kind:variable	line:15
+fields	../trashtalk/apps/cleanups/serializers.py	/^        fields = ['id', 'latitude', 'longitude', 'number', 'query', 'street']$/;"	kind:variable	line:34
+fields	../trashtalk/apps/cleanups/serializers.py	/^        fields = ['id', 'name', 'description']$/;"	kind:variable	line:22
+fields	../trashtalk/apps/cleanups/serializers.py	/^        fields = ['tool', 'cleanup', 'quantity']$/;"	kind:variable	line:27
+fields	../trashtalk/apps/core/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+first_name	../trashtalk/apps/cleanups/factories.py	/^    first_name = factory.Faker('name')$/;"	kind:variable	line:16
+forms.py	../trashtalk/apps/accounts/forms.py	1;"	kind:file	line:1
+forms.py	../trashtalk/apps/cleanups/forms.py	1;"	kind:file	line:1
+friendly_time	../trashtalk/apps/core/utils.py	/^def friendly_time(time):$/;"	kind:function	line:13
+fuzzy	../trashtalk/apps/cleanups/factories.py	/^import factory.fuzzy$/;"	kind:namespace	line:3
+gc	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^gc = gspread.authorize(credentials)$/;"	kind:variable	line:28
+generics	../trashtalk/apps/cleanups/views/api_views.py	/^from rest_framework import generics$/;"	kind:namespace	line:3
+geocode	../trashtalk/apps/integrations/google_maps/api.py	/^    def geocode(self, address):$/;"	kind:member	line:30
+geolocator	../trashtalk/apps/cleanups/utils.py	/^geolocator = Nominatim()$/;"	kind:variable	line:22
+get	../trashtalk/apps/accounts/views.py	/^    def get(self, request):$/;"	kind:member	line:53
+get	../trashtalk/apps/accounts/views.py	/^    def get(self, request, *args, **kwargs):$/;"	kind:member	line:87
+get_absolute_url	../trashtalk/apps/accounts/models.py	/^    def get_absolute_url(self):$/;"	kind:member	line:17
+get_area	../trashtalk/apps/cleanups/utils.py	/^def get_area(street_name, cross_street, city):$/;"	kind:function	line:72
+get_cleanup_participation	../trashtalk/apps/accounts/views.py	/^    def get_cleanup_participation(user):$/;"	kind:member	line:94
+get_credentials	../trashtalk/settings/utils.py	/^def get_credentials():$/;"	kind:function	line:10
+get_errors	../trashtalk/apps/integrations/google_maps/api.py	/^    def get_errors(self):$/;"	kind:member	line:147
+get_full_address	../trashtalk/apps/cleanups/utils.py	/^def get_full_address(request_form):$/;"	kind:function	line:99
+get_location	../trashtalk/apps/cleanups/utils.py	/^def get_location(address):$/;"	kind:function	line:35
+get_object_or_404	../trashtalk/apps/cleanups/views/template_views.py	/^from django.shortcuts import get_object_or_404, render, redirect$/;"	kind:namespace	line:9
+get_response	../trashtalk/apps/integrations/google_maps/api.py	/^    def get_response(self):$/;"	kind:member	line:137
+get_wsgi_application	../trashtalk/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	kind:namespace	line:12
+gmap_query	../trashtalk/apps/cleanups/models.py	/^    def gmap_query(self):$/;"	kind:member	line:28
+google	../trashtalk/apps/cleanups/utils.py	/^google = GoogleV3(api_key=os.getenv('GOOGLE_MAPS_KEY'))$/;"	kind:variable	line:23
+google_sheets.py	../trashtalk/apps/integrations/google_sheets/google_sheets.py	1;"	kind:file	line:1
+googlemaps	../trashtalk/apps/integrations/google_maps/api.py	/^import googlemaps$/;"	kind:namespace	line:11
+gspread	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^import gspread$/;"	kind:namespace	line:9
+handle	../trashtalk/apps/core/management/commands/seed.py	/^    def handle(self, *args, **options):$/;"	kind:member	line:15
+has_country_code	../trashtalk/apps/cleanups/models.py	/^    def has_country_code(self):$/;"	kind:member	line:111
+has_state_code	../trashtalk/apps/cleanups/models.py	/^    def has_state_code(self):$/;"	kind:member	line:114
+help	../trashtalk/apps/core/management/commands/seed.py	/^    help = 'Seed the project with data for demos only.'$/;"	kind:variable	line:9
+host	../trashtalk/apps/cleanups/factories.py	/^    host = factory.SubFactory(UserFactory)$/;"	kind:variable	line:43
+host	../trashtalk/apps/cleanups/models.py	/^    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cleanups", null=True, blank=True)$/;"	kind:variable	line:19
+host	../trashtalk/apps/cleanups/serializers.py	/^    host = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)$/;"	kind:variable	line:41
+host_required	../trashtalk/apps/cleanups/views/template_views.py	/^from core.utils import host_required$/;"	kind:namespace	line:13
+host_required	../trashtalk/apps/core/utils.py	/^def host_required(view_func):$/;"	kind:function	line:21
+image	../trashtalk/apps/cleanups/models.py	/^    image = models.CharField(max_length=300, blank=True, default=DEFAULT_ICON)$/;"	kind:variable	line:18
+image	../trashtalk/apps/cleanups/serializers.py	/^    image = serializers.CharField(required=False)$/;"	kind:variable	line:39
+image_static_location	../trashtalk/apps/cleanups/models.py	/^    image_static_location = models.CharField(max_length=200, blank=True)$/;"	kind:variable	line:136
+include	../trashtalk/urls.py	/^from django.conf.urls import url, include, static$/;"	kind:namespace	line:16
+initial	../trashtalk/apps/accounts/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:13
+initial	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:12
+initial	../trashtalk/apps/core/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+inlineformset_factory	../trashtalk/apps/cleanups/forms.py	/^from django.forms import ModelForm, inlineformset_factory, modelformset_factory$/;"	kind:namespace	line:1
+intersection	../trashtalk/apps/cleanups/constants.py	/^    intersection = 'intersection'$/;"	kind:variable	line:278
+is_available	../trashtalk/apps/cleanups/models.py	/^    is_available = models.BooleanField(default=True)$/;"	kind:variable	line:137
+is_event_host	../trashtalk/apps/core/utils.py	/^    def is_event_host(request, *args, **kwargs):$/;"	kind:function	line:23
+is_intersection	../trashtalk/apps/cleanups/models.py	/^    def is_intersection(self):$/;"	kind:member	line:117
+is_intersection	../trashtalk/apps/integrations/google_maps/api.py	/^    def is_intersection(self):$/;"	kind:member	line:105
+iso_time	../trashtalk/apps/cleanups/factories.py	/^from core.utils import iso_time$/;"	kind:namespace	line:5
+iso_time	../trashtalk/apps/core/utils.py	/^def iso_time(time):$/;"	kind:function	line:17
+join	../trashtalk/settings/__init__.py	/^from os.path import join$/;"	kind:namespace	line:3
+json	../trashtalk/apps/cleanups/tests/test_views.py	/^import json$/;"	kind:namespace	line:1
+json	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^import json$/;"	kind:namespace	line:1
+json	../trashtalk/settings/utils.py	/^import json$/;"	kind:namespace	line:1
+landnmark	../trashtalk/apps/cleanups/constants.py	/^    landnmark = 'landmark'$/;"	kind:variable	line:281
+last_name	../trashtalk/apps/cleanups/factories.py	/^    last_name = factory.Faker('name')$/;"	kind:variable	line:17
+latitude	../trashtalk/apps/cleanups/models.py	/^    latitude = models.DecimalField(blank=True, null=True, decimal_places=6, max_digits=9)$/;"	kind:variable	line:79
+list_display	../trashtalk/apps/cleanups/admin.py	/^    list_display = ['name', 'description']$/;"	kind:variable	line:7
+list_filter	../trashtalk/apps/cleanups/admin.py	/^    list_filter = ['category']$/;"	kind:variable	line:8
+location	../trashtalk/apps/cleanups/factories.py	/^    location = factory.SubFactory(LocationFactory)$/;"	kind:variable	line:44
+location	../trashtalk/apps/cleanups/models.py	/^    location = models.ForeignKey('Location', on_delete=models.CASCADE)$/;"	kind:variable	line:20
+location	../trashtalk/apps/cleanups/serializers.py	/^    location = LocationSerializer(required=False)$/;"	kind:variable	line:40
+log	../trashtalk/apps/accounts/views.py	/^log = logging.getLogger('accounts.views')$/;"	kind:variable	line:20
+logger	../trashtalk/apps/cleanups/serializers.py	/^logger = logging.getLogger('cleanups.serializers')$/;"	kind:variable	line:9
+logger	../trashtalk/apps/cleanups/utils.py	/^logger = logging.getLogger('cleanups.utils')$/;"	kind:variable	line:14
+logger	../trashtalk/apps/cleanups/views/api_views.py	/^logger = logging.getLogger('cleanups.views')$/;"	kind:variable	line:15
+logger	../trashtalk/apps/cleanups/views/template_views.py	/^logger = logging.getLogger('cleanups.views')$/;"	kind:variable	line:19
+logger	../trashtalk/apps/core/utils.py	/^logger = logging.getLogger('core.utils')$/;"	kind:variable	line:10
+logger	../trashtalk/apps/integrations/google_maps/api.py	/^logger = logging.getLogger('integrations.google_maps.api')$/;"	kind:variable	line:17
+logger	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^logger = logging.getLogger('cleanups.google_sheets')$/;"	kind:variable	line:16
+logging	../trashtalk/apps/accounts/views.py	/^import logging$/;"	kind:namespace	line:1
+logging	../trashtalk/apps/cleanups/serializers.py	/^import logging$/;"	kind:namespace	line:1
+logging	../trashtalk/apps/cleanups/utils.py	/^import logging$/;"	kind:namespace	line:5
+logging	../trashtalk/apps/cleanups/views/api_views.py	/^import logging$/;"	kind:namespace	line:1
+logging	../trashtalk/apps/cleanups/views/template_views.py	/^import logging$/;"	kind:namespace	line:1
+logging	../trashtalk/apps/core/utils.py	/^import logging$/;"	kind:namespace	line:1
+logging	../trashtalk/apps/integrations/google_maps/api.py	/^import logging$/;"	kind:namespace	line:8
+logging	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^import logging$/;"	kind:namespace	line:7
+logging	../trashtalk/settings/utils.py	/^import logging$/;"	kind:namespace	line:4
+login	../trashtalk/apps/accounts/views.py	/^from django.contrib.auth import authenticate, login$/;"	kind:namespace	line:4
+login_required	../trashtalk/apps/cleanups/views/template_views.py	/^from django.contrib.auth.decorators import login_required$/;"	kind:namespace	line:6
+longitude	../trashtalk/apps/cleanups/models.py	/^    longitude = models.DecimalField(blank=True, null=True, decimal_places=6, max_digits=9)$/;"	kind:variable	line:80
+manage.py	../manage.py	1;"	kind:file	line:1
+managers	../trashtalk/apps/accounts/migrations/0001_initial.py	/^            managers=[$/;"	kind:variable	line:43
+migrations	../trashtalk/apps/accounts/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:7
+migrations	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:6
+migrations	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+migrations	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+migrations	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^from django.db import migrations$/;"	kind:namespace	line:5
+migrations	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^from django.db import migrations, models$/;"	kind:namespace	line:6
+migrations	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+migrations	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+migrations	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^from django.db import migrations$/;"	kind:namespace	line:3
+migrations	../trashtalk/apps/core/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+model	../trashtalk/apps/accounts/forms.py	/^        model = User$/;"	kind:variable	line:13
+model	../trashtalk/apps/accounts/forms.py	/^        model = User$/;"	kind:variable	line:21
+model	../trashtalk/apps/accounts/serializers.py	/^        model = User$/;"	kind:variable	line:14
+model	../trashtalk/apps/cleanups/factories.py	/^        model = Cleanup$/;"	kind:variable	line:37
+model	../trashtalk/apps/cleanups/factories.py	/^        model = Location$/;"	kind:variable	line:26
+model	../trashtalk/apps/cleanups/factories.py	/^        model = User$/;"	kind:variable	line:13
+model	../trashtalk/apps/cleanups/forms.py	/^        model = Cleanup$/;"	kind:variable	line:8
+model	../trashtalk/apps/cleanups/forms.py	/^        model = Location$/;"	kind:variable	line:14
+model	../trashtalk/apps/cleanups/serializers.py	/^        model = Cleanup$/;"	kind:variable	line:46
+model	../trashtalk/apps/cleanups/serializers.py	/^        model = Location$/;"	kind:variable	line:33
+model	../trashtalk/apps/cleanups/serializers.py	/^        model = RequiredTools$/;"	kind:variable	line:26
+model	../trashtalk/apps/cleanups/serializers.py	/^        model = Tool$/;"	kind:variable	line:14
+model	../trashtalk/apps/cleanups/serializers.py	/^        model = ToolCategory$/;"	kind:variable	line:21
+model_name	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^            model_name='user',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^            model_name='user',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            model_name='cleanup',$/;"	kind:variable	line:21
+model_name	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            model_name='location',$/;"	kind:variable	line:17
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='cleanup',$/;"	kind:variable	line:16
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:21
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:26
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:31
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:36
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:41
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:46
+model_name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            model_name='location',$/;"	kind:variable	line:51
+model_name	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^            model_name='cleanup',$/;"	kind:variable	line:16
+model_name	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^            model_name='cleanup',$/;"	kind:variable	line:17
+model_name	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            model_name='location',$/;"	kind:variable	line:16
+model_name	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            model_name='location',$/;"	kind:variable	line:21
+model_name	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^            model_name='cleanup',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            model_name='cleanuptools',$/;"	kind:variable	line:31
+model_name	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            model_name='tool',$/;"	kind:variable	line:18
+model_name	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            model_name='tool',$/;"	kind:variable	line:23
+model_name	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^            model_name='cleanuptools',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            model_name='requiredtools',$/;"	kind:variable	line:26
+model_name	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^            model_name='requiredtools',$/;"	kind:variable	line:15
+model_name	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^            model_name='tool',$/;"	kind:variable	line:19
+model_name	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            model_name='tool',$/;"	kind:variable	line:15
+model_name	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            model_name='tool',$/;"	kind:variable	line:20
+model_name	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^            model_name='tool',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^            model_name='tool',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^            model_name='tool',$/;"	kind:variable	line:18
+model_name	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^            model_name='tool',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^            model_name='tool',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            model_name='location',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            model_name='location',$/;"	kind:variable	line:19
+model_name	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^            model_name='cleanup',$/;"	kind:variable	line:16
+model_name	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^            model_name='cleanup',$/;"	kind:variable	line:16
+model_name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            model_name='cleanup',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            model_name='location',$/;"	kind:variable	line:19
+model_name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            model_name='location',$/;"	kind:variable	line:24
+model_name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            model_name='cleanup',$/;"	kind:variable	line:15
+model_name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            model_name='cleanup',$/;"	kind:variable	line:20
+model_name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            model_name='cleanup',$/;"	kind:variable	line:25
+model_name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            model_name='cleanup',$/;"	kind:variable	line:30
+model_name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            model_name='cleanup',$/;"	kind:variable	line:15
+model_name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            model_name='cleanup',$/;"	kind:variable	line:19
+model_name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            model_name='cleanup',$/;"	kind:variable	line:23
+model_name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            model_name='cleanup',$/;"	kind:variable	line:28
+model_name	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^            model_name='cleanup',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            model_name='cleanup',$/;"	kind:variable	line:15
+model_name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            model_name='location',$/;"	kind:variable	line:20
+model_name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            model_name='location',$/;"	kind:variable	line:25
+model_name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            model_name='location',$/;"	kind:variable	line:30
+model_name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            model_name='location',$/;"	kind:variable	line:35
+model_name	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^            model_name='location',$/;"	kind:variable	line:14
+model_name	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^            model_name='location',$/;"	kind:variable	line:14
+modelformset_factory	../trashtalk/apps/cleanups/forms.py	/^from django.forms import ModelForm, inlineformset_factory, modelformset_factory$/;"	kind:namespace	line:1
+models	../trashtalk/apps/accounts/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:7
+models	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.models$/;"	kind:namespace	line:5
+models	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/accounts/models.py	/^from django.db import models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:6
+models	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	kind:namespace	line:7
+models	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+models	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^import django.db.models.deletion$/;"	kind:namespace	line:6
+models	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+models	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^from django.db import migrations, models$/;"	kind:namespace	line:6
+models	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+models	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^import django.db.models.deletion$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+models	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^import django.db.models.deletion$/;"	kind:namespace	line:5
+models	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^from django.db import migrations, models$/;"	kind:namespace	line:4
+models	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^from django.db import migrations, models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/cleanups/models.py	/^from django.db import models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/core/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	kind:namespace	line:5
+models	../trashtalk/apps/core/models.py	/^from django.db import models$/;"	kind:namespace	line:3
+models	../trashtalk/apps/integrations/models.py	/^from django.db import models$/;"	kind:namespace	line:1
+models.py	../trashtalk/apps/accounts/models.py	1;"	kind:file	line:1
+models.py	../trashtalk/apps/cleanups/models.py	1;"	kind:file	line:1
+models.py	../trashtalk/apps/core/models.py	1;"	kind:file	line:1
+models.py	../trashtalk/apps/integrations/models.py	1;"	kind:file	line:1
+modified	../trashtalk/apps/core/models.py	/^    modified = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:8
+name	../trashtalk/apps/accounts/apps.py	/^    name = 'accounts'$/;"	kind:variable	line:5
+name	../trashtalk/apps/accounts/migrations/0001_initial.py	/^            name='User',$/;"	kind:variable	line:21
+name	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^            name='last_name',$/;"	kind:variable	line:15
+name	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^            name='email',$/;"	kind:variable	line:15
+name	../trashtalk/apps/accounts/models.py	/^    name = models.CharField(_('Name of User'), blank=True, max_length=255)$/;"	kind:variable	line:11
+name	../trashtalk/apps/cleanups/apps.py	/^    name = 'cleanups'$/;"	kind:variable	line:5
+name	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^            name='Cleanup',$/;"	kind:variable	line:20
+name	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^            name='Location',$/;"	kind:variable	line:33
+name	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            name='cleanups',$/;"	kind:variable	line:18
+name	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            name='location',$/;"	kind:variable	line:22
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='country',$/;"	kind:variable	line:22
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='county',$/;"	kind:variable	line:27
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='cross_street',$/;"	kind:variable	line:32
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='district',$/;"	kind:variable	line:37
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='image',$/;"	kind:variable	line:17
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='latitude',$/;"	kind:variable	line:42
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='longitude',$/;"	kind:variable	line:47
+name	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^            name='zipcode',$/;"	kind:variable	line:52
+name	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^            name='date',$/;"	kind:variable	line:18
+name	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            name='category',$/;"	kind:variable	line:17
+name	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^            name='number',$/;"	kind:variable	line:22
+name	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^            name='image',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            name='CleanupTools',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            name='Tool',$/;"	kind:variable	line:23
+name	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^            name='tool',$/;"	kind:variable	line:32
+name	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^            name='cleanuptools',$/;"	kind:variable	line:14
+name	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            name='cleanuptools',$/;"	kind:variable	line:14
+name	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            name='description',$/;"	kind:variable	line:19
+name	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            name='image',$/;"	kind:variable	line:24
+name	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^            name='quantity',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^            name='requiredtools',$/;"	kind:variable	line:18
+name	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            name='ToolCategory',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            name='tool_category',$/;"	kind:variable	line:27
+name	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^            name='tool_category',$/;"	kind:variable	line:16
+name	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^            name='tool_category',$/;"	kind:variable	line:20
+name	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            name='image',$/;"	kind:variable	line:16
+name	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^            name='tool_category',$/;"	kind:variable	line:21
+name	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^            name='image_static_location',$/;"	kind:variable	line:19
+name	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^            name='image_url',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            name='latitude',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^            name='longitude',$/;"	kind:variable	line:20
+name	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^            name='host',$/;"	kind:variable	line:17
+name	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^            name='host',$/;"	kind:variable	line:17
+name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            name='description',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            name='latitude',$/;"	kind:variable	line:20
+name	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^            name='longitude',$/;"	kind:variable	line:25
+name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            name='end',$/;"	kind:variable	line:16
+name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            name='end_time',$/;"	kind:variable	line:26
+name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            name='start',$/;"	kind:variable	line:21
+name	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^            name='start_time',$/;"	kind:variable	line:31
+name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            name='date',$/;"	kind:variable	line:24
+name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            name='description',$/;"	kind:variable	line:29
+name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            name='end_time',$/;"	kind:variable	line:16
+name	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^            name='start_time',$/;"	kind:variable	line:20
+name	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^            name='date',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            name='category',$/;"	kind:variable	line:21
+name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            name='latitude',$/;"	kind:variable	line:26
+name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            name='longitude',$/;"	kind:variable	line:31
+name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            name='participants',$/;"	kind:variable	line:16
+name	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^            name='street',$/;"	kind:variable	line:36
+name	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^            name='query_string',$/;"	kind:variable	line:15
+name	../trashtalk/apps/cleanups/models.py	/^    name = models.CharField(max_length=128)$/;"	kind:variable	line:134
+name	../trashtalk/apps/cleanups/models.py	/^    name = models.CharField(max_length=128, unique=True)$/;"	kind:variable	line:123
+name	../trashtalk/apps/core/apps.py	/^    name = 'core'$/;"	kind:variable	line:7
+name	../trashtalk/apps/core/migrations/0001_initial.py	/^            name='TimeStampedModel',$/;"	kind:variable	line:17
+name	../trashtalk/apps/integrations/apps.py	/^    name = 'integrations'$/;"	kind:variable	line:5
+namedtuple	../trashtalk/apps/cleanups/utils.py	/^from collections import namedtuple$/;"	kind:namespace	line:7
+namedtuple	../trashtalk/apps/integrations/google_maps/api.py	/^from collections import namedtuple$/;"	kind:namespace	line:9
+new_name	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^            new_name='title',$/;"	kind:variable	line:18
+new_name	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^            new_name='RequiredTools',$/;"	kind:variable	line:15
+new_name	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^            new_name='image_url',$/;"	kind:variable	line:16
+new_name	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^            new_name='category',$/;"	kind:variable	line:16
+new_name	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^            new_name='is_available',$/;"	kind:variable	line:16
+new_name	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^            new_name='query',$/;"	kind:variable	line:16
+null	../trashtalk/apps/cleanups/models.py	/^        null=True,$/;"	kind:variable	line:141
+number	../trashtalk/apps/cleanups/factories.py	/^    number = '2323'$/;"	kind:variable	line:28
+number	../trashtalk/apps/cleanups/models.py	/^    number = models.CharField(max_length=100, blank=True)$/;"	kind:variable	line:69
+old_name	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^            old_name='name',$/;"	kind:variable	line:17
+old_name	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^            old_name='CleanupTools',$/;"	kind:variable	line:14
+old_name	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^            old_name='image',$/;"	kind:variable	line:15
+old_name	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^            old_name='tool_category',$/;"	kind:variable	line:15
+old_name	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^            old_name='available',$/;"	kind:variable	line:15
+old_name	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^            old_name='query_string',$/;"	kind:variable	line:15
+on_delete	../trashtalk/apps/cleanups/models.py	/^        on_delete=models.CASCADE,$/;"	kind:variable	line:140
+operations	../trashtalk/apps/accounts/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:19
+operations	../trashtalk/apps/accounts/migrations/0002_auto_20180214_0432.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/accounts/migrations/0003_auto_20180219_1814.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:18
+operations	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../trashtalk/apps/cleanups/migrations/0007_auto_20180214_0432.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0008_auto_20180314_2340.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0011_auto_20180315_0012.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0014_auto_20180320_1610.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0015_auto_20180320_1615.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0016_auto_20180320_1620.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0017_auto_20180320_1622.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0018_auto_20180320_1820.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0019_auto_20180406_1413.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0020_auto_20180408_1901.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../trashtalk/apps/cleanups/migrations/0023_auto_20180416_2321.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0024_auto_20180416_2324.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0025_auto_20180416_2329.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0026_remove_cleanup_date.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^    operations = [$/;"	kind:variable	line:13
+operations	../trashtalk/apps/cleanups/migrations/0028_location_query_string.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/cleanups/migrations/0029_auto_20180417_2317.py	/^    operations = [$/;"	kind:variable	line:12
+operations	../trashtalk/apps/core/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+options	../trashtalk/apps/accounts/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:38
+options	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            options={'verbose_name_plural': 'cleanup tools'},$/;"	kind:variable	line:15
+options	../trashtalk/apps/cleanups/migrations/0012_auto_20180320_1543.py	/^            options={'verbose_name_plural': 'required tools'},$/;"	kind:variable	line:19
+options	../trashtalk/apps/cleanups/migrations/0013_auto_20180320_1559.py	/^            options={$/;"	kind:variable	line:21
+os	../manage.py	/^import os$/;"	kind:namespace	line:2
+os	../trashtalk/apps/cleanups/utils.py	/^import os$/;"	kind:namespace	line:6
+os	../trashtalk/settings/common.py	/^import os$/;"	kind:namespace	line:23
+os	../trashtalk/settings/utils.py	/^import os$/;"	kind:namespace	line:2
+os	../trashtalk/wsgi.py	/^import os$/;"	kind:namespace	line:10
+parse_address	../trashtalk/apps/integrations/google_maps/api.py	/^    def parse_address(self):$/;"	kind:member	line:123
+parse_intersection	../trashtalk/apps/integrations/google_maps/api.py	/^    def parse_intersection(self):$/;"	kind:member	line:108
+parser_classes	../trashtalk/apps/accounts/views.py	/^    parser_classes = (FormParser,)$/;"	kind:variable	line:103
+parser_classes	../trashtalk/apps/accounts/views.py	/^    parser_classes = [FormParser,]$/;"	kind:variable	line:50
+parser_classes	../trashtalk/apps/cleanups/views/template_views.py	/^from rest_framework.decorators import api_view, parser_classes$/;"	kind:namespace	line:10
+participants	../trashtalk/apps/cleanups/models.py	/^    participants = models.ManyToManyField(User, blank=True)$/;"	kind:variable	line:22
+participants	../trashtalk/apps/cleanups/serializers.py	/^    participants = serializers.PrimaryKeyRelatedField(many=True, required=False,$/;"	kind:variable	line:42
+password	../trashtalk/apps/accounts/forms.py	/^    password = CharField(widget=PasswordInput)$/;"	kind:variable	line:16
+password	../trashtalk/apps/accounts/serializers.py	/^    password = serializers.CharField(write_only=True, style={'input_type': 'password'})$/;"	kind:variable	line:9
+password	../trashtalk/apps/cleanups/factories.py	/^    password = 'password'$/;"	kind:variable	line:18
+password_message	../trashtalk/apps/cleanups/constants.py	/^    password_message = "Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"$/;"	kind:variable	line:287
+password_pattern	../trashtalk/apps/cleanups/constants.py	/^    password_pattern = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"$/;"	kind:variable	line:286
+password_verification	../trashtalk/apps/accounts/forms.py	/^    password_verification = PasswordInput()$/;"	kind:variable	line:24
+permission_classes	../trashtalk/apps/accounts/views.py	/^    permission_classes = (IsAdminUser,)$/;"	kind:variable	line:110
+permission_classes	../trashtalk/apps/accounts/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:85
+permission_classes	../trashtalk/apps/accounts/views.py	/^    permission_classes = (IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:117
+permission_classes	../trashtalk/apps/cleanups/views/api_views.py	/^    permission_classes = (IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:22
+place	../trashtalk/apps/integrations/google_maps/api.py	/^    def place(self, place_id):$/;"	kind:member	line:47
+places	../trashtalk/apps/integrations/google_maps/api.py	/^    def places(self, query, location):$/;"	kind:member	line:56
+post	../trashtalk/apps/accounts/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:60
+postSCFix	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^def postSCFix(cleanup):$/;"	kind:function	line:19
+preserve_default	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^            preserve_default=False,$/;"	kind:variable	line:24
+preserve_default	../trashtalk/apps/cleanups/migrations/0010_auto_20180314_2353.py	/^            preserve_default=False,$/;"	kind:variable	line:26
+production.py	../trashtalk/settings/production.py	1;"	kind:file	line:1
+public	../trashtalk/apps/cleanups/constants.py	/^    public = 'premise'$/;"	kind:variable	line:280
+qa.py	../trashtalk/settings/qa.py	1;"	kind:file	line:1
+quantity	../trashtalk/apps/cleanups/models.py	/^    quantity = models.IntegerField(default=1, blank=True)$/;"	kind:variable	line:152
+query	../trashtalk/apps/cleanups/models.py	/^    query = models.CharField(max_length=200, null=True, blank=True, help_text='String used to query this location')$/;"	kind:variable	line:78
+queryset	../trashtalk/apps/accounts/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:101
+queryset	../trashtalk/apps/accounts/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:108
+queryset	../trashtalk/apps/accounts/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:115
+queryset	../trashtalk/apps/accounts/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:48
+queryset	../trashtalk/apps/accounts/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:82
+queryset	../trashtalk/apps/cleanups/serializers.py	/^                                                      queryset=User.objects.all())$/;"	kind:variable	line:43
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = Cleanup.objects.all()$/;"	kind:variable	line:20
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = Cleanup.objects.all()$/;"	kind:variable	line:27
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = Cleanup.objects.all()$/;"	kind:variable	line:34
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = Location.objects.all()$/;"	kind:variable	line:40
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = RequiredTools.objects.all()$/;"	kind:variable	line:53
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = Tool.objects.filter(is_available=True)$/;"	kind:variable	line:44
+queryset	../trashtalk/apps/cleanups/views/api_views.py	/^    queryset = ToolCategory.objects.filter()$/;"	kind:variable	line:48
+redirect	../trashtalk/apps/accounts/views.py	/^from django.shortcuts import render, redirect$/;"	kind:namespace	line:6
+redirect	../trashtalk/apps/cleanups/views/template_views.py	/^from django.shortcuts import get_object_or_404, render, redirect$/;"	kind:namespace	line:9
+render	../trashtalk/apps/accounts/views.py	/^from django.shortcuts import render, redirect$/;"	kind:namespace	line:6
+render	../trashtalk/apps/cleanups/views/template_views.py	/^from django.shortcuts import get_object_or_404, render, redirect$/;"	kind:namespace	line:9
+render	../trashtalk/apps/integrations/views.py	/^from django.shortcuts import render$/;"	kind:namespace	line:1
+renderer_classes	../trashtalk/apps/accounts/views.py	/^    renderer_classes = (TemplateHTMLRenderer,)$/;"	kind:variable	line:84
+renderer_classes	../trashtalk/apps/accounts/views.py	/^    renderer_classes = [TemplateHTMLRenderer]$/;"	kind:variable	line:49
+requests	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^import requests$/;"	kind:namespace	line:2
+reverse	../trashtalk/apps/accounts/models.py	/^from django.urls import reverse$/;"	kind:namespace	line:2
+reverse	../trashtalk/apps/accounts/tests.py	/^from django.urls import reverse$/;"	kind:namespace	line:5
+reverse	../trashtalk/apps/cleanups/tests/test_views.py	/^from django.urls import reverse$/;"	kind:namespace	line:6
+reverse_geocode	../trashtalk/apps/integrations/google_maps/api.py	/^    def reverse_geocode(self, coords):$/;"	kind:member	line:39
+seeclickfix.py	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	1;"	kind:file	line:1
+seed.py	../trashtalk/apps/core/management/commands/seed.py	1;"	kind:file	line:1
+send_to_sheet	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^def send_to_sheet(id, tool_data):$/;"	kind:function	line:34
+serializer_class	../trashtalk/apps/accounts/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:102
+serializer_class	../trashtalk/apps/accounts/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:109
+serializer_class	../trashtalk/apps/accounts/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:116
+serializer_class	../trashtalk/apps/accounts/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:83
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = CleanupSerializer$/;"	kind:variable	line:21
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = CleanupSerializer$/;"	kind:variable	line:28
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = CleanupSerializer$/;"	kind:variable	line:35
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = LocationSerializer$/;"	kind:variable	line:41
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = RequiredToolsSerializer$/;"	kind:variable	line:54
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = ToolCategorySerializer$/;"	kind:variable	line:49
+serializer_class	../trashtalk/apps/cleanups/views/api_views.py	/^    serializer_class = ToolSerializer$/;"	kind:variable	line:45
+serializers	../trashtalk/apps/accounts/serializers.py	/^from rest_framework import serializers$/;"	kind:namespace	line:1
+serializers	../trashtalk/apps/cleanups/serializers.py	/^from rest_framework import serializers$/;"	kind:namespace	line:2
+serializers.py	../trashtalk/apps/accounts/serializers.py	1;"	kind:file	line:1
+serializers.py	../trashtalk/apps/cleanups/serializers.py	1;"	kind:file	line:1
+setUp	../trashtalk/apps/accounts/tests.py	/^    def setUp(self):$/;"	kind:member	line:12
+setUp	../trashtalk/apps/cleanups/tests/test_views.py	/^    def setUp(self):$/;"	kind:member	line:12
+setUp	../trashtalk/apps/integrations/tests/test_google_maps.py	/^    def setUp(self):$/;"	kind:member	line:9
+settings	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^from django.conf import settings$/;"	kind:namespace	line:5
+settings	../trashtalk/apps/cleanups/migrations/0021_auto_20180415_2257.py	/^from django.conf import settings$/;"	kind:namespace	line:3
+settings	../trashtalk/apps/cleanups/migrations/0022_auto_20180415_2309.py	/^from django.conf import settings$/;"	kind:namespace	line:3
+settings	../trashtalk/apps/cleanups/migrations/0027_auto_20180416_2337.py	/^from django.conf import settings$/;"	kind:namespace	line:3
+settings	../trashtalk/apps/cleanups/views/template_views.py	/^from django.conf import settings$/;"	kind:namespace	line:5
+settings	../trashtalk/apps/integrations/google_maps/api.py	/^from django.conf import settings$/;"	kind:namespace	line:13
+settings	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^from django.conf import settings$/;"	kind:namespace	line:12
+settings	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^from django.conf import settings$/;"	kind:namespace	line:4
+settings	../trashtalk/urls.py	/^from django.conf import settings$/;"	kind:namespace	line:20
+skip	../trashtalk/apps/accounts/tests.py	/^from unittest import skip$/;"	kind:namespace	line:1
+skip	../trashtalk/apps/integrations/tests/test_google_maps.py	/^from unittest import skip$/;"	kind:namespace	line:1
+start	../trashtalk/apps/cleanups/factories.py	/^    start = '2018-04-15 15:30'$/;"	kind:variable	line:41
+start	../trashtalk/apps/cleanups/models.py	/^    start = models.DateTimeField(blank=True, null=True)$/;"	kind:variable	line:16
+state	../trashtalk/apps/cleanups/models.py	/^    state = models.CharField(max_length=100, default=DEFAULT_STATE)$/;"	kind:variable	line:73
+state_code	../trashtalk/apps/cleanups/models.py	/^    def state_code(self):$/;"	kind:member	line:99
+static	../trashtalk/urls.py	/^from django.conf.urls import url, include, static$/;"	kind:namespace	line:16
+status	../trashtalk/apps/accounts/views.py	/^from rest_framework import status$/;"	kind:namespace	line:8
+status	../trashtalk/apps/cleanups/utils.py	/^status = StatusCodes(200, 201, 400, 403, 404)$/;"	kind:variable	line:21
+street	../trashtalk/apps/cleanups/factories.py	/^    street = 'Broadway'$/;"	kind:variable	line:29
+street	../trashtalk/apps/cleanups/models.py	/^    street = models.CharField(max_length=100, blank=True, null=True)$/;"	kind:variable	line:70
+sys	../manage.py	/^import sys$/;"	kind:namespace	line:3
+sys	../trashtalk/settings/__init__.py	/^import sys$/;"	kind:namespace	line:2
+template_name	../trashtalk/apps/accounts/views.py	/^    template_name = 'index.html'$/;"	kind:variable	line:51
+template_views.py	../trashtalk/apps/cleanups/views/template_views.py	1;"	kind:file	line:1
+test_api_cleanup_change_participant_status	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_change_participant_status(self):$/;"	kind:member	line:74
+test_api_cleanup_create_view	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_create_view(self):$/;"	kind:member	line:26
+test_api_cleanup_delete_success	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_delete_success(self):$/;"	kind:member	line:92
+test_api_cleanup_list_view	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_list_view(self):$/;"	kind:member	line:20
+test_api_cleanup_patch_success	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_patch_success(self):$/;"	kind:member	line:61
+test_api_cleanup_update_success	../trashtalk/apps/cleanups/tests/test_views.py	/^    def test_api_cleanup_update_success(self):$/;"	kind:member	line:41
+test_geocode_intersection_success	../trashtalk/apps/integrations/tests/test_google_maps.py	/^    def test_geocode_intersection_success(self):$/;"	kind:member	line:18
+test_geocode_with_address_success	../trashtalk/apps/integrations/tests/test_google_maps.py	/^    def test_geocode_with_address_success(self):$/;"	kind:member	line:12
+test_google_maps.py	../trashtalk/apps/integrations/tests/test_google_maps.py	1;"	kind:file	line:1
+test_user_dashboard	../trashtalk/apps/accounts/tests.py	/^    def test_user_dashboard(self):$/;"	kind:member	line:76
+test_user_login	../trashtalk/apps/accounts/tests.py	/^    def test_user_login(self):$/;"	kind:member	line:63
+test_user_login_template	../trashtalk/apps/accounts/tests.py	/^    def test_user_login_template(self):$/;"	kind:member	line:70
+test_user_signup	../trashtalk/apps/accounts/tests.py	/^    def test_user_signup(self):$/;"	kind:member	line:16
+test_user_signup_validation	../trashtalk/apps/accounts/tests.py	/^    def test_user_signup_validation(self):$/;"	kind:member	line:29
+test_views.py	../trashtalk/apps/cleanups/tests/test_views.py	1;"	kind:file	line:1
+tests.py	../trashtalk/apps/accounts/tests.py	1;"	kind:file	line:1
+tests.py	../trashtalk/apps/core/tests.py	1;"	kind:file	line:1
+text_pattern	../trashtalk/apps/cleanups/constants.py	/^    text_pattern = "[a-zA-Z\\s]{1,}"$/;"	kind:variable	line:294
+time_placeholder	../trashtalk/apps/cleanups/constants.py	/^    time_placeholder = "hh:mm"$/;"	kind:variable	line:291
+timezone	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.utils.timezone$/;"	kind:namespace	line:8
+title	../trashtalk/apps/cleanups/factories.py	/^    title = factory.fuzzy.FuzzyText(prefix='Cleanup-')$/;"	kind:variable	line:39
+title	../trashtalk/apps/cleanups/models.py	/^    title = models.CharField(max_length=300)$/;"	kind:variable	line:14
+tool	../trashtalk/apps/cleanups/models.py	/^    tool = models.ForeignKey(Tool, on_delete=models.CASCADE)$/;"	kind:variable	line:150
+tool_image_path	../trashtalk/apps/cleanups/constants.py	/^    tool_image_path = "\/static\/images\/tools\/"$/;"	kind:variable	line:293
+top_row	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^top_row = 2$/;"	kind:variable	line:25
+transaction	../trashtalk/apps/accounts/tests.py	/^from django.db import transaction$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/accounts/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0002_auto_20171113_0027.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0003_auto_20171126_1940.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0004_auto_20171215_0510.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0005_cleanup_date.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/cleanups/migrations/0006_auto_20171228_2054.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/core/apps.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:1
+unicode_literals	../trashtalk/apps/core/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:3
+unicode_literals	../trashtalk/apps/core/models.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:1
+unique_together	../trashtalk/apps/cleanups/migrations/0009_auto_20180314_2341.py	/^            unique_together={('tool', 'cleanup')},$/;"	kind:variable	line:15
+unique_together	../trashtalk/apps/cleanups/models.py	/^        unique_together = ('tool', 'cleanup')$/;"	kind:variable	line:155
+update	../trashtalk/apps/cleanups/serializers.py	/^    def update(self, instance, validated_data):$/;"	kind:member	line:57
+updateSCFix	../trashtalk/apps/integrations/see_click_fix/seeclickfix.py	/^def updateSCFix(cleanup_status, cleanup_id):$/;"	kind:function	line:44
+url	../trashtalk/api_urls.py	/^from django.conf.urls import url$/;"	kind:namespace	line:1
+url	../trashtalk/urls.py	/^from django.conf.urls import url, include, static$/;"	kind:namespace	line:16
+urlencode	../trashtalk/apps/accounts/tests.py	/^from django.utils.http import urlencode$/;"	kind:namespace	line:6
+urlencode	../trashtalk/apps/cleanups/tests/test_views.py	/^from django.utils.html import urlencode$/;"	kind:namespace	line:3
+urlpatterns	../trashtalk/api_urls.py	/^urlpatterns = [$/;"	kind:variable	line:11
+urlpatterns	../trashtalk/urls.py	/^urlpatterns = [$/;"	kind:variable	line:27
+urls.py	../trashtalk/urls.py	1;"	kind:file	line:1
+user_signup_create	../trashtalk/apps/accounts/views.py	/^def user_signup_create(request):$/;"	kind:function	line:27
+user_signup_create	../trashtalk/urls.py	/^from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)$/;"	kind:namespace	line:22
+user_signup_view	../trashtalk/apps/accounts/views.py	/^def user_signup_view(request):$/;"	kind:function	line:23
+user_signup_view	../trashtalk/urls.py	/^from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)$/;"	kind:namespace	line:22
+username	../trashtalk/apps/accounts/serializers.py	/^    username = serializers.CharField(validators=[UniqueValidator(queryset=User.objects.all())])$/;"	kind:variable	line:10
+username	../trashtalk/apps/cleanups/factories.py	/^    username = factory.Faker('name')$/;"	kind:variable	line:15
+username_message	../trashtalk/apps/cleanups/constants.py	/^    username_message = "2-20 alpha-numeric characters"$/;"	kind:variable	line:289
+username_pattern	../trashtalk/apps/cleanups/constants.py	/^    username_pattern = "[a-zA-Z0-9]{2,}"$/;"	kind:variable	line:288
+utils	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.utils.timezone$/;"	kind:namespace	line:8
+utils.py	../trashtalk/apps/cleanups/utils.py	1;"	kind:file	line:1
+utils.py	../trashtalk/apps/core/utils.py	1;"	kind:file	line:1
+utils.py	../trashtalk/settings/utils.py	1;"	kind:file	line:1
+validators	../trashtalk/apps/accounts/migrations/0001_initial.py	/^import django.contrib.auth.validators$/;"	kind:namespace	line:6
+verbose_name_plural	../trashtalk/apps/cleanups/models.py	/^        verbose_name_plural = "required tools"$/;"	kind:variable	line:156
+verbose_name_plural	../trashtalk/apps/cleanups/models.py	/^        verbose_name_plural = "tool categories"$/;"	kind:variable	line:127
+views.py	../trashtalk/apps/accounts/views.py	1;"	kind:file	line:1
+views.py	../trashtalk/apps/integrations/views.py	1;"	kind:file	line:1
+wks	../trashtalk/apps/integrations/google_sheets/google_sheets.py	/^wks = gc.open_by_key(GOOGLE_SHEETS_KEY).sheet1$/;"	kind:variable	line:29
+wraps	../trashtalk/apps/core/utils.py	/^from functools import wraps$/;"	kind:namespace	line:3
+wsgi.py	../trashtalk/wsgi.py	1;"	kind:file	line:1
+zipcode	../trashtalk/apps/cleanups/models.py	/^    zipcode = models.CharField(max_length=10, blank=True)$/;"	kind:variable	line:74
