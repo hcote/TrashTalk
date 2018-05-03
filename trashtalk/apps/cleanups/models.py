@@ -40,15 +40,14 @@ class Tool(models.Model): # pylint: disable=too-few-public-methods
 class Cleanup(models.Model):
     DEFAULT_ICON = 'images/defaults/bow_rake.jpg'
 
-    title = models.CharField(max_length=300)
-    description = models.TextField()
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-    date = models.DateField(default=datetime.today)
+    title = models.CharField(max_length=300, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    start = models.DateTimeField(blank=True, null=True)
+    end = models.DateTimeField(blank=True, null=True)
     image = models.CharField(max_length=300, blank=True, default=DEFAULT_ICON)
-    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cleanups")
+    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cleanups", null=True, blank=True)
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
-    participants = models.ManyToManyField(User)
+    participants = models.ManyToManyField(User, blank=True)
     required_tools = models.ManyToManyField(Tool, through='RequiredTool')
 
     def __str__(self):
@@ -77,12 +76,12 @@ class Cleanup(models.Model):
     @property
     def event_start(self):
         """User friendly time. Convert event times to 12-hr format."""
-        return datetime.strptime(str(self.start_time), '%X').strftime('%I:%M %p')
+        return datetime.strptime(str(self.start), '%X').strftime('%I:%M %p')
 
     @property
     def event_end(self):
         """User friendly time. Convert event times to 12-hr format."""
-        return datetime.strptime(str(self.end_time), '%X').strftime('%I:%M %p')
+        return datetime.strptime(str(self.end), '%X').strftime('%I:%M %p')
 
 
 # pylint: disable=missing-docstring
@@ -97,7 +96,7 @@ class Location(models.Model):
 
     # Fields with blank=True make them non-required fields
     number = models.CharField(max_length=100, blank=True)
-    street = models.CharField(max_length=100)
+    street = models.CharField(max_length=100, blank=True, null=True)
     cross_street = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100, default=DEFAULT_CITY)
     state = models.CharField(max_length=100, default=DEFAULT_STATE)
@@ -105,11 +104,15 @@ class Location(models.Model):
     county = models.CharField(max_length=100, blank=True)
     district = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, default=DEFAULT_COUNTRY)
-    latitude = models.CharField(max_length=100, blank=True)
-    longitude = models.CharField(max_length=100, blank=True)
-    category = models.CharField(choices=LOCATION_CATEGORIES, max_length=100, null=True)
+    query = models.CharField(max_length=200, null=True, blank=True, help_text='String used to query this location')
+    latitude = models.DecimalField(blank=True, null=True, decimal_places=6, max_digits=9)
+    longitude = models.DecimalField(blank=True, null=True, decimal_places=6, max_digits=9)
+    category = models.CharField(choices=LOCATION_CATEGORIES, max_length=100, blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
 
     def __str__(self):
+        if self.query:
+            return self.query
         return "{0} {1}, {2}".format(self.address, self.city, self.state)
 
     @property

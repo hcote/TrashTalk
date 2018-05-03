@@ -130,3 +130,6 @@ ENV/
 .mypy_cache/
 NOTES.MD
 NOTES.md
+
+# vscode
+.vscode

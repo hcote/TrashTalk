@@ -38,8 +38,8 @@ class CleanupFactory(factory.DjangoModelFactory):
 
     title = factory.fuzzy.FuzzyText(prefix='Cleanup-')
     description = factory.Sequence(lambda n: 'Cleanup number %s needs YOU!' % n)
-    start_time = '15:30 PM'
-    end_time = '17:30 PM'
+    start = '2018-04-15 15:30'
+    end = '2018-04-15 17:30'
     host = factory.SubFactory(UserFactory)
     location = factory.SubFactory(LocationFactory)
 
@@ -49,9 +49,8 @@ def cleanup_factory(request):
     cleanup = {
         'title': request.get('title'),
         'description': request.get('description'),
-        'date': request.get('date'),
-        'start_time': iso_time(request.get('start_time')),
-        'end_time': iso_time(request.get('end_time')),
+        'start': iso_time(request.get('start')),
+        'end': iso_time(request.get('end')),
         'image': request.get('image', Cleanup.DEFAULT_ICON),
         'host': User.objects.get(username=request.get('host')),
         'location': location_data
