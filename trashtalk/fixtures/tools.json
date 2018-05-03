@@ -1,0 +1,575 @@
+[
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Health and Safety Equipment",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Street Cleaning Tools",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Cutting Tools",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 4,
+        "fields": {
+            "name": "Bags/Containers",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 5,
+        "fields": {
+            "name": "Digging Tools",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 6,
+        "fields": {
+            "name": "Weeding Tools",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.toolcategory",
+        "pk": 7,
+        "fields": {
+            "name": "Material Movers",
+            "description": ""
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 1,
+        "fields": {
+            "name": "Safety Vest",
+            "description": "Required for all volunteers working in or adjacent to streets and sidewalks",
+            "image_static_location": "images/icons/safety_vest.png",
+            "is_available": true,
+            "category": 1
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 2,
+        "fields": {
+            "name": "Rubber-Dipped Work Gloves",
+            "description": "General purpose gloves",
+            "image_static_location": "images/icons/rubber_dipped_gloves.png",
+            "is_available": true,
+            "category": 1
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 3,
+        "fields": {
+            "name": "Child-Size Cotton Gloves",
+            "description": "General purpose gloves",
+            "image_static_location": "images/icons/child_cotton_gloves.jpg",
+            "is_available": true,
+            "category": 1
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 4,
+        "fields": {
+            "name": "Water Cooler",
+            "description": "Volunteers are encouraged to bring reusable water bottles rather than disposable cups",
+            "image_static_location": "images/icons/water_cooler.png",
+            "is_available": true,
+            "category": 1
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 5,
+        "fields": {
+            "name": "First Aid Kit",
+            "description": "Treat minor injuries",
+            "image_static_location": "images/icons/first_aid.png",
+            "is_available": true,
+            "category": 1
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 6,
+        "fields": {
+            "name": " Regular Pickup Sticks",
+            "description": "Reaches and grabs for trash",
+            "image_static_location": "images/icons/pickup_sticks.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 7,
+        "fields": {
+            "name": "Small Pickup Sticks",
+            "description": "Reaches and grabs for trash",
+            "image_static_location": "images/icons/pickup_sticks.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 8,
+        "fields": {
+            "name": "Push Broom",
+            "description": "Efficiently sweep dirt and debris",
+            "image_static_location": "images/icons/push_broom.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 9,
+        "fields": {
+            "name": "Regular House Broom",
+            "description": "Lightweight for easy sweeping",
+            "image_static_location": "images/icons/brooms.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 10,
+        "fields": {
+            "name": "Small House Broom",
+            "description": "Lightweight for easy sweeping",
+            "image_static_location": "images/icons/brooms.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 11,
+        "fields": {
+            "name": "Regular Dust Pan",
+            "description": "Pick up collected dirt and debris",
+            "image_static_location": "images/icons/dust_pan.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 12,
+        "fields": {
+            "name": "Long Dust Pan",
+            "description": "Pick up collected dirt and debris",
+            "image_static_location": "images/icons/dust_pan.png",
+            "is_available": true,
+            "category": 2
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 13,
+        "fields": {
+            "name": "Hand Clippers",
+            "description": "Cuts branches less than 1\" thick",
+            "image_static_location": "images/icons/hand_clippers.png",
+            "is_available": true,
+            "category": 3
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 14,
+        "fields": {
+            "name": "Loppers",
+            "description": "Cuts branches less than 2\" thick",
+            "image_static_location": "images/icons/loppers.png",
+            "is_available": true,
+            "category": 3
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 15,
+        "fields": {
+            "name": "Pruning Saw",
+            "description": "Cuts branches larger than 2\"",
+            "image_static_location": "images/icons/pruning_saw.png",
+            "is_available": true,
+            "category": 3
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 16,
+        "fields": {
+            "name": "Shears",
+            "description": "Cuts/prunes shrubs or grasses",
+            "image_static_location": "images/icons/shears.png",
+            "is_available": true,
+            "category": 3
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 17,
+        "fields": {
+            "name": "Clear Plastic Bags",
+            "description": "Fill with trash debris or recyclable materials",
+            "image_static_location": "images/icons/plastic_bag.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 18,
+        "fields": {
+            "name": "Green Waste/Compost Bags",
+            "description": "Fill with compostable materials,such as weeds, paper plates,food scraps, tree branches (before placing in bags,cut branches into smaller pieces)",
+            "image_static_location": "images/icons/compost_bag.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 19,
+        "fields": {
+            "name": "Collapesable, Reusable Bags",
+            "description": "Transports waste materials to a debris bin if you requested one. Must be returned for reuse",
+            "image_static_location": "images/icons/reusable_bag.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 20,
+        "fields": {
+            "name": "Two Gallon Bucket",
+            "description": "Collects trash similarly to the collapsible green waste bags above",
+            "image_static_location": "images/icons/bucket.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 21,
+        "fields": {
+            "name": "Five Gallon Bucket",
+            "description": "Collects trash similarly to the collapsible green waste bags above",
+            "image_static_location": "images/icons/bucket.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 22,
+        "fields": {
+            "name": "Held Bulb Planters",
+            "description": "Push head of planter into the ground, grab soil in its cone and create a deep enough hole to plant a bulb. The long handled version is better for larger projects with harder soil.",
+            "image_static_location": "images/icons/bulb_planter.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 23,
+        "fields": {
+            "name": "Long Bulb Planters",
+            "description": "Push head of planter into the ground, grab soil in its cone and create a deep enough hole to plant a bulb. The long handled version is better for larger projects with harder soil.",
+            "image_static_location": "images/icons/bulb_planter.png",
+            "is_available": true,
+            "category": 4
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 24,
+        "fields": {
+            "name": "Hand Trowel",
+            "description": "For digging and planting.",
+            "image_static_location": "images/icons/hand_trowel.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 25,
+        "fields": {
+            "name": "15in Mattock",
+            "description": "Hand tool used for digging and chopping, similar to the pickax",
+            "image_static_location": "images/icons/mattock.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 26,
+        "fields": {
+            "name": "23in Mattock",
+            "description": "Hand tool used for digging and chopping, similar to the pickax",
+            "image_static_location": "images/icons/mattock.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 27,
+        "fields": {
+            "name": "32in Mattock",
+            "description": "Hand tool used for digging and chopping, similar to the pickax",
+            "image_static_location": "images/icons/mattock.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 28,
+        "fields": {
+            "name": "Pointed Shovel",
+            "description": "Best for digging holes",
+            "image_static_location": "images/icons/pointed_shovel.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 29,
+        "fields": {
+            "name": "Pick Axe",
+            "description": "Breaks up hard soil or rock",
+            "image_static_location": "images/icons/pick_axe.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 30,
+        "fields": {
+            "name": "Pulaski/Fire Ax",
+            "description": "Both chops wood and digs in soil. Good for trail construction and invasive plant removal (pampas grass)",
+            "image_static_location": "images/icons/pulaski.png",
+            "is_available": true,
+            "category": 5
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 31,
+        "fields": {
+            "name": "Hand Weeder",
+            "description": "Digs up small weeds",
+            "image_static_location": "images/icons/hand_weeder.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 32,
+        "fields": {
+            "name": "Hand Hoe",
+            "description": "Moves small amounts of soil; used in weed control, hilling, and creating shallow trenches",
+            "image_static_location": "images/icons/hand_hoe.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 33,
+        "fields": {
+            "name": "Hori Hori",
+            "description": "A multi-purpose blade serrated on one side. Suitable for digging and cutting roots",
+            "image_static_location": "images/icons/hori_hori.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 34,
+        "fields": {
+            "name": "Standard Weed Wrench",
+            "description": "Pulls out woody plants such as French broom; Easiest to use with soft and slightly moist soils",
+            "image_static_location": "images/icons/weed_wrench.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 35,
+        "fields": {
+            "name": "Large Weed Wrench",
+            "description": "Pulls out woody plants such as French broom; Easiest to use with soft and slightly moist soils",
+            "image_static_location": "images/icons/weed_wrench.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 36,
+        "fields": {
+            "name": "Grass Trimmers",
+            "description": "Whip back and forth to cut tall grasses and weeds",
+            "image_static_location": "images/icons/grass_trimmer.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 37,
+        "fields": {
+            "name": "Hula Hoe",
+            "description": "Cuts weeds in sandy soils",
+            "image_static_location": "images/icons/hula_hoe.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 38,
+        "fields": {
+            "name": "Standard Hoe",
+            "description": "Cuts weeds just under the surface of the soil",
+            "image_static_location": "images/icons/hoe.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 39,
+        "fields": {
+            "name": "Mattock Tiller",
+            "description": "A heavy duty tool for weeding and breaking up soil. One side is a hoe and the other side is a fork",
+            "image_static_location": "images/icons/mattock_tiller.png",
+            "is_available": true,
+            "category": 6
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 40,
+        "fields": {
+            "name": "Skimmer",
+            "description": "Collects debris from water",
+            "image_static_location": "images/icons/skimmer.png",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 41,
+        "fields": {
+            "name": "Standard Leaf Rakes",
+            "description": "Shaped like a fan and used to rake leaves",
+            "image_static_location": "images/icons/rakes.jpg",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 42,
+        "fields": {
+            "name": "Narrow Leaf Rake",
+            "description": "Shaped like a fan and used to rake leaves",
+            "image_static_location": "images/icons/rakes.jpg",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 43,
+        "fields": {
+            "name": "Bow Rake",
+            "description": "Rakes hard materials or moves through roots and ruts",
+            "image_static_location": "images/icons/bow_rake.jpg",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 44,
+        "fields": {
+            "name": "McLeod",
+            "description": "Combines a large hoe-like blade on one side for cutting and a large rake on the other side. Useful for clearing large areas of vegetation and building trails",
+            "image_static_location": "images/icons/mcleod.png",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 45,
+        "fields": {
+            "name": "Scoop Shovel",
+            "description": "Scoops large amounts of material; also called a snow shovel",
+            "image_static_location": "images/icons/scoop_shovel.png",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 46,
+        "fields": {
+            "name": "Flat Shovel",
+            "description": "Scoops soil or moves piles; Not recommended for digging holes",
+            "image_static_location": "images/icons/flat_shovel.png",
+            "is_available": true,
+            "category": 7
+        }
+    },
+    {
+        "model": "cleanups.tool",
+        "pk": 47,
+        "fields": {
+            "name": "Pitch Fork",
+            "description": "Moves or picks up loose materials such as hay, compost, or vegetation. Also spreads straw or mulch, etc.",
+            "image_static_location": "images/icons/pitch_fork.png",
+            "is_available": true,
+            "category": 7
+        }
+    }
+]

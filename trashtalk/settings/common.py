@@ -162,6 +162,14 @@ STATICFILES_DIRS = [
 ]
 
 # =======================================================================
+# FIXTURES
+# https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-FIXTURE_DIRS
+# =======================================================================
+FIXTURE_DIRS = [
+    os.path.join(PROJECT_DIR, 'fixtures')
+]
+
+# =======================================================================
 # THIRD-PARTY INTEGRATION SETTINGS
 # For settings specific to third-party modules and apis.
 # The credentials below are NOT FOR PRODUCTION. Overwrite them by editing

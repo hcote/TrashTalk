@@ -1,0 +1,419 @@
+[
+  {
+    "model": "cleanups.cleanup",
+    "pk": 1,
+    "fields": {
+      "title": "California Wildlife Foundation, 428 13th St, Oakland",
+      "description": null,
+      "start": "2018-05-09T15:00:00Z",
+      "end": "2018-05-09T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 1,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 2,
+    "fields": {
+      "title": "Panda Express, 500 12th St B132, Oakland",
+      "description": null,
+      "start": "2018-05-17T15:00:00Z",
+      "end": "2018-05-17T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 2,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 3,
+    "fields": {
+      "title": "Frank H Ogawa Plaza, Oakland",
+      "description": null,
+      "start": "2018-05-24T15:00:00Z",
+      "end": "2018-05-24T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 3,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 4,
+    "fields": {
+      "title": "The Layover, 1517 Franklin St, Oakland",
+      "description": null,
+      "start": "2018-06-14T15:00:00Z",
+      "end": "2018-06-14T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 4,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 5,
+    "fields": {
+      "title": "Great Western Power Company, 520 20th St, Oakland",
+      "description": null,
+      "start": "2018-07-26T15:00:00Z",
+      "end": "2018-07-26T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 5,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 6,
+    "fields": {
+      "title": "Spice Monkey Restaurant & Bar, 1628 Webster St, Oakland",
+      "description": null,
+      "start": "2018-05-10T15:00:00Z",
+      "end": "2018-05-10T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 6,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 7,
+    "fields": {
+      "title": "Pho 84, 354 17th St, Oakland",
+      "description": null,
+      "start": "2018-05-16T15:00:00Z",
+      "end": "2018-05-16T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 7,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.cleanup",
+    "pk": 8,
+    "fields": {
+      "title": "413 37th St, Oakland",
+      "description": null,
+      "start": "2018-05-10T15:00:00Z",
+      "end": "2018-05-10T16:00:00.001Z",
+      "image": "images/defaults/bow_rake.jpg",
+      "host": null,
+      "location": 8,
+      "participants": []
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 1,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "California Wildlife Foundation, 428 13th St, Oakland",
+      "latitude": "37.803616",
+      "longitude": "-122.271080",
+      "category": null,
+      "image": null
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 2,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "Panda Express, 500 12th St B132, Oakland",
+      "latitude": "37.803804",
+      "longitude": "-122.273144",
+      "category": null,
+      "image":
+        "https://lh3.googleusercontent.com/p/AF1QipOvnc-bAZ87JOhpQ2tlT16BSjVQyq6EbV1_riNk=w1024-h1024-k"
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 3,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "Frank H Ogawa Plaza, Oakland",
+      "latitude": "37.805437",
+      "longitude": "-122.271834",
+      "category": null,
+      "image": null
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 4,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "The Layover, 1517 Franklin St, Oakland",
+      "latitude": "37.805209",
+      "longitude": "-122.269451",
+      "category": null,
+      "image":
+        "https://lh3.googleusercontent.com/p/AF1QipNQXubmXINpwq-4D7VcXZMZY2bW85ZeM26kV0s7=w1024-h1024-k"
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 5,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "Great Western Power Company, 520 20th St, Oakland",
+      "latitude": "37.809793",
+      "longitude": "-122.270206",
+      "category": null,
+      "image":
+        "https://lh3.googleusercontent.com/p/AF1QipOO68qNGUzBItP9ko92JIC2DddGamyL4KJhiBjY=w1024-h1024-k"
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 6,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "Spice Monkey Restaurant & Bar, 1628 Webster St, Oakland",
+      "latitude": "37.805470",
+      "longitude": "-122.267275",
+      "category": null,
+      "image":
+        "https://lh3.googleusercontent.com/p/AF1QipO5yv1e4jiEgFVV_kGUJB01VZ0IDIA0SJHiMXOy=w1024-h1024-k"
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 7,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "Pho 84, 354 17th St, Oakland",
+      "latitude": "37.805983",
+      "longitude": "-122.267400",
+      "category": null,
+      "image":
+        "https://lh3.googleusercontent.com/p/AF1QipOR7ZMJdPvIZfZ4NsAPnZsZfUtoFnMwt3VV1cqA=w1024-h1024-k"
+    }
+  },
+  {
+    "model": "cleanups.location",
+    "pk": 8,
+    "fields": {
+      "number": "",
+      "street": null,
+      "cross_street": "",
+      "city": "Oakland",
+      "state": "California",
+      "zipcode": "",
+      "county": "",
+      "district": "",
+      "country": "United States",
+      "query": "413 37th St, Oakland",
+      "latitude": "37.824526",
+      "longitude": "-122.262237",
+      "category": null,
+      "image": null
+    }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 1,
+    "fields": { "tool": 27, "cleanup": 2, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 2,
+    "fields": { "tool": 29, "cleanup": 2, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 3,
+    "fields": { "tool": 28, "cleanup": 2, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 4,
+    "fields": { "tool": 40, "cleanup": 2, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 5,
+    "fields": { "tool": 39, "cleanup": 2, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 6,
+    "fields": { "tool": 38, "cleanup": 2, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 7,
+    "fields": { "tool": 17, "cleanup": 3, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 8,
+    "fields": { "tool": 18, "cleanup": 3, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 9,
+    "fields": { "tool": 27, "cleanup": 4, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 10,
+    "fields": { "tool": 29, "cleanup": 4, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 11,
+    "fields": { "tool": 28, "cleanup": 4, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 12,
+    "fields": { "tool": 39, "cleanup": 4, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 13,
+    "fields": { "tool": 38, "cleanup": 4, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 14,
+    "fields": { "tool": 35, "cleanup": 5, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 15,
+    "fields": { "tool": 22, "cleanup": 5, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 16,
+    "fields": { "tool": 9, "cleanup": 5, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 17,
+    "fields": { "tool": 10, "cleanup": 5, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 18,
+    "fields": { "tool": 3, "cleanup": 5, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 19,
+    "fields": { "tool": 4, "cleanup": 5, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 20,
+    "fields": { "tool": 13, "cleanup": 6, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 21,
+    "fields": { "tool": 14, "cleanup": 6, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 22,
+    "fields": { "tool": 16, "cleanup": 6, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 23,
+    "fields": { "tool": 35, "cleanup": 7, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 24,
+    "fields": { "tool": 37, "cleanup": 7, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 25,
+    "fields": { "tool": 36, "cleanup": 7, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 26,
+    "fields": { "tool": 17, "cleanup": 7, "quantity": 2 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 27,
+    "fields": { "tool": 18, "cleanup": 7, "quantity": 1 }
+  },
+  {
+    "model": "cleanups.requiredtool",
+    "pk": 28,
+    "fields": { "tool": 20, "cleanup": 7, "quantity": 1 }
+  }
+]
