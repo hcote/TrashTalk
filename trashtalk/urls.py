@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include, static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-
 from django.conf import settings
 
 from accounts.views import (LoginView, UserDashboardView, user_signup_view, user_signup_create)
