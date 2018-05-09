@@ -10,7 +10,7 @@ from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView,
                                      RetrieveUpdateDestroyAPIView)
 from rest_framework.permissions import (IsAdminUser, IsAuthenticatedOrReadOnly)
 from rest_framework.parsers import FormParser
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .serializers import User, UserSerializer
@@ -48,6 +48,7 @@ class LoginView(GenericAPIView):
     queryset = User.objects.all()
     renderer_classes = [TemplateHTMLRenderer]
     parser_classes = [FormParser,]
+    permission_classes = (AllowAny,)
     template_name = 'index.html'
 
     def get(self, request):
