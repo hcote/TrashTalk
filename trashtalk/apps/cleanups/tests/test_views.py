@@ -29,7 +29,6 @@ class CleanupsAPIViewsTestCase(TestCase):
             'description': 'A test event.',
             'start': '2018-04-15 15:30',
             'end': '2018-04-15 17:30',
-            'host': self.user.id,
             'location': {'number': '333',
                          'latitude': 123, 'longitude': 456,
                          'street': 'Beach Ave'}
@@ -76,17 +75,18 @@ class CleanupsAPIViewsTestCase(TestCase):
     def test_api_cleanup_change_participant_status(self):
         cleanup = CleanupFactory(title='Oakland Test Cleanup')
         url = reverse('api:cleanup-detail', kwargs={'pk': cleanup.id})
-        data = {'participants': [self.user.id]}
+        added_data = {'participants': [self.user.id]}
+        removed_data = {'participants': []}
         self.client.force_login(self.user)
 
         # Test participant was added
-        response = self.client.patch(url, data=json.dumps(data), follow=True,
+        response = self.client.patch(url, data=json.dumps(added_data), follow=True,
                                      content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertIn(self.user.id, response.data.get('participants'))
 
         # Test participant was removed
-        response = self.client.patch(url, data=json.dumps(data), follow=True,
+        response = self.client.patch(url, data=json.dumps(removed_data), follow=True,
                                      content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertNotIn(self.user.id, response.data.get('participants'))

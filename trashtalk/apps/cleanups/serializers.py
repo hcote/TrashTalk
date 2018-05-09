@@ -69,7 +69,7 @@ class CleanupSerializer(serializers.ModelSerializer):
         required_tools = validated_data.pop('requiredtool_set') if 'requiredtool_set' in validated_data else []
         cleanup = Cleanup.objects.create(
             location=location,
-            # host=self.context['request'].user,
+            host=self.context['request'].user,
             **validated_data
         )
 
@@ -88,12 +88,14 @@ class CleanupSerializer(serializers.ModelSerializer):
                 for k, v in validated_data[key].items():
                     setattr(instance.location, k, v)
             elif key == 'participants':
-                participant = validated_data[key][0]
-                if participant not in instance.participants.all():
-                    instance.participants.add(participant)
-                else:
-                    instance.participants.remove(participant)
-
+                # only allow logged in user to modify him/herself in participants list
+                user = self.context['request'].user
+                updated_participants = validated_data[key]
+                current_participants = instance.participants.all()
+                if user not in updated_participants and user in current_participants:
+                    instance.participants.remove(user.id)
+                elif user in updated_participants and user not in current_participants:
+                    instance.participants.add(user.id)
             elif key == 'requiredtool_set':
                 # Remove all existing required tools before setting new ones
                 RequiredTool.objects.filter(cleanup=instance).delete()

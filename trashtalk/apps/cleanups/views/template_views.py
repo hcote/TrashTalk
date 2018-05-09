@@ -14,7 +14,7 @@ from core.utils import host_required
 from cleanups.factories import cleanup_factory
 from cleanups.forms import CleanupFormSet
 from cleanups.models import Tool, ToolCategory
-from cleanups.serializers import Cleanup, Location, User
+from cleanups.models import Cleanup, Location, User
 
 logger = logging.getLogger('cleanups.views')
 

@@ -163,8 +163,8 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     # TODO: Issue #162 -- JWT auto-refresh at expiry
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=30),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
 
     # Default Settings: Uncomment and modify as needed
     # 'JWT_ENCODE_HANDLER':
@@ -192,7 +192,7 @@ JWT_AUTH = {
     # 'JWT_LEEWAY': 0,
     # 'JWT_AUDIENCE': None,
     # 'JWT_ISSUER': None,
-    # 'JWT_ALLOW_REFRESH': True,
+    'JWT_ALLOW_REFRESH': True,
     # 'JWT_AUTH_HEADER_PREFIX': 'JWT',
     # 'JWT_AUTH_COOKIE': None,
 

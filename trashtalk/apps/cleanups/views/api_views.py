@@ -1,7 +1,7 @@
 import logging
 
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from  cleanups.models import (
     Cleanup, Location, RequiredTool, Tool, ToolCategory
@@ -19,35 +19,38 @@ logger = logging.getLogger('cleanups.views')
 class CleanupDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cleanup.objects.all()
     serializer_class = CleanupSerializer
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 # pylint: disable=missing-docstring
 class CleanupListCreateAPIView(generics.ListCreateAPIView):
     queryset = Cleanup.objects.all()
     serializer_class = CleanupSerializer
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 # pylint: disable=missing-docstring
 class CleanupDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cleanup.objects.all()
     serializer_class = CleanupSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 # pylint: disable=missing-docstring
 class LocationListCreateView(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
-
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 # pylint: disable=missing-docstring
 class ToolView(generics.ListAPIView):
     queryset = Tool.objects.filter(is_available=True)
     serializer_class = ToolSerializer
+    permission_classes = (IsAuthenticated,)
 
 
 # pylint: disable=missing-docstring
 class ToolCategoryView(generics.ListAPIView):
     queryset = ToolCategory.objects.filter()
     serializer_class = ToolCategorySerializer
+    permission_classes = (IsAuthenticated,)
