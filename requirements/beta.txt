@@ -1,0 +1,16 @@
+-r common.txt
+
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+# DJANGO & EXTENSIONS
+# Also requires: None
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+dj-database-url==0.5.0
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# STANDALONE
+# ^^^^^^^^^^^^^^^^^^^^^^
+whitenoise==3.3.1
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# INTEGRATIONS
+# ^^^^^^^^^^^^^^^^^^^^^^

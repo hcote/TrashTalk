@@ -1,0 +1,35 @@
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+# DJANGO & EXTENSIONS
+# Also requires: None
+# ^^^^^^^^^^^^^^^^^^^^^^^^
+Django==2.0.2
+djangorestframework==3.7.7
+django-extensions==1.9.9
+django-model-utils==3.1.1
+dj-database-url==0.5.0
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# DATABASE MODULES
+# ^^^^^^^^^^^^^^^^^^^^^^
+psycopg2-binary==2.7.4
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# TESTING
+# ^^^^^^^^^^^^^^^^^^^^^^
+factory-boy==2.10.0
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# STANDALONE
+# ^^^^^^^^^^^^^^^^^^^^^^
+requests==2.18.4
+gunicorn==19.7.1
+raven==6.5.0
+whitenoise==3.3.1
+
+# ^^^^^^^^^^^^^^^^^^^^^^
+# INTEGRATIONS
+# ^^^^^^^^^^^^^^^^^^^^^^
+geopy==1.11.0
+gspread==0.6.2                          # TODO: This may be unnecessary.
+google-api-python-client==1.6.5         # Includes oauth2client
+googlemaps==2.5.1

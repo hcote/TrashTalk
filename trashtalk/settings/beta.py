@@ -20,6 +20,7 @@ Settings is divided into several core sections:
 
 More settings can be added at any time.
 """
+import dj_database_url
 
 from .common import *
 
@@ -50,7 +51,7 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE += [
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # =======================================================================
@@ -74,14 +75,7 @@ RAVEN_CONFIG = {
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # =======================================================================
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME', 'trashtalk'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': '5432',
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD')
-    }
+    'default': dj_database_url.config()
 }
 
 # =======================================================================
@@ -96,12 +90,10 @@ AUTH_PASSWORD_VALIDATORS += []
 # STATIC AND MEDIA
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # =======================================================================
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets')
-
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
-    '/var/www/static/',
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # =======================================================================
 # INTEGRATED APP SETTINGS
@@ -138,6 +130,15 @@ LOGGING = {
         'standard': {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
         },
+        'simple': {
+            'format': '%(levelname)s %(name)s %(message)s'
+        },
+        'verbose': {
+            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                       'pathname=%(pathname)s lineno=%(lineno)s ' +
+                       'funcname=%(funcName)s %(message)s'),
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
     },
     'filters': {
         'require_debug_false': {
@@ -145,24 +146,28 @@ LOGGING = {
         }
     },
     'handlers': {
-        'default': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(dirname(PROJECT_DIR), 'logs', 'trashtalk.log'),
-            'formatter': 'standard',
-        },
-        'mail_admins': {
-            'level': 'ERROR',
+        'mail': {
+            'level': 'DEBUG',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html': True
-        }
+        },
+        # Print logs to console
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
     },
     'loggers': {
         '': {
-            'handlers': ['default'],
-            'level': 'ERROR',
+            'handlers': ['console'],
+            'level': 'DEBUG',
             'propagate': True,
+        },
+        'testLogger': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
         },
         'django.request': {
             'handlers': ['mail_admins'],
