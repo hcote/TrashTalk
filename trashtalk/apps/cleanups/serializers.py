@@ -40,6 +40,7 @@ class CleanupSerializer(serializers.ModelSerializer):
             if key == 'location':
                 for k, v in validated_data[key].items():
                     setattr(instance.location, k, v)
+                instance.location.save()
             elif key == 'participants':
                 participant = validated_data[key][0]
                 if participant not in instance.participants.all():
