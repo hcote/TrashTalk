@@ -1,7 +1,7 @@
  # TrashTalk
 
  - [About the project](https://github.com/openoakland/TrashTalk/wiki#about-the-project)
- - [New Developer Guider](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide)
+ - [New Developer Guide](https://github.com/openoakland/TrashTalk/wiki/New-Developer-Guide)
  - [Contribution Guide](https://github.com/openoakland/TrashTalk/blob/master/CONTRIBUTE.md)
  - [Project Issues](https://github.com/openoakland/TrashTalk/issues)
 
